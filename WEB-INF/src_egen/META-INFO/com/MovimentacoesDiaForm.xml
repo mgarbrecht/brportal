@@ -1,0 +1,1930 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>10/07/2012</generation_day>
+<module>com</module>
+<file_name>MovimentacoesDia</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>29/07/2011 13:52:58</creationDate>
+<lastModifyDate>10/07/2012 13:48:08</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_movimentacoes_dia</name>
+<title>Movimentacao</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_movimentacoes_dia</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+//	setTimeout("top.location= '../com/KanBanClientesNovosForm.jsp';",timeoutPeriod);
+}
+//   -->
+</script>
+
+<%
+{
+  %>
+
+  <%
+
+  java.util.Vector res_Jw_movimentacoes_dia = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_movimentacoes_dia t_jw_movimentacoes_dia = new portalbr.dbobj.view.Jw_movimentacoes_dia();
+    StringBuilder sb = new StringBuilder();
+sb.append(" SELECT DISTINCT ped.pedido_ifv ped ");
+sb.append("                ,DECODE(NVL(ped.status_pedido, 0), 0, 'Nao Confirmado', 98, 'Importado', 3, 'Processando', ped.status_pedido) sts ");
+sb.append("                ,ped.tipo_pedido tp ");
+sb.append("                ,ped.codigo_cliente || ' - ' || ped.sequencial_cliente cliente ");
+sb.append("                ,cli.cli_nome nome ");
+sb.append("                ,ecl.est_unifed uf ");
+sb.append("                ,esc.esc_email email ");
+sb.append("                ,'(' || fone.ffs_ddd2 || ') ' || fone.ffs_nmro2 fone ");
+sb.append("                ,'' rep ");
+sb.append("                ,ped.livro_preco liv ");
+sb.append("                ,ped.codigo_cond_pagto cnd ");
+sb.append("                ,ite.codigo_marca marca ");
+sb.append("                ,ite.codigo_linha linha ");
+sb.append("                ,ite.codigo_referencia REF ");
+sb.append("                ,ite.codigo_cabedal cab ");
+sb.append("                ,ite.codigo_cor cor ");
+sb.append("                ,ite.quantidade_item qtd ");
+sb.append("                ,ite.valor_bruto vlr ");
+sb.append("                ,ped.data_emissao data ");
+sb.append("  FROM fax_fon2 fone  ");
+sb.append("      ,ecl  ");
+sb.append("      ,esc esc  ");
+sb.append("      ,cli cli  ");
+sb.append("      ,webstore.wt_item_carrinho@sadig ite  ");
+sb.append("      ,webstore.wt_carrinho@sadig ped ");
+sb.append("  WHERE 1 = 1 ");
+sb.append("    AND fone.esc_seqn = esc.esc_seqn ");
+sb.append("    AND fone.cli_cdgo = esc.cli_cdgo ");
+sb.append("    AND ecl.esc_seqn = esc.esc_seqn ");
+sb.append("    AND ecl.cli_cdgo = esc.cli_cdgo ");
+sb.append("    AND esc.esc_seqn = ped.sequencial_cliente ");
+sb.append("    AND esc.cli_cdgo = ped.codigo_cliente ");
+sb.append("    AND cli.cli_cdgo = ped.codigo_cliente ");
+sb.append("    AND ite.pedido_ifv = ped.pedido_ifv ");
+sb.append("    AND TRUNC(ped.data_emissao) >= TRUNC(SYSDATE) ");
+sb.append("    AND NVL(ped.status_pedido, 0) <> 98 ");
+sb.append("    AND ped.codigo_cliente NOT IN (99991, 99992, 75199) ");
+sb.append("    AND TO_CHAR(SYSDATE, 'D') <>  2 ");
+sb.append(" UNION ");
+sb.append(" SELECT DISTINCT ped.pedido_ifv ped ");
+sb.append("                ,DECODE(NVL(ped.status_pedido, 0), 0, 'Nao Confirmado', 98, 'Importado', 3, 'Processando', ped.status_pedido) sts ");
+sb.append("                ,ped.tipo_pedido tp ");
+sb.append("                ,ped.codigo_cliente || ' - ' || ped.sequencial_cliente cliente ");
+sb.append("                ,cli.cli_nome nome ");
+sb.append("                ,ecl.est_unifed uf ");
+sb.append("                ,esc.esc_email email ");
+sb.append("                ,'(' || fone.ffs_ddd2 || ') ' || fone.ffs_nmro2 fone ");
+sb.append("                ,'' rep ");
+sb.append("                ,ped.livro_preco liv ");
+sb.append("                ,ped.codigo_cond_pagto cnd ");
+sb.append("                ,ite.codigo_marca marca ");
+sb.append("                ,ite.codigo_linha linha ");
+sb.append("                ,ite.codigo_referencia REF ");
+sb.append("                ,ite.codigo_cabedal cab ");
+sb.append("                ,ite.codigo_cor cor ");
+sb.append("                ,ite.quantidade_item qtd ");
+sb.append("                ,ite.valor_bruto vlr ");
+sb.append("                ,ped.data_emissao data ");
+sb.append("  FROM fax_fon2 fone  ");
+sb.append("      ,ecl  ");
+sb.append("      ,esc esc  ");
+sb.append("      ,cli cli  ");
+sb.append("      ,webstore.wt_item_carrinho@sadig ite  ");
+sb.append("      ,webstore.wt_carrinho@sadig ped ");
+sb.append("  WHERE 1 = 1 ");
+sb.append("    AND fone.esc_seqn = esc.esc_seqn ");
+sb.append("    AND fone.cli_cdgo = esc.cli_cdgo ");
+sb.append("    AND ecl.esc_seqn = esc.esc_seqn ");
+sb.append("    AND ecl.cli_cdgo = esc.cli_cdgo ");
+sb.append("    AND esc.esc_seqn = ped.sequencial_cliente ");
+sb.append("    AND esc.cli_cdgo = ped.codigo_cliente ");
+sb.append("    AND cli.cli_cdgo = ped.codigo_cliente ");
+sb.append("    AND ite.pedido_ifv = ped.pedido_ifv ");
+sb.append("    AND TRUNC(ped.data_emissao) >= TRUNC(SYSDATE)-2 ");
+sb.append("    AND NVL(ped.status_pedido, 0) <> 98 ");
+sb.append("    AND ped.codigo_cliente NOT IN (99991, 99992, 75199) ");
+sb.append("    AND TO_CHAR(SYSDATE, 'D') = 2 ");
+
+    res_Jw_movimentacoes_dia = j.select(t_jw_movimentacoes_dia, sb.toString(), null);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Jw_movimentacoes_dia" id="bl_report_Jw_movimentacoes_dia" class="baseForm" method="post" >
+
+
+  <%
+  if (res_Jw_movimentacoes_dia!=null && res_Jw_movimentacoes_dia.size()>0) {
+    %>
+
+    <table id="TRbl_report_Jw_movimentacoes_dia"  class="reportTable"   style="width:99%;" border="1"   >
+      <%
+      java.lang.String ped =  null;
+      java.lang.String sts =  null;
+      java.lang.String tp =  null;
+      java.lang.String cliente =  null;
+      java.lang.String nome =  null;
+      java.lang.String uf =  null;
+      java.lang.String email =  null;
+      java.lang.String fone =  null;
+      java.lang.String rep =  null;
+      java.lang.String liv =  null;
+      java.lang.String cnd =  null;
+      java.lang.String marca =  null;
+      java.lang.String linha =  null;
+      java.lang.String ref =  null;
+      java.lang.String cab =  null;
+      java.lang.String cor =  null;
+      java.lang.Integer qtd =  null;
+      double vlr =  0;
+      java.sql.Timestamp datam =  null;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:left;" >
+          Ped.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Status
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Tp.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Cliente
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Nome
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          UF
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          eMail
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Fone
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Rep.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Liv.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Cnd.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Marca
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Linha
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Ref.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Cab.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Cor
+        </td>
+
+        <td class="columnTdHeader" style="text-align:right;" >
+          Qtd.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:right;" >
+          Vlr.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:center;" >
+          Data
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Jw_movimentacoes_dia = 0;
+      while (i_bl_report_Jw_movimentacoes_dia<res_Jw_movimentacoes_dia.size()) {
+        portalbr.dbobj.view.Jw_movimentacoes_dia t_jw_movimentacoes_dia = (portalbr.dbobj.view.Jw_movimentacoes_dia)res_Jw_movimentacoes_dia.elementAt(i_bl_report_Jw_movimentacoes_dia);
+        ped = t_jw_movimentacoes_dia.getPed()==null?"":t_jw_movimentacoes_dia.getPed();
+        sts = t_jw_movimentacoes_dia.getSts()==null?"":t_jw_movimentacoes_dia.getSts();
+        tp = t_jw_movimentacoes_dia.getTp()==null?"":t_jw_movimentacoes_dia.getTp();
+        cliente = t_jw_movimentacoes_dia.getCliente()==null?"":t_jw_movimentacoes_dia.getCliente();
+        nome = t_jw_movimentacoes_dia.getNome()==null?"":t_jw_movimentacoes_dia.getNome();
+        uf = t_jw_movimentacoes_dia.getUf()==null?"":t_jw_movimentacoes_dia.getUf();
+        email = t_jw_movimentacoes_dia.getEmail()==null?"":t_jw_movimentacoes_dia.getEmail();
+        fone = t_jw_movimentacoes_dia.getFone()==null?"":t_jw_movimentacoes_dia.getFone();
+        rep = t_jw_movimentacoes_dia.getRep()==null?"":t_jw_movimentacoes_dia.getRep();
+        liv = t_jw_movimentacoes_dia.getLiv()==null?"":t_jw_movimentacoes_dia.getLiv();
+        cnd = t_jw_movimentacoes_dia.getCnd()==null?"":t_jw_movimentacoes_dia.getCnd();
+        marca = t_jw_movimentacoes_dia.getMarca()==null?"":t_jw_movimentacoes_dia.getMarca();
+        linha = t_jw_movimentacoes_dia.getLinha()==null?"":t_jw_movimentacoes_dia.getLinha();
+        ref = t_jw_movimentacoes_dia.getRef()==null?"":t_jw_movimentacoes_dia.getRef();
+        cab = t_jw_movimentacoes_dia.getCab()==null?"":t_jw_movimentacoes_dia.getCab();
+        cor = t_jw_movimentacoes_dia.getCor()==null?"":t_jw_movimentacoes_dia.getCor();
+        qtd = t_jw_movimentacoes_dia.getQtd();
+        vlr = t_jw_movimentacoes_dia.getVlr();
+        datam = (java.sql.Timestamp)t_jw_movimentacoes_dia.getData();
+        String style_bl_report_Jw_movimentacoes_dia="";
+        if (!((i_bl_report_Jw_movimentacoes_dia%2)!=0)) {
+          style_bl_report_Jw_movimentacoes_dia="rowColor";
+        } else {
+          style_bl_report_Jw_movimentacoes_dia="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Jw_movimentacoes_dia %>' id="TRbl_report_Jw_movimentacoes_dia<%=i_bl_report_Jw_movimentacoes_dia%>" >
+          <td class="reportColumn" style="text-align:left;" >
+            <%= ped %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= sts %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= tp %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cliente %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= nome %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= uf %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= email %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= fone %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= rep %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= liv %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cnd %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= marca %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= linha %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= ref %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cab %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cor %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;" >
+            <%= ((qtd!=null)?qtd.toString():"") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;" >
+            <%= com.egen.util.text.FormatNumber.format(vlr, "##,##0.00") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:center;" >
+            <%= com.egen.util.text.FormatDate.format(datam, "dd/MM/yyyy HH:mm:ss") %>
+          </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Jw_movimentacoes_dia++;
+        if (i_bl_report_Jw_movimentacoes_dia<res_Jw_movimentacoes_dia.size()) {
+          t_jw_movimentacoes_dia = (portalbr.dbobj.view.Jw_movimentacoes_dia)res_Jw_movimentacoes_dia.elementAt(i_bl_report_Jw_movimentacoes_dia);
+          ped = t_jw_movimentacoes_dia.getPed()==null?"":t_jw_movimentacoes_dia.getPed();
+          sts = t_jw_movimentacoes_dia.getSts()==null?"":t_jw_movimentacoes_dia.getSts();
+          tp = t_jw_movimentacoes_dia.getTp()==null?"":t_jw_movimentacoes_dia.getTp();
+          cliente = t_jw_movimentacoes_dia.getCliente()==null?"":t_jw_movimentacoes_dia.getCliente();
+          nome = t_jw_movimentacoes_dia.getNome()==null?"":t_jw_movimentacoes_dia.getNome();
+          uf = t_jw_movimentacoes_dia.getUf()==null?"":t_jw_movimentacoes_dia.getUf();
+          email = t_jw_movimentacoes_dia.getEmail()==null?"":t_jw_movimentacoes_dia.getEmail();
+          fone = t_jw_movimentacoes_dia.getFone()==null?"":t_jw_movimentacoes_dia.getFone();
+          rep = t_jw_movimentacoes_dia.getRep()==null?"":t_jw_movimentacoes_dia.getRep();
+          liv = t_jw_movimentacoes_dia.getLiv()==null?"":t_jw_movimentacoes_dia.getLiv();
+          cnd = t_jw_movimentacoes_dia.getCnd()==null?"":t_jw_movimentacoes_dia.getCnd();
+          marca = t_jw_movimentacoes_dia.getMarca()==null?"":t_jw_movimentacoes_dia.getMarca();
+          linha = t_jw_movimentacoes_dia.getLinha()==null?"":t_jw_movimentacoes_dia.getLinha();
+          ref = t_jw_movimentacoes_dia.getRef()==null?"":t_jw_movimentacoes_dia.getRef();
+          cab = t_jw_movimentacoes_dia.getCab()==null?"":t_jw_movimentacoes_dia.getCab();
+          cor = t_jw_movimentacoes_dia.getCor()==null?"":t_jw_movimentacoes_dia.getCor();
+          qtd = t_jw_movimentacoes_dia.getQtd();
+          vlr = t_jw_movimentacoes_dia.getVlr();
+          datam = (java.sql.Timestamp)t_jw_movimentacoes_dia.getData();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ped</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>ped</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>ped</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getPed()==null?"":t_jw_movimentacoes_dia.getPed()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>sts</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>sts</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>sts</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getSts()==null?"":t_jw_movimentacoes_dia.getSts()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>tp</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>tp</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>tp</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getTp()==null?"":t_jw_movimentacoes_dia.getTp()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cliente</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>cliente</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cliente</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getCliente()==null?"":t_jw_movimentacoes_dia.getCliente()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nome</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>nome</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>nome</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getNome()==null?"":t_jw_movimentacoes_dia.getNome()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>uf</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>uf</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>uf</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getUf()==null?"":t_jw_movimentacoes_dia.getUf()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>email</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>email</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>email</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getEmail()==null?"":t_jw_movimentacoes_dia.getEmail()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>fone</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>fone</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>fone</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getFone()==null?"":t_jw_movimentacoes_dia.getFone()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>rep</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>rep</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getRep()==null?"":t_jw_movimentacoes_dia.getRep()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>liv</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>liv</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>liv</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getLiv()==null?"":t_jw_movimentacoes_dia.getLiv()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cnd</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>cnd</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cnd</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getCnd()==null?"":t_jw_movimentacoes_dia.getCnd()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>marca</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getMarca()==null?"":t_jw_movimentacoes_dia.getMarca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>linha</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>linha</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>linha</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getLinha()==null?"":t_jw_movimentacoes_dia.getLinha()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ref</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>ref</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>ref</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getRef()==null?"":t_jw_movimentacoes_dia.getRef()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cab</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>cab</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cab</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getCab()==null?"":t_jw_movimentacoes_dia.getCab()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>cor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cor</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getCor()==null?"":t_jw_movimentacoes_dia.getCor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>qtd</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>qtd</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>qtd</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getQtd()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>vlr</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>vlr</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>vlr</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_movimentacoes_dia.getVlr()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>data</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_movimentacoes_dia</block_name>
+<role_item></role_item>
+<database_column>data</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>dd/MM/yyyy HH:mm:ss</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>data</label>
+<type>java.sql.Timestamp</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>(java.sql.Timestamp)t_jw_movimentacoes_dia.getData()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans></formBeans>
+<actions></actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Movimentações do dia</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body>
+<class>com.egen.develop.generator.Body</class>
+<id></id>
+<class_></class_>
+<style></style>
+<title></title>
+<dir></dir>
+<lang></lang>
+<onload>JavaScript:timedRefresh(15000);</onload>
+<onunload></onunload>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<bodySetProperty>
+</bodySetProperty>
+</bodySetProperty>
+</body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(192)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

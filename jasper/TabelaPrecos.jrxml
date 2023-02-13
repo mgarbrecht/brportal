@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="P_USUARIO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_TIPO_TABELA" class="java.lang.String">
+		<defaultValueExpression><![CDATA[AMBAS]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_REP_CDGO" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CODIGO_REGIONAL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CODIGO_ANALISTA" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CODIGO_MARCA" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT qry.*
+      ,row_number() OVER(PARTITION BY lin_cdgo, coluna ORDER BY lin_ref_cab, lin_cdgo, ref_cdgo,
+ tipo_tabela DESC) quebra
+      ,decode(marca, 'VIZZANO', 'vizzano.jpg', 'BEIRARIO', 'beirario.jpg', 'MOLECA', 'moleca.jpg', 'MOLEKINHA', 'molekinha.jpg', 'BRSPORT', 'brsport.jpg') imagem_marca
+  FROM (SELECT qry.*
+          FROM (SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) marca
+                      ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+                      ,tp.preco_mercado_interno preco
+                      ,1 ordem_tipo_tabela
+                      ,1 ordem_coluna
+                      ,'A vista' coluna
+                      ,'VENDOR' tipo_tabela
+                      ,tp.lin_cdgo
+                      ,tp.ref_cdgo
+                  FROM livro lv
+                      ,tabela_precos_publicada tp
+                      ,REF
+                 WHERE ref.lin_cdgo = tp.lin_cdgo
+                   AND ref.ref_cdgo = tp.ref_cdgo
+                   AND lv.liv_codigo = tp.liv_codigo
+                   AND lv.liv_status = 'A'
+                   AND NVL(lv.liv_vendor, 'N') = 'S'
+                   AND NVL(lv.liv_status_afv, 'I') = 'A'
+                   AND NVL(lv.tipo_comissao, 'C') = 'N'
+                   AND tp.liv_codigo = lv.liv_codigo
+                   AND ref.ref_status = 'A'
+                   AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+                UNION
+                SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) codigo_marca
+                      ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+                      ,ROUND(tp.preco_mercado_interno + (tp.preco_mercado_interno * 0.0130), 2) preco
+                      ,1 ordem_tipo_tabela
+                      ,2 ordem_coluna
+                      ,'30 dias'
+                      ,'VENDOR' tipo_tabela
+                      ,tp.lin_cdgo
+                      ,tp.ref_cdgo
+                  FROM livro lv
+                      ,tabela_precos_publicada tp
+                      ,REF
+                 WHERE ref.lin_cdgo = tp.lin_cdgo
+                   AND ref.ref_cdgo = tp.ref_cdgo
+                   AND lv.liv_codigo = tp.liv_codigo
+                   AND lv.liv_status = 'A'
+                   AND NVL(lv.liv_vendor, 'N') = 'S'
+                   AND NVL(lv.liv_status_afv, 'I') = 'A'
+                   AND NVL(lv.tipo_comissao, 'C') = 'N'
+                   AND tp.liv_codigo = lv.liv_codigo
+                   AND ref.ref_status = 'A'
+                   AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+                UNION
+                SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) codigo_marca
+                      ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+                      ,ROUND(tp.preco_mercado_interno + (tp.preco_mercado_interno * 0.0262), 2) preco
+                      ,1 ordem_tipo_tabela
+                      ,3 ordem_coluna
+                      ,'60 dias'
+                      ,'VENDOR' tipo_tabela
+                      ,tp.lin_cdgo
+                      ,tp.ref_cdgo
+                  FROM livro lv
+                      ,tabela_precos_publicada tp
+                      ,REF
+                 WHERE ref.lin_cdgo = tp.lin_cdgo
+                   AND ref.ref_cdgo = tp.ref_cdgo
+                   AND lv.liv_codigo = tp.liv_codigo
+                   AND lv.liv_status = 'A'
+                   AND NVL(lv.liv_vendor, 'N') = 'S'
+                   AND NVL(lv.liv_status_afv, 'I') = 'A'
+                   AND NVL(lv.tipo_comissao, 'C') = 'N'
+                   AND tp.liv_codigo = lv.liv_codigo
+                   AND ref.ref_status = 'A'
+                   AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+                UNION
+                SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) codigo_marca
+                      ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+                      ,ROUND(tp.preco_mercado_interno + (tp.preco_mercado_interno * 0.0395), 2) preco
+                      ,1 ordem_tipo_tabela
+                      ,4 ordem_coluna
+                      ,'90 dias'
+                      ,'VENDOR' tipo_tabela
+                      ,tp.lin_cdgo
+                      ,tp.ref_cdgo
+                  FROM livro lv
+                      ,tabela_precos_publicada tp
+                      ,REF
+                 WHERE ref.lin_cdgo = tp.lin_cdgo
+                   AND ref.ref_cdgo = tp.ref_cdgo
+                   AND lv.liv_codigo = tp.liv_codigo
+                   AND lv.liv_status = 'A'
+                   AND NVL(lv.liv_vendor, 'N') = 'S'
+                   AND NVL(lv.liv_status_afv, 'I') = 'A'
+                   AND NVL(lv.tipo_comissao, 'C') = 'N'
+                   AND tp.liv_codigo = lv.liv_codigo
+                   AND ref.ref_status = 'A'
+                   AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+                UNION
+                SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) codigo_marca
+                      ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+                      ,ROUND(tp.preco_mercado_interno + (tp.preco_mercado_interno * 0.0530), 2) preco
+                      ,1 ordem_tipo_tabela
+                      ,5 ordem_coluna
+                      ,'120 dias'
+                      ,'VENDOR' tipo_tabela
+                      ,tp.lin_cdgo
+                      ,tp.ref_cdgo
+                  FROM livro lv
+                      ,tabela_precos_publicada tp
+                      ,REF
+                 WHERE ref.lin_cdgo = tp.lin_cdgo
+                   AND ref.ref_cdgo = tp.ref_cdgo
+                   AND lv.liv_codigo = tp.liv_codigo
+                   AND lv.liv_status = 'A'
+                   AND lv.liv_vendor = 'S'
+                   AND lv.liv_status_afv = 'A'
+                   AND lv.tipo_comissao = 'N'
+                   AND tp.liv_codigo = lv.liv_codigo
+                   AND ref.ref_status = 'A'
+                   AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+                UNION
+                SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) codigo_marca
+                      ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+                      ,ROUND(tp.preco_mercado_interno + (tp.preco_mercado_interno * 0.0667), 2) preco
+                      ,1 ordem_tipo_tabela
+                      ,6 ordem_coluna
+                      ,'150 dias'
+                      ,'VENDOR' tipo_tabela
+                      ,tp.lin_cdgo
+                      ,tp.ref_cdgo
+                  FROM livro lv
+                      ,tabela_precos_publicada tp
+                      ,REF
+                 WHERE ref.lin_cdgo = tp.lin_cdgo
+                   AND ref.ref_cdgo = tp.ref_cdgo
+                   AND lv.liv_codigo = tp.liv_codigo
+                   AND lv.liv_status = 'A'
+                   AND lv.liv_vendor = 'S'
+                   AND lv.liv_status_afv = 'A'
+                   AND lv.tipo_comissao = 'N'
+                   AND tp.liv_codigo = lv.liv_codigo
+                   AND ref.ref_status = 'A'
+                   AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+) qry
+        UNION
+        SELECT pck_marcas_produtos.get_nome(ref.codigo_marca) marca
+              ,'' colecao
+                      ,tp.lin_cdgo || ' - ' || tp.ref_cdgo || ' - ' || rowtocol('select decode(tpe.cab_cdgo,999,null,tpe.cab_cdgo) from tabela_precos_publicada tpe where tpe.lin_cdgo = ' || tp.lin_cdgo || ' and tpe.ref_cdgo = ' || tp.ref_cdgo || ' and tpe.preco_mercado_interno = ' || REPLACE(TO_CHAR(tp.preco_mercado_interno), ',', '.') || ' AND tpe.liv_codigo = ' || lv.liv_codigo ||' order by cab_cdgo') lin_ref_cab
+              ,tp.preco_mercado_interno preco
+              ,2 ordem_tipo_tabela
+              ,lv.liv_codigo ordem_coluna
+              ,SUBSTR(lv.liv_descri, 5, 10) coluna
+              ,'BEIRARIO' tipo_tabela
+              ,tp.lin_cdgo
+              ,tp.ref_cdgo
+          FROM livro lv
+              ,tabela_precos_publicada tp
+              ,REF
+         WHERE ref.lin_cdgo = tp.lin_cdgo
+           AND ref.ref_cdgo = tp.ref_cdgo
+           AND lv.liv_status = 'A'
+           AND lv.liv_vendor = 'N'
+           AND lv.liv_status_afv = 'A'
+           AND lv.tipo_comissao = 'N'
+           AND tp.liv_codigo = lv.liv_codigo
+           AND ref.ref_status = 'A'
+           AND TRUNC(SYSDATE) BETWEEN TRUNC(tp.data_inicio_vigencia) AND TRUNC(tp.data_fim_vigencia)
+           AND ($P{P_CODIGO_MARCA} IS NULL OR ref.codigo_marca = $P{P_CODIGO_MARCA})
+) qry
+WHERE ($P{P_TIPO_TABELA} = 'AMBAS' OR qry.tipo_tabela = $P{P_TIPO_TABELA})
+   AND $P{P_REP_CDGO} IS NULL
+    OR EXISTS (SELECT 1
+          FROM representante_marca rm
+         WHERE rm.marca_produto = fct_marca_produto(qry.lin_cdgo, qry.ref_cdgo)
+           AND rm.situacao = 'A'
+           AND ($P{P_TIPO_TABELA} = 'AMBAS' OR qry.tipo_tabela = $P{P_TIPO_TABELA})
+           AND rm.codigo_representante = $P{P_REP_CDGO})
+   AND $P{P_CODIGO_REGIONAL} IS NULL
+    OR EXISTS (SELECT 1
+          FROM representante_marca rm
+              ,rep r
+         WHERE rm.marca_produto = fct_marca_produto(qry.lin_cdgo, qry.ref_cdgo)
+           AND rm.situacao = 'A'
+           AND ($P{P_TIPO_TABELA} = 'AMBAS' OR qry.tipo_tabela = $P{P_TIPO_TABELA})
+           AND r.rep_cdgo = rm.codigo_representante
+           AND r.codigo_regional = $P{P_CODIGO_REGIONAL})
+   AND $P{P_CODIGO_ANALISTA} IS NULL
+    OR EXISTS (SELECT 1
+          FROM wbrio.analistas_regionais a
+              ,representante_marca rm
+              ,rep r
+         WHERE a.codigo_regional = r.codigo_regional
+           AND rm.marca_produto = fct_marca_produto(qry.lin_cdgo, qry.ref_cdgo)
+           AND rm.situacao = 'A'
+           AND ($P{P_TIPO_TABELA} = 'AMBAS' OR qry.tipo_tabela = $P{P_TIPO_TABELA})
+           AND r.rep_cdgo = rm.codigo_representante
+           AND a.codigo_gerente = $P{P_CODIGO_ANALISTA})
+ ORDER BY marca
+         ,lin_ref_cab
+, ordem_coluna]]>
+	</queryString>
+	<field name="MARCA" class="java.lang.String"/>
+	<field name="COLECAO" class="java.lang.String"/>
+	<field name="LIN_REF_CAB" class="java.lang.String"/>
+	<field name="PRECO" class="java.math.BigDecimal"/>
+	<field name="ORDEM_TIPO_TABELA" class="java.math.BigDecimal"/>
+	<field name="ORDEM_COLUNA" class="java.math.BigDecimal"/>
+	<field name="COLUNA" class="java.lang.String"/>
+	<field name="TIPO_TABELA" class="java.lang.String"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="QUEBRA" class="java.math.BigDecimal"/>
+	<field name="IMAGEM_MARCA" class="java.lang.String"/>
+	<group name="dummy" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[!$F{MARCA}.equals("")]]></groupExpression>
+		<groupHeader>
+			<band height="34">
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="762" y="17" width="40" height="12" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="682" y="17" width="80" height="12" forecolor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy HH:mm:ss">
+					<reportElement style="Column header" x="695" y="2" width="107" height="12" forecolor="#000000"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="661" y="2" width="34" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Data:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="14" width="802" height="18"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tabela de Preços]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="2" width="34" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Marca:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="32" width="802" height="1"/>
+				</line>
+				<textField pattern="">
+					<reportElement style="Column header" x="42" y="2" width="131" height="12" forecolor="#000000"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{P_CODIGO_MARCA}==null?"TODAS":$P{P_CODIGO_MARCA}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="37">
+				<crosstab>
+					<reportElement x="0" y="0" width="802" height="32"/>
+					<crosstabHeaderCell>
+						<cellContents/>
+					</crosstabHeaderCell>
+					<rowGroup name="MARCA" width="55">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{MARCA}]]></bucketExpression>
+						</bucket>
+						<crosstabRowHeader>
+							<cellContents backcolor="#FFFFFF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="54" height="10"/>
+									<textElement>
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{MARCA}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabRowHeader>
+						<crosstabTotalRowHeader>
+							<cellContents/>
+						</crosstabTotalRowHeader>
+					</rowGroup>
+					<rowGroup name="LIN_REF_CAB" width="126">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{LIN_REF_CAB}]]></bucketExpression>
+						</bucket>
+						<crosstabRowHeader>
+							<cellContents backcolor="#FFFFFF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField isStretchWithOverflow="true">
+									<reportElement x="0" y="0" width="126" height="10"/>
+									<textElement textAlignment="Left">
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{LIN_REF_CAB}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabRowHeader>
+						<crosstabTotalRowHeader>
+							<cellContents/>
+						</crosstabTotalRowHeader>
+					</rowGroup>
+					<columnGroup name="TIPO_TABELA" height="10" headerPosition="Center">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{TIPO_TABELA}]]></bucketExpression>
+						</bucket>
+						<crosstabColumnHeader>
+							<cellContents backcolor="#BFE1FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="50" height="10" backcolor="#F0F8FF"/>
+									<textElement textAlignment="Center">
+										<font size="7" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{TIPO_TABELA}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabColumnHeader>
+						<crosstabTotalColumnHeader>
+							<cellContents/>
+						</crosstabTotalColumnHeader>
+					</columnGroup>
+					<columnGroup name="ORDEM_COLUNA" height="0">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{ORDEM_COLUNA}]]></bucketExpression>
+						</bucket>
+						<crosstabColumnHeader>
+							<cellContents>
+								<textField>
+									<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="0"/>
+									<textElement/>
+									<textFieldExpression><![CDATA[$V{ORDEM_COLUNA}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabColumnHeader>
+						<crosstabTotalColumnHeader>
+							<cellContents/>
+						</crosstabTotalColumnHeader>
+					</columnGroup>
+					<columnGroup name="COLUNA" height="10" headerPosition="Center">
+						<bucket class="java.lang.String">
+							<bucketExpression><![CDATA[$F{COLUNA}]]></bucketExpression>
+						</bucket>
+						<crosstabColumnHeader>
+							<cellContents backcolor="#F0F8FF" mode="Opaque">
+								<box>
+									<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="50" height="10" forecolor="#000000"/>
+									<textElement textAlignment="Center">
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{COLUNA}]]></textFieldExpression>
+								</textField>
+							</cellContents>
+						</crosstabColumnHeader>
+						<crosstabTotalColumnHeader>
+							<cellContents/>
+						</crosstabTotalColumnHeader>
+					</columnGroup>
+					<measure name="PRECOMeasure" class="java.lang.String">
+						<measureExpression><![CDATA[$F{PRECO}]]></measureExpression>
+					</measure>
+					<crosstabCell width="50" height="10">
+						<cellContents>
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="10"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell height="25" rowTotalGroup="MARCA">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="50" columnTotalGroup="COLUNA">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell rowTotalGroup="MARCA" columnTotalGroup="COLUNA">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell width="50" columnTotalGroup="TIPO_TABELA">
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell rowTotalGroup="MARCA" columnTotalGroup="TIPO_TABELA">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell height="25" rowTotalGroup="LIN_REF_CAB">
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell rowTotalGroup="LIN_REF_CAB" columnTotalGroup="COLUNA">
+						<cellContents backcolor="#005FB3" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell rowTotalGroup="LIN_REF_CAB" columnTotalGroup="TIPO_TABELA">
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{PRECOMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabCell>
+					<crosstabCell columnTotalGroup="ORDEM_COLUNA">
+						<cellContents/>
+					</crosstabCell>
+					<crosstabCell rowTotalGroup="MARCA" columnTotalGroup="ORDEM_COLUNA">
+						<cellContents/>
+					</crosstabCell>
+					<crosstabCell rowTotalGroup="LIN_REF_CAB" columnTotalGroup="ORDEM_COLUNA">
+						<cellContents/>
+					</crosstabCell>
+				</crosstab>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A4-1" language="groovy" columnCount="3" printOrder="Horizontal" pageWidth="407" pageHeight="400" orientation="Landscape" columnWidth="135" columnSpacing="1" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b51cc1f-d540-41f9-8835-5ed2ac4aa8cd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA["01/05/2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_grupo_fabril" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_data_embarque" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGEM_S3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["https://s3-sa-east-1.amazonaws.com/imagens.catalogobeirario.com.br/pequenas/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM (SELECT t.*
+              ,row_number() OVER(PARTITION BY lin_cdgo ORDER BY lin_cdgo) AS id_modelo
+          FROM tmp_ind0250_a4 t
+         WHERE codigo_marca = $P{p_codigo_marca}
+AND descricao_grupo_fabril = $P{p_grupo_fabril}
+           AND t.data_embarque = $P{p_data_embarque}
+        ) qry
+WHERE qry.id_modelo = 1]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_GRUPO_FABRIL" class="java.lang.String"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="FIT_IMAGEM" class="java.lang.String"/>
+	<field name="QTDE_MODELOS_LINHA" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="QTDE_LINHAS_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_TOTAL" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_LINHAS_TOTAL" class="java.math.BigDecimal"/>
+	<field name="AGRUPA_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="DATA_EMBARQUE" class="java.sql.Timestamp"/>
+	<field name="ID_MODELO" class="java.math.BigDecimal"/>
+	<detail>
+		<band height="80" splitType="Immediate">
+			<frame>
+				<reportElement uuid="319175eb-1d6f-4fda-9d26-31b6b375f958" positionType="Float" stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="0" y="0" width="136" height="79"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<image onErrorType="Blank">
+					<reportElement uuid="969d5b2c-1a8e-465f-a7bf-941fdfefe9d6" x="4" y="4" width="94" height="73"/>
+					<imageExpression><![CDATA[$P{IMAGEM_S3} + $F{FIT_IMAGEM}.replaceAll("gif", "jpg")]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement uuid="17c84c6c-481f-46fe-815f-8d418dae38a3" mode="Opaque" x="75" y="4" width="58" height="27" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font size="9" isBold="false"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA["LINHA " + $F{LIN_CDGO} + "\n" + $F{QTDE_MODELOS_LINHA} + " MODELO(S) "]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

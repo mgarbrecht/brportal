@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A1_3" language="groovy" columnCount="5" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="168" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d0f9cf52-d742-4d8e-8cc3-58286d2efad3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_unn_codigo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGEM_S3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["http://s3-sa-east-1.amazonaws.com/imagens.catalogobeirario.com.br/grandes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM (SELECT q.*
+              ,ROUND(q.pares_3 / (q.pares_marca / 100), 0) || '%' representatividade_3
+          FROM (SELECT q.*
+                      ,SUM(CASE
+                             WHEN q.posicao_rank <= 3 THEN
+                              q.pares_linha
+                             ELSE
+                              0
+                           END) OVER() pares_3
+                  FROM (SELECT *
+                          FROM (SELECT 'LINHA' tipo
+                                      ,w.codigo_marca
+                                      ,w.nome_marca
+                                      ,w.pares_marca
+                                      ,w.qtde_no_mix
+                                      ,w.unn_codigo
+                                      ,pck_uni_negocio.get_nome(w.unn_codigo) unidade
+                                      ,w.lin_cdgo
+                                      ,NULL ref_cdgo
+                                      ,w.pares_linha
+                                      ,w.fit_imagem
+                                      ,w.posicao_rank
+                                      ,w.pares_10
+                                      ,w.pares_5
+                                      ,ROUND(w.pares_10 / (w.pares_marca / 100), 0) || '%' representatividade_10
+                                      ,ROUND(w.pares_5 / (w.pares_marca / 100), 0) || '%' representatividade_5
+                                      ,TO_CHAR(TO_DATE($P{p_periodo}), 'Mon/yy', 'nls_date_language = PORTUGUESE') || ' A ' || TO_CHAR(TO_DATE($P{p_periodo_final}), 'Mon/yy', 'nls_date_language = PORTUGUESE') mes_ano
+                                      ,w.qtde_no_mix qtde_total_linhas
+                                  FROM (SELECT r.codigo_marca
+                                              ,r.unn_codigo
+                                              ,r.nome_marca
+                                              ,r.pares_marca
+                                              ,r.qtde_no_mix
+                                              ,r.lin_cdgo
+                                              ,r.pares_linha
+                                              ,r.fit_imagem
+                                              ,r.posicao_rank
+                                              ,r.pares_10
+                                              ,SUM(r.pares_linha) OVER(PARTITION BY r.codigo_marca, r.unn_codigo) pares_5
+                                          FROM (SELECT y.codigo_marca
+                                                      ,y.unn_codigo
+                                                      ,pck_marcas_produtos.get_nome(y.codigo_marca) nome_marca
+                                                      ,y.pares_marca
+                                                      ,y.qtde_no_mix
+                                                      ,y.lin_cdgo
+                                                      ,y.pares_linha
+                                                      ,y.fit_imagem
+                                                      ,y.posicao_rank
+                                                      ,SUM(y.pares_linha) OVER(PARTITION BY y.codigo_marca, y.unn_codigo) pares_10
+                                                  FROM (SELECT ry.codigo_marca
+                                                              ,ry.unn_codigo
+                                                              ,ry.lin_cdgo
+                                                              ,ry.pares_marca
+                                                              ,ry.pares_linha
+                                                              ,ry.fit_imagem
+                                                              ,dense_rank() OVER(PARTITION BY ry.codigo_marca, ry.unn_codigo ORDER BY ry.pares_linha DESC) posicao_rank
+                                                              ,SUM(ry.no_mix) OVER(PARTITION BY ry.codigo_marca, ry.unn_codigo) qtde_no_mix
+                                                          FROM (SELECT qy.codigo_marca
+                                                                      ,qy.unn_codigo
+                                                                      ,qy.lin_cdgo
+                                                                      ,qy.pares_marca
+                                                                      ,qy.pares_linha
+                                                                      ,qy.no_mix
+                                                                      ,MAX(qy.fit_imagem) fit_imagem
+                                                                  FROM (SELECT q.codigo_marca
+                                                                              ,q.unn_codigo
+                                                                              ,q.lin_cdgo
+                                                                              ,q.ref_cdgo
+                                                                              ,q.no_mix
+                                                                              ,q.pares
+                                                                              ,q.pares_marca
+                                                                              ,q.pares_linha
+                                                                              ,q.rank_modelo
+                                                                              ,(SELECT fct_retorna_fit_imagem(qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo, qry.cor_cdgo)
+                                                                                  FROM (SELECT lin_cdgo
+                                                                                              ,ref_cdgo
+                                                                                              ,cab_cdgo
+                                                                                              ,cor_cdgo
+                                                                                              ,SUM(pares) pares
+                                                                                          FROM (SELECT i.lin_cdgo
+                                                                                                      ,i.ref_cdgo
+                                                                                                      ,i.cab_cdgo
+                                                                                                      ,i.cor_cdgo
+                                                                                                      ,SUM(i.ite_qtde) pares
+                                                                                                      ,'TOTAL POR COR' coluna
+                                                                                                  FROM ped p
+                                                                                                      ,ite i
+                                                                                                      ,REF
+                                                                                                 WHERE NVL(i.lin_cdgo, NULL) = ref.lin_cdgo
+                                                                                                   AND NVL(i.ref_cdgo, NULL) = ref.ref_cdgo
+                                                                                                   AND NVL(p.ped_refaturamento, 'N') != 'S'
+                                                                                                   AND p.ped_recolocado IS NULL
+                                                                                                   AND p.ped_redg IS NULL
+                                                                                                   AND NVL(p.ped_stat, NULL) != 'C'
+                                                                                                   AND NVL(p.ped_substituicao, 'N') != 'S'
+                                                                                                   AND NVL(p.ped_especie_pedido, NULL) IN ('F', 'N', 'M', 'P', 'X')
+                                                                                                   AND NVL(p.ped_nmro, NULL) = i.ped_nmro
+                                                                                                   AND p.ped_dadg >= $P{p_periodo}
+                                                                                                   AND p.ped_dadg < TO_DATE(LAST_DAY($P{p_periodo_final})) + 1
+                                                                                                 GROUP BY i.lin_cdgo
+                                                                                                         ,i.ref_cdgo
+                                                                                                         ,i.cab_cdgo
+                                                                                                         ,i.cor_cdgo
+                                                                                                 ORDER BY 5 DESC) t
+                                                                                         WHERE t.coluna = 'TOTAL POR COR'
+                                                                                           AND t.lin_cdgo = q.lin_cdgo
+                                                                                           AND t.ref_cdgo = DECODE(q.rank_modelo, 1, q.ref_cdgo)
+                                                                                         GROUP BY lin_cdgo
+                                                                                                 ,ref_cdgo
+                                                                                                 ,cab_cdgo
+                                                                                                 ,cor_cdgo
+                                                                                         ORDER BY 5 DESC --
+                                                                                        ) qry
+                                                                                 WHERE ROWNUM = 1 --
+                                                                                ) fit_imagem
+                                                                          FROM (SELECT qry.codigo_marca
+                                                                                      ,qry.unn_codigo
+                                                                                      ,qry.lin_cdgo
+                                                                                      ,qry.ref_cdgo
+                                                                                      ,qry.no_mix
+                                                                                      ,qry.pares
+                                                                                      ,SUM(qry.pares) OVER(PARTITION BY qry.codigo_marca, qry.unn_codigo) pares_marca
+                                                                                      ,SUM(qry.pares) OVER(PARTITION BY qry.lin_cdgo) pares_linha
+                                                                                      ,dense_rank() OVER(PARTITION BY qry.lin_cdgo ORDER BY qry.pares DESC) rank_modelo
+                                                                                  FROM (SELECT fct_marca_produto(ad.lin_cdgo, ad.ref_cdgo) codigo_marca
+                                                                                              ,DECODE(ad.codigo_marca, 16, ad.unn_codigo) unn_codigo
+                                                                                              ,ad.lin_cdgo
+                                                                                              ,ad.ref_cdgo
+                                                                                              ,MAX(DECODE(ad.mix, 'F', 0, 1)) no_mix
+                                                                                              ,SUM(NVL(ad.pares_pp, 0) + NVL(ad.pares_pg, 0) + NVL(ad.pares_rr, 0)) pares
+                                                                                          FROM (SELECT qry.*
+                                                                                                      ,(qry.pares_pp + qry.pares_pg + qry.pares_rr) pares_total
+                                                                                                  FROM (SELECT EXTRACT(YEAR FROM ad.data) ano
+                                                                                                              ,TRUNC(ad.data, 'MM') periodo
+                                                                                                              ,fct_marca_produto(ad.linha, ad.referencia) codigo_marca
+                                                                                                              ,mp.descricao_marca
+                                                                                                              ,ad.unidade unn_codigo
+                                                                                                              ,un.unn_descri
+                                                                                                              ,ad.linha lin_cdgo
+                                                                                                              ,lin.ind_aberto_fechado
+                                                                                                              ,crc.rv_meaning ind_aberto_fechado_descr
+                                                                                                              ,lia.id_tipo_construcoes
+                                                                                                              ,tc.descricao tipo_construcoes_descr
+                                                                                                              ,ad.referencia ref_cdgo
+                                                                                                              ,ref.gpr_codigo
+                                                                                                              ,gp.descricao gpr_descricao
+                                                                                                              ,NVL(ria.id_tipo_estilos, lia.id_tipo_estilos) id_tipo_estilos
+                                                                                                              ,pck_tipo_estilos.get_nome(NVL(ria.id_tipo_estilos, lia.id_tipo_estilos)) tipo_estilos_descr
+                                                                                                              ,ria.ref_tipo_salto
+                                                                                                              ,fct_mix_produto(ad.linha, ad.referencia) mix
+                                                                                                              ,SUM(NVL(ad.entped_pp_pares, 0)) pares_pp
+                                                                                                              ,SUM(NVL(ad.entped_pg_pares, 0)) pares_pg
+                                                                                                              ,SUM(NVL(ad.entped_rr_pares, 0)) pares_rr
+                                                                                                          FROM tmp_mapa_diario_automatico_poi ad
+                                                                                                              ,REF
+                                                                                                              ,ref_inf_adicionais ria
+                                                                                                              ,grupo_produtos gp
+                                                                                                              ,lin
+                                                                                                              ,cg_ref_codes crc
+                                                                                                              ,lin_inf_add lia
+                                                                                                              ,tipo_construcoes tc
+                                                                                                              ,uni_negocio un
+                                                                                                              ,marcas_produtos mp
+                                                                                                         WHERE ad.data BETWEEN $P{p_periodo} AND LAST_DAY($P{p_periodo_final})
+                                                                                                           AND ((ad.filial = 'GER' AND ad.codigo_marca != 16) OR (ad.filial IN ('10', '12', '16', '17', '18', '23', '3', '30', '6', '8') AND ad.codigo_marca = 16))
+                                                                                                           AND ref.lin_cdgo = ad.linha
+                                                                                                           AND ref.ref_cdgo = ad.referencia
+                                                                                                           AND ria.lin_cdgo(+) = ref.lin_cdgo
+                                                                                                           AND ria.ref_cdgo(+) = ref.ref_cdgo
+                                                                                                           AND gp.codigo(+) = ref.gpr_codigo
+                                                                                                           AND lin.lin_cdgo = ad.linha
+                                                                                                           AND crc.rv_domain = 'IND_ABERTO_FECHADO'
+                                                                                                           AND crc.rv_low_value = lin.ind_aberto_fechado
+                                                                                                           AND lia.lin_cdgo(+) = lin.lin_cdgo
+                                                                                                           AND tc.id(+) = lia.id_tipo_construcoes
+                                                                                                           AND un.unn_codigo = ad.unidade
+                                                                                                           AND mp.codigo_marca = fct_marca_produto(ad.linha, ad.referencia)
+                                                                                                           AND pck_referencia.get_ret_tipo_prod(ref.lin_cdgo, ref.ref_cdgo, null) = 'M'
+                                                                                                         GROUP BY EXTRACT(YEAR FROM ad.data)
+                                                                                                                 ,TRUNC(ad.data, 'MM')
+                                                                                                                 ,fct_marca_produto(ad.linha, ad.referencia)
+                                                                                                                 ,mp.descricao_marca
+                                                                                                                 ,ad.unidade
+                                                                                                                 ,un.unn_descri
+                                                                                                                 ,ad.linha
+                                                                                                                 ,lin.ind_aberto_fechado
+                                                                                                                 ,crc.rv_meaning
+                                                                                                                 ,lia.id_tipo_construcoes
+                                                                                                                 ,tc.descricao
+                                                                                                                 ,ad.referencia
+                                                                                                                 ,ref.gpr_codigo
+                                                                                                                 ,gp.descricao
+                                                                                                                 ,NVL(ria.id_tipo_estilos, lia.id_tipo_estilos)
+                                                                                                                 ,ria.ref_tipo_salto
+                                                                                                        HAVING(SUM(NVL(ad.entped_pp_pares, 0)) + SUM(NVL(ad.entped_pg_pares, 0)) + SUM(NVL(ad.entped_rr_pares, 0))) > 0) qry) ad
+                                                                                              ,lin l
+                                                                                         WHERE ad.periodo BETWEEN $P{p_periodo} AND $P{p_periodo_final}
+                                                                                           AND (ad.codigo_marca <> 16 OR (ad.unn_codigo IN ('01', '03', '13', '20')))
+                                                                                           AND l.lin_cdgo = ad.lin_cdgo
+                                                                                         GROUP BY ad.codigo_marca
+                                                                                                 ,DECODE(ad.codigo_marca, 16, ad.unn_codigo)
+                                                                                                 ,ad.lin_cdgo
+                                                                                                 ,ad.ref_cdgo
+                                                                                        ) qry
+                                                                                ) q
+                                                                        ) qy
+                                                                 WHERE 1 = 1
+                                                                   AND (qy.no_mix = 1 AND qy.fit_imagem IS NOT NULL OR qy.no_mix = 0 AND qy.fit_imagem IS NOT NULL)
+                                                                 GROUP BY qy.codigo_marca
+                                                                         ,qy.unn_codigo
+                                                                         ,qy.lin_cdgo
+                                                                         ,qy.pares_marca
+                                                                         ,qy.pares_linha
+                                                                         ,qy.no_mix --
+                                                                ) ry
+                                                        ) y
+                                                 WHERE y.posicao_rank < 11
+                                                ) r
+                                         WHERE r.posicao_rank < 6
+                                        ) w
+                                 ORDER BY w.codigo_marca
+                                         ,w.posicao_rank)
+                         WHERE codigo_marca = NVL($P{p_codigo_marca}, codigo_marca)
+                           AND (NVL(unn_codigo, '20') = NVL($P{p_unn_codigo}, '20') OR ($P{p_codigo_marca} = 16 and unn_codigo = '20'))
+                           AND tipo = 'LINHA') q) q
+         ORDER BY codigo_marca
+                 ,posicao_rank) qry
+ WHERE qry.qtde_no_mix > 10
+    OR ROWNUM <= 3
+ ORDER BY codigo_marca
+         ,posicao_rank]]>
+	</queryString>
+	<field name="TIPO" class="java.lang.String"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="PARES_MARCA" class="java.math.BigDecimal"/>
+	<field name="QTDE_NO_MIX" class="java.math.BigDecimal"/>
+	<field name="UNN_CODIGO" class="java.lang.String"/>
+	<field name="UNIDADE" class="java.lang.String"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.lang.String"/>
+	<field name="PARES_LINHA" class="java.math.BigDecimal"/>
+	<field name="FIT_IMAGEM" class="java.lang.String"/>
+	<field name="POSICAO_RANK" class="java.math.BigDecimal"/>
+	<field name="PARES_10" class="java.math.BigDecimal"/>
+	<field name="PARES_5" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_10" class="java.lang.String"/>
+	<field name="REPRESENTATIVIDADE_5" class="java.lang.String"/>
+	<field name="MES_ANO" class="java.lang.String"/>
+	<field name="QTDE_TOTAL_LINHAS" class="java.math.BigDecimal"/>
+	<field name="PARES_3" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_3" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="818c5f8a-ae86-4f4c-b0ed-7c3e8ade5d00" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="a20d54fa-b41d-423f-9c12-64e28b65a172" x="0" y="37" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME_MARCA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9734bdc-9c7c-4e25-af27-b3889660edf0" x="0" y="0" width="842" height="35" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="726651b3-fd11-47d3-84fe-370b01bb98ea" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="312">
+			<textField>
+				<reportElement uuid="075bb7c4-8ccc-449a-8e43-fa5336ffd625" x="0" y="0" width="842" height="26" forecolor="#44546A"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL DE KITS VENDIDOS"]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement uuid="6922cd20-d4d0-4e67-8890-8e577046b7c7" x="126" y="210" width="591" height="80"/>
+			</frame>
+			<staticText>
+				<reportElement uuid="e9f5d0cc-883f-49c2-befd-6d6aad54ad4b" mode="Opaque" x="126" y="118" width="132" height="20" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Linhas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bd311601-1e45-4d7e-b096-8305b22559c9" mode="Opaque" x="258" y="118" width="459" height="20" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kits]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3f8cce29-5c13-4d3f-b17a-d02877a4551e" mode="Opaque" x="126" y="210" width="132" height="20" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Linhas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa16c5b7-5b52-45ca-b672-d886b62a3634" mode="Opaque" x="258" y="210" width="280" height="20" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kits]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a377f7ea-bebe-41d6-a63f-882b8928eeb0" mode="Opaque" x="538" y="210" width="179" height="20" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Representatividade]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="15c73cea-c795-47ae-befb-3cc15facfa9d" mode="Opaque" x="126" y="138" width="132" height="30" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTDE_TOTAL_LINHAS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="d4df2167-c0bd-4e42-9973-afacb37f9e71" x="258" y="138" width="459" height="30"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="86fbaa4e-fc96-41d1-8796-8068586a4962" mode="Opaque" x="126" y="230" width="132" height="30" backcolor="#B6D6E5"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTDE_NO_MIX} > 10 ? "10" : "3"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4891342c-1fc9-4860-af15-3a6f03ed705f" mode="Opaque" x="126" y="260" width="132" height="30" backcolor="#B6D6E5">
+					<printWhenExpression><![CDATA[$F{QTDE_NO_MIX} > 10]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="d7609a5d-aee4-47b9-adc1-bee9def5d671" x="258" y="230" width="280" height="30"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTDE_NO_MIX} > 10 ? $F{PARES_10} : $F{PARES_3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="d1aa203b-d027-4a61-af72-c6f67cd5cbef" x="258" y="260" width="280" height="30">
+					<printWhenExpression><![CDATA[$F{QTDE_NO_MIX} > 10]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0975b167-0197-42d2-a096-89237a542c38" x="538" y="230" width="179" height="30"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{QTDE_NO_MIX} > 10 ? $F{REPRESENTATIVIDADE_10} : $F{REPRESENTATIVIDADE_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="66c169cf-19f4-4130-978e-5ae9575ed011" x="538" y="260" width="179" height="30">
+					<printWhenExpression><![CDATA[$F{QTDE_NO_MIX} > 10]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE_5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3f8b8d95-e29e-4c00-b5dc-64f67edea792" x="2" y="178" width="842" height="29" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mais Vendidas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="55583b5a-0c97-4426-9c0b-85b255cb6615" x="1" y="85" width="842" height="21" forecolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Geral]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="cadebf10-347b-4e7c-9897-bf6cddfd6f5b" x="0" y="46" width="842" height="28" forecolor="#44546A"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIDADE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c84a72ca-e719-405b-9843-421e031b7341" x="0" y="0" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[IND0250_A1_3]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="109" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="81efec49-b9c5-439f-a478-ba26f8e35c2b" x="4" y="0" width="160" height="85"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<imageExpression><![CDATA[$P{IMAGEM_S3} + $F{FIT_IMAGEM}.replaceAll("gif", "jpg")]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement uuid="8b6758ef-6dca-464b-b6e2-ae1c55fe0fa7" x="4" y="0" width="160" height="109"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField>
+					<reportElement uuid="4cd8b110-1908-48f1-b040-3d2e1f9b6e22" x="0" y="85" width="160" height="24"/>
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" size="18"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{LIN_CDGO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="2"/>
+	</summary>
+	<noData>
+		<band/>
+	</noData>
+</jasperReport>

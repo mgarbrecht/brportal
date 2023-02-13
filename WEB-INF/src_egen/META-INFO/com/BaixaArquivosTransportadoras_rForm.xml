@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>11/02/2019</generation_day>
+<module>com</module>
+<file_name>BaixaArquivosTransportadoras_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>09/02/2009 12:54:40</creationDate>
+<lastModifyDate>11/02/2019 10:20:21</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_arquivos_edi</name>
+<title>jw_arquivos_edi</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_arquivos_edi</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+            {
+              %>
+
+              <%
+              java.util.Vector res_Jw_arquivos_edi = (java.util.Vector)session.getAttribute("res_Jw_arquivos_edi");
+
+     String transportadora="";
+     String tipo = "";
+     String data_envio_embarque_romaneio = "";
+     acesso.Usuario u = new acesso.Usuario();
+     u = (acesso.Usuario)session.getAttribute("User");
+     acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+     acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+
+     if(!(u.getEntidadeNegocio()==null)){
+          ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+          tipoent = (acesso.TipoEntidadeNegocio) ent.getTipoEntidadeNegocio();
+          tipo = tipoent.getTipo()+"";
+          if(tipo.equals("TRANSPORTADORA")){
+            transportadora = ent.getChave()+"";
+          }
+     }
+
+
+              %>
+
+              <form  name="bl_report_Jw_arquivos_edi" id="bl_report_Jw_arquivos_edi" class="baseForm" method="post" >
+                <%
+
+                if (res_Jw_arquivos_edi!=null && res_Jw_arquivos_edi.size()>0) {
+                  %>
+
+                  <table id="TRbl_report_Jw_arquivos_edi"  class="reportTable"   style="width:99%; "  >
+                    <%
+                    java.lang.String arquivos =  null;
+                    java.lang.String nOME =  null;
+                    int cODIGO =  0;
+                    java.lang.String cAMINHO =  null;
+                    java.lang.String cAMINHO_LINK =  null;
+                    %>
+
+                    <tr class="reportTr">
+                    </tr>
+
+                    <%
+                    int i_bl_report_Jw_arquivos_edi = 0;
+                    while (i_bl_report_Jw_arquivos_edi<res_Jw_arquivos_edi.size()) {
+                      portalbr.dbobj.view.Jw_arquivos_edi t_jw_arquivos_edi = (portalbr.dbobj.view.Jw_arquivos_edi)res_Jw_arquivos_edi.elementAt(i_bl_report_Jw_arquivos_edi);
+                      nOME = t_jw_arquivos_edi.getNome()==null?"":t_jw_arquivos_edi.getNome();
+                      cODIGO = t_jw_arquivos_edi.getCodigo();
+                      cAMINHO = t_jw_arquivos_edi.getCaminho()==null?"":t_jw_arquivos_edi.getCaminho();
+                      cAMINHO_LINK = t_jw_arquivos_edi.getCaminho_link()==null?"":t_jw_arquivos_edi.getCaminho_link();
+                      String style_bl_report_Jw_arquivos_edi="";
+                      style_bl_report_Jw_arquivos_edi="rowBlank";
+                      %>
+
+                      <tr class='<%= style_bl_report_Jw_arquivos_edi %>' id="TRbl_report_Jw_arquivos_edi<%=i_bl_report_Jw_arquivos_edi%>" >
+                        <td colspan="2">
+                          <%@ page import="java.io.*,java.util.Date" %>
+                          <%
+                          String arquivosEDI = t_jw_arquivos_edi.getCaminho()==null?"":t_jw_arquivos_edi.getCaminho();
+                          String linkArquivosEDI = t_jw_arquivos_edi.getCaminho_link()==null?"":t_jw_arquivos_edi.getCaminho_link();
+                          java.text.SimpleDateFormat fData2 = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                          java.text.SimpleDateFormat falcatrua = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                          if(session.getAttribute("data_envio_embarque_romaneio")!=null){
+                            data_envio_embarque_romaneio = (String) session.getAttribute("data_envio_embarque_romaneio");
+                          }
+                  	  util.file.Ordenacao mf = new util.file.Ordenacao(arquivosEDI + java.io.File.separator);
+                          File[] dirList = mf.listFiles();
+                          if(dirList.length>0) {
+                            %>
+                            <center>
+                              <table cellpadding="1" border="3" width="750">
+                                <td valign="top">
+                                  <table cellpadding="2" Border="2" BorderColor="#FFFFFF" width="750">
+                                    <tr align="center" BorderColor="#808080" BGColor="D3D3D3">
+<% if(transportadora.equals("")) { %>
+                                      <th align="left" border="1">
+                                        Transportadora
+                                      </th>
+<% } %>
+                                      <th align="left" border="1">
+                                        Arquivo
+                                      </th>
+                                      <th border="1">
+                                        Tamanho
+                                      </th>
+                                      <th border="1">
+                                        Última Modificação
+                                      </th>
+                                      <th align="center" border="1">
+                                        Baixar
+                                      </th>
+                                    </tr>
+                                    <%
+                                    for(int x=0; x < dirList.length; x++) {
+                                      if (dirList[x].isFile() && (!(dirList[x].getName().equals("index.html")))) {
+
+                 if( data_envio_embarque_romaneio !="" && data_envio_embarque_romaneio.equals((falcatrua.format(new Date(dirList[x].lastModified()))))){
+                                        %>
+                                        <tr BorderColor="#FFFFFF">
+<% if(transportadora.equals("")) { %>
+                                          <td align="left">
+                                            <font Face="Verdana" SIZE="2" COLOR="Blue">
+                                              <%= t_jw_arquivos_edi.getNome()==null?"":t_jw_arquivos_edi.getNome()%>
+                                            </font>
+                                          </td>
+<% } %>
+                                          <td align="left">
+                                            <font Face="Verdana" SIZE="2" COLOR="Blue">
+                                              <%= dirList[x].getName() %>
+                                            </font>
+                                          </td>
+                                          <td align="right">
+                                            <font Face="Tahoma" SIZE="2" COLOR="DarkGreen">
+                                              <%= dirList[x].length() %>
+                                            </font>
+                                          </td>
+                                          <td align="center">
+                                            <font Face="Tahoma" SIZE="2" COLOR="DarkGreen">
+                                              <%= fData2.format(new Date(dirList[x].lastModified()))  %>
+                                            </font>
+                                          </td>
+                                          <td align="center">
+                                            <a href="..<%= linkArquivosEDI %>/<%= dirList[x].getName() %>" target=_self STYLE=cursor:hand>
+                                              <img Name="File" border=0 src="../img/inbox.png" name="imagem" onmouseover="this.src='../img/inbox_v.png'" onmouseout="this.src='../img/inbox.png'">
+                                            </a>
+                                          </td>
+                                        </tr>
+                                        <%
+                 } else if(data_envio_embarque_romaneio.equals("")){ %>
+                       <tr BorderColor="#FFFFFF">
+                       <% if(transportadora.equals("")) { %>
+                                          <td align="left">
+                                            <font Face="Verdana" SIZE="2" COLOR="Blue">
+                                              <%= t_jw_arquivos_edi.getNome()==null?"":t_jw_arquivos_edi.getNome()%>
+                                            </font>
+                                          </td>
+                        <% } %>
+                                           <td align="left">
+                                            <font Face="Verdana" SIZE="2" COLOR="Blue">
+                                              <%= dirList[x].getName() %>
+                                            </font>
+                                          </td>
+                                          <td align="right">
+                                            <font Face="Tahoma" SIZE="2" COLOR="DarkGreen">
+                                              <%= dirList[x].length() %>
+                                            </font>
+                                          </td>
+                                          <td align="center">
+                                            <font Face="Tahoma" SIZE="2" COLOR="DarkGreen">
+                                              <%= fData2.format(new Date(dirList[x].lastModified()))  %>
+                                            </font>
+                                          </td>
+                                          <td align="center">
+                                            <a href="..<%= linkArquivosEDI %>/<%= dirList[x].getName() %>" target=_self STYLE=cursor:hand>
+                                              <img Name="File" border=0 src="../img/inbox.png" name="imagem" onmouseover="this.src='../img/inbox_v.png'" onmouseout="this.src='../img/inbox.png'">
+                                            </a>
+                                          </td>
+                                        </tr>
+              <% }
+                                    }
+                                   }
+                                    %>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </center>
+                          <%
+                        } else {
+                          %>
+                          <center>
+                            <br>
+                            <font color="red">
+                              <h4>
+                                <b>
+                                  Nenhum arquivo disponivel !
+                                </b>
+                              </h4>
+                            </font>
+                          </center>
+                          <%
+                        }
+                        %>
+                      </td>
+                    </tr>
+
+                    <%
+                    i_bl_report_Jw_arquivos_edi++;
+                    if (i_bl_report_Jw_arquivos_edi<res_Jw_arquivos_edi.size()) {
+                      t_jw_arquivos_edi = (portalbr.dbobj.view.Jw_arquivos_edi)res_Jw_arquivos_edi.elementAt(i_bl_report_Jw_arquivos_edi);
+                      nOME = t_jw_arquivos_edi.getNome()==null?"":t_jw_arquivos_edi.getNome();
+                      cODIGO = t_jw_arquivos_edi.getCodigo();
+                      cAMINHO = t_jw_arquivos_edi.getCaminho()==null?"":t_jw_arquivos_edi.getCaminho();
+                      cAMINHO_LINK = t_jw_arquivos_edi.getCaminho_link()==null?"":t_jw_arquivos_edi.getCaminho_link();
+                    } else {
+                    }
+                  }
+                  %>
+
+                </table>
+
+                <%
+              }
+              %>
+
+            </form>
+            <%
+          }
+%>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cODIGO</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_arquivos_edi</block_name>
+<role_item></role_item>
+<database_column>CODIGO</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cODIGO</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_arquivos_edi.getCodigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nOME</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_arquivos_edi</block_name>
+<role_item></role_item>
+<database_column>NOME</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>nOME</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_arquivos_edi.getNome()==null?"":t_jw_arquivos_edi.getNome()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cAMINHO</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_arquivos_edi</block_name>
+<role_item></role_item>
+<database_column>CAMINHO</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cAMINHO</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_arquivos_edi.getCaminho()==null?"":t_jw_arquivos_edi.getCaminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>jw_arquivos_edi</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/BaixaArquivosTransportadoras_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><%
+     String transportadora="";
+     String tipo = "";
+     acesso.Usuario u = new acesso.Usuario();
+     u = (acesso.Usuario)session.getAttribute("User");
+     acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+     acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+
+     if(!(u.getEntidadeNegocio()==null)){
+          ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+          tipoent = (acesso.TipoEntidadeNegocio) ent.getTipoEntidadeNegocio();
+          tipo = tipoent.getTipo()+"";
+          if(tipo.equals("TRANSPORTADORA")){
+            transportadora = ent.getChave()+"";
+          }
+     }
+     
+     if(transportadora.equals("")){
+%>
+
+<html:button accesskey="a" styleClass="baseButton" property="back_action" onclick="history.go(-1)"><bean:message bundle="ApplicationResources" key="jsp.back"/></html:button>
+
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>back_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>BaixaArquivosTransportadoras_rActionForm</name>
+<type>portalbr.com.BaixaArquivosTransportadoras_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/BaixaArquivosTransportadoras_rForm</path>
+<type>portalbr.com.BaixaArquivosTransportadoras_rAction</type>
+<name>BaixaArquivosTransportadoras_rActionForm</name>
+<attribute></attribute>
+<input>/com/BaixaArquivosTransportadoras_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/BaixaArquivosTransportadoras_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>back</name>
+<path>/com/BaixaArquivosTransportadoras_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Baixa de Arquivos Transportadoras</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(146)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

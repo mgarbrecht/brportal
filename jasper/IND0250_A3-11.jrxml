@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A3" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b6abe85f-108a-405d-8a2a-fb0d6a8ff43b">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_grupo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_grupo_pai" class="java.lang.String"/>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select * from tmp_ind0250_a3_1
+where codigo_marca = $P{p_codigo_marca}
+and grupo = $P{p_grupo_pai}
+and grupo_pai IS NULL
+order by grupo, to_date(categoria, 'MM/YYYY'), serie]]>
+	</queryString>
+	<field name="ANO" class="java.math.BigDecimal"/>
+	<field name="PERIODO" class="java.sql.Timestamp"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="GRUPO_PAI" class="java.lang.String"/>
+	<field name="GRUPO" class="java.lang.String"/>
+	<field name="SERIE" class="java.lang.String"/>
+	<field name="CATEGORIA" class="java.lang.String"/>
+	<field name="PERCENTUAL" class="java.math.BigDecimal"/>
+	<group name="marca">
+		<groupExpression><![CDATA[$F{DESCRICAO_MARCA}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<staticText>
+					<reportElement uuid="6bfd1c10-f968-467a-80b0-4ce6e085ed55" x="0" y="0" width="88" height="14"/>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+					<text><![CDATA[IND0250_A3-1]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="18c69626-1f25-4a7f-8a5f-673c4a1b27e2" x="0" y="0" width="842" height="24"/>
+					<textElement textAlignment="Center">
+						<font size="18"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Desempenho por estilo " + $F{GRUPO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="300">
+				<subreport>
+					<reportElement uuid="670c7c45-c2cc-4084-83cf-3c986c556b8a" x="0" y="242" width="267" height="32">
+						<printWhenExpression><![CDATA[$F{GRUPO}.equals("SANDALIA")]]></printWhenExpression>
+					</reportElement>
+					<subreportParameter name="p_grupo">
+						<subreportParameterExpression><![CDATA[$P{p_grupo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="IMAGE_FOLDER">
+						<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="p_grupo_pai">
+						<subreportParameterExpression><![CDATA[$P{p_grupo_pai}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="p_codigo_marca">
+						<subreportParameterExpression><![CDATA[$P{p_codigo_marca}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["IND0250_A3-12.jasper"]]></subreportExpression>
+				</subreport>
+				<barChart>
+					<chart>
+						<reportElement uuid="e9b7404b-0da6-40f6-8576-b84919d29ad6" x="88" y="0" width="663" height="242"/>
+						<box>
+							<pen lineWidth="0.75"/>
+							<topPen lineWidth="0.75"/>
+							<leftPen lineWidth="0.75"/>
+							<bottomPen lineWidth="0.75"/>
+							<rightPen lineWidth="0.75"/>
+						</box>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend position="Bottom"/>
+					</chart>
+					<categoryDataset>
+						<categorySeries>
+							<seriesExpression><![CDATA[$F{SERIE}]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{CATEGORIA}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{PERCENTUAL}]]></valueExpression>
+						</categorySeries>
+					</categoryDataset>
+					<barPlot isShowLabels="true">
+						<plot>
+							<seriesColor seriesOrder="0" color="#0066FF"/>
+							<seriesColor seriesOrder="1" color="#FF3366"/>
+						</plot>
+						<itemLabel>
+							<font size="12"/>
+						</itemLabel>
+						<categoryAxisFormat>
+							<axisFormat/>
+						</categoryAxisFormat>
+						<valueAxisFormat>
+							<axisFormat tickLabelMask="##0'%'"/>
+						</valueAxisFormat>
+					</barPlot>
+				</barChart>
+			</band>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band height="93">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="5646245a-b987-40ff-904b-b8bc7d5fc1d2" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="0d184e2d-4d28-4c61-8ef4-1e350b69bf11" x="0" y="37" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Criação " + $F{DESCRICAO_MARCA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="44bf9ed0-4414-472c-afc1-4eac537ea3b1" x="0" y="9" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="6657dbd9-28d1-4f1a-9aee-5c5c4d5ddd3a" x="372" y="67" width="117" height="26" forecolor="#01454F"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="17">
+			<staticText>
+				<reportElement uuid="4706d748-5a8f-4a4d-bf56-7bc23a557c93" positionType="FixRelativeToBottom" x="713" y="0" width="129" height="16" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[PESQUISA/PRODUTO]]></text>
+			</staticText>
+			<textField pattern="MMMMM/yyyy">
+				<reportElement uuid="12735ba1-3bfd-4498-9063-ce06f73d8a5d" positionType="FixRelativeToBottom" x="348" y="0" width="162" height="16" forecolor="#01454F">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PERIODO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="4dbf25ec-c665-4c89-8e23-d202d32d68a6" x="122" y="0" width="100" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="dc15c10f-d587-4edd-aaab-b47453431d88" x="24" y="0" width="82" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e59a7c70-c2f3-4882-a5dc-7725374afe3f" x="106" y="0" width="16" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

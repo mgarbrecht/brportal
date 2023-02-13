@@ -1,0 +1,145 @@
+
+ul.toolbar
+	{
+	clear:both;
+	top:0;
+	height:39px;
+	background:transparent url(img/toolbar-bg.gif) no-repeat 100% 0;
+	list-style:none;
+	padding:0 0 0 0;
+	margin:0;
+	display:block;
+	height:39px;
+	margin:0 0 0 10px;
+	position:relative;
+	top:-42px;
+	*top:-40px;
+	_top:-48px;
+	}
+	
+ul.toolbar li
+	{
+	margin:2px 0 0 0;
+	padding:0;
+	list-style:none;
+	float:left;
+	_behavior:url(theme/pseudo-class.htc);
+	}
+ul.toolbar a
+	{
+	float:left;
+	display:block;
+	background-repeat:no-repeat;
+	background-position:3px 0;
+	outline:0;
+	height:18px;
+	}
+ul.toolbar a:hover
+	{
+	background-position:3px -60px;
+	}
+ul.toolbar a.active
+	{
+	background-position:3px -120px;
+	}	
+ul.toolbar li.separator
+	{
+	background:transparent url(img/separator.gif) no-repeat center center;
+	text-indent:-9999px;
+	padding:7px 0;
+	width:10px;
+	height:18px;
+	border:0 !important;
+	}
+
+ul.toolbar li
+	{
+	border:1px solid #F8F7F3;
+	}
+ul.toolbar li:hover,
+ul.toolbar li.hover,
+ul.toolbar li.active
+	{
+	border-color:#7B88A6;
+	}
+ul.toolbar a
+	{
+	color:#002455;
+	padding:7px 10px 7px 35px;
+	}
+ul.toolbar a:hover
+	{
+	color:black;
+	background-color:#EAEAEA;
+	background-position:3px -60px;
+	}
+ul.toolbar a.active
+	{
+	color:#343C4E;
+	background-color:#D2D7E3;
+	}	
+ul.toolbar a.active:hover
+	{
+	color:white;
+	}
+ul.toolbar a.trigger:hover
+	{
+	background-color:#EAEAEA;
+	}
+	
+ul.toolbar a.disabled,
+ul.toolbar a.disabled:hover,
+ul.toolbar a.disabled:active
+	{
+	color:gray;
+	background-color:transparent;
+	background-position:3px -180px!important;
+	}
+
+/* Instancias 24x24  */	
+ul.toolbar a.new,
+ul.toolbar a.add
+	{
+	background-image:url(img/icons/icon-24x24-add.gif);
+	}
+ul.toolbar a.edit
+	{
+	background-image:url(img/icons/icon-24x24-edit.gif);
+	}	
+ul.toolbar a.remove
+	{
+	background-image:url(img/icons/icon-24x24-del.gif);
+	}
+ul.toolbar a.save
+	{
+	background-image:url(img/icons/icon-24x24-save.gif);
+	}
+ul.toolbar a.cancel
+	{
+	background-image:url(img/icons/icon-24x24-cancel.gif);
+	}
+ul.toolbar a.login
+	{
+	background-image:url(img/icons/icon-24x24-login.gif);
+	}
+ul.toolbar a.clean
+	{
+	background-image:url(img/icons/icon-24x24-clean.gif);
+	}
+ul.toolbar a.search
+	{
+	background-image:url(img/icons/icon-24x24-search.gif);
+	}
+ul.toolbar a.print
+    {
+    background-image:url(img/icons/icon-24x24-print.gif);
+    }
+
+ul.toolbar a.invalidate
+    {
+    background-image:url(img/icons/icon-24x24-anular.gif);
+    }
+ul.toolbar a.release
+    {
+    background-image:url(img/icons/icon-24x24-liberar.gif);
+    }	

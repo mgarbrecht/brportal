@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A4_G" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="20" isFloatColumnFooter="true" uuid="0b51cc1f-d540-41f9-8835-5ed2ac4aa8cd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA["01/05/2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Fontes\\brportal_novo\\web\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT DISTINCT tmp.codigo_marca
+               ,tmp.nome_marca
+               ,tmp.qtde_modelos_total
+               ,tmp.qtde_modelos_linhas_total
+  FROM tmp_ind0250_a4 tmp
+ WHERE tmp.codigo_marca = $P{p_codigo_marca}]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="QTDE_MODELOS_TOTAL" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_LINHAS_TOTAL" class="java.math.BigDecimal"/>
+	<group name="Grupo_Marca" isStartNewColumn="true">
+		<groupExpression><![CDATA[$F{CODIGO_MARCA}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="38">
+			<subreport>
+				<reportElement uuid="f4f0619b-331a-4804-9ede-46ed026b86e9" positionType="Float" x="1" y="1" width="409" height="37"/>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$F{CODIGO_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A4.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="36">
+			<textField>
+				<reportElement uuid="5cd92a01-0a22-46f8-8daf-40f89f020f9e" x="1" y="0" width="371" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total:" + $F{QTDE_MODELOS_TOTAL} + " Modelos / " + $F{QTDE_MODELOS_LINHAS_TOTAL} + " Linhas"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0624cead-591a-4c64-bf3b-02faaeb96e06" x="709" y="15" width="129" height="16" forecolor="#01454F"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[PESQUISA/PRODUTO]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="ea49dec9-2fa6-464d-809b-12d9496b55ed" x="1" y="20" width="100" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

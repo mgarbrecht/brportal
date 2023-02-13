@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RankingProdutos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f8fdb58c-66cf-466c-a7f1-e2d976855753">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="P_USUARIO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="P_CODIGO_MARCA" class="java.lang.String"/>
+	<parameter name="P_DIRETORIO_IMAGEM" class="java.lang.String"/>
+	<parameter name="P_CODIGO_REGIONAL" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM (SELECT qry.codigo_marca
+              ,qry.lin_cdgo
+              ,qry.descricao_linha
+              ,qry.ref_cdgo
+              ,qry.descricao_referencia
+              ,qry.cab_cdgo
+              ,qry.descricao_cabedal
+              ,qry.cor_cdgo
+              ,qry.descricao_cor
+              ,qry.pares_cor
+              ,qry.pares_lin_ref
+              ,qry.pares_cabedal
+              ,dense_rank() OVER(PARTITION BY qry.codigo_marca, qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo ORDER BY qry.pares_cor DESC) rank_cor
+              ,dense_rank() OVER(PARTITION BY qry.codigo_marca, qry.lin_cdgo, qry.ref_cdgo ORDER BY qry.pares_cabedal DESC) rank_cabedal
+              ,dense_rank() OVER(PARTITION BY qry.codigo_marca ORDER BY qry.pares_lin_ref DESC) rank_lin_ref
+              ,replace(fct_retorna_fit_imagem(qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo, qry.cor_cdgo),'gif','jpg') imagem
+          FROM (SELECT qry.codigo_marca
+                      ,qry.lin_cdgo
+                      ,qry.descricao_linha
+                      ,qry.ref_cdgo
+                      ,qry.descricao_referencia
+                      ,qry.cab_cdgo
+                      ,qry.descricao_cabedal
+                      ,qry.cor_cdgo
+                      ,qry.descricao_cor
+                      ,qry.pares pares_cor
+                      ,SUM(qry.pares) OVER(PARTITION BY qry.codigo_marca, qry.lin_cdgo, qry.ref_cdgo) pares_lin_ref
+                      ,SUM(qry.pares) OVER(PARTITION BY qry.codigo_marca, qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo) pares_cabedal
+                  FROM (SELECT /*+ rule */  i.codigo_marca
+                              ,i.lin_cdgo
+                              ,cpt.descricao_linha
+                              ,i.ref_cdgo
+                              ,cpt.descricao_referencia
+                              ,i.cab_cdgo
+                              ,cpt.descricao_cabedal
+                              ,i.cor_cdgo
+                              ,cpt.descricao_cor
+                              ,SUM(i.ite_qtde) pares
+                          FROM ped p
+                              ,(SELECT *
+                                  FROM ite i
+                                 WHERE i.codigo_marca = $P{P_CODIGO_MARCA}) i
+                              ,cat_produtos_table cpt
+                              ,rep
+                         WHERE p.ped_dadg >= TRUNC(SYSDATE) - 15
+                           AND p.ped_nmro = i.ped_nmro
+                           AND NVL(p.ped_tipo, NULL) = 'PG'
+                           AND cpt.linha = i.lin_cdgo
+                           AND cpt.codigo_idioma = 3
+                           AND cpt.status = 'A'
+                           AND cpt.tipo_de_combinacao = 'VN'
+                           AND cpt.referencia = i.ref_cdgo
+                           AND cpt.cabedal = i.cab_cdgo
+                           AND cpt.cor = i.cor_cdgo
+                           AND rep.rep_cdgo = p.rep_cdgo
+                           AND pck_pedidos.to_somente_entrada(i.ped_nmro, i.ite_seqn) = pck_pedidos.get_somente_entrada(i.ped_nmro, i.ite_seqn)
+                           AND ($P{P_CODIGO_REGIONAL} IS NULL OR rep.codigo_regional = $P{P_CODIGO_REGIONAL})
+                         GROUP BY i.codigo_marca
+                                 ,i.lin_cdgo
+                                 ,i.ref_cdgo
+                                 ,i.cab_cdgo
+                                 ,i.cor_cdgo
+                                 ,cpt.descricao_linha
+                                 ,cpt.descricao_referencia
+                                 ,cpt.descricao_cabedal
+                                 ,cpt.descricao_cor) qry) qry) qry
+ WHERE qry.rank_lin_ref <= 20
+   AND qry.rank_cabedal <= 2
+   AND qry.rank_cor <= 2
+ ORDER BY qry.rank_lin_ref
+         ,qry.rank_cabedal
+         ,qry.rank_cor]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_LINHA" class="java.lang.String"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_REFERENCIA" class="java.lang.String"/>
+	<field name="CAB_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_CABEDAL" class="java.lang.String"/>
+	<field name="COR_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_COR" class="java.lang.String"/>
+	<field name="PARES_COR" class="java.math.BigDecimal"/>
+	<field name="PARES_LIN_REF" class="java.math.BigDecimal"/>
+	<field name="PARES_CABEDAL" class="java.math.BigDecimal"/>
+	<field name="RANK_COR" class="java.math.BigDecimal"/>
+	<field name="RANK_CABEDAL" class="java.math.BigDecimal"/>
+	<field name="RANK_LIN_REF" class="java.math.BigDecimal"/>
+	<field name="IMAGEM" class="java.lang.String"/>
+	<group name="G_LIN_REF">
+		<groupExpression><![CDATA[$F{LIN_CDGO}+$F{REF_CDGO}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="31" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm">
+				<reportElement uuid="72f3b686-4c23-4b3c-b22a-5983f373054f" style="Column header" x="473" y="1" width="82" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c85da44c-b9da-436f-a0e7-7c64486139c2" x="439" y="1" width="34" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="1ee214b1-ca77-430a-aabe-8027322c62a5" style="Column header" x="515" y="13" width="40" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="214e48bd-0caf-4f3f-9b5d-6fdccf28160f" x="-3" y="8" width="558" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ranking Quinzenal dos 20 modelos mais vendidos da Marca "+$F{DESCRICAO_LINHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e8b7ccec-59f5-4a57-8dab-5a7638037de0" style="Column header" x="435" y="13" width="80" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="2b9bc3a8-9b96-400a-8417-6a53f54bbf92" positionType="FixRelativeToBottom" x="0" y="25" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7023562c-943e-4e1c-aa5d-4b5e949e2a99" style="Column header" x="1" y="1" width="21" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Linha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6bc749a7-6589-4c00-97c7-f9c3f56dfa85" style="Column header" x="22" y="0" width="61" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Referência]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="295a69c7-113f-44eb-b49c-44784462097e" style="Column header" x="185" y="1" width="59" height="15" forecolor="#000000"/>
+				<textElement>
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Cabedal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f07a5195-bda2-4dc5-ba20-7d37c92bfc78" style="Column header" x="362" y="0" width="24" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Cor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement uuid="dea76ad0-65d1-433d-8cc6-1a44f29dfba3" x="51" y="0" width="88" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO_REFERENCIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6bde7d4a-1b57-4f0c-9d04-6639643ac0ae" x="210" y="0" width="106" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO_CABEDAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9d2b7482-c01a-4990-a97b-4b0706630af3" x="386" y="0" width="123" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO_COR}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement uuid="8fc960bb-e581-42d7-8abe-132a8f81ab2f" x="509" y="0" width="46" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<imageExpression><![CDATA["http://s3-sa-east-1.amazonaws.com/imagens.catalogobeirario.com.br/pequenas/"+''+$F{IMAGEM}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="728a312c-51e1-4ff6-8db4-13996c325f2d" style="Detail" x="2" y="0" width="20" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LIN_CDGO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="78548ce5-f7ed-4c06-95ea-adcd191f56e0" style="Detail" x="185" y="0" width="23" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CAB_CDGO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="6e309e14-0fb7-44a7-bed5-ff541cc181cb" style="Detail" x="362" y="0" width="25" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COR_CDGO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="44268cee-f543-4360-aad1-217e4a05bacc" style="Detail" x="22" y="0" width="29" height="31"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REF_CDGO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

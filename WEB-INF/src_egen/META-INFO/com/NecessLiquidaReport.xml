@@ -1,0 +1,2725 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>25/11/2013</generation_day>
+<module>com</module>
+<file_name>NecessLiquida</file_name>
+<app_type>Report</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>04/10/2005 13:45:27</creationDate>
+<lastModifyDate>25/11/2013 10:37:06</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_NecessidadeLiquida</name>
+<title>Consulta Necessidade Líquida</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>portalbr.dbobj.view.NecessidadeLiquida</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>22</record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame>box</frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+
+{
+  int maxPageItems = 0;
+  if(!(request.getParameter("excel")+"").equals("true")){
+     maxPageItems = 22;
+  } else {
+     maxPageItems = 99999;
+  }
+  %>
+
+  <%
+  java.util.Vector res_NecessidadeLiquida = (java.util.Vector)session.getAttribute("res_NecessidadeLiquida");
+    portalbr.com.NecessLiquidaActionForm NecessLiquidaActionForm = (portalbr.com.NecessLiquidaActionForm)session.getAttribute("NecessLiquidaActionForm");
+  %>
+
+  <%
+  if (res_NecessidadeLiquida!=null && res_NecessidadeLiquida.size()>0) {
+    %>
+
+    <pg:pager id="bl_report_NecessidadeLiquida" items="<%=res_NecessidadeLiquida.size()%>" index="center" maxPageItems="<%= maxPageItems %>" maxIndexPages="5" scope="request" export="offset,currentPageNumber=pageNumber" >
+      <table id="TRbl_report_NecessidadeLiquida"  class="reportTable"   style="width:99%; "  border="1"  frame="box">
+        <%
+        java.lang.Double ies_codigo =  null;
+        java.lang.String ies_descricao =  null;
+        java.lang.String unm_codigo =  null;
+        java.lang.Double cor_cdgo =  null;
+        java.lang.String cor_desc =  null;
+        java.lang.String tai_codigo =  null;
+        java.lang.String nomeclatura =  null;
+        java.lang.Double entrada_retroativa =  null;
+        java.lang.Double entrada_retroativa2 =  null;
+        java.lang.Double oc =  null;
+        java.lang.Double consumo =  null;
+        java.lang.String venda_dia =  null;
+        java.lang.Double consumo_anterior =  null;
+        java.lang.Double ocsemana1 =  null;
+        java.lang.Double pedsemana1 =  null;
+        java.lang.Double ocsemana2 =  null;
+        java.lang.Double pedsemana2 =  null;
+        java.lang.Double ocsemana3 =  null;
+        java.lang.Double pedsemana3 =  null;
+        java.lang.Double ocsemana4 =  null;
+        java.lang.Double pedsemana4 =  null;
+        java.lang.Double ocmes1 =  null;
+        java.lang.Double pedmes1 =  null;
+        java.lang.Double ocmes2 =  null;
+        java.lang.Double pedmes2 =  null;
+        java.lang.Double ocmes3 =  null;
+        java.lang.Double pedmes3 =  null;
+        %>
+
+        <tr class="reportTr">
+          <td class="columnTdHeader" style="text-align:right;">
+            Item
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;">
+          </td>
+        <td class="columnTdHeader" style="text-align:left;">
+          UM
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Cor
+        </td>
+        <td class="columnTdHeader" style="text-align:left;">
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Tam.
+        </td>
+        <%
+           if(NecessLiquidaActionForm.getTipo().equals("s")) {
+        %>
+        <td class="columnTdHeader" style="text-align:left;">
+          Nomenclatura
+        </td>
+        <%
+           } 
+        %>
+        <td class="columnTdHeader" style="text-align:right;">
+          Média Semana1
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Média Semana2
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          OC Geral
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Pedido Geral
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Venda Dia
+        </td>
+        <%
+           if(NecessLiquidaActionForm.getTipo().equals("a")) {
+        %>
+        <td class="columnTdHeader" style="text-align:right;">
+          OC Sem1
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Ped. Sem1
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          OC Sem2
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Ped. Sem2
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          OC Sem3
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Ped. Sem3
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          OC Sem4
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Ped. Sem4
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          OC Mês1
+        </td>
+        <td class="columnTdHeader" style="text-align:right;">
+          Ped. Mês1
+        </td>
+        <% } %>
+      </tr>
+
+        <%
+        int i_bl_report_NecessidadeLiquida = 0;
+        while (i_bl_report_NecessidadeLiquida<res_NecessidadeLiquida.size()) {
+          portalbr.dbobj.view.Necessidadeliquida t_necessidadeliquida = (portalbr.dbobj.view.Necessidadeliquida)res_NecessidadeLiquida.elementAt(i_bl_report_NecessidadeLiquida);
+          ies_codigo = t_necessidadeliquida.getIes_codigo();
+          ies_descricao = t_necessidadeliquida.getIes_descricao()==null?"":t_necessidadeliquida.getIes_descricao();
+          unm_codigo = t_necessidadeliquida.getUnm_codigo()==null?"":t_necessidadeliquida.getUnm_codigo();
+          cor_cdgo = t_necessidadeliquida.getCor_cdgo();
+          cor_desc = t_necessidadeliquida.getCor_desc()==null?"":t_necessidadeliquida.getCor_desc();
+          tai_codigo = t_necessidadeliquida.getTai_codigo()==null?"":t_necessidadeliquida.getTai_codigo();
+          nomeclatura = t_necessidadeliquida.getNomeclatura()==null?"":t_necessidadeliquida.getNomeclatura();
+          entrada_retroativa = t_necessidadeliquida.getEntrada_retroativa();
+          entrada_retroativa2 = t_necessidadeliquida.getEntrada_retroativa2();
+          oc = t_necessidadeliquida.getOc();
+          consumo = t_necessidadeliquida.getConsumo();
+          venda_dia = t_necessidadeliquida.getVenda_dia()==null?"":t_necessidadeliquida.getVenda_dia();
+          consumo_anterior = t_necessidadeliquida.getConsumo_anterior();
+          ocsemana1 = t_necessidadeliquida.getOcsemana1();
+          pedsemana1 = t_necessidadeliquida.getPedsemana1();
+          ocsemana2 = t_necessidadeliquida.getOcsemana2();
+          pedsemana2 = t_necessidadeliquida.getPedsemana2();
+          ocsemana3 = t_necessidadeliquida.getOcsemana3();
+          pedsemana3 = t_necessidadeliquida.getPedsemana3();
+          ocsemana4 = t_necessidadeliquida.getOcsemana4();
+          pedsemana4 = t_necessidadeliquida.getPedsemana4();
+          ocmes1 = t_necessidadeliquida.getOcmes1();
+          pedmes1 = t_necessidadeliquida.getPedmes1();
+          ocmes2 = t_necessidadeliquida.getOcmes2();
+          pedmes2 = t_necessidadeliquida.getPedmes2();
+          ocmes3 = t_necessidadeliquida.getOcmes3();
+          pedmes3 = t_necessidadeliquida.getPedmes3();
+          String style_bl_report_NecessidadeLiquida="";
+          if (!((i_bl_report_NecessidadeLiquida%2)!=0)) {
+            style_bl_report_NecessidadeLiquida="rowColor";
+          } else {
+            style_bl_report_NecessidadeLiquida="rowBlank";
+          }
+          %>
+
+          <pg:item>
+            <tr class='<%= style_bl_report_NecessidadeLiquida %>' id="TRbl_report_NecessidadeLiquida<%=i_bl_report_NecessidadeLiquida%>" >
+ <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= com.egen.util.text.FormatNumber.format(ies_codigo, "0") %>
+          </td>
+          <td class="reportColumn" style="text-align:left;width:220pt;font-size:9;">
+            <%= ies_descricao %>
+          </td>
+          <td class="reportColumn" style="text-align:left;font-size:9;">
+            <%= unm_codigo %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= com.egen.util.text.FormatNumber.format(cor_cdgo, "0") %>
+          </td>
+          <td class="reportColumn" style="text-align:left;width:100pt;font-size:9;">
+            <%= cor_desc %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= tai_codigo %>
+          </td>
+          <%
+             if(NecessLiquidaActionForm.getTipo().equals("s")) {
+          %>
+          <td class="reportColumn" style="text-align:left;font-size:9;">
+            <%= nomeclatura %>
+          </td>
+          <% } %>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= com.egen.util.text.FormatNumber.format(entrada_retroativa, "#,##0.##") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= com.egen.util.text.FormatNumber.format(entrada_retroativa2, "#,##0.##") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((oc!=null)?oc.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((consumo!=null)?consumo.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= venda_dia %>
+          </td>
+          <%
+             if(NecessLiquidaActionForm.getTipo().equals("a")) {
+          %>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((ocsemana1!=null)?ocsemana1.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((pedsemana1!=null)?pedsemana1.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((ocsemana2!=null)?ocsemana2.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((pedsemana2!=null)?pedsemana2.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((ocsemana3!=null)?ocsemana3.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((pedsemana3!=null)?pedsemana3.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((ocsemana4!=null)?ocsemana4.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((pedsemana4!=null)?pedsemana4.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((ocmes1!=null)?ocmes1.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;font-size:9;">
+            <%= ((pedmes1!=null)?pedmes1.toString():"") %>
+          </td>
+<% } %>
+
+            </tr>
+
+          </pg:item>
+          <%
+          i_bl_report_NecessidadeLiquida++;
+          if (i_bl_report_NecessidadeLiquida<res_NecessidadeLiquida.size()) {
+            t_necessidadeliquida = (portalbr.dbobj.view.Necessidadeliquida)res_NecessidadeLiquida.elementAt(i_bl_report_NecessidadeLiquida);
+            ies_codigo = t_necessidadeliquida.getIes_codigo();
+            ies_descricao = t_necessidadeliquida.getIes_descricao()==null?"":t_necessidadeliquida.getIes_descricao();
+            unm_codigo = t_necessidadeliquida.getUnm_codigo()==null?"":t_necessidadeliquida.getUnm_codigo();
+            cor_cdgo = t_necessidadeliquida.getCor_cdgo();
+            cor_desc = t_necessidadeliquida.getCor_desc()==null?"":t_necessidadeliquida.getCor_desc();
+            tai_codigo = t_necessidadeliquida.getTai_codigo()==null?"":t_necessidadeliquida.getTai_codigo();
+            nomeclatura = t_necessidadeliquida.getNomeclatura()==null?"":t_necessidadeliquida.getNomeclatura();
+            entrada_retroativa = t_necessidadeliquida.getEntrada_retroativa();
+            entrada_retroativa2 = t_necessidadeliquida.getEntrada_retroativa2();
+            oc = t_necessidadeliquida.getOc();
+            consumo = t_necessidadeliquida.getConsumo();
+            venda_dia = t_necessidadeliquida.getVenda_dia()==null?"":t_necessidadeliquida.getVenda_dia();
+            consumo_anterior = t_necessidadeliquida.getConsumo_anterior();
+            ocsemana1 = t_necessidadeliquida.getOcsemana1();
+            pedsemana1 = t_necessidadeliquida.getPedsemana1();
+            ocsemana2 = t_necessidadeliquida.getOcsemana2();
+            pedsemana2 = t_necessidadeliquida.getPedsemana2();
+            ocsemana3 = t_necessidadeliquida.getOcsemana3();
+            pedsemana3 = t_necessidadeliquida.getPedsemana3();
+            ocsemana4 = t_necessidadeliquida.getOcsemana4();
+            pedsemana4 = t_necessidadeliquida.getPedsemana4();
+            ocmes1 = t_necessidadeliquida.getOcmes1();
+            pedmes1 = t_necessidadeliquida.getPedmes1();
+            ocmes2 = t_necessidadeliquida.getOcmes2();
+            pedmes2 = t_necessidadeliquida.getPedmes2();
+            ocmes3 = t_necessidadeliquida.getOcmes3();
+            pedmes3 = t_necessidadeliquida.getPedmes3();
+          } else {
+          }
+        }
+        %>
+
+      </table>
+
+      <pg:index id="bl_report_NecessidadeLiquida" >
+        <table class="pageNavigatorTable" width="100%" cellpadding="2" cellspacing="0" border="0" bgcolor="#e3e9f8">
+          <tr class="pageNavigatorTr" >
+            <td class="pageNavigatorTd">
+              <font face="verdana" color="#aaaaaa" size="-1">
+                <pg:prev export="pageUrl" ifnull="<%= true %>">
+                  <%
+                  if (pageUrl == null) {
+                    %>
+                    <b>
+                      « Anterior
+                    </b>
+                    <%
+                  } else {
+                    %>
+                    <font color="#ff0000">
+                      <b>
+                        «
+                      </b>
+                    </font>
+                    <a href="<%= pageUrl %>">
+                      <b>
+                        Anterior
+                      </b>
+                    </a>
+                    <%
+                  }
+                  %>
+                </pg:prev>
+                 
+                <pg:pages export="pageUrl,firstItem,lastItem">
+                  <a href="<%= pageUrl %>">
+                    <b>
+                      <%= firstItem %>
+                      a
+                      <%= lastItem %>
+                    </b>
+                  </a>
+                   
+                </pg:pages>
+                 
+                <pg:next export="pageUrl" ifnull="<%= true %>">
+                  <%
+                  if (pageUrl == null) {
+                    %>
+                    <b>
+                      Próximo »
+                    </b>
+                    <%
+                  } else {
+                    %>
+                    <a href="<%= pageUrl %>">
+                      <b>
+                        Próximo
+                      </b>
+                    </a>
+                    <font color="#ff0000">
+                      <b>
+                        »
+                      </b>
+                    </font>
+                    <%
+                  }
+                  %>
+                </pg:next>
+              </td>
+            </tr>
+          </table>
+
+        </pg:index>
+      </pg:pager>
+      <%
+    }
+    %>
+
+    <%
+  }
+  %></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ies_codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ies_codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>0</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Item</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getIes_codigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ies_descricao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ies_descricao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label></label>
+<type>java.lang.String</type>
+<columnWidth>220pt</columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getIes_descricao()==null?"":t_necessidadeliquida.getIes_descricao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>unm_codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>unm_codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>UM</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getUnm_codigo()==null?"":t_necessidadeliquida.getUnm_codigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>cor_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>0</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cor</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getCor_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>cor_desc</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label></label>
+<type>java.lang.String</type>
+<columnWidth>100pt</columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getCor_desc()==null?"":t_necessidadeliquida.getCor_desc()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>tai_codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>tai_codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Tamanho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getTai_codigo()==null?"":t_necessidadeliquida.getTai_codigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nomeclatura</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>nomeclatura</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Nomenclatura</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getNomeclatura()==null?"":t_necessidadeliquida.getNomeclatura()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>entrada_retroativa</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>entrada_retroativa</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>#,##0.##</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Média</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getEntrada_retroativa()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>oc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>oc</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Geral</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOc()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>consumo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>consumo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Geral</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getConsumo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>venda_dia</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>venda_dia</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Venda Dia</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getVenda_dia()==null?"":t_necessidadeliquida.getVenda_dia()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>consumo_anterior</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>consumo_anterior</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Saldo Dia</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getConsumo_anterior()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocsemana1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocsemana1</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Semana1</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcsemana1()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedsemana1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedsemana1</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Semana1</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedsemana1()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocsemana2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocsemana2</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Semana2</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcsemana2()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedsemana2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedsemana2</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Semana2</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedsemana2()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocsemana3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocsemana3</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Semana3</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcsemana3()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedsemana3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedsemana3</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Semana3</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedsemana3()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocsemana4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocsemana4</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Semana4</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcsemana4()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedsemana4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedsemana4</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Semana4</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedsemana4()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocmes1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocmes1</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Mês1</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcmes1()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedmes1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedmes1</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Mês1</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedmes1()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocmes2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocmes2</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Mês2</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcmes2()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedmes2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedmes2</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Mês2</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedmes2()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ocmes3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>ocmes3</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC Mês3</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getOcmes3()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedmes3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_NecessidadeLiquida</block_name>
+<role_item></role_item>
+<database_column>pedmes3</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido Mês3</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_necessidadeliquida.getPedmes3()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size>9</font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title> </title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>default</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/NecessLiquidaReport.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>tipo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>tipo</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_sintetico_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:submit accesskey="a" styleClass="baseButton" property="back_sintetico_action"><bean:message bundle="ApplicationResources" key="jsp.back"/></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_back_sintetico_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    actionForward = new ActionForward("NecessidadeLiquidaForm.jsp",true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}
+</action_code>
+<property>back_sintetico_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>imprimir_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>Gerar Relatório Para Impressão</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>window.open('NecessidadeLiquidaPDFReport.jsp','_blank');</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:button value="Gerar Relatório Para Impressão" onclick="window.open('NecessidadeLiquidaPDFReport.do?&tipo='+tipo.value,'_blank');" styleClass="baseButton" property="imprimir_action"></html:button>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>imprimir_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>clean_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>NecessLiquidaActionForm</name>
+<type>portalbr.com.NecessLiquidaActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/NecessLiquidaReport</path>
+<type>portalbr.com.NecessLiquidaAction</type>
+<name>NecessLiquidaActionForm</name>
+<attribute></attribute>
+<input>/com/NecessLiquidaReport.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/NecessLiquidaReport.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>back</name>
+<path>/com/NecessidadeLiquidaForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Consulta Necessidade Líquida</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(112)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

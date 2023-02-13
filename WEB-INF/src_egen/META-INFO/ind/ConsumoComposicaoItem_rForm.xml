@@ -1,0 +1,2576 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>17/08/2017</generation_day>
+<module>ind</module>
+<file_name>ConsumoComposicaoItem_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>11/08/2017 14:59:53</creationDate>
+<lastModifyDate>17/08/2017 17:35:05</lastModifyDate>
+<userGenerate>wbrio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_consumo_composicao_item</name>
+<title>Jw_consumo_composicao_item</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_consumo_composicao_item</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_consumo_composicao_item = (java.util.Vector)session.getAttribute("res_Jw_consumo_composicao_item");
+  %>
+
+  <form  name="bl_report_Jw_consumo_composicao_item" id="bl_report_Jw_consumo_composicao_item" class="baseForm" method="post" >
+    <%
+    if (res_Jw_consumo_composicao_item!=null && res_Jw_consumo_composicao_item.size()>0) {
+      if ( ((String)request.getParameter("_ordered"))!=null && ((String)request.getParameter("_ordered")).length()>0 ) {
+        boolean reverse = false;
+        if ( ((String)request.getParameter("_reverse"))!=null && ((String)request.getParameter("_reverse")).equals("true") ){
+          reverse = true;
+        }
+        try {
+          res_Jw_consumo_composicao_item = com.egen.util.text.Sort.execute(res_Jw_consumo_composicao_item,((String)request.getParameter("_ordered")),reverse);
+          session.setAttribute("res_Jw_consumo_composicao_item", res_Jw_consumo_composicao_item);
+        } catch (Exception e) {}
+      }
+      %>
+
+      <table id="TRbl_report_Jw_consumo_composicao_item"  class="reportTable"   style="width:99%; "  border="1" >
+        <%
+        java.lang.Integer codigo =  null;
+        java.lang.String descricao =  null;
+        java.lang.Integer cor_cdgo =  null;
+        java.lang.String cor_desc =  null;
+        java.lang.Integer cod_peca =  null;
+        java.lang.String descricao_peca =  null;
+        java.lang.Integer material =  null;
+        java.lang.String descricao_material =  null;
+        java.lang.String unm_codigo =  null;
+        java.lang.Integer cor_mater =  null;
+        java.lang.String descricao_cor_material =  null;
+        java.lang.String set_cdgo =  null;
+        java.lang.Double com_consum =  null;
+        java.lang.String com_espess =  null;
+        java.lang.Double dimensao_placa =  null;
+        java.lang.Double mao_de_obra =  null;
+        java.lang.String oc =  null;
+        java.lang.String rm =  null;
+        java.lang.String destino_mat =  null;
+        java.lang.String com_compra =  null;
+        java.lang.String com_gerarm =  null;
+        java.lang.String com_destin =  null;
+        String _b0_control = "__";
+        String _b1_control = "__";
+        int i_bl_report_Jw_consumo_composicao_item = 0;
+        int contador = 0;
+        while (i_bl_report_Jw_consumo_composicao_item<res_Jw_consumo_composicao_item.size()) {
+          portalbr.dbobj.view.Jw_consumo_composicao_item t_jw_consumo_composicao_item = (portalbr.dbobj.view.Jw_consumo_composicao_item)res_Jw_consumo_composicao_item.elementAt(i_bl_report_Jw_consumo_composicao_item);
+          codigo = t_jw_consumo_composicao_item.getCodigo();
+          descricao = t_jw_consumo_composicao_item.getDescricao()==null?"":t_jw_consumo_composicao_item.getDescricao();
+          cor_cdgo = t_jw_consumo_composicao_item.getCor_cdgo();
+          cor_desc = t_jw_consumo_composicao_item.getCor_desc()==null?"":t_jw_consumo_composicao_item.getCor_desc();
+          cod_peca = t_jw_consumo_composicao_item.getCod_peca();
+          descricao_peca = t_jw_consumo_composicao_item.getDescricao_peca()==null?"":t_jw_consumo_composicao_item.getDescricao_peca();
+          material = t_jw_consumo_composicao_item.getMaterial();
+          descricao_material = t_jw_consumo_composicao_item.getDescricao_material()==null?"":t_jw_consumo_composicao_item.getDescricao_material();
+          unm_codigo = t_jw_consumo_composicao_item.getUnm_codigo()==null?"":t_jw_consumo_composicao_item.getUnm_codigo();
+          cor_mater = t_jw_consumo_composicao_item.getCor_mater();
+          descricao_cor_material = t_jw_consumo_composicao_item.getDescricao_cor_material()==null?"":t_jw_consumo_composicao_item.getDescricao_cor_material();
+          set_cdgo = t_jw_consumo_composicao_item.getSet_cdgo()==null?"":t_jw_consumo_composicao_item.getSet_cdgo();
+          com_consum = t_jw_consumo_composicao_item.getCom_consum();
+          com_espess = t_jw_consumo_composicao_item.getCom_espess()==null?"":t_jw_consumo_composicao_item.getCom_espess();
+          dimensao_placa = t_jw_consumo_composicao_item.getDimensao_placa();
+          mao_de_obra = t_jw_consumo_composicao_item.getMao_de_obra();
+          oc = t_jw_consumo_composicao_item.getOc()==null?"":t_jw_consumo_composicao_item.getOc();
+          rm = t_jw_consumo_composicao_item.getRm()==null?"":t_jw_consumo_composicao_item.getRm();
+          destino_mat = t_jw_consumo_composicao_item.getDestino_mat()==null?"":t_jw_consumo_composicao_item.getDestino_mat();
+          com_compra = t_jw_consumo_composicao_item.getCom_compra()==null?"":t_jw_consumo_composicao_item.getCom_compra();
+          com_gerarm = t_jw_consumo_composicao_item.getCom_gerarm()==null?"":t_jw_consumo_composicao_item.getCom_gerarm();
+          com_destin = t_jw_consumo_composicao_item.getCom_destin()==null?"":t_jw_consumo_composicao_item.getCom_destin();
+          contador ++;
+          String _b0_value = com.egen.util.text.FormatNumber.format(codigo);
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+            <%
+               if(contador>1){
+%>
+               <tr>
+                  <td colspan="18">
+                     <br /><br />
+                  </td>
+               </tr>
+<%
+               }
+            %>
+            <tr class="reportHeader3">
+              <td colspan="18">
+                <span class="columnTdHeader" style="text-align:right; font-size: 14px" >
+                  Item: 
+                  <!--
+                  <%
+                  if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","codigo")%>' class="reportOrder">
+                      <bean:message key="report.orderedasc"/>
+                    </a>
+                    <%
+                  } else {
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","codigo")%>' class="reportOrder">
+                      <bean:message key="report.ordereddesc"/>
+                    </a>
+                    <%
+                  }
+                  %>
+                  -->
+                </span>
+                <span style="text-align:right; font-size: 14px" >
+                  <%= ((codigo!=null)?codigo.toString():"") %>
+                </span>
+                <span class="columnTdHeader" style="text-align:left; font-size: 14px" >
+                  -
+                  <!--
+                  <%
+                  if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","descricao")%>' class="reportOrder">
+                      <bean:message key="report.orderedasc"/>
+                    </a>
+                    <%
+                  } else {
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","descricao")%>' class="reportOrder">
+                      <bean:message key="report.ordereddesc"/>
+                    </a>
+                    <%
+                  }
+                  %>
+                  -->
+                </span>
+                <span style="text-align:left; font-size: 14px" >
+                  <%= descricao %>
+                </span>
+              </td>
+            </tr>
+            <%
+          }
+          String _b1_value = com.egen.util.text.FormatNumber.format(codigo) + "_" + com.egen.util.text.FormatNumber.format(cor_cdgo);
+          if (_b1_control != null && !_b1_control.equals(_b1_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="18">
+                <span style="text-align:right;" >
+                  Cor: 
+                  <!--
+                  <%
+                  if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","cor_cdgo")%>' class="reportOrder">
+                      <bean:message key="report.orderedasc"/>
+                    </a>
+                    <%
+                  } else {
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","cor_cdgo")%>' class="reportOrder">
+                      <bean:message key="report.ordereddesc"/>
+                    </a>
+                    <%
+                  }
+                  %>
+                  -->
+                </span>
+                <span  style="text-align:right;" >
+                  <%= ((cor_cdgo!=null)?cor_cdgo.toString():"") %>
+                </span>
+                <span style="text-align:left;" >
+                  -
+                  <!--
+                  <%
+                  if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","cor_desc")%>' class="reportOrder">
+                      <bean:message key="report.orderedasc"/>
+                    </a>
+                    <%
+                  } else {
+                    %>
+                    <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","cor_desc")%>' class="reportOrder">
+                      <bean:message key="report.ordereddesc"/>
+                    </a>
+                    <%
+                  }
+                  %>
+                  -->
+                </span>
+                <span style="text-align:left;" >
+                  <%= cor_desc %>
+                </span>
+              </td>
+            </tr>
+            <%
+            %>
+
+			
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:right;" >
+                Peça
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","cod_peca")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","cod_peca")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:left;" >
+                Descrição Peça
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","descricao_peca")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","descricao_peca")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Material
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","material")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","material")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:left;" >
+                Descrição Material
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","descricao_material")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","descricao_material")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:center;" >
+                Unm.
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","unm_codigo")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","unm_codigo")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Cor do Material
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","cor_mater")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","cor_mater")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:left;" >
+                Descrição Cor
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","descricao_cor_material")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","descricao_cor_material")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:left;" >
+                Setor
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","set_cdgo")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","set_cdgo")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Cons.
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","com_consum")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","com_consum")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:left;" >
+                Esp.
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","com_espess")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","com_espess")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Dim. Placa
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","dimensao_placa")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","dimensao_placa")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Mão de Obra
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","mao_de_obra")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","mao_de_obra")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:center;" >
+                OC
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","oc")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","oc")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:center;" >
+                RM
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","rm")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","rm")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+              <td class="columnTdHeader" style="text-align:left;" >
+                Destino Mat.
+		<!--
+                <%
+                if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","destino_mat")%>' class="reportOrder">
+                    <bean:message key="report.orderedasc"/>
+                  </a>
+                  <%
+                } else {
+                  %>
+                  <a href='ConsumoComposicaoItem_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","destino_mat")%>' class="reportOrder">
+                    <bean:message key="report.ordereddesc"/>
+                  </a>
+                  <%
+                }
+                %>
+		-->
+              </td>
+
+            </tr>
+
+            <%
+          }
+          String style_bl_report_Jw_consumo_composicao_item="";
+          if (!((i_bl_report_Jw_consumo_composicao_item%2)!=0)) {
+            style_bl_report_Jw_consumo_composicao_item="rowColor";
+          } else {
+            style_bl_report_Jw_consumo_composicao_item="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_consumo_composicao_item %>' id="TRbl_report_Jw_consumo_composicao_item<%=i_bl_report_Jw_consumo_composicao_item%>" >
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((cod_peca!=null)?cod_peca.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= descricao_peca %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((material!=null)?material.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= descricao_material %>
+            </td>
+
+            <td class="reportColumn" style="text-align:center;" >
+              <%= unm_codigo %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((cor_mater!=null)?cor_mater.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= descricao_cor_material %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= set_cdgo %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(com_consum, "##,##0.000000") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= com_espess %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(dimensao_placa, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(mao_de_obra, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:center;" >
+              <%= oc %>
+            </td>
+
+            <td class="reportColumn" style="text-align:center;" >
+              <%= rm %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= destino_mat %>
+            </td>
+          </tr>
+
+          <%
+          _b0_control = _b0_value;
+          _b1_control = _b1_value;
+          i_bl_report_Jw_consumo_composicao_item++;
+          if (i_bl_report_Jw_consumo_composicao_item<res_Jw_consumo_composicao_item.size()) {
+            t_jw_consumo_composicao_item = (portalbr.dbobj.view.Jw_consumo_composicao_item)res_Jw_consumo_composicao_item.elementAt(i_bl_report_Jw_consumo_composicao_item);
+            codigo = t_jw_consumo_composicao_item.getCodigo();
+            descricao = t_jw_consumo_composicao_item.getDescricao()==null?"":t_jw_consumo_composicao_item.getDescricao();
+            cor_cdgo = t_jw_consumo_composicao_item.getCor_cdgo();
+            cor_desc = t_jw_consumo_composicao_item.getCor_desc()==null?"":t_jw_consumo_composicao_item.getCor_desc();
+            cod_peca = t_jw_consumo_composicao_item.getCod_peca();
+            descricao_peca = t_jw_consumo_composicao_item.getDescricao_peca()==null?"":t_jw_consumo_composicao_item.getDescricao_peca();
+            material = t_jw_consumo_composicao_item.getMaterial();
+            descricao_material = t_jw_consumo_composicao_item.getDescricao_material()==null?"":t_jw_consumo_composicao_item.getDescricao_material();
+            unm_codigo = t_jw_consumo_composicao_item.getUnm_codigo()==null?"":t_jw_consumo_composicao_item.getUnm_codigo();
+            cor_mater = t_jw_consumo_composicao_item.getCor_mater();
+            descricao_cor_material = t_jw_consumo_composicao_item.getDescricao_cor_material()==null?"":t_jw_consumo_composicao_item.getDescricao_cor_material();
+            set_cdgo = t_jw_consumo_composicao_item.getSet_cdgo()==null?"":t_jw_consumo_composicao_item.getSet_cdgo();
+            com_consum = t_jw_consumo_composicao_item.getCom_consum();
+            com_espess = t_jw_consumo_composicao_item.getCom_espess()==null?"":t_jw_consumo_composicao_item.getCom_espess();
+            dimensao_placa = t_jw_consumo_composicao_item.getDimensao_placa();
+            mao_de_obra = t_jw_consumo_composicao_item.getMao_de_obra();
+            oc = t_jw_consumo_composicao_item.getOc()==null?"":t_jw_consumo_composicao_item.getOc();
+            rm = t_jw_consumo_composicao_item.getRm()==null?"":t_jw_consumo_composicao_item.getRm();
+            destino_mat = t_jw_consumo_composicao_item.getDestino_mat()==null?"":t_jw_consumo_composicao_item.getDestino_mat();
+            com_compra = t_jw_consumo_composicao_item.getCom_compra()==null?"":t_jw_consumo_composicao_item.getCom_compra();
+            com_gerarm = t_jw_consumo_composicao_item.getCom_gerarm()==null?"":t_jw_consumo_composicao_item.getCom_gerarm();
+            com_destin = t_jw_consumo_composicao_item.getCom_destin()==null?"":t_jw_consumo_composicao_item.getCom_destin();
+            _b0_value = com.egen.util.text.FormatNumber.format(codigo);
+            _b1_value = com.egen.util.text.FormatNumber.format(codigo) + "_" + com.egen.util.text.FormatNumber.format(cor_cdgo);
+          } else {
+            _b0_control = "__";
+            _b1_control = "__";
+          }
+       }
+        %>
+      </table>
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCodigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>descricao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>descricao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getDescricao()==null?"":t_jw_consumo_composicao_item.getDescricao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>cor_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cor_cdgo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCor_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>cor_desc</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cor_desc</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCor_desc()==null?"":t_jw_consumo_composicao_item.getCor_desc()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cod_peca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>cod_peca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Peça</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCod_peca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_peca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>descricao_peca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Descrição Peça</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getDescricao_peca()==null?"":t_jw_consumo_composicao_item.getDescricao_peca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>material</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>material</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Material</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getMaterial()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_material</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>descricao_material</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Descrição Material</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getDescricao_material()==null?"":t_jw_consumo_composicao_item.getDescricao_material()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>unm_codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>unm_codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Unm.</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getUnm_codigo()==null?"":t_jw_consumo_composicao_item.getUnm_codigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_mater</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>cor_mater</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cor do Material</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCor_mater()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_cor_material</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>descricao_cor_material</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Descrição Cor</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getDescricao_cor_material()==null?"":t_jw_consumo_composicao_item.getDescricao_cor_material()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>set_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>set_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Setor</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getSet_cdgo()==null?"":t_jw_consumo_composicao_item.getSet_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>com_consum</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>com_consum</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cons.</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCom_consum()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>com_espess</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>com_espess</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Esp.</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCom_espess()==null?"":t_jw_consumo_composicao_item.getCom_espess()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>dimensao_placa</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>dimensao_placa</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Dim. Placa</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getDimensao_placa()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>mao_de_obra</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>mao_de_obra</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Mão de Obra</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getMao_de_obra()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>oc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>oc</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>OC</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getOc()==null?"":t_jw_consumo_composicao_item.getOc()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rm</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>rm</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>RM</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getRm()==null?"":t_jw_consumo_composicao_item.getRm()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>destino_mat</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>destino_mat</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Destino Mat.</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getDestino_mat()==null?"":t_jw_consumo_composicao_item.getDestino_mat()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>com_compra</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>com_compra</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>com_compra</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCom_compra()==null?"":t_jw_consumo_composicao_item.getCom_compra()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>com_gerarm</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>com_gerarm</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>com_gerarm</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCom_gerarm()==null?"":t_jw_consumo_composicao_item.getCom_gerarm()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>com_destin</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consumo_composicao_item</block_name>
+<role_item></role_item>
+<database_column>com_destin</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>com_destin</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_consumo_composicao_item.getCom_destin()==null?"":t_jw_consumo_composicao_item.getCom_destin()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>consumo_composicao_item</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>error</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>ind/ConsumoComposicaoItem_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:submit accesskey="a" styleClass="baseButton" property="back_action"><bean:message bundle="ApplicationResources" key="jsp.back"/></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>back_action</property>
+<forward>/ind/ConsumoComposicaoItemForm.jsp</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>ConsumoComposicaoItem_rActionForm</name>
+<type>portalbr.ind.ConsumoComposicaoItem_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/ind/ConsumoComposicaoItem_rForm</path>
+<type>portalbr.ind.ConsumoComposicaoItem_rAction</type>
+<name>ConsumoComposicaoItem_rActionForm</name>
+<attribute></attribute>
+<input>/ind/ConsumoComposicaoItem_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/ind/ConsumoComposicaoItem_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>back</name>
+<path>/ind/ConsumoComposicaoItem_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Consumo da Composição do Item</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(275)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

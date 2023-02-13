@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A7" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d0f9cf52-d742-4d8e-8cc3-58286d2efad3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<parameter name="P_LOGO_S3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["https://s3.sa-east-1.amazonaws.com/medias.calcadosbeirario.com.br/marcas/logos_grandes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[WITH qry_geral AS
+ (SELECT DISTINCT qry_emb.codigo_marca
+                 ,pck_marcas_produtos.get_nome(qry_emb.codigo_marca) desc_marca
+                 ,qry_emb.comb_emb_marca
+                 ,qry_amo.comb_amo_marca
+                 ,qry_amo.count_lin
+                 ,ROUND(qry_emb.comb_emb_marca / qry_amo.comb_amo_marca, 1) media_emb_amo
+                 ,TRUNC(TO_DATE($P{p_periodo}), 'MM') periodo
+    FROM (SELECT q2.codigo_marca
+                ,q2.comb_emb_marca
+          --,q2.count_lin
+            FROM (SELECT q1.codigo_marca
+                        ,SUM(q1.count_comb) OVER(PARTITION BY q1.codigo_marca) comb_emb_marca
+                  --,q1.count_lin
+                    FROM (SELECT COUNT(rc.lin_cdgo || '-' || rc.ref_cdgo || '-' || rc.cab_cdgo || '-' || rc.cor_cdgo) count_comb
+                                 --,COUNT(DISTINCT rc.lin_cdgo) OVER(PARTITION BY pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo)) count_lin
+                                ,pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo) codigo_marca
+                            FROM ref_cor rc
+                           WHERE rc.data_embarque_amostra BETWEEN TRUNC(TO_DATE($P{p_periodo}), 'MM') AND LAST_DAY(TO_DATE($P{p_periodo_final}))
+                             AND NOT EXISTS (SELECT *
+                                    FROM ref_cor_cli rcc
+                                   WHERE rcc.lin_cdgo = rc.lin_cdgo
+                                     AND rcc.ref_cdgo = rc.ref_cdgo
+                                     AND rcc.cab_cdgo = rc.cab_cdgo
+                                     AND rcc.cor_cdgo = rc.cor_cdgo
+                                     AND rcc.data_inicio_vigencia BETWEEN TRUNC(TO_DATE($P{p_periodo}), 'MM') AND LAST_DAY(TO_DATE($P{p_periodo_final})) --
+                                  )
+                           GROUP BY rc.lin_cdgo
+                                   ,rc.ref_cdgo
+                                   ,rc.cab_cdgo
+                                   ,rc.cor_cdgo
+                                   ,rc.data_embarque_amostra
+                          --
+                          ) q1
+                  --
+                  ) q2
+          --
+          ) qry_emb
+        ,(SELECT q2.codigo_marca
+                ,q2.comb_amo_marca
+                ,q2.count_lin
+            FROM (SELECT q1.codigo_marca
+                        ,SUM(q1.count_comb) OVER(PARTITION BY q1.codigo_marca) comb_amo_marca
+                        ,q1.count_lin
+                    FROM (SELECT COUNT(rc.lin_cdgo || '-' || rc.ref_cdgo || '-' || rc.cab_cdgo || '-' || rc.cor_cdgo) count_comb
+                                ,COUNT(DISTINCT rc.lin_cdgo) OVER(PARTITION BY pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo)) count_lin
+                                ,pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo) codigo_marca
+                            FROM ref_cor rc
+                           WHERE rc.data_embarque_amostra BETWEEN TRUNC(TO_DATE($P{p_periodo}), 'MM') AND LAST_DAY(TO_DATE($P{p_periodo_final}))
+                             AND EXISTS (SELECT t.lin_cdgo
+                                        ,t.ref_cdgo
+                                        ,t.cab_cdgo
+                                        ,t.cor_cdgo
+                                    FROM ficha_tec_instrutiva t
+                                   WHERE t.produzir_amostra = 'S'
+                                     AND t.tipo_ficha = 'A'
+                                     AND t.lin_cdgo = rc.lin_cdgo
+                                     AND t.ref_cdgo = rc.ref_cdgo
+                                     AND t.cab_cdgo = rc.cab_cdgo
+                                     AND t.cor_cdgo = rc.cor_cdgo
+                                  --
+                                  )
+                           GROUP BY rc.lin_cdgo
+                                   ,rc.ref_cdgo
+                                   ,rc.cab_cdgo
+                                   ,rc.cor_cdgo
+                                   ,rc.data_embarque_amostra
+                          --
+                          ) q1
+                  --
+                  ) q2
+          --
+          ) qry_amo
+   WHERE qry_emb.codigo_marca = qry_amo.codigo_marca
+  UNION
+  SELECT DISTINCT qry_emb.codigo_marca
+                 ,pck_marcas_produtos.get_nome(qry_emb.codigo_marca) desc_marca
+                 ,qry_emb.comb_emb_marca
+                 ,qry_amo.comb_amo_marca
+                 ,qry_amo.count_lin
+                 ,ROUND(qry_emb.comb_emb_marca / qry_amo.comb_amo_marca, 1) media_emb_amo
+                 ,ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)
+    FROM (SELECT q2.codigo_marca
+                ,q2.comb_emb_marca
+          --,q2.count_lin
+            FROM (SELECT q1.codigo_marca
+                        ,SUM(q1.count_comb) OVER(PARTITION BY q1.codigo_marca) comb_emb_marca
+                  --,q1.count_lin
+                    FROM (SELECT COUNT(rc.lin_cdgo || '-' || rc.ref_cdgo || '-' || rc.cab_cdgo || '-' || rc.cor_cdgo) count_comb
+                                 --,COUNT(DISTINCT rc.lin_cdgo) OVER(PARTITION BY pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo)) count_lin
+                                ,pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo) codigo_marca
+                            FROM ref_cor rc
+                           WHERE rc.data_embarque_amostra BETWEEN ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12) AND ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), -12)
+                             AND NOT EXISTS (SELECT *
+                                    FROM ref_cor_cli rcc
+                                   WHERE rcc.lin_cdgo = rc.lin_cdgo
+                                     AND rcc.ref_cdgo = rc.ref_cdgo
+                                     AND rcc.cab_cdgo = rc.cab_cdgo
+                                     AND rcc.cor_cdgo = rc.cor_cdgo
+                                     AND rcc.data_inicio_vigencia BETWEEN ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12) AND ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), -12) --
+                                  )
+                           GROUP BY rc.lin_cdgo
+                                   ,rc.ref_cdgo
+                                   ,rc.cab_cdgo
+                                   ,rc.cor_cdgo
+                                   ,rc.data_embarque_amostra
+                          --
+                          ) q1
+                  --
+                  ) q2
+          --
+          ) qry_emb
+        ,(SELECT q2.codigo_marca
+                ,q2.comb_amo_marca
+                ,q2.count_lin
+            FROM (SELECT q1.codigo_marca
+                        ,SUM(q1.count_comb) OVER(PARTITION BY q1.codigo_marca) comb_amo_marca
+                        ,q1.count_lin
+                    FROM (SELECT COUNT(rc.lin_cdgo || '-' || rc.ref_cdgo || '-' || rc.cab_cdgo || '-' || rc.cor_cdgo) count_comb
+                                ,COUNT(DISTINCT rc.lin_cdgo) OVER(PARTITION BY pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo)) count_lin
+                                ,pck_referencia.get_marca(rc.lin_cdgo, rc.ref_cdgo) codigo_marca
+                            FROM ref_cor rc
+                           WHERE rc.data_embarque_amostra BETWEEN ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12) AND ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), -12)
+                             AND EXISTS (SELECT t.lin_cdgo
+                                        ,t.ref_cdgo
+                                        ,t.cab_cdgo
+                                        ,t.cor_cdgo
+                                    FROM ficha_tec_instrutiva t
+                                   WHERE t.produzir_amostra = 'S'
+                                     AND t.tipo_ficha = 'A'
+                                     AND t.lin_cdgo = rc.lin_cdgo
+                                     AND t.ref_cdgo = rc.ref_cdgo
+                                     AND t.cab_cdgo = rc.cab_cdgo
+                                     AND t.cor_cdgo = rc.cor_cdgo
+                                  --
+                                  )
+                           GROUP BY rc.lin_cdgo
+                                   ,rc.ref_cdgo
+                                   ,rc.cab_cdgo
+                                   ,rc.cor_cdgo
+                                   ,rc.data_embarque_amostra
+                          --
+                          ) q1
+                  --
+                  ) q2
+          --
+          ) qry_amo
+   WHERE qry_emb.codigo_marca = qry_amo.codigo_marca
+  --
+  )
+--/--
+SELECT *
+  FROM ( --
+        SELECT 'LINHAS' col_desc
+               ,qg.codigo_marca codigo_marca
+               ,pck_marcas_produtos.get_nome(qg.codigo_marca) desc_marca
+               ,TO_CHAR(qg.count_lin, '99G999') valor
+               ,1 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'LINHAS'
+               ,97 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(SUM(qg.count_lin) OVER(PARTITION BY 'TOTAL'), '99G999')
+               ,1 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'LINHAS'
+               ,98 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(SUM(qg.count_lin) OVER(PARTITION BY 'TOTAL'), '99G999')
+               ,1 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)
+        UNION
+        SELECT 'LINHAS'
+               ,99 codigo_marca
+               ,'VARIAÇÃO'
+               ,ROUND((((q.total / q2.total_ant) - 1) * 99)) || '%' variacao
+               ,1 ordem
+          FROM (SELECT SUM(qg.count_lin) OVER(PARTITION BY 'TOTAL') total
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')) q
+               ,(SELECT SUM(qg.count_lin) OVER(PARTITION BY 'TOTAL') total_ant
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)) q2
+         WHERE q.codigo_marca = q2.codigo_marca
+        --/--
+        UNION
+        --/--
+        SELECT 'COMBINAÇÕES EMBARQUE'
+               ,qg.codigo_marca codigo_marca
+               ,pck_marcas_produtos.get_nome(qg.codigo_marca) desc_marca
+               ,TO_CHAR(qg.comb_emb_marca, '99G999') valor
+               ,2 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'COMBINAÇÕES EMBARQUE'
+               ,97 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL'), '99G999')
+               ,2 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'COMBINAÇÕES EMBARQUE'
+               ,98 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL'), '99G999')
+               ,2 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)
+        UNION
+        SELECT 'COMBINAÇÕES EMBARQUE'
+               ,99 codigo_marca
+               ,'VARIAÇÃO'
+               ,ROUND((((q.total / q2.total_ant) - 1) * 99)) || '%' variacao
+               ,2 ordem
+          FROM (SELECT SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL') total
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')) q
+               ,(SELECT SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL') total_ant
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)) q2
+         WHERE q.codigo_marca = q2.codigo_marca
+        --/--
+        UNION
+        --/--
+        SELECT 'AMOSTRA'
+               ,qg.codigo_marca
+               ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+               ,TO_CHAR(qg.comb_amo_marca, '99G999')
+               ,3 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'AMOSTRA'
+               ,97 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL'), '99G999')
+               ,3 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'AMOSTRA'
+               ,98 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL'), '99G999')
+               ,3 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)
+        UNION
+        SELECT 'AMOSTRA'
+               ,99 codigo_marca
+               ,'VARIAÇÃO'
+               ,ROUND((((q.total / q2.total_ant) - 1) * 99)) || '%' variacao
+               ,3 ordem
+          FROM (SELECT SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL') total
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')) q
+               ,(SELECT SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL') total_ant
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)) q2
+         WHERE q.codigo_marca = q2.codigo_marca
+        --/--
+        UNION
+        --/--
+        SELECT 'MÉDIA'
+               ,qg.codigo_marca
+               ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+               ,TO_CHAR(qg.media_emb_amo, '990D0')
+               ,4 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'MÉDIA'
+               ,97 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(ROUND(SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL') / SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL'), 1), '990D0')
+               ,4 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')
+        UNION
+        SELECT 'MÉDIA'
+               ,98 codigo_marca
+               ,'TOTAL' || ' ' || TO_CHAR(qg.periodo, 'YY')
+               ,TO_CHAR(ROUND(SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL') / SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL'), 1), '990D0')
+               ,4 ordem
+          FROM qry_geral qg
+         WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)
+        UNION
+        SELECT 'MÉDIA'
+               ,99 codigo_marca
+               ,'VARIAÇÃO'
+               ,ROUND((((q.total / q2.total_ant) - 1) * 99)) || '%' variacao
+               ,4 ordem
+          FROM (SELECT ROUND(SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL') / SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL'), 1) total
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = TRUNC(TO_DATE($P{p_periodo}), 'MM')) q
+               ,(SELECT ROUND(SUM(qg.comb_emb_marca) OVER(PARTITION BY 'TOTAL') / SUM(qg.comb_amo_marca) OVER(PARTITION BY 'TOTAL'), 1) total_ant
+                       ,qg.codigo_marca
+                   FROM qry_geral qg
+                  WHERE qg.periodo = ADD_MONTHS(TRUNC(TO_DATE($P{p_periodo}), 'MM'), -12)) q2
+         WHERE q.codigo_marca = q2.codigo_marca
+        --
+        )
+ ORDER BY ordem
+         ,codigo_marca]]>
+	</queryString>
+	<field name="COL_DESC" class="java.lang.String"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESC_MARCA" class="java.lang.String"/>
+	<field name="VALOR" class="java.lang.String"/>
+	<field name="ORDEM" class="java.math.BigDecimal"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="d131ee96-175f-440f-8385-53dec0d3a13d" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="be6f3d68-48ca-437b-80e6-6682d570d86a" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9734bdc-9c7c-4e25-af27-b3889660edf0" x="0" y="9" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="457">
+			<crosstab>
+				<reportElement uuid="19dfcb05-fa28-4c4d-8eb7-4624a11fe8f7" x="131" y="46" width="580" height="105"/>
+				<rowGroup name="CODIGO_MARCA" width="98">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{CODIGO_MARCA}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="f3af3901-838d-4cc1-8499-d9f51d66ea10" style="Crosstab Data Text" x="0" y="0" width="0" height="0"/>
+								<textElement>
+									<font size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{CODIGO_MARCA}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="de3719f3-3160-464c-b029-d57a9a3c6e22" style="Crosstab Data Text" x="0" y="0" width="98" height="25"/>
+								<textElement verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{DESC_MARCA}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="ORDEM" height="62">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{ORDEM}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#8DB4E2" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="76ecf4e1-d630-4508-bbae-5e251b503a53" style="Crosstab Data Text" x="0" y="0" width="0" height="0"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{ORDEM}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="c8424281-6170-4070-b83c-137fba66d4c5" style="Crosstab Data Text" x="0" y="0" width="120" height="62"/>
+								<textElement verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{COL_DESC}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="VALORMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{VALOR}]]></measureExpression>
+				</measure>
+				<measure name="COL_DESC" class="java.lang.String">
+					<measureExpression><![CDATA[$F{COL_DESC}]]></measureExpression>
+				</measure>
+				<measure name="DESC_MARCA" class="java.lang.String">
+					<measureExpression><![CDATA[$F{DESC_MARCA}]]></measureExpression>
+				</measure>
+				<crosstabCell width="120" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<rectangle>
+							<reportElement uuid="a904323e-c868-4207-b8b9-9c5384d6bada" style="Crosstab Data Text" x="0" y="0" width="120" height="25" backcolor="#CCCCCC">
+								<printWhenExpression><![CDATA[$V{CODIGO_MARCA} == 97]]></printWhenExpression>
+							</reportElement>
+						</rectangle>
+						<textField>
+							<reportElement uuid="cb35db75-a6d6-4eb0-b7bb-fc795aee4d49" style="Crosstab Data Text" x="0" y="0" width="120" height="25"/>
+							<textElement verticalAlignment="Middle">
+								<font size="14"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="CODIGO_MARCA">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="c5e37c1a-0a9d-402e-ae5f-53190adf3df8" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="ORDEM">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="4cf11c8d-b187-4743-b9a8-ddf05e93b15c" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="CODIGO_MARCA" columnTotalGroup="ORDEM">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="bdae3cdc-fe13-44d6-ad02-33e32b9084fa" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<staticText>
+				<reportElement uuid="404b27e6-667e-44e1-add8-9889fea4b431" mode="Transparent" x="0" y="0" width="842" height="24" forecolor="#44546A"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHAS E NORMAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4fe78fbd-feea-4319-8d42-b990c6b12003" x="0" y="0" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[IND0250_A7]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="63087a1b-598d-4dd8-9da1-8fe21e54ded2" x="10" y="441" width="82" height="16"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="89d605fb-71a3-46b6-b89f-38a27b6f364e" x="92" y="441" width="16" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90d942ba-05c8-434a-9989-9ad8ec8a5a15" x="713" y="441" width="129" height="16" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[PESQUISA/PRODUTO]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="f7c93a2b-8673-4488-8f92-be9c650ce450" x="108" y="441" width="100" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+	<noData>
+		<band/>
+	</noData>
+</jasperReport>

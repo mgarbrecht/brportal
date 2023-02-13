@@ -1,0 +1,4705 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>23/06/2015</generation_day>
+<module>com</module>
+<file_name>NormasVendas</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>20/07/2010 09:48:08</creationDate>
+<lastModifyDate>23/06/2015 09:01:28</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>Normas</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>error</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/NormasVendasForm.do</action>
+<enctype></enctype>
+<focus>codigo_marca</focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>free</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>free</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><%
+String bloqueia = "";
+String modare = "";
+acesso.Sessao sessao = new acesso.Sessao(session);
+if(sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL")
+ ||sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")
+ ||sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO")
+){
+  bloqueia = "s";
+}
+
+
+
+    if(sessao.getUsuario().equals("151563") ||
+          sessao.getUsuario().equals("151489") ||
+          sessao.getUsuario().equals("151169") ||
+          sessao.getUsuario().equals("151882") ||
+          sessao.getUsuario().equals("VANDERLEI") ||
+          sessao.getUsuario().equals("MARIBEL") ||
+          sessao.getUsuario().equals("151315") ||
+          sessao.getUsuario().equals("151643") ||
+          sessao.getUsuario().equals("151803") ||
+          sessao.getUsuario().equals("151542") ||
+          sessao.getUsuario().equals("151889") ||
+          user.isSuperUsuario()){
+        modare = "S";
+    } else {
+ }
+
+        modare = "S"; // Liberado para todos em 20/05/2013
+%></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_marcai</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_marcai</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% if(!modare.equals("S")){ %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>codigo_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_marca</property>
+<label>default.label.marca</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>if(this.value!=''){fillFields(0,new Array('codigo_marca'),'NormasVendasActionForm.getDescricao_marca_Ajax',new Array('descricao_marca'));}else{descricao_marca.value='';}</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>codigo_marca</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<options>
+<class>com.egen.develop.generator.form.Options</class>
+<property>codigo_marcaList</property>
+<labelProperty>codigo_marcaLabelList</labelProperty>
+<style></style>
+<styleClass></styleClass>
+<db_object>Jw_marcas</db_object>
+<db_value>codigo_marca</db_value>
+<db_label>descricao_marca</db_label>
+<template>no_cache_options</template>
+<listCode>private Vector codigo_marcaList = new Vector(10, 10);
+public void setCodigo_marcaList(java.util.Vector VECTOR) {
+  codigo_marcaList = VECTOR;
+} public java.util.Vector getCodigo_marcaList() {
+  codigo_marcaList = new Vector(10, 10);
+  codigo_marcaLabelList = new Vector(10, 10);
+  codigo_marcaList.addElement("");
+  java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("ApplicationResources");
+  codigo_marcaLabelList.addElement(bundle.getString("jsp.pleaseselect"));
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Jw_marcas db_object = new Jw_marcas();
+    String[][] select = {{"codigo_marca", null},{"descricao_marca", null}};
+    Object[][] where = {{"codigo_marca","<>","9"}, {"codigo_marca","<>","18"}};
+    String[] order = {"descricao_marca"};
+    String[] groupby = null;
+    String[] having = null;
+    Vector results = j.select(db_object, select, where, groupby, having, order);
+    for (int i = 0; i < results.size(); i++) {
+      db_object = (Jw_marcas) results.elementAt(i);
+      codigo_marcaList.addElement(""+db_object.getCodigo_marca());
+      codigo_marcaLabelList.addElement(""+db_object.getDescricao_marca());
+    }
+  } catch (Exception e) {
+    com.egen.util.logger.Logging.log("portalbr", java.util.logging.Level.INFO, "NormasVendas.", e);
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return codigo_marcaList;
+} private java.util.Vector codigo_marcaLabelList = new Vector(10, 10);
+public void setCodigo_marcaLabelList(java.util.Vector VECTOR) {
+  codigo_marcaLabelList = VECTOR;
+} public java.util.Vector getCodigo_marcaLabelList() {
+  return codigo_marcaLabelList;
+}
+</listCode>
+<select_clause></select_clause>
+<where_clause>{"codigo_marca","<>","9"},
+{"codigo_marca","<>","18"}</where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<fileName></fileName>
+<initialValue></initialValue>
+<i18nInitialValue></i18nInitialValue>
+<excludeInitialValue>false</excludeInitialValue>
+<optionsSetProperty>
+</optionsSetProperty>
+</optionsSetProperty>
+</options>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_marcaf</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_marcaf</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% } else { %>
+<html:hidden property="codigo_marca"/>
+<% } %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_modarei</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_modarei</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% if(modare.equals("S")){ %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>modare</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>modare</property>
+<label>default.label.marca</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>modare</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<options>
+<class>com.egen.develop.generator.form.Options</class>
+<property>modareList</property>
+<labelProperty>modareLabelList</labelProperty>
+<style></style>
+<styleClass></styleClass>
+<db_object>Jw_marcas</db_object>
+<db_value>codigo_marca</db_value>
+<db_label>descricao_marca</db_label>
+<template>no_cache_options</template>
+<listCode>private Vector modareList = new Vector(10, 10);
+public void setModareList(java.util.Vector VECTOR) {
+  modareList = VECTOR;
+} public java.util.Vector getModareList() {
+  modareList = new Vector(10, 10);
+  modareLabelList = new Vector(10, 10);
+  modareList.addElement("");
+  java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("ApplicationResources");
+  modareLabelList.addElement(bundle.getString("jsp.pleaseselect"));
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Jw_marcas db_object = new Jw_marcas();
+    String[][] select = {{"codigo_marca", null},{"descricao_marca", null}};
+    Object[][] where = {{"codigo_marca","<>","18"} };
+    String[] order = {"descricao_marca"};
+    String[] groupby = null;
+    String[] having = null;
+    Vector results = j.select(db_object, select, where, groupby, having, order);
+    for (int i = 0; i < results.size(); i++) {
+      db_object = (Jw_marcas) results.elementAt(i);
+      modareList.addElement(""+db_object.getCodigo_marca());
+      modareLabelList.addElement(""+db_object.getDescricao_marca());
+    }
+  } catch (Exception e) {
+    com.egen.util.logger.Logging.log("portalbr", java.util.logging.Level.INFO, "NormasVendas.", e);
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return modareList;
+} private java.util.Vector modareLabelList = new Vector(10, 10);
+public void setModareLabelList(java.util.Vector VECTOR) {
+  modareLabelList = VECTOR;
+} public java.util.Vector getModareLabelList() {
+  return modareLabelList;
+}
+</listCode>
+<select_clause></select_clause>
+<where_clause>{"codigo_marca","<>","18"}
+</where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<fileName></fileName>
+<initialValue></initialValue>
+<i18nInitialValue></i18nInitialValue>
+<excludeInitialValue>false</excludeInitialValue>
+<optionsSetProperty>
+</optionsSetProperty>
+</optionsSetProperty>
+</options>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_modaref</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_modaref</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% } else { %>
+<html:hidden property="modare"/>
+<% } %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>lin_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>lin_cdgo</property>
+<label>default.label.linha</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>..//lov/LvLinhaLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=lin_cdgo</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=lin_nome</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_lin_cdgo()"  ><script type="text/javascript"> 
+ function lov_open_lin_cdgo() {
+   window.open('..//lov/LvLinhaLov.do?resetfull_action=&returnBlock=0&return0=lin_cdgo&return1=lin_nome','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>if(this.value!=''){fillFields(0,new Array('lin_cdgo'),'NormasVendasActionForm.getLin_nome_Ajax',new Array('lin_nome'));}else{lin_nome.value='';}</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>lin_cdgo</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>6</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>lin_nome</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>lin_nome</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>lin_nome</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Lin</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>lin_cdgo</master_name>
+<slave_name>lin_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>lin_nome</master_name>
+<slave_name>lin_nome</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate>ajax_field_relation</fieldRelationTemplate>
+<fieldRelationCode></fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>30</size>
+<maxlength>25</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_publicadas_i</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_publicadas_i</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% if(bloqueia.equals("")){ %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>publicadas</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>publicadas</property>
+<label>Publicadas</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>publicadas</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>S</value>
+<label><bean:message bundle='ComercialResources' key='default.value.sim'/></label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>N</value>
+<label><bean:message bundle='ComercialResources' key='default.value.nao'/></label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_publicadas_f</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_publicadas_f</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% } else { %>
+<html:hidden property="publicadas" value="S"/>
+<% } %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>resumo_linhas</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>resumo_linhas</property>
+<label>Resumo de Linhas</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>resumo_linhas</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>N</value>
+<label><bean:message bundle='ComercialResources' key='default.value.nao'/></label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>S</value>
+<label><bean:message bundle='ComercialResources' key='default.value.sim'/></label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>mix_exportacao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>mix_exportacao</property>
+<label>Mix Exportação</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>mix_exportacao</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>T</value>
+<label>Todos</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>S</value>
+<label>Sim</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>N</value>
+<label>Não</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_pdf</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_pdf</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% if(session.getAttribute("retrato") != null){ %>
+  <table style=width:100%;margin-top:10;>
+    <tr>
+      <td class=columHeader style="text-align:center;">
+        <a href="<%= (String)session.getAttribute("retrato") %>" target="_blank">
+          <bean:message key="report.downloadpdf"/>
+        </a>
+      </td>
+    </tr>
+  </table>
+<% } %>
+<% if(session.getAttribute("paisagem") != null){ %>
+  <table style=width:100%;margin-top:10;>
+    <tr>
+      <td class=columHeader style="text-align:center;">
+        <a href="<%= (String)session.getAttribute("paisagem") %>" target="_blank">
+          <bean:message key="report.downloadpdf"/>
+        </a>
+      </td>
+    </tr>
+  </table>
+<% } %></codeItem><script_free></script_free>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>select1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><html:button accesskey="p" onclick="resetfull1_action.disabled=true;bloqueia();this.disabled=true;document.forms[0].select_action.click();" styleClass="baseButton" property="select1_action"><bean:message bundle="ApplicationResources" key="jsp.select"/></html:button>
+<script>
+function getKeySite(keyStroke) {
+      isNetscape=(document.layers);
+      eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+      which = String.fromCharCode(eventChooser).toLowerCase();
+      keyBuffer = which;
+      if(eventChooser == 13){ 
+                              if(document.forms[0].select1_action.disabled==true){return false;}
+                              document.forms[0].select1_action.disabled=true;
+                              document.forms[0].resetfull1_action.disabled=true;
+                              bloqueia();
+                              document.forms[0].select_action.click();
+      }
+    }
+</script>
+<SCRIPT>
+    document.onkeypress = getKeySite;
+</SCRIPT></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>select_button_action</template>
+<action_code></action_code>
+<property>select1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>resetfull1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>resetfull_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    NormasVendasActionForm f = (NormasVendasActionForm) form;
+    session.removeAttribute("retrato");
+    session.removeAttribute("paisagem");
+    acesso.Sessao sessao = new acesso.Sessao(session);
+    acesso.Usuario user = (acesso.Usuario) session.getAttribute("User");
+    if(user.mostraQuery()){
+       throw new Exception("Query não disponível! Relatório utilizado: sbr0031L.rdf");
+    }
+
+    util.file.GeraPDF pdf = new util.file.GeraPDF(request);
+    pdf.setRelatorio("sbr0031L.rdf");
+    pdf.setParametro("P_MIX_EXPORTACAO", f.getMix_exportacao());
+    pdf.setParametro("P_LINHA", f.getLin_cdgo());
+    pdf.setParametro("P_PUBLICADA", f.getPublicadas());
+     pdf.setParametro("P_IMPRIMIR_RESUMO_LINHA", f.getResumo_linhas());
+
+
+    if(sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")){
+       pdf.setParametro("P_REGIONAL", sessao.getChave());
+    }
+    if(
+       (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL"))
+       ||
+       (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO"))){
+       pdf.setParametro("P_REPRESENTANTE", sessao.getChave());
+    }
+    if(sessao.getTipoEntidadeNegocio().equals("CLIENTE MERCADO EXTERNO")
+       ||
+       sessao.getTipoEntidadeNegocio().equals("CLIENTE MERCADO INTERNO")){
+       pdf.setParametro("P_CLIENTE", sessao.getChave());
+    }
+
+/*
+    if(sessao.getUsuario().equals("151563") ||
+          sessao.getUsuario().equals("151489") ||
+          sessao.getUsuario().equals("151169") ||
+          sessao.getUsuario().equals("151882") ||
+          sessao.getUsuario().equals("VANDERLEI") ||
+          sessao.getUsuario().equals("MARIBEL") ||
+          sessao.getUsuario().equals("151315") ||
+          sessao.getUsuario().equals("151643") ||
+          sessao.getUsuario().equals("151803") ||
+          sessao.getUsuario().equals("151542") ||
+          sessao.getUsuario().equals("151889") ||
+          user.isSuperUsuario()){
+
+        pdf.setParametro("P_MOSTRA_MODARE", "S");
+        pdf.setParametro("P_MARCA", f.getModare());
+    } else {
+        pdf.setParametro("P_MOSTRA_MODARE", "N");
+        pdf.setParametro("P_MARCA", f.getCodigo_marca());
+    }
+*/
+        pdf.setParametro("P_MOSTRA_MODARE", "S");
+        pdf.setParametro("P_MARCA", f.getModare());
+
+    String paisagem = pdf.gerarArquivo();
+    session.setAttribute("paisagem", paisagem);
+//--------------------------------------------------------------------------    
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}</action_code>
+<property>select_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_resetfull_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    NormasVendasActionForm f = (NormasVendasActionForm) form;
+    form.reset(mapping, request);
+    session.removeAttribute("retrato");
+    session.removeAttribute("paisagem");
+    session.setAttribute(mapping.getName(), form);
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}
+
+</action_code>
+<property>resetfull_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos</name>
+<title>norma1</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"lidi_tipo","=","N"},
+{"lidi_marca","=","1"}</where_clause>
+<order_by>{"lidi_titulo"}</order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size>100%</block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+acesso.Sessao sessao = new acesso.Sessao(session);
+if(!sessao.getTipoEntidadeNegocio().equals("CLIENTE MERCADO EXTERNO")){
+%>
+
+
+<table border="0" style="width:100%">
+<tr valign="top">
+<td>
+
+<%
+
+util.consultas.UsuarioMarca usuario = new util.consultas.UsuarioMarca(request);
+
+if(usuario.atende("1")){
+  %>
+
+  <%
+  java.util.Vector res_Links_dinamicos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+    String[][] select = {{"lidi_titulo",null},{"lidi_caminho",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"lidi_tipo","=","N"},
+    {"lidi_marca","=","1"},};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order = {"lidi_titulo"};
+    res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Links_dinamicos" id="bl_report_Links_dinamicos" class="baseForm" method="post" >
+  <%
+  if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Links_dinamicos"  class="reportTable"   style="width:100%; "  >
+      <%
+      java.lang.String lidi_titulo =  null;
+      java.lang.String lidi_caminho =  null;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center;" >
+          Vizzano
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Links_dinamicos = 0;
+      while (i_bl_report_Links_dinamicos<res_Links_dinamicos.size()) {
+        portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos);
+        lidi_titulo = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+        lidi_caminho = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        String style_bl_report_Links_dinamicos="";
+        if (!((i_bl_report_Links_dinamicos%2)!=0)) {
+          style_bl_report_Links_dinamicos="rowColor";
+        } else {
+          style_bl_report_Links_dinamicos="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Links_dinamicos %>' id="TRbl_report_Links_dinamicos<%=i_bl_report_Links_dinamicos%>" >
+
+        <td class="reportColumn" style="text-align:center;" >
+            <a href="../arquivos/norma_venda/<%= lidi_caminho %>" target="_blank" STYLE="cursor:hand">
+               <%= lidi_titulo %>
+            </a>
+        </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Links_dinamicos++;
+        if (i_bl_report_Links_dinamicos<res_Links_dinamicos.size()) {
+          t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos);
+          lidi_titulo = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+          lidi_caminho = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+</td></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_titulo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos_1</name>
+<title>marca3</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"lidi_tipo","=","N"},
+{"lidi_marca","=","3"}</where_clause>
+<order_by>{"lidi_titulo"}</order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size>100%</block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><td>
+
+
+<%
+if(usuario.atende("3")){
+  %>
+
+  <%
+  java.util.Vector res_Links_dinamicos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+    String[][] select = {{"lidi_titulo",null},{"lidi_caminho",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"lidi_tipo","=","N"},
+    {"lidi_marca","=","3"},};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order = {"lidi_titulo"};
+    res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Links_dinamicos_1" id="bl_report_Links_dinamicos_1" class="baseForm" method="post" >
+  <%
+  if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Links_dinamicos_1"  class="reportTable"   style="width:100%; "  >
+      <%
+      java.lang.String lidi_titulo1 =  null;
+      java.lang.String lidi_caminho1 =  null;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center;" >
+          Beira Rio
+        </td>
+
+
+      </tr>
+
+      <%
+      int i_bl_report_Links_dinamicos_1 = 0;
+      while (i_bl_report_Links_dinamicos_1<res_Links_dinamicos.size()) {
+        portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_1);
+        lidi_titulo1 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+        lidi_caminho1 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        String style_bl_report_Links_dinamicos_1="";
+        if (!((i_bl_report_Links_dinamicos_1%2)!=0)) {
+          style_bl_report_Links_dinamicos_1="rowColor";
+        } else {
+          style_bl_report_Links_dinamicos_1="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Links_dinamicos_1 %>' id="TRbl_report_Links_dinamicos_1<%=i_bl_report_Links_dinamicos_1%>" >
+
+        <td class="reportColumn" style="text-align:center;" >
+            <a href="../arquivos/norma_venda/<%= lidi_caminho1 %>" target="_blank" STYLE="cursor:hand">
+               <%= lidi_titulo1 %>
+            </a>
+        </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Links_dinamicos_1++;
+        if (i_bl_report_Links_dinamicos_1<res_Links_dinamicos.size()) {
+          t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_1);
+          lidi_titulo1 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+          lidi_caminho1 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+</td>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_1</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_titulo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_1</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos_2</name>
+<title>marca16</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"lidi_tipo","=","N"},
+{"lidi_marca","=","16"}
+</where_clause>
+<order_by>{"lidi_titulo"}</order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><td>
+
+<%
+if(usuario.atende("16")){
+  %>
+
+  <%
+  java.util.Vector res_Links_dinamicos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+    String[][] select = {{"lidi_id",null},{"lidi_titulo",null},{"lidi_descricao",null},{"lidi_caminho",null},{"lidi_marca",null},{"lidi_tipo",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"lidi_tipo","=","N"},
+  {"lidi_marca","=","16"}
+  ,};
+  String[] groupby =  null;
+  String[] having =  null;
+  String[] order = {"lidi_titulo"};
+  res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+} catch (Exception e){
+  session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+  %>
+  <jsp:forward page="/system/ErrorPage.jsp"/>
+  <%
+} finally {
+if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Links_dinamicos_2" id="bl_report_Links_dinamicos_2" class="baseForm" method="post" >
+<%
+if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+  %>
+
+  <table id="TRbl_report_Links_dinamicos_2"  class="reportTable"   style="width:100%; "  >
+    <%
+    int lidi_id =  0;
+    java.lang.String lidi_titulo2 =  null;
+    java.lang.String lidi_descricao =  null;
+    java.lang.String lidi_caminho2 =  null;
+    int lidi_marca =  0;
+    java.lang.String lidi_tipo =  null;
+    %>
+
+    <tr class="reportTr">
+
+      <td class="columnTdHeader" style="text-align:center;" >
+        Moleca
+      </td>
+
+    </tr>
+
+    <%
+    int i_bl_report_Links_dinamicos_2 = 0;
+    while (i_bl_report_Links_dinamicos_2<res_Links_dinamicos.size()) {
+      portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_2);
+      lidi_id = t_links_dinamicos.getLidi_id();
+      lidi_titulo2 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+      lidi_descricao = t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao();
+      lidi_caminho2 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+      lidi_marca = t_links_dinamicos.getLidi_marca();
+      lidi_tipo = t_links_dinamicos.getLidi_tipo()==null?"":t_links_dinamicos.getLidi_tipo();
+      String style_bl_report_Links_dinamicos_2="";
+      if (!((i_bl_report_Links_dinamicos_2%2)!=0)) {
+        style_bl_report_Links_dinamicos_2="rowColor";
+      } else {
+        style_bl_report_Links_dinamicos_2="rowBlank";
+      }
+      %>
+
+      <tr class='<%= style_bl_report_Links_dinamicos_2 %>' id="TRbl_report_Links_dinamicos_2<%=i_bl_report_Links_dinamicos_2%>" >
+
+        <td class="reportColumn" style="text-align:center;" >
+            <a href="../arquivos/norma_venda/<%= lidi_caminho2 %>" target="_blank" STYLE="cursor:hand">
+               <%= lidi_titulo2 %>
+            </a>
+        </td>
+
+      </tr>
+
+      <%
+      i_bl_report_Links_dinamicos_2++;
+      if (i_bl_report_Links_dinamicos_2<res_Links_dinamicos.size()) {
+        t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_2);
+        lidi_id = t_links_dinamicos.getLidi_id();
+        lidi_titulo2 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+        lidi_descricao = t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao();
+        lidi_caminho2 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        lidi_marca = t_links_dinamicos.getLidi_marca();
+        lidi_tipo = t_links_dinamicos.getLidi_tipo()==null?"":t_links_dinamicos.getLidi_tipo();
+      } else {
+      }
+    }
+    %>
+
+  </table>
+
+  <%
+}
+%>
+
+</form>
+<%
+}
+%>
+
+
+</td>
+</tr>
+</table></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_id</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_2</block_name>
+<role_item></role_item>
+<database_column>lidi_id</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_id</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_id()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_2</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_titulo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_descricao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_2</block_name>
+<role_item></role_item>
+<database_column>lidi_descricao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_descricao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_2</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_2</block_name>
+<role_item></role_item>
+<database_column>lidi_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_marca</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_marca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_tipo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_2</block_name>
+<role_item></role_item>
+<database_column>lidi_tipo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_tipo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_tipo()==null?"":t_links_dinamicos.getLidi_tipo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos_3</name>
+<title>marca17</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"lidi_tipo","=","N"},
+{"lidi_marca","=","17"}</where_clause>
+<order_by>{"lidi_titulo"}</order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><table border="0" style="width:100%">
+<tr>
+<td colspan="2">
+<br>
+</td>
+</tr>
+
+<tr valign="top">
+<td>
+
+<%
+if(usuario.atende("17")){
+  %>
+
+  <%
+  java.util.Vector res_Links_dinamicos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+    String[][] select = {{"lidi_titulo",null},{"lidi_caminho",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"lidi_tipo","=","N"},
+    {"lidi_marca","=","17"},};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order = {"lidi_titulo"};
+    res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Links_dinamicos_3" id="bl_report_Links_dinamicos_3" class="baseForm" method="post" >
+  <%
+  if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Links_dinamicos_3"  class="reportTable"   style="width:100%; "  >
+      <%
+      java.lang.String lidi_titulo3 =  null;
+      java.lang.String lidi_caminho3 =  null;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center;" >
+          Molekinha
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Links_dinamicos_3 = 0;
+      while (i_bl_report_Links_dinamicos_3<res_Links_dinamicos.size()) {
+        portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_3);
+        lidi_titulo3 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+        lidi_caminho3 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        String style_bl_report_Links_dinamicos_3="";
+        if (!((i_bl_report_Links_dinamicos_3%2)!=0)) {
+          style_bl_report_Links_dinamicos_3="rowColor";
+        } else {
+          style_bl_report_Links_dinamicos_3="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Links_dinamicos_3 %>' id="TRbl_report_Links_dinamicos_3<%=i_bl_report_Links_dinamicos_3%>" >
+
+        <td class="reportColumn" style="text-align:center;" >
+            <a href="../arquivos/norma_venda/<%= lidi_caminho3 %>" target="_blank" STYLE="cursor:hand">
+               <%= lidi_titulo3 %>
+            </a>
+        </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Links_dinamicos_3++;
+        if (i_bl_report_Links_dinamicos_3<res_Links_dinamicos.size()) {
+          t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_3);
+          lidi_titulo3 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+          lidi_caminho3 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+</td></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_3</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_titulo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_3</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos_4</name>
+<title>marca18</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"lidi_tipo","=","N"},
+{"lidi_marca","=","18"}</where_clause>
+<order_by>{"lidi_titulo"}</order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><td>
+
+<%
+if(usuario.atende("18")){
+  %>
+
+  <%
+  java.util.Vector res_Links_dinamicos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+    String[][] select = {{"lidi_titulo",null},{"lidi_caminho",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"lidi_tipo","=","N"},
+    {"lidi_marca","=","18"},};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order = {"lidi_titulo"};
+    res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Links_dinamicos_4" id="bl_report_Links_dinamicos_4" class="baseForm" method="post" >
+  <%
+  if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Links_dinamicos_4"  class="reportTable"   style="width:100%; "  >
+      <%
+      java.lang.String lidi_titulo4 =  null;
+      java.lang.String lidi_caminho4 =  null;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center;" >
+          BR Sport
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Links_dinamicos_4 = 0;
+      while (i_bl_report_Links_dinamicos_4<res_Links_dinamicos.size()) {
+        portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_4);
+        lidi_titulo4 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+        lidi_caminho4 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        String style_bl_report_Links_dinamicos_4="";
+        if (!((i_bl_report_Links_dinamicos_4%2)!=0)) {
+          style_bl_report_Links_dinamicos_4="rowColor";
+        } else {
+          style_bl_report_Links_dinamicos_4="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Links_dinamicos_4 %>' id="TRbl_report_Links_dinamicos_4<%=i_bl_report_Links_dinamicos_4%>" >
+
+        <td class="reportColumn" style="text-align:center;" >
+            <a href="../arquivos/norma_venda/<%= lidi_caminho4 %>" target="_blank" STYLE="cursor:hand">
+               <%= lidi_titulo4 %>
+            </a>
+        </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Links_dinamicos_4++;
+        if (i_bl_report_Links_dinamicos_4<res_Links_dinamicos.size()) {
+          t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_4);
+          lidi_titulo4 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+          lidi_caminho4 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+</td>
+</tr>
+</table>
+
+<% } %></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_4</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_titulo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_4</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos_5</name>
+<title>marca9</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><tr>
+<td>
+
+<%
+if(
+true
+){
+
+  %>
+
+  <%
+  java.util.Vector res_Links_dinamicos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+    String[][] select = {{"lidi_titulo",null},{"lidi_caminho",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"lidi_tipo","=","N"},
+    {"lidi_marca","=","9"},};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order = {"lidi_titulo"};
+    res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Links_dinamicos_4" id="bl_report_Links_dinamicos_4" class="baseForm" method="post" >
+  <%
+  if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Links_dinamicos_4"  class="reportTable"   style="width:100%; "  >
+      <%
+      java.lang.String lidi_titulo4 =  null;
+      java.lang.String lidi_caminho4 =  null;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center;" >
+          Modare
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Links_dinamicos_4 = 0;
+      while (i_bl_report_Links_dinamicos_4<res_Links_dinamicos.size()) {
+        portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_4);
+        lidi_titulo4 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+        lidi_caminho4 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        String style_bl_report_Links_dinamicos_4="";
+        if (!((i_bl_report_Links_dinamicos_4%2)!=0)) {
+          style_bl_report_Links_dinamicos_4="rowColor";
+        } else {
+          style_bl_report_Links_dinamicos_4="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Links_dinamicos_4 %>' id="TRbl_report_Links_dinamicos_4<%=i_bl_report_Links_dinamicos_4%>" >
+
+        <td class="reportColumn" style="text-align:center;" >
+            <a href="../arquivos/norma_venda/<%= lidi_caminho4 %>" target="_blank" STYLE="cursor:hand">
+               <%= lidi_titulo4 %>
+            </a>
+        </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Links_dinamicos_4++;
+        if (i_bl_report_Links_dinamicos_4<res_Links_dinamicos.size()) {
+          t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos_4);
+          lidi_titulo4 = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+          lidi_caminho4 = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+</td>
+</tr>
+</table></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_id1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_5</block_name>
+<role_item></role_item>
+<database_column>lidi_id</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_id</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_id()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo5</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_5</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_titulo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_descricao1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_5</block_name>
+<role_item></role_item>
+<database_column>lidi_descricao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_descricao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho5</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_5</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_marca1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_5</block_name>
+<role_item></role_item>
+<database_column>lidi_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_marca</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_marca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_tipo1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos_5</block_name>
+<role_item></role_item>
+<database_column>lidi_tipo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_tipo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_tipo()==null?"":t_links_dinamicos.getLidi_tipo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>NormasVendasActionForm</name>
+<type>portalbr.com.NormasVendasActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/NormasVendasForm</path>
+<type>portalbr.com.NormasVendasAction</type>
+<name>NormasVendasActionForm</name>
+<attribute></attribute>
+<input>/com/NormasVendasForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/NormasVendasForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title><bean:message bundle="ComercialResources" key="NormasVendas.titulo"/></title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body>
+<class>com.egen.develop.generator.Body</class>
+<id></id>
+<class_></class_>
+<style></style>
+<title></title>
+<dir></dir>
+<lang></lang>
+<onload></onload>
+<onunload></onunload>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<bodySetProperty>
+</bodySetProperty>
+</bodySetProperty>
+</body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(166)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>true</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

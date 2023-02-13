@@ -1,0 +1,308 @@
+<class>com.egen.develop.integration.model.VObject</class>
+<lastUsedTemplate>e-gen_jdbcutil_standard_entity_mapping</lastUsedTemplate>
+<componentType>com.egen.webide.integration.components.StandardJavaview</componentType>
+<name>Jw_consulta_mapa_diario</name>
+<columns>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>data_tmp</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>data_tmp</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value>dd/MM/yyyy</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.sql.Timestamp</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>entrada_dia_valor</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>entrada_dia_valor</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value>##,##0.00</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>entrada_dia_ant_valor</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>entrada_dia_ant_valor</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value>##,##0.00</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>faturamento_dia_valor</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>faturamento_dia_valor</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value>##,##0.00</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>faturamento_dia_ant</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>faturamento_dia_ant</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value>##,##0.00</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+</columns>
+<properties>
+<properties_item>
+<$key>schema</$key>
+<$value></$value>
+</properties_item>
+<properties_item>
+<$key>db_type</$key>
+<$value>javaview</$value>
+</properties_item>
+<properties_item>
+<$key>query</$key>
+<$value>SELECT data_tmp
+      ,SUM(entrada_dia_valor) entrada_dia_valor
+      ,SUM(entrada_dia_ant_valor) entrada_dia_ant_valor
+      ,SUM(faturamento_dia_valor) faturamento_dia_valor
+      ,SUM(faturamento_dia_ant) faturamento_dia_ant
+  FROM (SELECT data data_tmp
+              ,SUM(NVL(entped_pp_vlr, 0) + NVL(entped_pg_vlr, 0) + NVL(entped_rr_vlr, 0)) entrada_dia_valor
+              ,SUM(0) entrada_dia_ant_valor
+              ,SUM(fat_real_vlr) faturamento_dia_valor
+              ,SUM(faturamento_total_ano_ant_vlr) faturamento_dia_ant
+          FROM brger.tmp_mapa_diario_automatico
+         WHERE filial = 'GER'
+         GROUP BY data
+        UNION
+        SELECT a.data_mapa
+              ,0
+              ,SUM(NVL(valor, 0))
+              ,0
+              ,0
+          FROM ubiratan.tmp_mapa_diario_data_anterior a
+         WHERE valor > 0
+           AND filial = 'GER'
+           AND TRUNC(data_mapa, 'MM') = (SELECT TRUNC(data, 'MM')
+                                           FROM brger.tmp_mapa_diario_automatico
+                                          WHERE filial = 'GER'
+                                            AND ROWNUM = 1)
+         GROUP BY data_mapa)
+ GROUP BY data_tmp
+ ORDER BY data_tmp
+  </$value>
+</properties_item>
+<properties_item>
+<$key>metadata</$key>
+<$value></$value>
+</properties_item>
+</properties>

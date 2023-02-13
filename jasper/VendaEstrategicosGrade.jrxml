@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TesteGrade" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="P_LIN_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_REF_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CAB_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_COR_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT qry.codigo_marca
+      ,qry.lin_cdgo
+      ,qry.ref_cdgo
+      ,qry.cab_cdgo
+      ,qry.cor_cdgo
+      ,qry.tai_codigo
+      ,qry.codigo_grade
+      ,qry.gde_cdgo
+      ,qry.qtd_pars
+      ,qry.qtde_atual
+      ,DECODE(qry.codigo_grade, 99, 0, SUM(qry.qtde_atual) OVER(PARTITION BY qry.codigo_grade) / SUM(qry.qtd_pars) OVER(PARTITION BY qry.codigo_grade)) caixas
+      ,'Qtd. Pares' qtd_pares_desc
+  FROM (SELECT qry.codigo_marca
+              ,qry.lin_cdgo
+              ,qry.ref_cdgo
+              ,qry.cab_cdgo
+              ,qry.cor_cdgo
+              ,qry.tai_codigo
+              ,qry.codigo_grade
+              ,qry.gde_cdgo
+              ,CASE
+                 WHEN qry.codigo_grade NOT IN (99, 90) THEN
+                  qry.qtd_pars
+                 ELSE
+                  SUM(qry.qtde_atual)
+               END AS qtd_pars
+              ,SUM(qry.qtde_atual) qtde_atual
+              ,'Qtd. Pares' qtd_pares_desc
+          FROM (SELECT d.emp_empresa
+                      ,d.fil_filial
+                      ,d.unn_codigo
+                      ,d.les_codigo
+                      ,d.tes_codigo
+                      ,d.tco_codigo
+                      ,r.codigo_marca
+                      ,fct_mask_modelo(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo) ies_codigo
+                      ,d.cor_cdgo
+                      ,d.cor_cdgo cor2
+                      ,DECODE(NULL, NULL, d.tai_codigo, pck_numeracao_continentes.get_numeracao_by_num_brasil(NULL, d.tai_codigo)) tai_codigo
+                      ,' Grade ' || LTRIM(TO_CHAR(NVL(d.gde_cdgo, 99))) gde_cdgo
+                      ,d.qtde_atual
+                      ,INITCAP(pck_cabedal.get_nome(i.cab_cdgo)) desc_cab
+                      ,d.gde_cdgo codigo_grade
+                      ,i.lin_cdgo
+                      ,i.ref_cdgo
+                      ,i.cab_cdgo
+                      ,q.qtd_pars
+                      ,CEIL(row_number() OVER(PARTITION BY d.emp_empresa, d.fil_filial, d.unn_codigo, d.les_codigo, d.tes_codigo, d.tco_codigo, fct_mask_modelo(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo), d.cor_cdgo, d.tai_codigo ORDER BY d.emp_empresa, d.fil_filial, d.unn_codigo, d.les_codigo, d.tes_codigo, d.tco_codigo, fct_mask_modelo(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo), d.cor_cdgo, d.tai_codigo) / 8) quebra
+                  FROM dom_item_estoque i
+                      ,REF r
+                      ,qtd q
+                      ,(SELECT *
+                          FROM dom_local_item_estoque_gre d
+                         WHERE d.qtde_atual > 0) d
+                      ,(SELECT d.ies_codigo
+                              ,d.cor_cdgo
+                              ,d.emp_empresa
+                              ,d.fil_filial
+                              ,d.unn_codigo
+                              ,d.les_codigo
+                              ,d.tes_codigo
+                              ,d.tco_codigo
+                              ,SUM(d.qtde_atual) soma
+                          FROM dom_local_item_estoque_gre d
+                         WHERE d.qtde_atual > 0
+                           AND d.tco_codigo = 1
+                           AND d.tes_codigo IN (14, 15, 21, 51, 54)
+                         GROUP BY d.ies_codigo
+                                 ,d.cor_cdgo
+                                 ,d.emp_empresa
+                                 ,d.fil_filial
+                                 ,d.unn_codigo
+                                 ,d.les_codigo
+                                 ,d.tes_codigo
+                                 ,d.tco_codigo) dd
+                 WHERE d.ies_codigo = i.codigo
+                   AND d.gde_cdgo = q.gde_cdgo
+                   AND i.lin_cdgo = $P{P_LIN_CDGO}
+                   AND i.ref_cdgo = $P{P_REF_CDGO}
+                   AND i.cab_cdgo = $P{P_CAB_CDGO}
+                   AND d.cor_cdgo = $P{P_COR_CDGO}
+                   AND d.tai_codigo = q.qtd_nume
+                   AND d.emp_empresa = dd.emp_empresa
+                   AND d.fil_filial = dd.fil_filial
+                   AND d.unn_codigo = dd.unn_codigo
+                   AND d.cor_cdgo = dd.cor_cdgo
+                   AND d.les_codigo = dd.les_codigo
+                   AND d.tes_codigo = dd.tes_codigo
+                   AND d.tco_codigo = dd.tco_codigo
+                   AND dd.ies_codigo = i.codigo
+                   AND d.ies_codigo = dd.ies_codigo
+                   AND NVL(i.tipo, NULL) = 'A'
+                   AND NVL(i.lin_cdgo, NULL) = NVL(NULL, i.lin_cdgo)
+                   AND NVL(i.ref_cdgo, NULL) = NVL(NULL, i.ref_cdgo)
+                   AND NVL(i.cab_cdgo, NULL) = NVL(NULL, i.cab_cdgo)
+                   AND r.lin_cdgo = i.lin_cdgo
+                   AND r.ref_cdgo = i.ref_cdgo
+                   AND (NVL('T', 'T') = 'T' OR fct_mix_produto(r.lin_cdgo, r.ref_cdgo) = 'T')) qry
+         GROUP BY qry.ies_codigo
+                 ,qry.codigo_marca
+                 ,qry.lin_cdgo
+                 ,qry.ref_cdgo
+                 ,qry.cab_cdgo
+                 ,qry.desc_cab
+                 ,qry.cor_cdgo
+                 ,qry.tai_codigo
+                 ,qry.codigo_grade
+                 ,qry.gde_cdgo
+                 ,qry.qtd_pars) qry]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="CAB_CDGO" class="java.math.BigDecimal"/>
+	<field name="COR_CDGO" class="java.math.BigDecimal"/>
+	<field name="TAI_CODIGO" class="java.lang.String"/>
+	<field name="CODIGO_GRADE" class="java.math.BigDecimal"/>
+	<field name="GDE_CDGO" class="java.lang.String"/>
+	<field name="QTD_PARS" class="java.math.BigDecimal"/>
+	<field name="QTDE_ATUAL" class="java.math.BigDecimal"/>
+	<field name="CAIXAS" class="java.math.BigDecimal"/>
+	<field name="QTD_PARES_DESC" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+	</group>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="519" height="43"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="39" height="11"/>
+							<box>
+								<pen lineWidth="0.5" lineColor="#000000"/>
+								<topPen lineWidth="0.5" lineColor="#000000"/>
+								<leftPen lineWidth="0.5" lineColor="#000000"/>
+								<bottomPen lineWidth="0.5" lineColor="#000000"/>
+								<rightPen lineWidth="0.5" lineColor="#000000"/>
+							</box>
+							<textElement textAlignment="Left">
+								<font size="8" isBold="false"/>
+							</textElement>
+							<text><![CDATA[Tamanho]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="QTD_PARES_DESC" width="0" totalPosition="Start">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{QTD_PARES_DESC}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="0" height="0"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{QTD_PARES_DESC}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="39" height="11" forecolor="#000000"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[Qtd. Pares]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="GDE_CDGO" width="39" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{GDE_CDGO}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="39" height="11"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Left">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{GDE_CDGO}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="TAI_CODIGO" height="11" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{TAI_CODIGO}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="11"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{TAI_CODIGO}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="31" height="11"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="31" y="0" width="20" height="11"/>
+								<box>
+									<pen lineWidth="0.5" lineColor="#000000"/>
+									<topPen lineWidth="0.5" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<text><![CDATA[Cxs]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="QTD_PARSMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{QTD_PARS}]]></measureExpression>
+				</measure>
+				<measure name="QTD_ATUALMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{QTDE_ATUAL}]]></measureExpression>
+				</measure>
+				<measure name="CAIXASMeasure" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{CAIXAS}]]></measureExpression>
+				</measure>
+				<crosstabCell width="31" height="11">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="11"/>
+							<box>
+								<pen lineWidth="0.5" lineColor="#000000"/>
+								<topPen lineWidth="0.5" lineColor="#000000"/>
+								<leftPen lineWidth="0.5" lineColor="#000000"/>
+								<bottomPen lineWidth="0.5" lineColor="#000000"/>
+								<rightPen lineWidth="0.5" lineColor="#000000"/>
+							</box>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{QTD_PARSMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="31" height="11" rowTotalGroup="QTD_PARES_DESC">
+					<cellContents backcolor="#005FB3" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="11" forecolor="#000000" backcolor="#FFFFFF"/>
+							<box>
+								<pen lineWidth="0.5" lineColor="#000000"/>
+								<topPen lineWidth="0.5" lineColor="#000000"/>
+								<leftPen lineWidth="0.5" lineColor="#000000"/>
+								<bottomPen lineWidth="0.5" lineColor="#000000"/>
+								<rightPen lineWidth="0.5" lineColor="#000000"/>
+							</box>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{QTD_ATUALMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="51" height="11" columnTotalGroup="TAI_CODIGO">
+					<cellContents backcolor="#BFE1FF" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="11"/>
+							<box>
+								<pen lineWidth="0.5" lineColor="#000000"/>
+								<topPen lineWidth="0.5" lineColor="#000000"/>
+								<leftPen lineWidth="0.5" lineColor="#000000"/>
+								<bottomPen lineWidth="0.5" lineColor="#000000"/>
+								<rightPen lineWidth="0.5" lineColor="#000000"/>
+							</box>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{QTD_PARSMeasure}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="31" y="0" width="20" height="11"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{CAIXASMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="51" height="11" rowTotalGroup="QTD_PARES_DESC" columnTotalGroup="TAI_CODIGO">
+					<cellContents backcolor="#005FB3" mode="Transparent">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="11" forecolor="#000000"/>
+							<box>
+								<pen lineWidth="0.5" lineColor="#000000"/>
+								<topPen lineWidth="0.5" lineColor="#000000"/>
+								<leftPen lineWidth="0.5" lineColor="#000000"/>
+								<bottomPen lineWidth="0.5" lineColor="#000000"/>
+								<rightPen lineWidth="0.5" lineColor="#000000"/>
+							</box>
+							<textElement>
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{QTD_ATUALMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="31" height="0" rowTotalGroup="GDE_CDGO">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="51" height="0" rowTotalGroup="GDE_CDGO" columnTotalGroup="TAI_CODIGO">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

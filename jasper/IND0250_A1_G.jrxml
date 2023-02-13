@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A1_G" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1e2e6963-cead-49e9-91c5-5750c08af31a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM (SELECT codigo_marca
+              ,'' unn_codigo
+              ,CASE
+                 WHEN codigo_marca = 3 THEN
+                  20
+                 WHEN codigo_marca = 1 THEN
+                  10
+                 WHEN codigo_marca = 17 THEN
+                  40
+                 WHEN codigo_marca = 19 THEN
+                  60
+                 WHEN codigo_marca = 9 THEN
+                  50
+                 WHEN codigo_marca = 20 THEN
+                  70
+               END ordem
+          FROM marcas_produtos
+         WHERE status = 'A'
+           AND codigo_marca <> 16
+        UNION ALL
+        SELECT 16 codigo_marca
+              ,'03' unn_codigo
+              ,31 ordem
+          FROM dual
+        UNION ALL
+        SELECT 16 codigo_marca
+              ,'01' unn_codigo
+              ,32 ordem
+          FROM dual
+         UNION ALL
+        SELECT 16 codigo_marca
+              ,'20' unn_codigo
+              ,33 ordem
+          FROM dual)
+WHERE codigo_marca = NVL($P{p_codigo_marca}, codigo_marca)
+ ORDER BY ordem
+         ,unn_codigo]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="UNN_CODIGO" class="java.lang.String"/>
+	<field name="ORDEM" class="java.math.BigDecimal"/>
+	<group name="G_quebra">
+		<groupExpression><![CDATA[$F{CODIGO_MARCA}+$F{UNN_CODIGO}]]></groupExpression>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="109">
+			<subreport>
+				<reportElement uuid="81dc43c0-fdc9-4065-bf92-e255b52371c7" style="Detail" positionType="Float" x="0" y="0" width="842" height="36"/>
+				<subreportParameter name="p_unn_codigo">
+					<subreportParameterExpression><![CDATA[$F{UNN_CODIGO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$F{CODIGO_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A1_1A.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="c1302526-ffe7-4c87-9474-f6e208165a17" style="Detail" positionType="Float" x="0" y="36" width="842" height="36"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$F{CODIGO_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A1_2A.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="08e3c994-2114-404b-8362-81224ba3e2ad" style="Detail" positionType="Float" x="0" y="73" width="842" height="36"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$F{CODIGO_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A1_3A.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

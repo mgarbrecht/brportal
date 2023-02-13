@@ -1,0 +1,1204 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>23/06/2015</generation_day>
+<module>acesso</module>
+<file_name>ListaEntidadesNegocio</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>default</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>17/01/2006 16:38:16</creationDate>
+<lastModifyDate>23/06/2015 16:00:22</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Entidades_negocio</name>
+<title>Entidades Negócio</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>portalbr.dbobj.table.Entidades_negocio</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame>box</frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+ int counterbl_report_Entidades_negocio=0;
+ com.egen.util.jdbc.JdbcUtil j = null;
+ try {
+  j = new com.egen.util.jdbc.JdbcUtil();
+  portalbr.dbobj.view.Jw_ent_neg_usuarios t_entidades_negocio = new portalbr.dbobj.view.Jw_ent_neg_usuarios();
+  java.util.Vector res_Entidades_negocio = (java.util.Vector)session.getAttribute("res_Entidades_negocio");
+  if (res_Entidades_negocio!=null && res_Entidades_negocio.size()>0) {
+    java.lang.Integer enne_id =  null;
+    java.lang.String enne_descricao =  null;
+    java.lang.Integer enne_tien_id =  null;
+    java.lang.String tien_tipo =  null;
+    java.lang.String enne_chave =  null;
+    java.lang.String total =  "";
+    int i_bl_report_Entidades_negocio = 0;
+    t_entidades_negocio = (portalbr.dbobj.view.Jw_ent_neg_usuarios)res_Entidades_negocio.elementAt(i_bl_report_Entidades_negocio);
+    enne_id = t_entidades_negocio.getEnne_id();
+    enne_descricao = t_entidades_negocio.getEnne_descricao()==null?"":t_entidades_negocio.getEnne_descricao();
+    enne_tien_id = t_entidades_negocio.getEnne_tien_id();
+    total = t_entidades_negocio.getUsuarios()==null?"":t_entidades_negocio.getUsuarios();
+    enne_chave = t_entidades_negocio.getEnne_chave()==null?"":t_entidades_negocio.getEnne_chave();
+    tien_tipo = "";
+    {
+      if(enne_tien_id!=null) {
+        portalbr.dbobj.table.Tipos_entidade_negocio cr_db_object = new portalbr.dbobj.table.Tipos_entidade_negocio();
+        Object[][] where = {
+                              {"tien_id","=",enne_tien_id}
+                           };
+        java.util.Vector results = j.select(cr_db_object, where, null);
+        if (results!=null && results.size()>0) {
+          cr_db_object = (portalbr.dbobj.table.Tipos_entidade_negocio)results.elementAt(0);
+          tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+        }
+      }
+    };
+
+      java.lang.String b0_tien_tipo =  null;
+      while (i_bl_report_Entidades_negocio<res_Entidades_negocio.size()){
+        counterbl_report_Entidades_negocio++;
+        %>
+        <table id="TRbl_report_Entidades_negocio" class="reportTable" style=width:99%;  border=1  frame=box>
+          <tr class="reportHeader2" >
+            <td colspan=3>
+              <big>
+                Tipo :
+                <%= tien_tipo %>
+              </big>
+            </td>
+          </tr>
+          <%
+          b0_tien_tipo = tien_tipo;
+          %>
+          <tr class="reportHeader" >
+            <td class="columnTdHeader" style="text-align:left;" width="80%">
+              Descrição
+            </td>
+            <td class="columnTdHeader" style="text-align:center;" width="10%">
+              Chave
+            </td>
+            <td class="columnTdHeader" style="text-align:center;" width="10%">
+              Total
+            </td>
+          </tr>
+          <%
+          while (i_bl_report_Entidades_negocio<res_Entidades_negocio.size() &&  (b0_tien_tipo==null?"":b0_tien_tipo).equals((tien_tipo==null?"":tien_tipo))){
+            counterbl_report_Entidades_negocio++;
+            String style="";
+            if (!((i_bl_report_Entidades_negocio%2)!=0)) {
+              style="rowColor";
+            } else {
+              style="rowBlank";
+            }
+            %>
+            <tr class=<%= style %> id='TRbl_report_Entidades_negocio<%=counterbl_report_Entidades_negocio%>' >
+              <td class="reportColumn" style="text-align:left;" width="80%">
+                <%= enne_descricao %>
+              </td>
+              <td class="reportColumn" style="text-align:center;" width="10%">
+                <%= enne_chave %>
+              </td>
+              <td class="reportColumn" style="text-align:center;" width="10%">
+                  <%
+                  if(!total.equals("")){
+                  %>
+                  <a href="../acesso/ListaUsuariosEntidadesForm.do?select_action=&enne_id=<%= enne_id %>" target="_self" STYLE="cursor:hand" onclick="bloqueia();">
+                     <%= total %>
+                  </a>
+                  <% } else { %>
+                  <font color="gray">0</font>
+                  <% } %>
+
+              </td>
+            </tr>
+            <%
+            if (++i_bl_report_Entidades_negocio >= res_Entidades_negocio.size()) {
+              break;
+            }
+            t_entidades_negocio = (portalbr.dbobj.view.Jw_ent_neg_usuarios)res_Entidades_negocio.elementAt(i_bl_report_Entidades_negocio);
+            enne_id = t_entidades_negocio.getEnne_id();
+            enne_descricao = t_entidades_negocio.getEnne_descricao()==null?"":t_entidades_negocio.getEnne_descricao();
+            enne_tien_id = t_entidades_negocio.getEnne_tien_id();
+            enne_chave = t_entidades_negocio.getEnne_chave()==null?"":t_entidades_negocio.getEnne_chave();
+            total = t_entidades_negocio.getUsuarios()==null?"":t_entidades_negocio.getUsuarios();
+            tien_tipo = "";
+            {
+                if(enne_tien_id!=null) {
+                portalbr.dbobj.table.Tipos_entidade_negocio cr_db_object = new portalbr.dbobj.table.Tipos_entidade_negocio();
+                Object[][] where = {
+                                        {"tien_id","=",enne_tien_id}
+                                   };
+                java.util.Vector results = j.select(cr_db_object, where, null);
+                if (results!=null && results.size()>0) {
+                  cr_db_object = (portalbr.dbobj.table.Tipos_entidade_negocio)results.elementAt(0);
+                  tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+                }
+              }
+              };
+            }
+            %>
+          </table>
+          <br>
+          <%
+        }
+      }
+    } catch (Exception e) {
+    } finally {
+    if(j!=null) {
+         j.close();
+         j = null;
+    }
+  }
+  %>
+</table></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>enne_id</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Entidades_negocio</block_name>
+<role_item></role_item>
+<database_column>enne_id</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Id</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>enne_descricao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Entidades_negocio</block_name>
+<role_item></role_item>
+<database_column>enne_descricao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Descrição</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>enne_tien_id</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Entidades_negocio</block_name>
+<role_item></role_item>
+<database_column>enne_tien_id</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Tipo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>tien_tipo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Entidades_negocio</block_name>
+<role_item></role_item>
+<database_column>tien_tipo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Tipo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>false</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation><class>com.egen.develop.generator.report.ColumnRelation</class>
+<db_object>portalbr.dbobj.table.Tipos_entidade_negocio</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.report.ElementRelation</class>
+<master_name>enne_tien_id</master_name>
+<slave_name>tien_id</slave_name>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<columnRelationTemplate></columnRelationTemplate>
+<columnRelationCode>"";
+        {
+          if(enne_tien_id!=null) {
+            portalbr.dbobj.table.Tipos_entidade_negocio cr_db_object = new portalbr.dbobj.table.Tipos_entidade_negocio();
+            Object[][] where = {
+                              {"tien_id","=",enne_tien_id}
+                               };
+            java.util.Vector results = j.select(cr_db_object, where, null);
+            if (results!=null && results.size()>0) {
+              cr_db_object = (portalbr.dbobj.table.Tipos_entidade_negocio)results.elementAt(0);
+              tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+              }
+      }
+        }</columnRelationCode>
+<columnRelationEnumerationFile></columnRelationEnumerationFile>
+<columnRelationSetProperty>
+</columnRelationSetProperty>
+</columnRelationSetProperty>
+</columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>enne_chave</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Entidades_negocio</block_name>
+<role_item></role_item>
+<database_column>enne_chave</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Chave</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>total</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Entidades_negocio</block_name>
+<role_item></role_item>
+<database_column>total</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Total</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>false</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation><class>com.egen.develop.generator.report.ColumnRelation</class>
+<db_object>portalbr.dbobj.view.Jw_usu_entidades</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.report.ElementRelation</class>
+<master_name>enne_id</master_name>
+<slave_name>enne_id</slave_name>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<columnRelationTemplate></columnRelationTemplate>
+<columnRelationCode>"";
+        {
+          if(enne_id!=null) {
+            j.close();
+            j = new com.egen.util.jdbc.JdbcUtil();    
+            portalbr.dbobj.view.Jw_usu_entidades cr_db_object = new portalbr.dbobj.view.Jw_usu_entidades();
+            Object[][] where = {
+                              {"enne_id","=",enne_id}
+                               };
+            java.util.Vector results = j.select(cr_db_object, where, null);
+            if (results!=null && results.size()>0) {
+              cr_db_object = (portalbr.dbobj.view.Jw_usu_entidades)results.elementAt(0);
+              total = ((cr_db_object.getTotal()!=null)?cr_db_object.getTotal()+"":"");
+              }           
+      }
+        }
+
+
+
+</columnRelationCode>
+<columnRelationEnumerationFile></columnRelationEnumerationFile>
+<columnRelationSetProperty>
+</columnRelationSetProperty>
+</columnRelationSetProperty>
+</columnRelation>
+<link>
+<class>com.egen.develop.generator.report.ReportLink</class>
+<href>../acesso/ListaUsuariosEntidadesForm.do?select_action=</href>
+<target>_self</target>
+<parameters>
+<parameters_item>
+<class>java.lang.String</class>
+<value>enne_id</value>
+</parameters_item>
+</parameters>
+<cursor>hand</cursor>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<charset></charset>
+<rev></rev>
+<rel></rel>
+<link_type>HTML</link_type>
+<link_channelmode></link_channelmode>
+<link_directories></link_directories>
+<link_fullscreen></link_fullscreen>
+<link_height></link_height>
+<link_left></link_left>
+<link_location></link_location>
+<link_menubar></link_menubar>
+<link_resizable></link_resizable>
+<link_scrollbars></link_scrollbars>
+<link_status></link_status>
+<link_titlebar></link_titlebar>
+<link_toolbar></link_toolbar>
+<link_top></link_top>
+<link_width></link_width>
+<link_replace></link_replace>
+<link_modal>false</link_modal>
+<reportLinkSetProperty>
+</reportLinkSetProperty>
+</reportLinkSetProperty>
+</link>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title> </title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>acesso/ListaEntidadesNegocioForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>b</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_back_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+//---------------------------------------------------------------------------------------
+// Autor             : Mateus Garbrecht (TechnoCorp)
+// Data de Criação   : 17/01/2006
+// Objetivo          : Redireciona para a tela de filtro de Entidades de Negócio:
+//                     /acesso/EntidadesNegocioForm.jsp
+//----------------------------------------------------------------------------------------
+// Data de Alteração : 
+// Descrição         :
+//----------------------------------------------------------------------------------------
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    actionForward = new ActionForward("/acesso/EntidadesNegocioForm.jsp",true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}
+</action_code>
+<property>back_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>gerar_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>Gerar Usuários</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>if(confirm('Confirma essa Operação?')){this.disabled=true;gerar_usuarios_action.click();}</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>gerar_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>gerar_usuarios_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>Gerar Usuários</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_gerar_usuarios_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();    
+    ListaEntidadesNegocioActionForm f = (ListaEntidadesNegocioActionForm) form;
+    java.util.Vector res_Entidades_negocio = (java.util.Vector)session.getAttribute("res_Entidades_negocio");
+//-----------------------------------------------------------------------------------------
+    portalbr.dbobj.view.Jw_ent_neg_usuarios t_entidades_negocio = new portalbr.dbobj.view.Jw_ent_neg_usuarios();
+    String nome = "";
+    if (res_Entidades_negocio!=null && res_Entidades_negocio.size()>0) {
+      for(int q=0; q<res_Entidades_negocio.size(); q++) {
+         t_entidades_negocio = (portalbr.dbobj.view.Jw_ent_neg_usuarios)res_Entidades_negocio.elementAt(q);
+         acesso.UsuarioAPI usuario = new acesso.UsuarioAPI(j.getConn());
+         acesso.EntidadeNegocioAPI enne = new acesso.EntidadeNegocioAPI(j.getConn());
+         enne.select(Integer.parseInt(t_entidades_negocio.getEnne_id()+""));
+         usuario.setEntidadeNegocio((acesso.EntidadeNegocio) enne);        
+         nome = t_entidades_negocio.getEnne_descricao();
+         nome = nome.replace("'","");
+         if(nome.length()>40){
+             nome = nome.substring(0,40);
+         }
+         usuario.setNome(t_entidades_negocio.getEnne_descricao());
+         usuario.setUsuario(t_entidades_negocio.getEnne_chave());
+         usuario.setSenha("beirario".getBytes());
+         usuario.setSuperUsuario(false);
+         usuario.insert();
+      }
+    }
+//-----------------------------------------------------------------------------------------
+
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if(j!=null) {
+         j.close();
+         j = null;
+    } 
+  }
+  return actionForward;
+}
+</action_code>
+<property>gerar_usuarios_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>clean_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>ListaEntidadesNegocioActionForm</name>
+<type>portalbr.acesso.ListaEntidadesNegocioActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/acesso/ListaEntidadesNegocioForm</path>
+<type>portalbr.acesso.ListaEntidadesNegocioAction</type>
+<name>ListaEntidadesNegocioActionForm</name>
+<attribute></attribute>
+<input>/acesso/ListaEntidadesNegocioForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope>session</scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/acesso/ListaEntidadesNegocioForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Entidades de Negócio</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_sem_ajuda.jsp</include>
+<freeSource><%
+    if(!user.isSuperUsuario()){
+       response.sendRedirect("../system/Error.jsp");
+    }
+%> </freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A5_G" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="939ae428-dab6-4fb5-90a7-6c73704e05a4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<parameter name="p_periodo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 1 from dual]]>
+	</queryString>
+	<field name="1" class="java.math.BigDecimal"/>
+	<group name="CODIGO_MARCA"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="74" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="05bd2a95-89fd-4b40-ae52-75b5d6864cba" positionType="Float" isPrintRepeatedValues="false" x="0" y="37" width="365" height="36"/>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_top">
+					<subreportParameterExpression><![CDATA[3]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A5.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement uuid="5af648ad-c0d0-48ce-b8a6-e44e0a6d3aa5" x="0" y="36" width="385" height="1"/>
+			</break>
+			<subreport>
+				<reportElement uuid="690f6b58-e306-48b4-840f-273777f2d9fc" positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="365" height="36"/>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_top">
+					<subreportParameterExpression><![CDATA[5]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A5.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

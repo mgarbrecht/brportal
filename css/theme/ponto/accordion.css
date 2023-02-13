@@ -1,0 +1,48 @@
+
+a.close
+	{
+	float:right;
+	background:transparent url(img/accordion-close.gif) no-repeat right top;
+	width:20px;
+	height:10px;
+	text-indent:-9999px;
+	outline:0;
+	margin:5px 25px 0 0;
+	}
+
+div.menu ul.accordion
+	{
+	padding:0;
+	margin:0;
+	list-style:none;
+	}
+
+div.menu a.head
+	{
+	background:transparent url(img/accordion-head-bg.gif) repeat-x 0 -30px;
+	display:block;
+	cursor:pointer;
+	height:14px;
+	padding:9px 8px 7px 28px;
+	font-weight:bold;
+	color:#002C66;
+	border:1px solid #ADC6E4;
+	font-size:0.9em;
+	}
+div.menu a.head:hover
+	{
+	color:black;
+	}	
+	
+div.menu li.selected a.head
+	{
+	background-position:0 0;
+	cursor:default;
+	}
+	
+div.menu ul.accordion div.body
+	{
+	height:auto;
+	background:none;
+	overflow:auto;
+	}

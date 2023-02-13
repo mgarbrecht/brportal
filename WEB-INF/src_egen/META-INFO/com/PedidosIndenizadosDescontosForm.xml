@@ -1,0 +1,4755 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>29/07/2022</generation_day>
+<module>com</module>
+<file_name>PedidosIndenizadosDescontos</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>15/03/2011 11:09:56</creationDate>
+<lastModifyDate>29/07/2022 15:25:54</lastModifyDate>
+<userGenerate>admin</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Ped_desconto_indenizacao</name>
+<title>ped</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Ped_desconto_indenizacao</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>user</message_type>
+<message_text><div class\='div10l'> Um dos campos com <img src='../img/opcional.gif' border\='0' title\='Not Null' style\='cursor\:pointer'> deve ser preenchido. </div><div class\='div10l'> Todos os campos com <img src='../img/required.gif' border\='0' title\='Not Null' style\='cursor\:pointer'> devem ser preenchidos. </div></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size>100%</block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/PedidosIndenizadosDescontosGrid.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties><class>com.egen.develop.generator.form.GridProperties</class>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<defaultGridSize>1</defaultGridSize>
+<recordCheckMethod>_all</recordCheckMethod>
+<gridCheckFieldPosition></gridCheckFieldPosition>
+</gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Checkbox</class>
+<name>gridCheckField</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>gridCheckField</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>boolean</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>gridCheckField</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<value>true</value>
+<falseValue>false</falseValue>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>alterado</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>alterado</property>
+<label>alterado</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>alterado</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>banco</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>banco</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ped_nmro</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>ped_nmro</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<property>ped_nmro</property>
+<label>Pedido</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>true</not_null>
+<type>java.lang.Integer</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>ped_nmro</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>10</size>
+<maxlength>22</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>tipo_desconto</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>tipo_desconto</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>130</top>
+<z_index></z_index>
+<property>tipo_desconto</property>
+<label>Tipo Desconto</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>true</not_null>
+<type>java.lang.Integer</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>tipo_desconto</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<options>
+<class>com.egen.develop.generator.form.Options</class>
+<property>tipo_descontoList</property>
+<labelProperty>tipo_descontoLabelList</labelProperty>
+<style></style>
+<styleClass></styleClass>
+<db_object>Ped_tipo_desconto</db_object>
+<db_value>tipo_cdgo</db_value>
+<db_label>descr_tipo</db_label>
+<template></template>
+<listCode>private Vector tipo_descontoList = new Vector(10, 10);
+public void setTipo_descontoList(java.util.Vector VECTOR) {
+  tipo_descontoList = VECTOR;
+} public java.util.Vector getTipo_descontoList() {
+  tipo_descontoList = new Vector(10, 10);
+  tipo_descontoLabelList = new Vector(10, 10);
+//  tipo_descontoList.addElement("");
+//  java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("ApplicationResources");
+//  tipo_descontoLabelList.addElement(bundle.getString("jsp.pleaseselect"));
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Ped_tipo_desconto db_object = new Ped_tipo_desconto();
+    String[][] select = {{"tipo_cdgo", null},{"descr_tipo", null}};
+    Object[][] where = {{"situacao","=","A"}};
+    String[] order = {"tipo_cdgo"};
+    String[] groupby = null;
+    String[] having = null;
+    Vector results = j.select(db_object, select, where, groupby, having, order);
+    for (int i = 0; i < results.size(); i++) {
+      db_object = (Ped_tipo_desconto) results.elementAt(i);
+      tipo_descontoList.addElement(""+db_object.getTipo_cdgo());
+      tipo_descontoLabelList.addElement(""+db_object.getDescr_tipo());
+    }
+  } catch (Exception e) {
+    com.egen.util.logger.Logging.log("portalbr", java.util.logging.Level.INFO, "PedidosIndenizadosDescontos.", e);
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return tipo_descontoList;
+} private java.util.Vector tipo_descontoLabelList = new Vector(10, 10);
+public void setTipo_descontoLabelList(java.util.Vector VECTOR) {
+  tipo_descontoLabelList = VECTOR;
+} public java.util.Vector getTipo_descontoLabelList() {
+  return tipo_descontoLabelList;
+}
+</listCode>
+<select_clause></select_clause>
+<where_clause>{"situacao","=","A"}</where_clause>
+<order_by>{"tipo_cdgo"}</order_by>
+<group_by></group_by>
+<having></having>
+<fileName></fileName>
+<initialValue></initialValue>
+<i18nInitialValue></i18nInitialValue>
+<excludeInitialValue>false</excludeInitialValue>
+<optionsSetProperty>
+</optionsSetProperty>
+</optionsSetProperty>
+</options>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ped_obse</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>ped_obse</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>160</top>
+<z_index></z_index>
+<property>ped_obse</property>
+<label>Observação</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>ped_obse</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>60</size>
+<maxlength>800</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>valor_desconto</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>valor_desconto</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>190</top>
+<z_index></z_index>
+<property>valor_desconto</property>
+<label>Valor Desconto</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.Double</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>valor_desconto</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>22</size>
+<maxlength>22</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>percentual_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>percentual_desc</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>220</top>
+<z_index></z_index>
+<property>percentual_desc</property>
+<label>Percentual<br>Desconto</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.Double</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>percentual_desc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>8</size>
+<maxlength>22</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>prazo_adicional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>prazo_adicional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>prazo_adicional</property>
+<label>Prazo Adicional</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.Integer</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>prazo_adicional</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>22</size>
+<maxlength>22</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>cnd_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>cnd_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>250</top>
+<z_index></z_index>
+<property>cnd_cdgo</property>
+<label>Condição</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.Integer</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>cnd_cdgo</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<options>
+<class>com.egen.develop.generator.form.Options</class>
+<property>cnd_cdgoList</property>
+<labelProperty>cnd_cdgoLabelList</labelProperty>
+<style></style>
+<styleClass></styleClass>
+<db_object>Cnd_indenizacoes_vw</db_object>
+<db_value>cnd_cdgo</db_value>
+<db_label>cnd_desc</db_label>
+<template>default_options</template>
+<listCode>private Vector cnd_cdgoList = new Vector(10, 10);
+public void setCnd_cdgoList(java.util.Vector VECTOR) {
+  cnd_cdgoList = VECTOR;
+} public java.util.Vector getCnd_cdgoList() {
+  if (cnd_cdgoList == null || cnd_cdgoList.size() == 0) {
+    cnd_cdgoList = new Vector(10, 10);
+    cnd_cdgoLabelList = new Vector(10, 10);
+    cnd_cdgoList.addElement("");
+    java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("ApplicationResources");
+    cnd_cdgoLabelList.addElement(bundle.getString("jsp.pleaseselect"));
+    com.egen.util.jdbc.JdbcUtil j = null;
+    try {
+      j = new com.egen.util.jdbc.JdbcUtil();
+      Cnd_indenizacoes_vw db_object = new Cnd_indenizacoes_vw();
+      String[][] select = {{"cnd_cdgo", null},{"cnd_desc", null}};
+      Object[][] where = null;
+      String[] order = {"cnd_desc"};
+      String[] groupby = null;
+      String[] having = null;
+      Vector results = j.select(db_object, select, where, groupby, having, order);
+      for (int i = 0; i < results.size(); i++) {
+        db_object = (Cnd_indenizacoes_vw) results.elementAt(i);
+        cnd_cdgoList.addElement(""+db_object.getCnd_cdgo());
+        cnd_cdgoLabelList.addElement(""+db_object.getCnd_desc());
+      }
+    } catch (Exception e) {
+      com.egen.util.logger.Logging.log("portalbr", java.util.logging.Level.INFO, "PedidosIndenizadosDescontos.", e);
+    } finally {
+      if (j != null) {
+        j.close();
+      }
+    }
+  }
+  return cnd_cdgoList;
+} private java.util.Vector cnd_cdgoLabelList = new Vector(10, 10);
+public void setCnd_cdgoLabelList(java.util.Vector VECTOR) {
+  cnd_cdgoLabelList = VECTOR;
+} public java.util.Vector getCnd_cdgoLabelList() {
+  return cnd_cdgoLabelList;
+}
+</listCode>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<fileName></fileName>
+<initialValue></initialValue>
+<i18nInitialValue></i18nInitialValue>
+<excludeInitialValue>false</excludeInitialValue>
+<optionsSetProperty>
+</optionsSetProperty>
+</optionsSetProperty>
+</options>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>situacao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>situacao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>280</top>
+<z_index></z_index>
+<property>situacao</property>
+<label>Situação</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>true</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>situacao</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>12</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ped_afv</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ped_afv</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>ped_afv</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>cliente</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cliente</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>cliente</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>situacao_banco</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>situacao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>situacao_banco</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>situacao_banco</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>1</size>
+<maxlength>1</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>status</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>status</property>
+<label>Status</label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>status</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>valor_pedido</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>valor_pedido</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>valor_pedido</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>cnd_cdgo_ped</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cnd_cdgo_ped</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>cnd_cdgo_ped</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>cnd_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cnd_desc</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>cnd_desc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ped_especie_pedido</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ped_especie_pedido</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>ped_especie_pedido</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>cli_cdgo1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cli_cdgo1</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>cli_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cli_cdgo</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>codigo_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>codigo_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_marca</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>codigo_marca</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>1</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>esc_seqn</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column>esc_seqn</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>esc_seqn</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>esc_seqn</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>codigo_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_regional</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>codigo_regional</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>nome_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>nome_regional</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>nome_regional</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>310</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    DynaActionForm _ge_grid = (DynaActionForm) form;
+    PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+    PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+    try {
+      select_action(j, mapping, form, request, response);
+    }
+    finally {
+    }
+    if(session.getAttribute("mostra") == null){
+       actionForward = new ActionForward("/com/PedidosIndenizadosDescontos_fForm.do?blank_action=", true);
+    } else {
+       actionForward = mapping.findForward("same");
+    }
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}
+private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  DynaActionForm _ge_grid = (DynaActionForm) form;
+  PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+  PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+//--------------------------------------------------
+  String representante = "null";
+  String regional = "null";
+  String analista = "null";
+//--------------------------------------------------
+  acesso.Sessao sessao = new acesso.Sessao(session);
+  if((sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL")) || sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO")){
+     representante = "'"+sessao.getChave()+"'";
+  }
+  if(sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")){
+     regional = sessao.getChave();
+  }
+  if(sessao.getTipoEntidadeNegocio().equals("ANALISTA REGIONAL")){
+     analista= sessao.getChave();
+  }
+//--------------------------------------------------
+  if (f != null) {
+    String parametros = (String)session.getAttribute("query");
+    Jw_ped_desconto_indenizacao table = new Jw_ped_desconto_indenizacao();
+    StringBuilder sb = new StringBuilder();
+    sb.append(" SELECT ped.ped_nmro ");
+    sb.append("      , pd.tipo_desconto ");
+    sb.append("      , pd.ped_obse ");
+    sb.append("      , pd.valor_desconto ");
+    sb.append("      , pd.percentual_desc ");
+    sb.append("      , ped.cnd_cdgo ");
+    sb.append("      , NVL(pd.situacao, 'N') situacao ");
+    sb.append("      , pd.prazo_adicional ");
+    sb.append("      , (SELECT 'S' FROM ped_desconto_indenizacao WHERE ped_nmro = ped.ped_nmro) banco ");
+    sb.append("      , ped_sequencial_maquina ");
+    sb.append("      , c.cli_cdgo || '-' || esc_seqn || '-' || INITCAP(c.cli_rzao) cliente ");
+    sb.append("      , ped.ped_stat ");
+    sb.append("      , fct_valor_pedido(ped.ped_nmro) valor ");
+    sb.append("      , pck_cnd.get_nome(ped.cnd_cdgo) cnd_desc ");
+    sb.append("      , ped.ped_especie_pedido ");
+    sb.append("      , nvl((SELECT DISTINCT 'N' aceita_desconto ");
+    sb.append("                        FROM ped p ");
+    sb.append("                           , ite i ");
+    sb.append("                       WHERE p.ped_nmro = i.ped_nmro ");
+    sb.append("                         AND ((NVL(p.ped_boni, 0) > 0) OR (NVL(p.ped_boni2, 0) > 0) OR ");
+    sb.append("                              (NVL(fct_valor_pedido(p.ped_nmro), 0) > 0)) ");
+    sb.append("                         AND p.ped_nmro = ped.ped_nmro ");
+    sb.append("                         AND p.ped_tipo <> 'EX' ");
+    sb.append("                         AND p.ped_especie_pedido <> 'A' ");
+    sb.append("                         AND EXISTS (SELECT 1 ");
+    sb.append("                                       FROM ref_sem_desconto rsd ");
+    sb.append("                                      WHERE rsd.lin_cdgo = i.lin_cdgo ");
+    sb.append("                                        AND rsd.ref_cdgo = i.ref_cdgo) ");
+    sb.append("                       UNION ");
+    sb.append("                      SELECT DISTINCT 'N' aceita_desconto ");
+    sb.append("                        FROM ite i ");
+    sb.append("                           , ref r ");
+    sb.append("                       WHERE i.ped_nmro = ped.ped_nmro ");
+    sb.append("                         AND i.lin_cdgo = r.lin_cdgo ");
+    sb.append("                         AND i.ref_cdgo = r.ref_cdgo ");
+    sb.append("                         AND r.ref_grupo_posicao_fab = 26 ");
+    sb.append("                         ),'S') aceita_desconto ");
+    sb.append("      , c.cli_cdgo ");
+    sb.append("      , (select fct_marca_produto(i.lin_cdgo, i.ref_cdgo) from ite i where i.ped_nmro = ped.ped_nmro and rownum = 1) codigo_marca ");
+    sb.append("      , ped.esc_seqn ");
+    sb.append("      , rv.codigo_regional ");
+    sb.append("      , rv.nome_regional ");
+    sb.append("   FROM ped ped "); 
+    sb.append("      , ped_desconto_indenizacao pd  ");
+    sb.append("      , cli c ");
+    sb.append("      , rep r ");
+    sb.append("      , regionais_vendas rv ");
+    sb.append("      , gerentes_regionais_vendas gr ");
+    sb.append("  WHERE ped.rep_cdgo = r.rep_cdgo ");
+    sb.append("    AND c.cli_cdgo = ped.cli_cdgo ");
+    sb.append("    AND gr.codigo_gerente = r.codigo_gerente ");
+    sb.append("    AND rv.codigo_regional = r.codigo_regional ");
+    sb.append("    AND ped.rep_cdgo = NVL("+representante+", ped.rep_cdgo) ");
+    sb.append("    AND rv.codigo_regional = NVL("+regional+", rv.codigo_regional) ");
+    sb.append("    AND gr.codigo_gerente = NVL("+analista+", gr.codigo_gerente) ");
+    sb.append("    AND ped.ped_stat NOT IN ('C') ");
+    sb.append("    AND pd.ped_nmro (+) = ped.ped_nmro ");
+    sb.append(parametros);
+    sb.append("  ORDER BY ped.ped_nmro ");
+
+    acesso.Usuario usuario = (acesso.Usuario)session.getAttribute("User");
+
+    if(usuario.mostraQuery()){
+      throw new Exception(sb.toString());
+    }
+   
+    Vector res_Ped_desconto_indenizacao = j.select(table, sb.toString(), null);
+    session.setAttribute("res_Ped_desconto_indenizacao",res_Ped_desconto_indenizacao);
+    if (res_Ped_desconto_indenizacao != null && res_Ped_desconto_indenizacao.size() > 0) {
+
+      if(res_Ped_desconto_indenizacao.size()>1){
+         session.setAttribute("qtd_itens","10");
+      } else {
+         session.setAttribute("qtd_itens","1");
+      }
+  
+      PedidosIndenizadosDescontosActionForm[]_ge_grid_array_flex = new PedidosIndenizadosDescontosActionForm[res_Ped_desconto_indenizacao.size()];
+      org.apache.struts.config.ConfigEGenHelper.setFormPropertySize(mapping, "bl_form_Ped_desconto_indenizacao_lines", res_Ped_desconto_indenizacao.size());
+      int _ge_pos = 0;
+      for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array_flex.length; _ge_grid_array_index++, _ge_pos++) {
+        if (_ge_grid_array_index < _ge_grid_array.length) {
+          f = _ge_grid_array[_ge_grid_array_index];
+        } else {
+          f = new PedidosIndenizadosDescontosActionForm();
+          ActionServletWrapper actionServletWrapper = form.getServletWrapper();
+          org.apache.struts.upload.CommonsMultipartRequestHandler commonsMultipartRequestHandler = new org.apache.struts.upload.CommonsMultipartRequestHandler();
+          actionServletWrapper.setServletFor(commonsMultipartRequestHandler);
+          f.setServlet(commonsMultipartRequestHandler.getServlet());
+        }
+        f.reset(mapping, request);
+        if (res_Ped_desconto_indenizacao.size() > _ge_pos) {
+          Jw_ped_desconto_indenizacao r = (Jw_ped_desconto_indenizacao) res_Ped_desconto_indenizacao.elementAt(_ge_pos);
+          f.setBanco("S");
+          f.setPed_nmro((r.getPed_nmro() != null) ? r.getPed_nmro() + "":"");
+          f.setTipo_desconto((r.getTipo_desconto() != null) ? r.getTipo_desconto() + "":"");
+          f.setPed_obse((r.getPed_obse() != null) ? r.getPed_obse() + "":"");
+          f.setValor_desconto((r.getValor_desconto() != null) ? com.egen.util.text.FormatNumber.format(r.getValor_desconto(), "##,##0.00") : "");
+          f.setPercentual_desc((r.getPercentual_desc() != null) ? com.egen.util.text.FormatNumber.format(r.getPercentual_desc(), "##,##0.00") : "");
+          f.setCnd_cdgo((r.getCnd_cdgo() != null) ? r.getCnd_cdgo() + "":"");
+          f.setCnd_cdgo_ped((r.getCnd_cdgo() != null) ? r.getCnd_cdgo() + "":"");
+          f.setSituacao((r.getSituacao() != null) ? r.getSituacao() + "":"");
+          f.setSituacao_banco((r.getSituacao() != null) ? r.getSituacao() + "":"");
+          f.setPrazo_adicional((r.getPrazo_adicional() != null) ? r.getPrazo_adicional() + "":"");
+          f.setBanco((r.getBanco() != null) ? r.getBanco() + "":"");
+          f.setPed_afv((r.getPed_sequencial_maquina() != null) ? r.getPed_sequencial_maquina() + "":"");
+          f.setCliente((r.getCliente() != null) ? r.getCliente() + "":"");
+          f.setCli_cdgo((r.getCli_cdgo() != null) ? r.getCli_cdgo() + "":"");
+          f.setStatus((r.getPed_stat() != null) ? r.getPed_stat() + "":"");
+          f.setValor_pedido((r.getValor() != null) ? com.egen.util.text.FormatNumber.format(r.getValor(), "##,##0.00") : "");
+          f.setCnd_desc((r.getCnd_desc() != null) ? r.getCnd_desc() + "":"");
+          f.setPed_especie_pedido((r.getPed_especie_pedido() != null) ? r.getPed_especie_pedido() + "":"");
+          f.setCodigo_marca((r.getCodigo_marca() != null) ? r.getCodigo_marca() + "":"");
+          f.setEsc_seqn((r.getEsc_seqn() != null) ? r.getEsc_seqn() + "":"");
+          f.setCodigo_regional((r.getCodigo_regional() != null) ? r.getCodigo_regional() + "":"");
+          f.setNome_regional((r.getNome_regional() != null) ? r.getNome_regional() + "":"");
+          session.setAttribute("mostra","S");
+        } else {
+          f.reset(mapping, request);
+        }
+        _ge_grid_array_flex[_ge_grid_array_index] = f;
+      }
+      _ge_grid.set("bl_form_Ped_desconto_indenizacao_lines", _ge_grid_array_flex);
+    } else {
+      ActionErrors errors = (ActionErrors) request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
+      if (errors == null) {
+        errors = new ActionErrors();
+      }
+      errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("warn.norowsselected",""));
+      request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+      session.removeAttribute("mostra");
+    }
+    session.setAttribute(mapping.getName(), form);
+  }
+}</action_code>
+<property>select_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>update_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>320</left>
+<top>310</top>
+<z_index></z_index>
+<value>Salvar Alterações</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_update_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+ HttpSession session = request.getSession(true);
+ ActionForward actionForward = null;
+ com.egen.util.jdbc.JdbcUtil j = null;
+ try {
+  j = new com.egen.util.jdbc.JdbcUtil();
+  DynaActionForm _ge_grid = (DynaActionForm) form;
+  PedidosIndenizadosDescontosActionForm[] _ge_grid_array = (PedidosIndenizadosDescontosActionForm[]) _ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+  PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+  try {
+   update_action(j, mapping, form, request, response);
+   session.setAttribute("ok", "s");
+  } finally {}
+  actionForward = new ActionForward("/com/PedidosIndenizadosDescontosGrid.do?select_action=", true);
+ } catch (Exception e) {
+  ActionErrors errors = new ActionErrors();
+  errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("error.action.exception", com.egen.util.system.Error.getMessage(e)));
+  request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+  session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+  actionForward = mapping.findForward("same");
+ } finally {
+  if (j != null) {
+   j.close();
+  }
+ }
+ return actionForward;
+}
+
+private void update_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+ HttpSession session = request.getSession(true);
+ DynaActionForm _ge_grid = (DynaActionForm) form;
+ PedidosIndenizadosDescontosActionForm[] _ge_grid_array = (PedidosIndenizadosDescontosActionForm[]) _ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+ PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+ util.consultas.Parametros parametros = new util.consultas.Parametros();
+ util.consultas.com.PedidosIndenizadosDescontos pedidosIndenizadosDescontos = new util.consultas.com.PedidosIndenizadosDescontos();
+ int limiteBonificacao = Integer.parseInt(parametros.retornaParametro("limite_bonificacao_pedido"));
+ acesso.Sessao sessao = new acesso.Sessao(session);
+ util.consultas.Query query = new util.consultas.Query();
+ String liberadoLimite = query.retorna(j, "SELECT 'S' FROM wbrio.parametros WHERE par_sist_codigo = 'BRNET' AND nome = 'usuario_liberado_limite_bonificacao_pedido' and valor = '" + sessao.getUsuario() + "'");
+ if (liberadoLimite.equalsIgnoreCase("s")) {
+  limiteBonificacao = 99999;
+ }
+ for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array.length; _ge_grid_array_index++) {
+  f = _ge_grid_array[_ge_grid_array_index];
+
+  if (f.getStatus() != null && (!(f.getStatus().equals("F")))) {
+
+   if (f.getStatus() != null && (!(f.getStatus().equals("C")))) {
+
+
+    if (((f.getTipo_desconto() != null && (!f.getTipo_desconto().equals(""))) ||
+      (f.getPed_obse() != null && (!f.getPed_obse().equals(""))) ||
+      (f.getValor_desconto() != null && (!f.getValor_desconto().equals(""))) ||
+      (f.getPrazo_adicional() != null && (!f.getPrazo_adicional().equals(""))) ||
+      (f.getCnd_cdgo() != null && (!f.getCnd_cdgo().equals("")))) && (f.getBanco() != null && (f.getBanco().equals("S"))) && (f.getAlterado() != null && (f.getAlterado().equals("S")))) {
+
+
+
+     f.setValor_desconto(f.getValor_desconto().replace(",", "."));
+     //f.setPercentual_desc(f.getPercentual_desc().replace(",","."));
+
+     if (f.getPed_nmro().equals("")) {
+      throw new Exception("Todos os parâmetros devem ser informados!");
+     }
+
+     if (f.getTipo_desconto().equals("")) {
+      throw new Exception("O tipo de desconto deve ser informado!");
+     }
+
+     if (f.getValor_desconto().equals("")) {
+      throw new Exception("Valor deve ser informado!");
+     }
+
+     if ((!(f.getValor_desconto().equals("")))) {
+      String valor_pedido = f.getValor_pedido().replace(".", "").replace(",", ".");
+      double valorPedido = Double.parseDouble(valor_pedido);
+      double valorDesconto = Double.parseDouble(f.getValor_desconto());
+      double descontoMaximo = valorPedido - ((50/100d) * valorPedido);
+      if (Double.parseDouble(f.getValor_desconto()) > limiteBonificacao) {
+         throw new Exception("Limite excedido");
+      }
+
+      if (Double.parseDouble(f.getValor_desconto()) > Double.parseDouble(valor_pedido)) {
+         throw new Exception("Valor Desconto não pode ser maior que o valor do pedido.");
+      }
+      if(valorDesconto > descontoMaximo) {
+         throw new Exception("Valor Desconto não pode ser maior que 50% do valor do pedido.");
+      }
+     }
+
+     Ped_desconto_indenizacao table = new Ped_desconto_indenizacao();
+     Vector sets = new Vector(10, 2);
+     table.setPed_nmro(com.egen.util.text.FormatNumber.parseIntegerWrapper(f.getPed_nmro()));
+     if (f.getPed_nmro() != null) {
+      sets.addElement("ped_nmro");
+     }
+     table.setTipo_desconto(com.egen.util.text.FormatNumber.parseIntegerWrapper(f.getTipo_desconto()));
+     if (f.getTipo_desconto() != null) {
+      sets.addElement("tipo_desconto");
+     }
+     table.setPed_obse(f.getPed_obse());
+     if (f.getPed_obse() != null) {
+      sets.addElement("ped_obse");
+     }
+     table.setValor_desconto(com.egen.util.text.FormatNumber.parseDoubleWrapper(f.getValor_desconto()));
+     if (f.getValor_desconto() != null) {
+      sets.addElement("valor_desconto");
+     }
+     /*
+      table.setPercentual_desc(com.egen.util.text.FormatNumber.parseDoubleWrapper(f.getPercentual_desc()));
+      if (f.getPercentual_desc() != null) {
+        sets.addElement("percentual_desc");
+      }
+*/
+     table.setCnd_cdgo(com.egen.util.text.FormatNumber.parseIntegerWrapper(f.getCnd_cdgo()));
+     if (f.getCnd_cdgo() != null) {
+      sets.addElement("cnd_cdgo");
+     }
+
+     table.setSituacao(f.getSituacao());
+
+     if (f.getSituacao() != null) {
+      sets.addElement("situacao");
+     }
+
+     table.setPrazo_adicional(com.egen.util.text.FormatNumber.parseIntegerWrapper(f.getPrazo_adicional()));
+     if (f.getPrazo_adicional() != null) {
+      sets.addElement("prazo_adicional");
+     }
+
+     table.setUsuario_criacao(sessao.getUsuario());
+     sets.addElement("usuario_criacao");
+
+     table.setData_criacao(new java.sql.Timestamp(new java.util.Date().getTime()));
+     sets.addElement("data_criacao");
+
+     if (sets != null && sets.size() > 0) {
+      String[] set = new String[sets.size()];
+      for (int i = 0; i < sets.size(); i++) {
+       set[i] = (String) sets.elementAt(i);
+      }
+      int updated = 0;
+      if (f.getSituacao_banco().equals("F")) {} else {
+       updated = j.update(table, set);
+      }
+
+      if (updated == 0) {
+       ActionErrors errors = new ActionErrors();
+       errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("warn.norowsupdated", ": " + updated));
+       request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+      } else {
+       Vector res_Ped_desconto_indenizacao = (Vector) session.getAttribute("res_Ped_desconto_indenizacao");
+       if (res_Ped_desconto_indenizacao != null) {
+        res_Ped_desconto_indenizacao.setElementAt(table, 0);
+        Ped_desconto_indenizacao r = (Ped_desconto_indenizacao) res_Ped_desconto_indenizacao.elementAt(0);
+        f.setPed_nmro((r.getPed_nmro() != null) ? r.getPed_nmro() + "" : "");
+        f.setTipo_desconto((r.getTipo_desconto() != null) ? r.getTipo_desconto() + "" : "");
+        f.setPed_obse((r.getPed_obse() != null) ? r.getPed_obse() + "" : "");
+        f.setValor_desconto((r.getValor_desconto() != null) ? com.egen.util.text.FormatNumber.format(r.getValor_desconto(), "##,##0.00") : "");
+        // f.setPercentual_desc((r.getPercentual_desc() != null) ? com.egen.util.text.FormatNumber.format(r.getPercentual_desc(), "##,##0.00") : "");
+        f.setCnd_cdgo((r.getCnd_cdgo() != null) ? r.getCnd_cdgo() + "" : "");
+        f.setSituacao((r.getSituacao() != null) ? r.getSituacao() + "" : "");
+        f.setPrazo_adicional((r.getPrazo_adicional() != null) ? r.getPrazo_adicional() + "" : "");
+       }
+      }
+     }
+     session.setAttribute(mapping.getName(), form);
+    } else {
+
+     if (((f.getTipo_desconto() != null && (!f.getTipo_desconto().equals(""))) ||
+       (f.getPed_obse() != null && (!f.getPed_obse().equals(""))) ||
+       (f.getValor_desconto() != null && (!f.getValor_desconto().equals(""))) ||
+       (f.getPrazo_adicional() != null && (!f.getPrazo_adicional().equals(""))) ||
+       (f.getCnd_cdgo() != null && (!f.getCnd_cdgo().equals("")))) && (f.getAlterado() != null && (f.getAlterado().equals("S")))) {
+
+      f.setValor_desconto(f.getValor_desconto().replace(",", "."));
+      //      f.setPercentual_desc(f.getPercentual_desc().replace(",","."));
+
+      if (f.getPed_nmro().equals("")) {
+       throw new Exception("Todos os parâmetros devem ser informados!");
+      }
+
+      if (f.getValor_desconto().equals("")) {
+       throw new Exception("Valor deve ser informado!");
+      }
+
+      if ((!(f.getValor_desconto().equals("")))) {
+       if (Double.parseDouble(f.getValor_desconto()) > limiteBonificacao) {
+        throw new Exception("Limite excedido");
+       }
+       String valor_pedido = f.getValor_pedido().replace(".", "").replace(",", ".");
+       if (Double.parseDouble(f.getValor_desconto()) > Double.parseDouble(valor_pedido)) {
+        throw new Exception("Valor Desconto não pode ser maior que o valor do pedido.");
+       }
+      }
+
+      String desconsiderarControleSaldo = query.retorna(j, "SELECT 'S' FROM wbrio.parametros WHERE par_sist_codigo = 'BRNET' AND nome = 'usuario_liberado_saldo_bonificacao_pedido' and valor = '" + sessao.getUsuario() + "'");
+      if(!desconsiderarControleSaldo.equalsIgnoreCase("s")) {
+      Double saldo = pedidosIndenizadosDescontos.retornaSaldo(j, Integer.parseInt(f.getCli_cdgo()), Integer.parseInt(f.getCodigo_marca()),Integer.parseInt(f.getEsc_seqn()));
+         if((saldo - Double.parseDouble(f.getValor_desconto()))<0){
+            throw new Exception("O saldo total que pode ser solicitado pelo cliente/loja/pedido/marca ("+f.getCli_cdgo()+"/"+f.getEsc_seqn()+"/"+f.getPed_nmro()+"/"+f.getCodigo_marca()+") é: " + saldo + "! (Valor informado: "+Double.parseDouble(f.getValor_desconto())+")");
+         }
+      }
+  
+      String sit = f.getSituacao();
+      if (sit.equalsIgnoreCase("N")) {
+       sit = "A";
+      }
+
+      Ped_desconto_indenizacao table = new Ped_desconto_indenizacao();
+      Object[][] name_value = {
+       {"ped_nmro",com.egen.util.text.FormatNumber.toInteger(f.getPed_nmro())},
+       {"tipo_desconto",com.egen.util.text.FormatNumber.toInteger(f.getTipo_desconto())},
+       {"ped_obse",f.getPed_obse()},
+       {"valor_desconto",com.egen.util.text.FormatNumber.toDouble(f.getValor_desconto())},
+       {"cnd_cdgo",com.egen.util.text.FormatNumber.toInteger(f.getCnd_cdgo())},
+       {"situacao",sit},
+       {"prazo_adicional",com.egen.util.text.FormatNumber.toInteger(f.getPrazo_adicional())},
+       {"usuario_criacao", sessao.getUsuario()},
+       {"data_criacao", new java.sql.Timestamp(new java.util.Date().getTime())}
+      };
+
+      j.insert(table, name_value);
+
+      Vector res_Ped_desconto_indenizacao = (Vector) session.getAttribute("res_Ped_desconto_indenizacao");
+      if (res_Ped_desconto_indenizacao != null && table != null) {
+       res_Ped_desconto_indenizacao.addElement(table);
+       session.setAttribute("res_Ped_desconto_indenizacao", res_Ped_desconto_indenizacao);
+      }
+     }
+    }
+   }
+  }
+ }
+}</action_code>
+<property>update_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_back_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    DynaActionForm _ge_grid = (DynaActionForm) form;
+    PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+    PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+    actionForward = new ActionForward("/com/PedidosIndenizadosDescontos_fForm.jsp", true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+  }
+  return actionForward;
+}
+</action_code>
+<property>back_action</property>
+<forward>back</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>ajustar_pedidos_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>Ajustar Pedidos</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_ajustar_pedidos_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+   HttpSession session = request.getSession(true);
+   ActionForward actionForward = null;
+   com.egen.util.jdbc.JdbcUtil j = null;
+   try {
+      j = new com.egen.util.jdbc.JdbcUtil();
+      DynaActionForm _ge_grid = (DynaActionForm) form;
+      PedidosIndenizadosDescontosActionForm[] _ge_grid_array = (PedidosIndenizadosDescontosActionForm[]) _ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+      PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+      ajustar_pedidos_action(j, mapping, form, request, response);
+      actionForward = new ActionForward("/com/PedidosIndenizadosDescontosGrid.do?select_action=", true);
+   } catch (Exception e) {
+      ActionErrors errors = new ActionErrors();
+      errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("error.action.exception", com.egen.util.system.Error.getMessage(e)));
+      request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+      session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+      actionForward = mapping.findForward("same");
+   } finally {
+      if (j != null) {
+         j.close();
+      }
+   }
+   return actionForward;
+}
+
+private void ajustar_pedidos_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+   HttpSession session = request.getSession(true);
+   acesso.Sessao sessao = new acesso.Sessao(session);
+   DynaActionForm _ge_grid = (DynaActionForm) form;
+   PedidosIndenizadosDescontosActionForm[] _ge_grid_array = (PedidosIndenizadosDescontosActionForm[]) _ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+   PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+   boolean ajustou = false;
+   int contador = 0;
+   java.util.Vector res_Pedidos = (java.util.Vector) session.getAttribute("res_Ped_desconto_indenizacao");
+   String flagExec = "";
+   util.consultas.Parametros parametros = new util.consultas.Parametros();
+   double percentualMaximo = Double.parseDouble(parametros.retornaParametro("percentual_maximo_valor_desconto"));
+   util.consultas.Query query = new util.consultas.Query();
+
+   int contador_validacao = 0;
+   for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array.length; _ge_grid_array_index++) {
+      f = _ge_grid_array[_ge_grid_array_index];
+      portalbr.dbobj.view.Jw_ped_desconto_indenizacao t_ped_validacao = (portalbr.dbobj.view.Jw_ped_desconto_indenizacao) res_Pedidos.elementAt(contador_validacao++);
+      if (f.getGridCheckField()) {
+         if (!((t_ped_validacao.getPed_stat().equals("F")) || (t_ped_validacao.getPed_stat().equals("L")))) {
+            if (t_ped_validacao.getSituacao().equals("A")) {
+               double valor_desconto = Double.parseDouble(query.retorna(j, "SELECT (valor_desconto / fct_valor_pedido(pi.ped_nmro)) * 100 percentual_desconto FROM ped_desconto_indenizacao pi WHERE ped_nmro = " + f.getPed_nmro()));
+               if (valor_desconto > percentualMaximo) {
+                  session.setAttribute("mensagem", "O valor de desconto não pode ser maior que " + percentualMaximo + "% do valor do pedido! (Pedido: " + f.getPed_nmro() + ")");
+                  throw new Exception("O valor de desconto não pode ser maior que " + percentualMaximo + "% do valor do pedido! (Pedido: " + f.getPed_nmro() + ")");
+               }
+            }
+         }
+      }
+   }
+
+   for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array.length; _ge_grid_array_index++) {
+      f = _ge_grid_array[_ge_grid_array_index];
+      portalbr.dbobj.view.Jw_ped_desconto_indenizacao t_ped = (portalbr.dbobj.view.Jw_ped_desconto_indenizacao) res_Pedidos.elementAt(contador);
+      if (f.getGridCheckField()) {
+         if (!((t_ped.getPed_stat().equals("F")) || (t_ped.getPed_stat().equals("L")))) {
+            if (t_ped.getSituacao().equals("A")) {
+               double valor_pedido = 0;
+               valor_pedido = Double.parseDouble(query.retorna(j, "SELECT fct_valor_pedido(" + f.getPed_nmro() + ") FROM dual"));
+               String existe = query.retorna(j, "SELECT 'S' FROM ped_desconto_indenizacao WHERE ped_nmro = " + f.getPed_nmro() + " AND situacao = 'F'");
+               if (!existe.equalsIgnoreCase("S")) {
+                  try {
+                     flagExec = "pre update ped_boni2";
+                     StringBuilder sbu = new StringBuilder();
+                     String existePia = query.retorna(j, "SELECT 'S' FROM ped_inf_adicionais WHERE ped_nmro = " + f.getPed_nmro());
+                     if (existePia.equalsIgnoreCase("S")) {
+                        sbu.append(" UPDATE ped_inf_adicionais pia ");
+                        sbu.append("    SET pia.ped_boni_avaria = nvl(pia.ped_boni_avaria, 0) ");
+                        sbu.append("			 + (SELECT valor_desconto ");
+                        sbu.append("                                 FROM ped_desconto_indenizacao pd ");
+                        sbu.append("                                WHERE pd.ped_nmro = " + f.getPed_nmro() + ") ");
+                        sbu.append("  WHERE ped_nmro  = " + f.getPed_nmro());
+                     } else {
+                        sbu.append(" INSERT INTO ped_inf_adicionais (ped_nmro, emp_empresa, ped_boni_avaria) ");
+                        sbu.append(" VALUES ");
+                        sbu.append("    (" + f.getPed_nmro());
+                        sbu.append("    ,(SELECT emp_empresa FROM ped WHERE ped_nmro = " + f.getPed_nmro() + ") ");
+                        sbu.append("    ,(SELECT valor_desconto ");
+                        sbu.append("               FROM ped_desconto_indenizacao pd ");
+                        sbu.append("              WHERE pd.ped_nmro = " + f.getPed_nmro() + ")) ");
+                     }
+                     query.execute(j, sbu.toString());
+                     query.execute(j, "UPDATE ped_desconto_indenizacao SET situacao = 'F' where ped_nmro = " + f.getPed_nmro());
+                     flagExec = "pos update ped_boni2";
+                     StringBuilder sbc = new StringBuilder();
+                     flagExec = "pre insert situacoes_pedidos";
+                     sbc.append("begin ");
+                     sbc.append("	delete situacoes_pedidos WHERE ped_nmro = " + f.getPed_nmro() + " AND ts_codigo_situacao = 123; ");
+                     sbc.append("	insert into situacoes_pedidos (ped_nmro,ts_codigo_situacao,dt_cad_situacao,usuario_situacao,observ_situacao) VALUES (" + f.getPed_nmro() + ",123,SYSDATE,'" + sessao.getUsuario() + "','" + f.getValor_desconto() + "'); ");
+                     sbc.append("end; ");
+                     java.sql.CallableStatement stmt;
+                     stmt = j.getConn().prepareCall(sbc.toString());
+                     stmt.execute();
+                     if (stmt != null) {
+                        stmt.close();
+                     }
+                     flagExec = "pos insert situacoes_pedidos";
+                  } catch (Exception ex) {
+                     throw new Exception(ex.getMessage() + "###Pedido: " + f.getPed_nmro() + ", flag: " + flagExec + "###");
+                  }
+               }
+               ajustou = true;
+            }
+         }
+      }
+      contador++;
+   }
+
+   if (ajustou) {
+      session.setAttribute("mensagem", "Os pedidos foram ajustados com sucesso!");
+   }
+}</action_code>
+<property>ajustar_pedidos_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>cancelar_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>Cancelar</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_cancelar_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    DynaActionForm _ge_grid = (DynaActionForm) form;
+    PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+    PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+    cancelar_action(j, mapping, form, request, response);
+    actionForward = new ActionForward("/com/PedidosIndenizadosDescontosGrid.do?select_action=", true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}
+private void cancelar_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  DynaActionForm _ge_grid = (DynaActionForm) form;
+  PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+  PedidosIndenizadosDescontosActionForm f = _ge_grid_array[0];
+  boolean cancelou = false;
+  int contador = 0;
+  java.util.Vector res_Pedidos = (java.util.Vector)session.getAttribute("res_Ped_desconto_indenizacao");
+  for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array.length; _ge_grid_array_index++) {
+    f = _ge_grid_array[_ge_grid_array_index];
+    portalbr.dbobj.view.Jw_ped_desconto_indenizacao t_ped = (portalbr.dbobj.view.Jw_ped_desconto_indenizacao)res_Pedidos.elementAt(contador); 
+    if (f.getGridCheckField()) {
+    // if(!((t_ped.getPed_stat().equals("F")))){ 
+       if(true){ // Liberado para todas as situações
+          util.consultas.Query query = new util.consultas.Query();
+          query.execute(j, "UPDATE ped_desconto_indenizacao SET situacao = 'C' where ped_nmro = "+f.getPed_nmro());
+          String emailRepresentante = query.retorna("SELECT r.rep_endereco_eletronico FROM rep r, ped p WHERE p.rep_cdgo = r.rep_cdgo and p.ped_nmro = " + f.getPed_nmro());
+          String motivo = query.retorna("SELECT ped_obse FROM ped_desconto_indenizacao WHERE ped_nmro = " + f.getPed_nmro());
+          cancelou = true;
+          if(!emailRepresentante.equals("")){
+             util.email.EmailUtil email = new util.email.EmailUtil();
+             email.inicializa();
+             email.setEmailDestinatario(emailRepresentante);
+             email.setAssunto("Solicitacao de indenizacao cancelada");
+             email.adicionaLinha("A solicitacao de indenizacao para o ped "+f.getPed_nmro()+" foi cancelada.");
+             if(!motivo.equals("")){
+                email.adicionaLinha("Motivo : " + motivo);
+             }
+             email.enviarEmail();
+          }
+       }
+    }
+	contador++;
+  }
+  if(cancelou){
+     session.setAttribute("mensagem", "As indenizações foram canceladas com sucesso!");
+  }
+}</action_code>
+<property>cancelar_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>marcar_todos_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>marcar_todos</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers>
+<triggers_item>
+<class>com.egen.develop.generator.form.Trigger</class>
+<name>tg_marcar_todos_action</name>
+<type>pos</type>
+<connectionType></connectionType>
+<transact>true</transact>
+<businessProcess></businessProcess>
+<triggerTemplate></triggerTemplate>
+<triggerCode>private void tg_marcar_todos_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  try {
+    DynaActionForm _ge_grid = (DynaActionForm) form;
+    PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+    if (_ge_grid_array != null) {
+      PedidosIndenizadosDescontosActionForm f = null;
+      for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array.length; _ge_grid_array_index++) {
+        f = _ge_grid_array[_ge_grid_array_index];
+        f.setGridCheckField(true);
+      }
+    }
+    session.setAttribute(mapping.getName(), form);
+  } catch (Exception e) {
+    throw e;
+  }
+}
+
+</triggerCode>
+<develHelp></develHelp>
+<triggerSetProperty>
+</triggerSetProperty>
+</triggerSetProperty>
+</triggers_item>
+</triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>marcar_todos_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>desmarcar_todos_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped_desconto_indenizacao</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>desmarcar_todos</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers>
+<triggers_item>
+<class>com.egen.develop.generator.form.Trigger</class>
+<name>tg_desmarcar_todos_action</name>
+<type>pos</type>
+<connectionType></connectionType>
+<transact>true</transact>
+<businessProcess></businessProcess>
+<triggerTemplate></triggerTemplate>
+<triggerCode>private void tg_desmarcar_todos_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  try {
+    DynaActionForm _ge_grid = (DynaActionForm) form;
+    PedidosIndenizadosDescontosActionForm[]_ge_grid_array = (PedidosIndenizadosDescontosActionForm[])_ge_grid.get("bl_form_Ped_desconto_indenizacao_lines");
+    if (_ge_grid_array != null) {
+      PedidosIndenizadosDescontosActionForm f = null;
+      for (int _ge_grid_array_index = 0; _ge_grid_array_index < _ge_grid_array.length; _ge_grid_array_index++) {
+        f = _ge_grid_array[_ge_grid_array_index];
+        f.setGridCheckField(false);
+      }
+    }
+    session.setAttribute(mapping.getName(), form);
+  } catch (Exception e) {
+    throw e;
+  }
+}
+</triggerCode>
+<develHelp></develHelp>
+<triggerSetProperty>
+</triggerSetProperty>
+</triggerSetProperty>
+</triggers_item>
+</triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>desmarcar_todos_action</property>
+<forward></forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate></formTemplate>
+<form_code><%
+  acesso.Sessao sessao = new acesso.Sessao(session);
+  util.consultas.com.PedidosIndenizadosDescontos pedidosIndenizadosDescontos = new util.consultas.com.PedidosIndenizadosDescontos();
+%>
+<html:form action="com/PedidosIndenizadosDescontosGrid.do" method="post" styleClass="baseForm">
+<%
+  int contador = 0;
+
+%>
+  <table class="messageTable" style='width:99%;'>
+    <tr class="messageTr" >
+      <td class="messageTd">
+        <div style=font-size:11px;font-weight:normal;>
+          
+           <div class\='div10l'>
+            Todos os campos com
+            <img src='../img/required.gif' border\='0' title\='Not Null' style\='cursor\:pointer'>
+            são obrigatórios.
+          </div>
+
+          <div class\='div10l'>
+            Os pedidos marcados com
+            <img src='../img/mark.gif' border\='0' title\='Not Null' style\='cursor\:pointer'>
+            não podem receber descontos, pois contém condição de pagamento Cartão de Crédito ou à vista.
+          </div>
+
+          <div class\='div10l'>
+            Os pedidos marcados com
+            <img src='../img/aviso.gif' border\='0' title\='Not Null' style\='cursor\:pointer'>
+            possuem modelos que não aceitam descontos.
+          </div>
+
+        </div>
+        <html:errors property="gridCheckField"/>
+        <html:errors property="ped_nmro"/>
+        <html:errors property="tipo_desconto"/>
+        <html:errors property="ped_obse"/>
+        <html:errors property="valor_desconto"/>
+        <html:errors property="percentual_desc"/>
+        <html:errors property="prazo_adicional"/>
+        <html:errors property="cnd_cdgo"/>
+        <html:errors property="cnd_desc"/>
+        <html:errors property="situacao"/>
+        <html:errors property="ActionErrors.GLOBAL_ERROR_bl_form_Ped_desconto_indenizacao"/>
+      </td>
+    </tr>
+  </table>
+
+  <table class="itemGridTable" style='width:99%;' border='1'>
+    <tr class="reportTr">
+
+<% if(pedidosIndenizadosDescontos.usuarioLiberado(session)) { %>
+      <td class="columnTdHeader" style="text-align: center">
+      </td>
+<% } %>
+
+      <td class="columnTdHeader" style="text-align: left">
+        <span class="spamFormLabel">
+          Pedido
+        </span>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: left">
+        <span class="spamFormLabel">
+          Pedido Afv
+        </span>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: left">
+        <span class="spamFormLabel">
+          Regional
+        </span>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: left">
+        <span class="spamFormLabel">
+          Cliente
+        </span>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: center">
+        <span class="spamFormLabel">
+          Tipo Desconto
+        </span>
+        <bean:message key="jsp.fieldnotnull"/>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: left">
+        <span class="spamFormLabel">
+          Observação
+        </span>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: center">
+        <span class="spamFormLabel">
+          Valor<br>Desconto
+        </span>
+        <img src="../img/required.gif" border="0" title="Opcional" style="cursor:pointer"/>
+      </td>
+
+     <td class="columnTdHeader" style="text-align: left">
+        <span class="spamFormLabel">
+          Condição de Pagamento
+        </span>
+      </td>
+
+
+      <td class="columnTdHeader" style="text-align: center">
+        <span class="spamFormLabel">
+          Situação
+        </span>
+      </td>
+
+      <td class="columnTdHeader" style="text-align: center">
+        <span class="spamFormLabel">
+          Status
+        </span>
+      </td>
+
+     <td class="columnTdHeader" style="text-align: right">
+        <span class="spamFormLabel">
+          Valor Pedido
+        </span>
+      </td>
+
+
+
+    </tr>
+
+  <%
+    java.util.Vector res_Pedidos = (java.util.Vector)session.getAttribute("res_Ped_desconto_indenizacao");
+    String style="";
+  %>
+    <logic:iterate id="bl_form_Ped_desconto_indenizacao_lines" name="PedidosIndenizadosDescontosGridActionForm" property="bl_form_Ped_desconto_indenizacao_lines" indexId="indexId">
+
+
+<%
+          if (!((contador%2)!=0)) {
+            style="rowColor";
+          } else {
+            style="rowBlank";
+          }
+%>
+      <tr class="<%= style %>">
+
+        <html:hidden property="esc_seqn" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        <html:hidden property="codigo_marca" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        <html:hidden property="cli_cdgo" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        <html:hidden property="banco" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true" styleId="banco"/>
+        <html:hidden property="alterado" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true" styleId="alterado"/>
+
+
+   <%   portalbr.dbobj.view.Jw_ped_desconto_indenizacao t_ped = (portalbr.dbobj.view.Jw_ped_desconto_indenizacao)res_Pedidos.elementAt(contador); %>
+
+
+
+
+<% if(pedidosIndenizadosDescontos.usuarioLiberado(session)) { %>
+        <td class="tdGridField">
+          <html:checkbox property="gridCheckField" styleId="gridCheckField" styleClass="baseField" value="true" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+</td>
+<% } else { %>
+
+          <html:hidden property="gridCheckField" value="false" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+
+
+<% } %>
+     
+
+
+        <td class="tdGridField" style="width: 100px">
+          <html:hidden property="ped_nmro" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+           
+          <% if(t_ped.getAceita_desconto().equalsIgnoreCase("N")){ %>
+             <a href="#" onclick="wopen('../com/ConsultaPedidos_iForm.do?select_action=&pedido_beira_rio=<%= t_ped.getPed_nmro() %>&noheader&descontos','_blank',1000,500)">
+                <%= t_ped.getPed_nmro() %>
+             </a>
+          <% } else { %>
+             <a href="#" onclick="wopen('../com/ConsultaPedidos_iForm.do?select_action=&pedido_beira_rio=<%= t_ped.getPed_nmro() %>&noheader','_blank',1000,500)">
+                <%= t_ped.getPed_nmro() %>
+             </a>
+          <% } %>
+           
+<% if(((t_ped.getCnd_cdgo()+"").equals("100"))||((t_ped.getCnd_cdgo()+"").equals("101"))||((t_ped.getCnd_cdgo()+"").equals("102"))||((t_ped.getCnd_cdgo()+"").equals("29"))){ %>
+<img src='../img/mark.gif' border\='0' title\='Not Null' style\='cursor\:pointer'>        
+<% }%>
+<% if(t_ped.getAceita_desconto().equalsIgnoreCase("N")){ %>
+<img src='../img/aviso.gif' border\='0' title\='Not Null' style\='cursor\:pointer'>
+<% } %>
+</td>
+
+        <td class="tdGridField">
+          <html:hidden property="ped_afv" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+          <%= t_ped.getPed_sequencial_maquina()!=null?t_ped.getPed_sequencial_maquina():"" %>
+        </td>
+
+        <td class="tdGridField">
+          <html:hidden property="codigo_regional" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+          <html:hidden property="nome_regional" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+          <%= t_ped.getCodigo_regional()!=null?(t_ped.getCodigo_regional()+"-"+t_ped.getNome_regional()):"" %>
+        </td>
+
+        <td class="tdGridField">
+          <html:hidden property="cliente" styleId="cliente" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+          <%= t_ped.getCliente()!=null?t_ped.getCliente():"" %>
+        </td>
+       <% if((t_ped.getAceita_desconto().equalsIgnoreCase("N"))||(t_ped.getSituacao().equals("F"))||((t_ped.getPed_especie_pedido().equals("R"))&& !(pedidosIndenizadosDescontos.usuarioLiberado(session)))||(t_ped.getPed_stat().equals("L"))||(t_ped.getPed_stat().equals("F"))||(t_ped.getPed_stat().equals("C"))||((t_ped.getCnd_cdgo()+"").equals("100"))||((t_ped.getCnd_cdgo()+"").equals("101"))||((t_ped.getCnd_cdgo()+"").equals("102"))||((t_ped.getCnd_cdgo()+"").equals("29"))){ %>
+        <td class="tdGridField" style="text-align: center">
+          <html:select property="tipo_desconto" styleId="tipo_desconto" disabled="true" styleClass="disabled" size="1" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true">
+            <html:options property="tipo_descontoList" labelProperty="tipo_descontoLabelList" styleClass="baseOptions" name="bl_form_Ped_desconto_indenizacao_lines" labelName="bl_form_Ped_desconto_indenizacao_lines"/>
+          </html:select>
+        </td>
+       <% } else { %>
+        <td class="tdGridField" style="text-align: center">
+          <html:select property="tipo_desconto" onchange="setarAlterado(this.name);" styleId="tipo_desconto" styleClass="baseField" size="1" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true">
+            <html:options property="tipo_descontoList" labelProperty="tipo_descontoLabelList" styleClass="baseOptions" name="bl_form_Ped_desconto_indenizacao_lines" labelName="bl_form_Ped_desconto_indenizacao_lines"/>
+          </html:select>
+        </td>
+       <% } %>
+
+       <% if((t_ped.getAceita_desconto().equalsIgnoreCase("N"))||(t_ped.getSituacao().equals("F"))||((t_ped.getPed_especie_pedido().equals("R"))&& !(pedidosIndenizadosDescontos.usuarioLiberado(session)))||(t_ped.getPed_stat().equals("L"))||(t_ped.getPed_stat().equals("F"))||(t_ped.getPed_stat().equals("C"))||((t_ped.getCnd_cdgo()+"").equals("100"))||((t_ped.getCnd_cdgo()+"").equals("101"))||((t_ped.getCnd_cdgo()+"").equals("102"))||((t_ped.getCnd_cdgo()+"").equals("29"))){ %>
+        <td class="tdGridField">
+          <html:text property="ped_obse" styleId="ped_obse" readonly="true" styleClass="disabled" size="40" maxlength="800" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        </td>
+       <% } else { %>
+        <td class="tdGridField">
+          <html:text property="ped_obse" styleId="ped_obse" onchange="setarAlterado(this.name);" styleClass="baseField" size="40" maxlength="800" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        </td>
+       <% } %>
+
+
+       <% if((t_ped.getAceita_desconto().equalsIgnoreCase("N"))||(t_ped.getSituacao().equals("F"))||((t_ped.getPed_especie_pedido().equals("R"))&& !(pedidosIndenizadosDescontos.usuarioLiberado(session)))||(t_ped.getPed_stat().equals("L"))||(t_ped.getPed_stat().equals("F"))||(t_ped.getPed_stat().equals("C"))||((t_ped.getCnd_cdgo()+"").equals("100"))||((t_ped.getCnd_cdgo()+"").equals("101"))||((t_ped.getCnd_cdgo()+"").equals("102"))||((t_ped.getCnd_cdgo()+"").equals("29"))){ %>
+        <td class="tdGridField" style="text-align: center">
+          <html:text property="valor_desconto" styleClass="disabled" readonly="true" size="10" maxlength="22" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        </td>
+       <% } else { %>
+        <td class="tdGridField" style="text-align: center">
+          <html:text property="valor_desconto" styleId="valor_desconto" onchange="setarAlterado(this.name);" styleClass="baseField" size="10" maxlength="22" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+        </td>
+       <% } %> 
+
+
+
+        <td class="tdGridField" style="text-align: left">
+          <%= t_ped.getCnd_cdgo()!=null?t_ped.getCnd_cdgo():"" %> - <%= t_ped.getCnd_desc()!=null?t_ped.getCnd_desc():"" %>
+        </td>
+
+
+
+        <td class="tdGridField" style="text-align: center">
+          <html:hidden property="situacao_banco" styleId="situacao_banco" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+
+
+          <html:hidden property="situacao" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true" />
+          <% 
+             if(t_ped.getSituacao().equals("N")){
+                %>Não Indenizado<%
+             }
+             if(t_ped.getSituacao().equals("A")){
+                %>Indenizado<%
+             }
+             if(t_ped.getSituacao().equals("C")){
+                %>Cancelado<%
+             }
+             if(t_ped.getSituacao().equals("F")){
+                %>Confirmado<%
+             }
+          %>
+
+<%     if(!((t_ped.getPed_stat().equals("F"))||(t_ped.getPed_stat().equals("L")))){ %>
+          <% if(t_ped.getSituacao().equals("C")) { %>
+              <input type="button" value="Abrir Solicitação"  onclick="if(confirm('Confirma a operação? (OBS: Todas as alterações não salvas serão perdidas!)')){top.location='../com/PedidosIndenizadosDescontosForm.do?update_pedido2_action=&ped_nmro1=<%= t_ped.getPed_nmro() %>'}">
+          <% }} %>
+
+        </td>
+ 
+
+
+        <td class="tdGridField" style="text-align: center">
+          <html:hidden property="status" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+          <%= t_ped.getPed_stat()!=null?t_ped.getPed_stat():"" %>
+        </td>
+
+
+
+        <td class="tdGridField" style="text-align: right">
+          <html:hidden property="valor_pedido" name="bl_form_Ped_desconto_indenizacao_lines" indexed="true"/>
+          <%= com.egen.util.text.FormatNumber.format(t_ped.getValor(), "##,##0.00") %>
+        </td>
+
+      </tr>
+    
+<%
+   contador ++;
+%>
+    </logic:iterate>
+
+  </table>
+
+  <table class="buttonTable" style='width:99%;'>
+    <tr class="buttonTr">
+      <td class="buttonTd">
+<% if(pedidosIndenizadosDescontos.usuarioLiberado(session)) { %>
+        <html:submit value="Marcar Todos" styleClass="baseButton" property="marcar_todos_action">
+        </html:submit>
+        <html:submit value="Desmarcar Todos" styleClass="baseButton" property="desmarcar_todos_action">
+        </html:submit>
+<% } %>
+
+        <html:submit styleClass="myhidden" property="select_action">
+          <bean:message bundle="ApplicationResources" key="jsp.select"/>
+        </html:submit>
+        <html:submit accesskey="a" value="Salvar Alterações" styleClass="baseButton" property="update_action">
+        </html:submit>
+
+<% if(pedidosIndenizadosDescontos.usuarioLiberado(session)) { %>
+
+        <html:submit accesskey="j" value="Ajustar Pedidos" onclick="return(confirm('Confirma a operação? (OBS: Todas as alterações não salvas serão perdidas!)'))" styleClass="baseButton" property="ajustar_pedidos_action">
+        </html:submit>
+        <html:submit accesskey="c" value="Cancelar" onclick="return(confirm('Confirma a operação? (OBS: Todas as alterações não salvas serão perdidas!)'))" styleClass="baseButton" property="cancelar_action">
+        </html:submit>
+<% } %>
+        <html:submit accesskey="a" styleClass="baseButton" property="back_action">
+          <bean:message bundle="ApplicationResources" key="jsp.back"/>
+        </html:submit>
+      </td>
+    </tr>
+  </table>
+
+</html:form>
+
+<% if(session.getAttribute("ok")!=null) { %>
+   <script>
+      alert('Registros salvos com sucesso!');
+   </script>
+<% 
+  session.removeAttribute("ok");
+  }
+%>
+
+
+<% 
+   if(session.getAttribute("mensagem")!=null) { 
+%>
+   <script>
+      alert('<%= (String)session.getAttribute("mensagem") %>');
+   </script>
+<% 
+  session.removeAttribute("mensagem");
+  }
+%>
+
+<script>
+   function setarAlterado(nome){
+     indice = nome.substring(nome.indexOf('[')+1,nome.indexOf(']'));
+    <% if(((String)session.getAttribute("qtd_itens")).equals("1")){ %>
+       document.forms[0].alterado.value='S';
+     <% } else { %>
+       document.forms[0].alterado[indice].value='S';
+     <% } %> 
+   }
+
+</script></form_code>
+<number_column></number_column>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Ped</name>
+<title>update</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Ped</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/PedidosIndenizadosDescontosForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>ped_nmro1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped</block_name>
+<role_item></role_item>
+<database_column>ped_nmro</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ped_nmro1</property>
+<label>Ped_nmro</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>true</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>true</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>update_pedido_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.update</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_update_pedido_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    double valor_pedido = 0;
+    util.consultas.Query query = new util.consultas.Query();
+    j = new com.egen.util.jdbc.JdbcUtil();
+    PedidosIndenizadosDescontosActionForm f = (PedidosIndenizadosDescontosActionForm) form;
+    valor_pedido = Double.parseDouble(query.retorna(j,"SELECT fct_valor_pedido("+f.getPed_nmro1()+") FROM dual"));
+    String existe = query.retorna(j, "SELECT 'S' FROM ped_inf_adicionais WHERE ped_nmro = " + f.getPed_nmro1());
+    if(existe.equalsIgnoreCase("S")){
+       StringBuilder sbu = new StringBuilder();
+       sbu.append(" UPDATE ped_inf_adicionais pia ");
+       sbu.append("    SET pia.ped_boni_avaria = pia.ped_boni_avaria ");
+       sbu.append("		+ (round((SELECT valor_desconto ");
+       sbu.append("                    FROM ped_desconto_indenizacao pd ");
+       sbu.append("                   WHERE pd.ped_nmro = ").append(f.getPed_nmro1()).append(") * 100 / (").append(valor_pedido).append("),2)) WHERE pia.ped_nmro = ").append(f.getPed_nmro1());
+       query.execute(j, sbu.toString());
+    } else {
+	StringBuilder sbi = new StringBuilder();
+	sbi.append(" INSERT INTO ped_inf_adicionais (ped_nmro, emp_empresa, ped_boni_avaria) ");
+        sbi.append("   VALUES (").append(f.getPed_nmro1());
+	sbi.append("          ,(SELECT emp_empresa FROM ped WHERE ped_nmro = ").append(f.getPed_nmro1()).append(") ");
+        sbi.append("  		  ,(ROUND((SELECT valor_desconto FROM ped_desconto_indenizacao pd WHERE pd.ped_nmro = ").append(f.getPed_nmro1()).append(") * 100 / (").append(valor_pedido).append("), 2)))");
+	query.execute(j, sbi.toString());
+    }
+    query.execute(j, "UPDATE ped_desconto_indenizacao SET situacao = 'F' where ped_nmro = "+f.getPed_nmro1());
+    actionForward = new ActionForward("/com/PedidosIndenizadosDescontosGrid.do?select_action=", true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}</action_code>
+<property>update_pedido_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>update_pedido1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.update</value>
+<accesskey>u</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_update_pedido1_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    util.consultas.Query query = new util.consultas.Query();
+    PedidosIndenizadosDescontosActionForm f = (PedidosIndenizadosDescontosActionForm) form;
+    query.execute(j, "UPDATE ped_desconto_indenizacao SET situacao = 'C' where ped_nmro = "+f.getPed_nmro1());
+    String emailRepresentante = query.retorna("SELECT r.rep_endereco_eletronico FROM rep r, ped p WHERE p.rep_cdgo = r.rep_cdgo and p.ped_nmro = " + f.getPed_nmro1());
+    String motivo = query.retorna("SELECT ped_obse FROM ped_desconto_indenizacao WHERE ped_nmro = " + f.getPed_nmro1());
+    if(!emailRepresentante.equals("")){
+       util.email.EmailUtil email = new util.email.EmailUtil();
+       email.inicializa();
+       email.setEmailDestinatario(emailRepresentante);
+       email.setAssunto("Solicitacao de indenizacao cancelada");
+       email.adicionaLinha("A solicitacao de indenizacao para o ped "+f.getPed_nmro1()+" foi cancelada.");
+       if(!motivo.equals("")){
+          email.adicionaLinha("Motivo : " + motivo);
+       }
+       email.enviarEmail();
+    }
+    actionForward = new ActionForward("/com/PedidosIndenizadosDescontosGrid.do?select_action=", true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}</action_code>
+<property>update_pedido1_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>update_pedido2_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Ped</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.update</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_update_pedido2_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+   HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    double valor_pedido = 0;
+    j = new com.egen.util.jdbc.JdbcUtil();
+    util.consultas.Query query = new util.consultas.Query();
+    PedidosIndenizadosDescontosActionForm f = (PedidosIndenizadosDescontosActionForm) form;
+    valor_pedido = Double.parseDouble(query.retorna(j,"SELECT fct_valor_pedido("+f.getPed_nmro1()+") FROM dual"));
+    query.execute(j, "UPDATE ped_desconto_indenizacao SET valor_desconto = null where ped_nmro = "+f.getPed_nmro1());
+    query.execute(j, "UPDATE ped_desconto_indenizacao SET situacao = 'A' where ped_nmro = "+f.getPed_nmro1());
+    query.execute(j, "UPDATE ped_desconto_indenizacao SET ped_obse = null where ped_nmro = "+f.getPed_nmro1());
+    actionForward = new ActionForward("/com/PedidosIndenizadosDescontosGrid.do?select_action=", true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Ped", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}</action_code>
+<property>update_pedido2_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>clean_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>PedidosIndenizadosDescontosActionForm</name>
+<type>portalbr.com.PedidosIndenizadosDescontosActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>true</dynamic>
+<name>PedidosIndenizadosDescontosGridActionForm</name>
+<type>com.egen.util.struts.DynaActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties>
+<formProperties_item>
+<class>com.egen.develop.struts.FormProperty</class>
+<className></className>
+<name>bl_form_Ped_desconto_indenizacao_1_lines</name>
+<type>portalbr.com.PedidosIndenizadosDescontosActionForm[]</type>
+<size>1</size>
+<initial></initial>
+<setProperties></setProperties>
+</formProperties_item>
+<formProperties_item>
+<class>com.egen.develop.struts.FormProperty</class>
+<className></className>
+<name>bl_form_Ped_desconto_indenizacao_lines</name>
+<type>portalbr.com.PedidosIndenizadosDescontosActionForm[]</type>
+<size>1</size>
+<initial></initial>
+<setProperties></setProperties>
+</formProperties_item>
+</formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/PedidosIndenizadosDescontosForm</path>
+<type>portalbr.com.PedidosIndenizadosDescontosAction</type>
+<name>PedidosIndenizadosDescontosActionForm</name>
+<attribute></attribute>
+<input>/com/PedidosIndenizadosDescontosForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/PedidosIndenizadosDescontosForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/PedidosIndenizadosDescontosGrid</path>
+<type>portalbr.com.PedidosIndenizadosDescontosAction</type>
+<name>PedidosIndenizadosDescontosGridActionForm</name>
+<attribute></attribute>
+<input>/com/PedidosIndenizadosDescontosForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope>session</scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/PedidosIndenizadosDescontosForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>back</name>
+<path>/com/PedidosIndenizadosDescontosGrid.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Pedidos Indenizados / Descontos</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(184)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%>
+
+</freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

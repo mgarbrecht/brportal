@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TabelaPrecosExportacao" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="P_USUARIO" class="java.lang.String"/>
+	<parameter name="P_DIRETORIO_IMAGEM_LOGOS" class="java.lang.String"/>
+	<parameter name="P_CODIGO_MARCA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT codigo_marca
+      ,pck_marcas_produtos.get_nome(codigo_marca) descricao_marca
+      ,decode(codigo_marca, 1, 'logo_vizzano.jpg', 3, 'logo_beirario.jpg', 16, 'logo_moleca.jpg', 17, 'logo_molekinha.jpg', 18, 'logo_brsport.jpg') imagem_logo
+      ,codigo_linha
+      ,codigo_referencia
+              ,rowtocol('SELECT distinct rco.cab_cdgo
+                           FROM ref_cor rco
+                          WHERE rco.rfc_status = ''A''
+                            AND rco.lin_cdgo = ' || codigo_linha || '
+                            AND rco.ref_cdgo = ' || codigo_referencia || '
+                            AND (brio.fct_busca_preco_mercado_ext((SELECT MAX(tp.versao_tabela)
+                                                                     FROM tabela_preco tp
+                                                                    WHERE tp.codigo_livro = 50
+                                                                      AND tp.codigo_pais = 1
+                                                                      AND tp.status = ''A''), rco.lin_cdgo, rco.ref_cdgo)) = ' ||
+                                                                      REPLACE(preco,',','.')
+                                                                      ) cabedal
+      ,to_number(preco) preco
+  FROM (SELECT codigo_marca
+              ,versao_tabela
+              ,codigo_linha_tp codigo_linha
+              ,codigo_referencia_tp codigo_referencia
+              ,(brio.fct_busca_preco_mercado_ext(versao_tabela, tp.codigo_linha_tp, tp.codigo_referencia_tp)) preco
+          FROM (SELECT DISTINCT te.versao_tabela
+                               ,mp.codigo_marca
+                               ,rc.lin_cdgo codigo_linha_tp
+                               ,rc.ref_cdgo codigo_referencia_tp
+                               ,te.versao_tabela versao_tabela_tp
+                  FROM tabela_preco_mercado_externo te
+                      ,ref_cor rc
+                      ,lin l
+                      ,marcas_produtos mp
+                 WHERE rc.lin_cdgo = te.codigo_linha
+                   AND rc.ref_cdgo = te.codigo_referencia
+                   AND rc.ref_cdgo = rc.ref_cdgo
+                   AND rc.lin_cdgo = l.lin_cdgo
+                   AND NVL(te.codigo_cabedal, 999) = DECODE(NVL(te.codigo_cabedal, 999), 999, 999, rc.cab_cdgo)
+                   AND te.codigo_livro = 50
+                   AND te.codigo_pais = 1
+                   AND te.versao_tabela = (SELECT MAX(tp.versao_tabela)
+                                             FROM tabela_preco tp
+                                            WHERE tp.codigo_livro = 50
+                                              AND tp.codigo_pais = 1
+                                              AND tp.status = 'A')
+                   AND fct_marca_produto(rc.lin_cdgo, rc.ref_cdgo) = mp.codigo_marca
+                   AND (NVL('T', 'T') = 'T' OR fct_mix_produto(rc.lin_cdgo, rc.ref_cdgo) = 'T')
+                   AND rc.rfc_status = 'A'
+                   AND te.status = 'A'
+                 GROUP BY te.versao_tabela
+                         ,mp.codigo_marca
+                         ,rc.lin_cdgo
+                         ,rc.ref_cdgo
+                         ,rc.cab_cdgo) tp
+where tp.codigo_marca = $P{P_CODIGO_MARCA}
+         ORDER BY codigo_marca
+                 ,codigo_linha_tp
+                 ,codigo_referencia_tp)]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="IMAGEM_LOGO" class="java.lang.String"/>
+	<field name="CODIGO_LINHA" class="java.math.BigDecimal"/>
+	<field name="CODIGO_REFERENCIA" class="java.math.BigDecimal"/>
+	<field name="CABEDAL" class="java.lang.String"/>
+	<field name="PRECO" class="java.math.BigDecimal"/>
+	<group name="CODIGO_MARCA" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{CODIGO_MARCA}]]></groupExpression>
+		<groupHeader>
+			<band height="74">
+				<image onErrorType="Blank">
+					<reportElement x="5" y="30" width="76" height="24"/>
+					<imageExpression><![CDATA[$P{P_DIRETORIO_IMAGEM_LOGOS} + $F{IMAGEM_LOGO}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement style="Column header" x="9" y="58" width="92" height="15" forecolor="#000000"/>
+					<textElement>
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+					<text><![CDATA[Linha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="101" y="58" width="92" height="15" forecolor="#000000"/>
+					<textElement>
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+					<text><![CDATA[Referência]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="193" y="58" width="92" height="15" forecolor="#000000"/>
+					<textElement>
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+					<text><![CDATA[Cabedal]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="388" y="58" width="92" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="10"/>
+					</textElement>
+					<text><![CDATA[Preço]]></text>
+				</staticText>
+				<line>
+					<reportElement x="4" y="73" width="551" height="1"/>
+				</line>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="509" y="13" width="46" height="12" forecolor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="429" y="13" width="80" height="12" forecolor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy HH:mm:ss">
+					<reportElement style="Column header" x="474" y="1" width="81" height="12" forecolor="#000000"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="SansSerif" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="433" y="1" width="34" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Data:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="10" width="555" height="17"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tabela de Preços]]></text>
+				</staticText>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="5" y="26" width="550" height="1"/>
+					<graphicElement>
+						<pen lineWidth="1.0" lineColor="#000000"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="9" y="0" width="92" height="12"/>
+					<textElement>
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODIGO_LINHA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="193" y="0" width="200" height="12"/>
+					<textElement>
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CABEDAL}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="388" y="0" width="92" height="12"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PRECO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="101" y="0" width="92" height="12"/>
+					<textElement>
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CODIGO_REFERENCIA}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,2372 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>19/02/2020</generation_day>
+<module>adm</module>
+<file_name>MaioresClientesVencidos</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help>Consulta dos Maiores Clientes Vencidos.</help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>10/04/2006 09:57:51</creationDate>
+<lastModifyDate>19/02/2020 09:37:47</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Jw_maiores_clientes_vencidos</name>
+<title> </title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>portalbr.dbobj.view.Jw_maiores_clientes_vencidos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>default</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>adm/MaioresClientesVencidosForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>free</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>free</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><%
+     String codigo_regional="";
+     String codigo_representante="";
+     String tipo="";
+     acesso.Usuario u = new acesso.Usuario();
+     u = (acesso.Usuario)session.getAttribute("User");
+     acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+     acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+
+     if(!(u.getEntidadeNegocio()==null)){
+          ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+          tipoent = (acesso.TipoEntidadeNegocio) ent.getTipoEntidadeNegocio();
+          tipo = tipoent.getTipo()+"";
+          if(tipo.equals("REGIONAL DE VENDA")){
+            codigo_regional = ent.getChave()+"";
+          }
+          if((tipo.equals("REPRESENTANTE COMERCIAL")) || (tipo.equals("REPRESENTANTE EXPORTACAO"))){
+            codigo_representante = ent.getChave()+"";
+          }
+
+     }
+
+%></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_regi</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_regi</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% if((codigo_regional.equals("")) && (codigo_representante.equals(""))) { %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>codigo_regional</name>
+<help>Informe o código da Regional.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_regional</property>
+<label>Regional</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>../lov/LvRegionalLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=codigo_regional</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=nome_regional</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_codigo_regional()"  ><script type="text/javascript"> 
+ function lov_open_codigo_regional() {
+   window.open('../lov/LvRegionalLov.do?resetfull_action=&returnBlock=0&return0=codigo_regional&return1=nome_regional','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>reg.value=this.value;if(this.value!=''){fillFields(0,new Array('codigo_regional'),'MaioresClientesVencidosActionForm.getNome_regional_Ajax',new Array('nome_regional'))}else{nome_regional.value=''};</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>3</size>
+<maxlength>3</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>nome_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>nome_regional</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>nome_regional</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Regionais_vendas</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>codigo_regional</master_name>
+<slave_name>codigo_regional</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>nome_regional</master_name>
+<slave_name>nome_regional</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate></fieldRelationTemplate>
+<fieldRelationCode>public String getNome_regional() {
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (codigo_regional !=null && codigo_regional.length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Regionais_vendas db_object = new Regionais_vendas();
+    String[][] select = {{"nome_regional",null}};
+    Object[][] where = {
+                          {"codigo_regional","=",com.egen.util.text.FormatNumber.toInt(codigo_regional)}
+                       };
+    String[] group = null;
+    String[] having = null;
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, select, where, group, having, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Regionais_vendas)results.elementAt(0);
+      nome_regional = (db_object.getNome_regional()!=null)?db_object.getNome_regional()+"":"";
+    } else {
+      nome_regional = "";
+    }
+  }
+} catch (Exception e) {
+      nome_regional = "";
+} finally {
+  if (j!=null){
+     j.close();
+     j = null;
+  }
+}
+return nome_regional;
+}
+
+public String[][] getNome_regional_Ajax(MaioresClientesVencidosActionForm PARAM) {
+  String[][] list = new String[1][2];
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (PARAM.getCodigo_regional() !=null && PARAM.getCodigo_regional().length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Regionais_vendas db_object = new Regionais_vendas();
+    Object[][] where = {
+                          {"codigo_regional","like",PARAM.getCodigo_regional()}
+                       };
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, where, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Regionais_vendas)results.elementAt(0);
+      list[0] = new String[]{"nome_regional", (db_object.getNome_regional()!=null)?db_object.getNome_regional()+"":""};
+    } else {
+      list[0] = new String[]{"nome_regional", ""};
+    }
+  }
+} catch (Exception e) {
+      list[0] = new String[]{"nome_regional", ""};
+} finally {
+  if (j!=null){
+   j.close();
+   j = null;
+  }
+}
+return list;
+}
+</fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>40</size>
+<maxlength>43</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_regf</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_regf</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% } %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_repi</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_repi</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><%
+if((!(codigo_regional.equals("")))
+  ||
+ ((codigo_regional.equals("")) && (codigo_representante.equals("")))
+){
+
+%></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>rep_cdgo</name>
+<help>Informe o código do Representante.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>rep_cdgo</property>
+<label>Representante</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>../lov/LvRepresentante2Lov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=rep_cdgo</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=rep_rzao</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_rep_cdgo()"  ><script type="text/javascript"> 
+ function lov_open_rep_cdgo() {
+   window.open('../lov/LvRepresentante2Lov.do?resetfull_action=&returnBlock=0&return0=rep_cdgo&return1=rep_rzao','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>if(this.value!=''){fillFields(0,new Array('rep_cdgo'),'MaioresClientesVencidosActionForm.getRep_rzao_Ajax',new Array('rep_rzao'))}else{rep_rzao.value=''};</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>5</size>
+<maxlength>5</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>rep_rzao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>rep_rzao</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>rep_rzao</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Rep</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>rep_cdgo</master_name>
+<slave_name>rep_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>rep_rzao</master_name>
+<slave_name>rep_rzao</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate></fieldRelationTemplate>
+<fieldRelationCode>public String getRep_rzao() {
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (rep_cdgo !=null && rep_cdgo.length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Rep db_object = new Rep();
+    String[][] select = {{"rep_rzao",null}};
+    Object[][] where = {
+                          {"rep_cdgo","like",rep_cdgo}
+                       };
+    String[] group = null;
+    String[] having = null;
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, select, where, group, having, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Rep)results.elementAt(0);
+      rep_rzao = (db_object.getRep_rzao()!=null)?db_object.getRep_rzao()+"":"";
+    } else {
+      rep_rzao = "";
+    }
+  }
+} catch (Exception e) {
+      rep_rzao = "";
+} finally {
+  if (j!=null){
+     j.close();
+     j = null;
+  }
+}
+return rep_rzao;
+}
+
+public String[][] getRep_rzao_Ajax(MaioresClientesVencidosActionForm PARAM) {
+  String[][] list = new String[1][2];
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (PARAM.getRep_cdgo() !=null && PARAM.getRep_cdgo().length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Rep db_object = new Rep();
+    Object[][] where = {
+                          {"rep_cdgo","like",PARAM.getRep_cdgo()}
+                       };
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, where, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Rep)results.elementAt(0);
+      list[0] = new String[]{"rep_rzao", (db_object.getRep_rzao()!=null)?db_object.getRep_rzao()+"":""};
+    } else {
+      list[0] = new String[]{"rep_rzao", ""};
+    }
+  }
+} catch (Exception e) {
+      list[0] = new String[]{"rep_rzao", ""};
+} finally {
+  if (j!=null){
+     j.close();
+     j = null;
+  }
+}
+return list;
+}
+</fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>40</size>
+<maxlength>35</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_repf</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_repf</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><% } %></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>quantidade</name>
+<help>Informe a quantidade de registros retornados pela consulta.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>quantidade</property>
+<label>Quantidade</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>4</size>
+<maxlength>4</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>dias_vencidos</name>
+<help>Informe o número de dias vencidos.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>dias_vencidos</property>
+<label>Dias Vencidos</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>true</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>true</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>3</size>
+<maxlength>3</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Checkbox</class>
+<name>acumular_pendencia</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>acumular_pendencia</property>
+<label>Acumular Pendência</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>boolean</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>acumular_pendencia</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<value>true</value>
+<falseValue></falseValue>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>reg</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>reg</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value><%= codigo_regional %></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>rep</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>rep</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value><%= codigo_representante %></value>
+<codeItem></codeItem>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>select1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>this.disabled=true;document.forms[0].select_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><html:button accesskey="p" onclick="resetfull1_action.disabled=true;this.disabled=true;bloqueia();document.forms[0].select_action.click();" styleClass="baseButton" property="select1_action"><bean:message bundle="ApplicationResources" key="jsp.select"/></html:button>
+<script>
+function getKeySite(keyStroke) {
+      isNetscape=(document.layers);
+      eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+      which = String.fromCharCode(eventChooser).toLowerCase();
+      keyBuffer = which;
+      if(eventChooser == 13){ 
+                              if(document.forms[0].select1_action.disabled==true){return false;}
+                              document.forms[0].select1_action.disabled=true;
+                              document.forms[0].resetfull1_action.disabled=true;
+                              bloqueia();
+                              document.forms[0].select_action.click();
+      }
+    }
+</script>
+<SCRIPT>
+    document.onkeypress = getKeySite;
+</SCRIPT></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>select1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>resetfull1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>resetfull_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>resetfull1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help>Executa a consulta, redirecionando para o relatório com os registros retornados..</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+//---------------------------------------------------------------------------------------------------
+// Autor             : Mateus Garbrecht (TechnoCorp)
+// Data de Criação   : 10/04/2006
+//---------------------------------------------------------------------------------------------------
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();    
+    select_action(j, mapping, form, request, response);
+//-----------------------------------------------------------------------------
+  MaioresClientesVencidosActionForm f = (MaioresClientesVencidosActionForm) form;
+  String regional = "";
+  if (f.getCodigo_regional() !=null && f.getCodigo_regional().length()>0) {
+    portalbr.dbobj.table.Regionais_vendas db_object = new portalbr.dbobj.table.Regionais_vendas();
+    Object[][] where = {
+                          {"codigo_regional","=",com.egen.util.text.FormatNumber.toInt(f.getCodigo_regional())}
+                       };
+    java.util.Vector results = j.select(db_object, where, null);
+    if (results!=null && results.size()>0) {
+      db_object = (portalbr.dbobj.table.Regionais_vendas)results.elementAt(0);
+      regional = (db_object.getNome_regional()!=null)?db_object.getNome_regional()+"":"";
+    }
+  }
+ 
+  String representante = "";
+  if (f.getRep_cdgo() !=null && f.getRep_cdgo().length()>0) {
+    portalbr.dbobj.table.Rep db_object = new portalbr.dbobj.table.Rep();
+    Object[][] where = {
+                           {"rep_cdgo","like",f.getRep_cdgo()}
+                       };
+    java.util.Vector results = j.select(db_object, where, null);
+    if (results!=null && results.size()>0) {
+      db_object = (portalbr.dbobj.table.Rep)results.elementAt(0);
+      representante = (db_object.getRep_rzao()!=null)?db_object.getRep_rzao()+"":"";
+    }
+  }
+
+
+ 
+  if (f.getRep() !=null && f.getRep().length()>0) {
+    portalbr.dbobj.table.Rep db_object = new portalbr.dbobj.table.Rep();
+    Object[][] where = {
+                           {"rep_cdgo","like",f.getRep()}
+                       };
+    java.util.Vector results = j.select(db_object, where, null);
+    if (results!=null && results.size()>0) {
+      db_object = (portalbr.dbobj.table.Rep)results.elementAt(0);
+      representante = (db_object.getRep_rzao()!=null)?db_object.getRep_rzao()+"":"";
+    }
+  }
+ 
+  StringBuilder consulta = new StringBuilder();
+  consulta = new StringBuilder("Consulta dos "+f.getQuantidade()+" Maiores Clientes Vencidos");
+  if(f.getQuantidade().equals("1")){ 
+    consulta = new StringBuilder(("Consulta do Maior Cliente Vencido"));
+  }
+  if(f.getCodigo_regional()!=""){
+     consulta = new StringBuilder(("Consulta dos ")+f.getQuantidade()+" Maiores Clientes Vencidos da Regional "+regional);
+     if(f.getQuantidade().equals("1")){
+         consulta = new StringBuilder("Consulta do Maior Cliente Vencido da Regional "+regional);
+     }
+  }
+  if(f.getRep_cdgo()!="" || f.getRep()!=""){
+     consulta = new StringBuilder("Consulta dos "+f.getQuantidade()+" Maiores Clientes Vencidos do Representante "+representante);
+     if(f.getQuantidade().equals("1")){
+         consulta = new StringBuilder("Consulta do Maior Cliente Vencido do Representante "+representante);
+     }
+  }
+  //-----------------------------------------------------------------------------
+    actionForward =  new ActionForward("/adm/MaioresClientesVencidos_rForm.do?&consulta="+consulta,true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_maiores_clientes_vencidos", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+         j.close();
+         j = null;    
+    }
+  }
+  return actionForward;
+}
+
+private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  MaioresClientesVencidosActionForm f = (MaioresClientesVencidosActionForm) form;
+  portalbr.dbobj.view.Jw_maiores_clientes_vencidos table = new portalbr.dbobj.view.Jw_maiores_clientes_vencidos();
+  util.consultas.adm.MaioresClientesVencidos m = new util.consultas.adm.MaioresClientesVencidos();
+  String dias          = "null";
+  String regional      = "";
+  String representante = "";
+//--- se o usuário logado for administrador ---
+  if((f.getRep().equals(""))&&(f.getReg().equals(""))){
+       if((!(f.getCodigo_regional().equals("")))){
+            regional = " AND wtv.codigo_regional = " + f.getCodigo_regional();
+       }
+     
+       if((!(f.getRep_cdgo().equals("")))){
+            representante = " AND wtv.rep_cdgo = '"+f.getRep_cdgo()+"'";
+       }
+  }
+//------- Se o usuário logado for regional -----------
+  if((!(f.getReg().equals("")))){
+       regional = " AND wtv.codigo_regional = " + f.getReg();	   
+       if((!(f.getRep_cdgo().equals("")))){
+            representante = " AND wtv.rep_cdgo = '"+f.getRep_cdgo()+"'";
+       }
+  }
+//-------Se o usuário logado for representante --------
+  if((!(f.getRep().equals("")))){
+       representante = " AND wtv.rep_cdgo = '"+f.getRep()+"'";
+  }
+//-----------------------------------------------------
+  if(f.getDias_vencidos()!=""){dias=f.getDias_vencidos();}
+
+      StringBuilder query = new StringBuilder();
+      query.append(" SELECT wtv.codigo_regional, ");
+      query.append("        pck_cliente.get_grupo_economico(codigo_cliente)|| ' - ' || pck_grupo_economico.get_nome(pck_cliente.get_grupo_economico(codigo_cliente)) grupo_economico, ");
+      query.append("        wtv.codigo_cliente codigo, ");
+      query.append("        wtv.sequencial, ");
+      query.append("        replace(rowtocol('SELECT ''(''||ffs_ddd2||'') ''||ffs_nmro2 FROM fax_fon2 WHERE cli_cdgo = '||codigo_cliente||' AND esc_seqn = decode (1,null,esc_seqn,1) AND ned_cdgo in (''COB'',''UNI'') '),',','<br>') fone, ");
+      query.append("        cli.cli_rzao cliente, ");
+      query.append("        substr(ecl.ecl_cdad, 1, 30) || '-' || ecl.est_unifed ecl_cdad, ");
+      query.append("        max(wtv.dias) dias, ");
+      query.append("        sum(wtv.valor) valor, ");
+      query.append("        '' observacao ");
+      query.append("   FROM (SELECT t.cli_codigo codigo_cliente, ");
+      query.append("                t.esc_seqn sequencial, ");
+      query.append("                t.rep_codigo rep_cdgo, ");
+      query.append("                t.rev_codigo_regional codigo_regional, ");
+      query.append("                lpad(round(round(((trunc(sysdate)) - min(trunc(t.tit_datvenc))))), 5, ' ') dias, ");
+      query.append("                sum(fnc_ctr_saldo_negociacao(t.emp_empresa, ");
+      query.append("                                             t.fil_filial, ");
+      query.append("                                             t.tip_codigo, ");
+      query.append("                                             t.tit_codigo, ");
+      query.append("                                             t.sit_codigo_situacao_titulo, ");
+      query.append("                                             t.tit_vlpcp, ");
+      query.append("                                             t.tit_vldeb)) valor ");
+      query.append("           FROM titulos t ");
+      query.append("          WHERE tit_status = 'A' ");
+      //query.append("            AND nvl(t.sit_codigo_situacao_titulo,null) <> 3 ");
+      query.append("            AND t.sit_codigo_situacao_titulo IN (2, 21, 24, 27) ");
+      query.append("            AND NOT EXISTS ");
+      query.append("               (SELECT 1 ");
+      query.append("                  FROM cli c ");
+      query.append("                 WHERE c.cli_cdgo = t.cli_codigo ");
+      query.append("                   AND NVL(c.seg_cdgo,NULL) = 9) ");
+      query.append("            AND nvl(t.tip_codigo, null) IN (SELECT tit_gru.tip_codigo ");
+      query.append("                                              FROM tipos_de_titulo_por_grupo tit_gru ");
+      query.append("                                             WHERE tit_gru.gtt_codigo_grupo_tipo_titulo = 4) ");
+      query.append("                                               AND t.tit_datvenc                        < TRUNC(SYSDATE - ").append(dias).append(") ");
+      query.append("                                               AND t.tipo_de_mercado                    = 'MI' ");
+      query.append("                                               AND (t.emp_empresa, t.fil_filial, ");
+      query.append("                                                    t.tip_codigo, t.tit_codigo) NOT IN ");
+      query.append("                                                    (SELECT m.emp_empresa, ");
+      query.append("                                                            m.fil_filial, ");
+      query.append("                                                            m.tip_codigo, ");
+      query.append("                                                            m.tit_codigo ");
+      query.append("                                                       FROM mov_receber m ");
+      query.append("                                                      WHERE m.emp_empresa = t.emp_empresa ");
+      query.append("                                                        AND m.fil_filial  = t.fil_filial ");
+      query.append("                                                        AND m.tip_codigo  = t.tip_codigo ");
+      query.append("                                                        AND m.tit_codigo  = t.tit_codigo ");
+      query.append("                                                        AND m.trn_codigo IN (SELECT trn_gru.trn_codigo ");
+      query.append("                                                                               FROM transacoes_por_grupo trn_gru ");
+      query.append("                                                                              WHERE trn_gru.grt_codigo_grupo_transacao = 15 ");
+      query.append("                                                                                AND data_inicial <= SYSDATE ");
+      query.append("                                                                                AND NVL(data_final, SYSDATE) >= SYSDATE) ");
+      query.append("                                                                                AND NVL(m.mov_sequencia, 0) = 0 ");
+      query.append("                                                                                AND m.mov_data <= TRUNC(SYSDATE - ").append(dias).append(") ");
+      query.append("                                                                                AND ROWNUM = 1) ");
+      query.append("          GROUP BY ");
+      query.append("                t.cli_codigo, ");
+      query.append("                t.esc_seqn, ");
+      query.append("                t.rep_codigo, ");
+      query.append("                t.rev_codigo_regional ");
+      query.append("  UNION ");
+      query.append("  SELECT c.cli_cdgo codigo_cliente, ");
+      query.append("         seq.sequencial sequencial, ");
+      query.append("         r.rep_cdgo, ");
+      query.append("         r.codigo_regional, ");
+      query.append("         lpad(trunc(((sysdate ) - min(c.data_de_deposito))), 5, ' ') dias, ");
+      query.append("         sum(c.valor_do_cheque - nvl(c.valor_recebido, 0)) valor ");
+      query.append("    FROM brconrec.cheques c, ");
+      query.append("         cli, ");
+      query.append("         rep r, ");
+      query.append("         gerentes_regionais_vendas g, ");
+      query.append("         (SELECT min(ecl.esc_seqn) sequencial, ");
+      query.append("                 ecl.cli_cdgo ");
+      query.append("            FROM ecl ecl ");
+      query.append("           WHERE ecl.ned_cdgo IN ('UNI','COB') ");
+      query.append("           GROUP BY ");
+      query.append("                 ecl.cli_cdgo ) seq ");
+      query.append("   WHERE c.sit_codigo_situacao_titulo    IN ('4') ");
+      query.append("     AND seq.cli_cdgo                    = cli.cli_cdgo ");
+      query.append("     AND nvl(c.tip_codigo, null)         IN ('CH1', 'CH2') ");
+      query.append("     AND r.rep_cdgo                      = c.rep_cdgo ");
+      query.append("     AND g.codigo_gerente                = r.rep_gerente_antigo ");
+      query.append("     AND cli.cli_cdgo                    = c.cli_cdgo ");
+      query.append("     AND nvl(cli.cli_tipo_mercado, 'MI') = 'MI' ");
+      query.append("     AND c.data_de_deposito              < trunc(sysdate - ").append(dias).append(") ");
+      query.append("           AND NOT EXISTS ");
+      query.append("               (SELECT 1 ");
+      query.append("                FROM cli l ");
+      query.append("                WHERE l.cli_cdgo = c.cli_cdgo ");
+      query.append("                  AND NVL(l.seg_cdgo,NULL) = 9) ");
+      query.append("     AND (c.emp_empresa, c.fil_filial, c.tip_codigo, ");
+      query.append("          c.cli_cdgo, c.prt_codigo_banco, c.age_codigo, c.numero_do_cheque) NOT IN ");
+      query.append("         (SELECT m.emp_empresa, ");
+      query.append("                 m.fil_filial, ");
+      query.append("                 m.tip_codigo, ");
+      query.append("                 m.cli_cdgo, ");
+      query.append("                 m.prt_codigo_banco, ");
+      query.append("                 m.age_codigo, ");
+      query.append("                 m.che_numero_do_cheque ");
+      query.append("            FROM movimentos_cheque m ");
+      query.append("           WHERE m.emp_empresa          = c.emp_empresa ");
+      query.append("             AND m.fil_filial           = c.fil_filial ");
+      query.append("             AND m.tip_codigo           = c.tip_codigo ");
+      query.append("             AND m.cli_cdgo             = c.cli_cdgo ");
+      query.append("             AND m.prt_codigo_banco     = c.prt_codigo_banco ");
+      query.append("             AND m.age_codigo           = c.age_codigo ");
+      query.append("             AND m.che_numero_do_cheque = c.numero_do_cheque ");
+      query.append("             AND m.trn_codigo           IN (SELECT trn_gru.trn_codigo ");
+      query.append("                                              FROM transacoes_por_grupo trn_gru ");
+      query.append("                                             WHERE trn_gru.grt_codigo_grupo_transacao = 15 ");
+      query.append("                                               AND data_inicial             <= sysdate ");
+      query.append("                                               AND nvl(data_final, sysdate) >= sysdate) ");
+      query.append("             AND m.data_do_movimento <= trunc(sysdate) ");
+      query.append("             AND nvl(m.moc_sequencia, 0) = 0 ");
+      query.append("             AND rownum = 1) ");
+      query.append(" GROUP BY ");
+      query.append("       c.cli_cdgo, ");
+      query.append("       seq.sequencial, ");
+      query.append("	   r.rep_cdgo, ");
+      query.append(" 	   r.codigo_regional ");
+      query.append(" UNION ");
+      query.append(" SELECT che.cli_cdgo codigo_cliente, ");
+      query.append("        seq.sequencial sequencial, ");
+      query.append("        che.rep_cdgo, ");
+      query.append("        rep.codigo_regional, ");
+      query.append("        lpad(round(((sysdate + 1) - min(che.data_de_deposito))), 5, ' ') dias, ");
+      query.append("            (sum(mov.valor_principal) - sum(nvl(che.che_vlpcp, 0)) -  ");
+      query.append("             sum(nvl(che.che_VLDEB, 0))) valor ");
+      query.append("   FROM brconrec.cheques che, ");
+      query.append("        rep rep, ");
+      query.append("        movimentos_cheque mov, ");
+      query.append("         (SELECT min(ecl.esc_seqn) sequencial, ");
+      query.append("                 ecl.cli_cdgo ");
+      query.append("            FROM ecl ecl ");
+      query.append("           WHERE ecl.ned_cdgo IN ('UNI','COB') ");
+      query.append("           GROUP BY ecl.cli_cdgo ) seq ");
+      query.append("  WHERE che.emp_empresa      = mov.emp_empresa ");
+      query.append("    AND mov.cli_cdgo         = seq.cli_cdgo ");
+      query.append("    AND che.fil_filial       = mov.fil_filial ");
+      query.append("    AND che.tip_codigo       = mov.tip_codigo ");
+      query.append("    AND che.cli_cdgo         = mov.cli_cdgo ");
+      query.append("    AND che.prt_codigo_banco = mov.prt_codigo_banco ");
+      query.append("    AND che.age_codigo       = mov.age_codigo ");
+      query.append("    AND che.numero_do_cheque = mov.che_numero_do_cheque ");
+      query.append("    AND rep.rep_cdgo         = che.rep_cdgo ");
+//    query.append("    AND che.emp_empresa      = 'xx' ");
+      query.append("    AND che.sit_codigo_situacao_titulo = '7' ");
+      query.append("    AND che.data_de_deposito < trunc(sysdate - ").append(dias).append(") ");
+      query.append("    AND mov.trn_codigo       = 'CLD' ");
+      query.append("    AND trunc(mov.data_do_movimento) >= to_date('01/01/2000', 'DD/MM/YYYY') ");
+      query.append("           AND NOT EXISTS ");
+      query.append("               (SELECT 1 ");
+      query.append("                FROM cli l ");
+      query.append("                WHERE l.cli_cdgo = che.cli_cdgo ");
+      query.append("                  AND NVL(l.seg_cdgo,NULL) = 9) ");
+      query.append("    AND NOT EXISTS ");
+      query.append("            (SELECT '1' ");
+      query.append("               FROM movimentos_cheque m ");
+      query.append("              WHERE m.emp_empresa          = che.emp_empresa ");
+      query.append("                AND m.fil_filial           = che.fil_filial ");
+      query.append("                AND m.tip_codigo           = che.tip_codigo ");
+      query.append("                AND m.cli_cdgo             = che.cli_cdgo ");
+      query.append("                AND m.prt_codigo_banco     = che.prt_codigo_banco ");
+      query.append("                AND m.age_codigo           = che.age_codigo ");
+      query.append("                AND m.che_numero_do_cheque = che.numero_do_cheque ");
+      query.append("                AND m.trn_codigo IN (SELECT trn_gru.trn_codigo ");
+      query.append("                                       FROM transacoes_por_grupo trn_gru ");
+      query.append("                                      WHERE trn_gru.grt_codigo_grupo_transacao = 15 ");
+      query.append("                                        AND data_inicial                      <= sysdate");
+      query.append("                                        AND nvl(data_final, sysdate)          >= sysdate) ");
+      query.append("                AND m.data_do_movimento <= trunc(sysdate) ");
+      query.append("                AND nvl(m.moc_sequencia, 0) = 0 ");
+      query.append("                AND rownum = 1) ");
+      query.append("  GROUP BY ");
+      query.append("        che.cli_cdgo, ");
+      query.append("        che.che_vlpcp, ");
+      query.append("        che.che_vldeb, ");
+      query.append("        seq.sequencial, ");
+      query.append("        che.rep_cdgo, ");
+      query.append("  	    rep.codigo_regional ) wtv, ");
+      query.append("        cli cli, ");
+      query.append("        ecl ecl ");
+      query.append("  WHERE wtv.codigo_cliente = ecl.cli_cdgo ");
+      query.append("    AND wtv.sequencial     = decode(ecl.esc_seqn, 0, 1, ecl.esc_seqn) ");
+      query.append("    AND ecl.cli_cdgo       = cli.cli_cdgo ");
+      query.append(representante);
+      query.append(regional);
+      query.append("    AND ecl.ned_cdgo       IN ('UNI', 'COB') ");
+      query.append("  GROUP BY wtv.codigo_regional,");
+      query.append("           wtv.codigo_cliente, ");
+      query.append("           wtv.sequencial, ");
+      query.append("           cli.cli_rzao, ");
+      query.append("           ecl.ecl_cdad, ");
+      query.append("           ecl.est_unifed ");
+      query.append("  ORDER BY valor DESC ");
+
+
+
+  acesso.Usuario usuario = (acesso.Usuario)session.getAttribute("User");
+  if(usuario.mostraQuery()){
+     throw new Exception(query.toString());
+  }
+
+
+    if(false){throw new Exception(query.toString());}
+
+      Vector res_Jw_maiores_clientes_vencidos = j.select(table,
+                                                         query.toString(), 
+                                                         null);
+
+ 
+  if(f.getQuantidade()!=""){
+     if(Integer.parseInt(f.getQuantidade())<=res_Jw_maiores_clientes_vencidos.size()){
+          res_Jw_maiores_clientes_vencidos.setSize(Integer.parseInt(f.getQuantidade()));
+      }
+  }
+     session.setAttribute("res_Jw_maiores_clientes_vencidos",res_Jw_maiores_clientes_vencidos);
+  if (!(res_Jw_maiores_clientes_vencidos != null && res_Jw_maiores_clientes_vencidos.size() > 0)) {
+       throw new Exception("Nenhum registro encontrado!");   
+  }
+
+ 
+  StringBuilder fone = new StringBuilder();
+  fone.setLength(0);
+  if (res_Jw_maiores_clientes_vencidos != null && res_Jw_maiores_clientes_vencidos.size() > 0) {
+    for(int x=0; x<res_Jw_maiores_clientes_vencidos.size(); x++){
+       portalbr.dbobj.view.Jw_maiores_clientes_vencidos r = (portalbr.dbobj.view.Jw_maiores_clientes_vencidos) res_Jw_maiores_clientes_vencidos.elementAt(x);
+//-----------------------------------------------------
+       if(f.getAcumular_pendencia()){
+          r.setValor(m.getValor(r.getCodigo(), r.getSequencial(), dias));
+       }
+//-----------------------------------------------------       
+    }
+  }
+  session.setAttribute("mapping.getName()", form);
+}</action_code>
+<property>select_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull_action</name>
+<help>Limpa os campos da tela.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_maiores_clientes_vencidos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>MaioresClientesVencidosActionForm</name>
+<type>portalbr.adm.MaioresClientesVencidosActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/adm/MaioresClientesVencidosForm</path>
+<type>portalbr.adm.MaioresClientesVencidosAction</type>
+<name>MaioresClientesVencidosActionForm</name>
+<attribute></attribute>
+<input>/adm/MaioresClientesVencidosForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/adm/MaioresClientesVencidosForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Consulta de Maiores Clientes Vencidos</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body>
+<class>com.egen.develop.generator.Body</class>
+<id></id>
+<class_></class_>
+<style></style>
+<title></title>
+<dir></dir>
+<lang></lang>
+<onload>if(document.forms[0].reg.value!=''){document.forms[0].rep_cdgo.focus();}if(document.forms[0].rep.value!=''){document.forms[0].quantidade.focus();}if(document.forms[0].rep.value=='' && document.forms[0].reg.value==''){document.forms[0].codigo_regional.focus();}</onload>
+<onunload></onunload>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<bodySetProperty>
+</bodySetProperty>
+</bodySetProperty>
+</body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(77)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>true</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

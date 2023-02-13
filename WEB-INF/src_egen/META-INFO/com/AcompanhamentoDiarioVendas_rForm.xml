@@ -1,0 +1,3089 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>09/04/2020</generation_day>
+<module>com</module>
+<file_name>AcompanhamentoDiarioVendas_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>07/05/2014 09:12:23</creationDate>
+<lastModifyDate>09/04/2020 16:59:35</lastModifyDate>
+<userGenerate>admin</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_acompanhamento_diario_vendas</name>
+<title>Acompanhamento</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_acompanhamento_diario_vendas</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  util.consultas.com.AcompanhamentoDiarioVendas acompanhamentoDiarioVendas = new util.consultas.com.AcompanhamentoDiarioVendas();
+  acesso.Sessao sessao = new acesso.Sessao(session);
+  java.util.Vector res_Jw_acompanhamento_diario_vendas = (java.util.Vector)session.getAttribute("res_Jw_acompanhamento_diario_vendas");
+  java.util.Vector res_Jw_acompanhamento_diario_vendas_total_marcas = (java.util.Vector)session.getAttribute("res_Jw_acompanhamento_diario_vendas_total_marcas");
+  java.util.Vector res_Jw_acompanhamento_diario_vendas_total_regionais = (java.util.Vector)session.getAttribute("res_Jw_acompanhamento_diario_vendas_total_regionais");
+  java.util.Vector res_Jw_acompanhamento_diario_vendas_total_geral = (java.util.Vector)session.getAttribute("res_Jw_acompanhamento_diario_vendas_total_geral");
+  %>
+
+  <form  name="bl_report_Jw_acompanhamento_diario_vendas" id="bl_report_Jw_acompanhamento_diario_vendas" class="baseForm" method="post" >
+    <%
+    if (res_Jw_acompanhamento_diario_vendas!=null && res_Jw_acompanhamento_diario_vendas.size()>0) {
+      %>
+
+      <table id="TRbl_report_Jw_acompanhamento_diario_vendas"  class="reportTable"   style="width:99%; "  border="1" >
+        <%
+        java.lang.String periodo =  null;
+        java.lang.String periodo_ano_anterior =  null;
+        java.lang.Integer codigo_regional =  null;
+        java.lang.String nome_regional =  null;
+        java.lang.Integer codigo_marca =  null;
+        java.lang.String descricao_marca =  null;
+        java.lang.String rep_cdgo =  null;
+        java.lang.String rep_rzao =  null;
+        java.lang.Integer pares_previsto_ano =  0;
+        java.lang.Integer pares_realizado_ano =  0;
+        java.lang.Integer pares_realizado_ant =  0;
+        java.lang.Double reais_previsto_ano =  0d;
+        java.lang.Double reais_realizado_ano =  0d;
+        java.lang.Double reais_realizado_ant =  0d;
+        java.lang.Integer cli_atend_ant =  0;
+        java.lang.Integer cli_atend_ano =  0;
+        java.lang.Integer dif_cli_atend =  0;
+
+        java.lang.Double dif_pares_ano = 0d;
+        java.lang.Double dif_reais_ano = 0d;
+        java.lang.Double dif_pares_realizado = 0d;
+        java.lang.Double dif_reais_realizado = 0d;
+        java.lang.Double dif_clientes_atendidos = 0d;
+
+        java.lang.Integer cli_atend_marca_ano =  0;
+        java.lang.Integer cli_atend_marca_ant =  0;
+        java.lang.Integer dif_cli_marca_atend =  0;
+
+        java.lang.Integer cli_atend_regional_ano =  0;
+        java.lang.Integer cli_atend_regional_ant =  0;
+        java.lang.Integer dif_cli_regional_atend =  0;
+
+        java.lang.Double valor_meta =  0d;
+        java.lang.Double valor_ano_ant =  0d;
+        String _b0_control = "__";
+        String _b1_control = "__";
+        String _b2_control = "__";
+        int sum_pares_previsto_ano_0 = 0;
+        int sum_pares_previsto_ano_1 = 0;
+        int sum_pares_previsto_ano_2 = 0;
+        int sum_pares_realizado_ano_0 = 0;
+        int sum_pares_realizado_ano_1 = 0;
+        int sum_pares_realizado_ano_2 = 0;
+        int sum_pares_realizado_ant_0 = 0;
+        int sum_pares_realizado_ant_1 = 0;
+        int sum_pares_realizado_ant_2 = 0;
+        double sum_reais_previsto_ano_0 = 0;
+        double sum_reais_previsto_ano_1 = 0;
+        double sum_reais_previsto_ano_2 = 0;
+        double sum_reais_realizado_ano_0 = 0;
+        double sum_reais_realizado_ano_1 = 0;
+        double sum_reais_realizado_ano_2 = 0;
+        double sum_reais_realizado_ant_0 = 0;
+        double sum_reais_realizado_ant_1 = 0;
+        double sum_reais_realizado_ant_2 = 0;
+        double sum_valor_meta_0 = 0;
+        double sum_valor_ano_anterior_0 = 0;
+        double sum_valor_meta_1 = 0;
+        double sum_valor_ano_anterior_1 = 0;
+        double sum_valor_meta_2 = 0;
+        double sum_valor_ano_anterior_2 = 0;
+        int i_bl_report_Jw_acompanhamento_diario_vendas = 0;
+        while (i_bl_report_Jw_acompanhamento_diario_vendas<res_Jw_acompanhamento_diario_vendas.size()) {
+          portalbr.dbobj.view.Jw_acompanhamento_diario_vendas t_jw_acompanhamento_diario_vendas = (portalbr.dbobj.view.Jw_acompanhamento_diario_vendas)res_Jw_acompanhamento_diario_vendas.elementAt(i_bl_report_Jw_acompanhamento_diario_vendas);
+          periodo = t_jw_acompanhamento_diario_vendas.getPeriodo();
+          periodo_ano_anterior = t_jw_acompanhamento_diario_vendas.getPeriodo_ano_anterior();
+          codigo_regional = t_jw_acompanhamento_diario_vendas.getCodigo_regional();
+          nome_regional = t_jw_acompanhamento_diario_vendas.getNome_regional()==null?"":t_jw_acompanhamento_diario_vendas.getNome_regional();
+          codigo_marca = t_jw_acompanhamento_diario_vendas.getCodigo_marca();
+          descricao_marca = t_jw_acompanhamento_diario_vendas.getDescricao_marca()==null?"":t_jw_acompanhamento_diario_vendas.getDescricao_marca();
+          rep_cdgo = t_jw_acompanhamento_diario_vendas.getRep_cdgo()==null?"":t_jw_acompanhamento_diario_vendas.getRep_cdgo();
+          rep_rzao = t_jw_acompanhamento_diario_vendas.getRep_rzao()==null?"":t_jw_acompanhamento_diario_vendas.getRep_rzao();
+          pares_previsto_ano = t_jw_acompanhamento_diario_vendas.getPares_previsto_ano();
+          pares_realizado_ano = t_jw_acompanhamento_diario_vendas.getPares_realizado_ano();
+          pares_realizado_ant = t_jw_acompanhamento_diario_vendas.getPares_realizado_ant();
+          reais_previsto_ano = t_jw_acompanhamento_diario_vendas.getReais_previsto_ano();
+          reais_realizado_ano = t_jw_acompanhamento_diario_vendas.getReais_realizado_ano();
+          reais_realizado_ant = t_jw_acompanhamento_diario_vendas.getReais_realizado_ant();
+
+          dif_pares_ano = t_jw_acompanhamento_diario_vendas.getDif_pares_ano();
+          dif_reais_ano = t_jw_acompanhamento_diario_vendas.getDif_reais_ano();
+          dif_pares_realizado = t_jw_acompanhamento_diario_vendas.getDif_pares_realizado();
+          dif_reais_realizado = t_jw_acompanhamento_diario_vendas.getDif_reais_realizado();
+          dif_clientes_atendidos = t_jw_acompanhamento_diario_vendas.getDif_clientes_atendidos();
+
+          cli_atend_ant = t_jw_acompanhamento_diario_vendas.getCli_atend_ant();
+          cli_atend_ano = t_jw_acompanhamento_diario_vendas.getCli_atend_ano();
+          dif_cli_atend = t_jw_acompanhamento_diario_vendas.getDif_cli_atend();
+          valor_meta = t_jw_acompanhamento_diario_vendas.getValor_meta();
+          valor_ano_ant = t_jw_acompanhamento_diario_vendas.getValor_ano_ant();
+          sum_pares_previsto_ano_0 += ((pares_previsto_ano!=null)?pares_previsto_ano.intValue():0);
+          sum_pares_previsto_ano_1 += ((pares_previsto_ano!=null)?pares_previsto_ano.intValue():0);
+          sum_pares_previsto_ano_2 += ((pares_previsto_ano!=null)?pares_previsto_ano.intValue():0);
+          sum_pares_realizado_ano_0 += ((pares_realizado_ano!=null)?pares_realizado_ano.intValue():0);
+          sum_pares_realizado_ano_1 += ((pares_realizado_ano!=null)?pares_realizado_ano.intValue():0);
+          sum_pares_realizado_ano_2 += ((pares_realizado_ano!=null)?pares_realizado_ano.intValue():0);
+          sum_pares_realizado_ant_0 += ((pares_realizado_ant!=null)?pares_realizado_ant.intValue():0);
+          sum_pares_realizado_ant_1 += ((pares_realizado_ant!=null)?pares_realizado_ant.intValue():0);
+          sum_pares_realizado_ant_2 += ((pares_realizado_ant!=null)?pares_realizado_ant.intValue():0);
+          sum_reais_previsto_ano_0 += ((reais_previsto_ano!=null)?reais_previsto_ano.doubleValue():0);
+          sum_reais_previsto_ano_1 += ((reais_previsto_ano!=null)?reais_previsto_ano.doubleValue():0);
+          sum_reais_previsto_ano_2 += ((reais_previsto_ano!=null)?reais_previsto_ano.doubleValue():0);
+          sum_reais_realizado_ano_0 += ((reais_realizado_ano!=null)?reais_realizado_ano.doubleValue():0);
+          sum_reais_realizado_ano_1 += ((reais_realizado_ano!=null)?reais_realizado_ano.doubleValue():0);
+          sum_reais_realizado_ano_2 += ((reais_realizado_ano!=null)?reais_realizado_ano.doubleValue():0);
+          sum_reais_realizado_ant_0 += ((reais_realizado_ant!=null)?reais_realizado_ant.doubleValue():0);
+          sum_reais_realizado_ant_1 += ((reais_realizado_ant!=null)?reais_realizado_ant.doubleValue():0);
+          sum_reais_realizado_ant_2 += ((reais_realizado_ant!=null)?reais_realizado_ant.doubleValue():0);
+
+
+          sum_valor_meta_0 += ((valor_meta!=null)?valor_meta.doubleValue():0);
+          sum_valor_ano_anterior_0 += ((valor_ano_ant!=null)?valor_ano_ant.doubleValue():0);
+          sum_valor_meta_1 += ((valor_meta!=null)?valor_meta.doubleValue():0);
+          sum_valor_ano_anterior_1 += ((valor_ano_ant!=null)?valor_ano_ant.doubleValue():0);
+          sum_valor_meta_2 += ((valor_meta!=null)?valor_meta.doubleValue():0);
+          sum_valor_ano_anterior_2 += ((valor_ano_ant!=null)?valor_ano_ant.doubleValue():0);
+
+
+          String _b0_value = periodo;
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+            <tr class="reportHeader3">
+              <td colspan="17">
+                <span class="columnTdHeader" style="text-align:center;" >
+                  Período ano atual: <%= periodo %>
+                </span>
+              </td>
+            </tr>
+            <tr class="reportHeader3">
+              <td colspan="17">
+                <span class="columnTdHeader" style="text-align:center;" >
+                  Período ano anterior: <%= periodo_ano_anterior %>
+                </span>
+              </td>
+            </tr>
+            <%
+          }
+          String _b1_value = periodo + "_" + com.egen.util.text.FormatNumber.format(codigo_regional);
+          if (_b1_control != null && !_b1_control.equals(_b1_value)) {
+            %>
+            <tr class="reportHeader3">
+              <td colspan="17">
+                <span class="columnTdHeader" style="text-align:right;">
+<%
+        int i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais = 0;
+        while (i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais <res_Jw_acompanhamento_diario_vendas_total_regionais.size()) {
+          portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_regionais t_jw_acompanhamento_diario_vendas_total_regionais = (portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_regionais)res_Jw_acompanhamento_diario_vendas_total_regionais.elementAt(i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais);
+          if(codigo_regional.intValue() == t_jw_acompanhamento_diario_vendas_total_regionais.getCodigo_regional().intValue()){
+             cli_atend_regional_ano = t_jw_acompanhamento_diario_vendas_total_regionais.getCli_atend_regional_ano();
+             cli_atend_regional_ant = t_jw_acompanhamento_diario_vendas_total_regionais.getCli_atend_regional_ant();
+             dif_cli_regional_atend = cli_atend_regional_ano  - cli_atend_regional_ant;
+          }
+          i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais++;
+        }
+%>
+                  Regional: <%= ((codigo_regional!=null)?codigo_regional.toString():"") %> - <%= nome_regional %>
+                </span>
+              </td>
+            </tr>
+            <%
+          }
+          String _b2_value = periodo + "_" + com.egen.util.text.FormatNumber.format(codigo_regional) + "_" + com.egen.util.text.FormatNumber.format(codigo_marca);
+          if (_b2_control != null && !_b2_control.equals(_b2_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="17">
+                <span class="columnTdHeader" style="color: black; text-align:right;" >
+<%
+        int i_bl_report_Jw_acompanhamento_diario_vendas_total_marcas = 0;
+        while (i_bl_report_Jw_acompanhamento_diario_vendas_total_marcas <res_Jw_acompanhamento_diario_vendas_total_marcas.size()) {
+          portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_marcas t_jw_acompanhamento_diario_vendas_total_marcas = (portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_marcas)res_Jw_acompanhamento_diario_vendas_total_marcas.elementAt(i_bl_report_Jw_acompanhamento_diario_vendas_total_marcas);
+          if(codigo_marca.intValue() == t_jw_acompanhamento_diario_vendas_total_marcas.getCodigo_marca().intValue()){
+             cli_atend_marca_ano = t_jw_acompanhamento_diario_vendas_total_marcas.getCli_atend_marca_ano();
+             cli_atend_marca_ant = t_jw_acompanhamento_diario_vendas_total_marcas.getCli_atend_marca_ant();
+             dif_cli_marca_atend = cli_atend_marca_ano  - cli_atend_marca_ant;
+          }
+          i_bl_report_Jw_acompanhamento_diario_vendas_total_marcas++;
+        }
+%>
+                  Marca: <%= ((codigo_marca!=null)?codigo_marca.toString():"") %> - <%= descricao_marca %>
+                </span>
+              </td>
+            </tr>
+            <%
+            %>
+
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" >
+              </td>
+              <td class="columnTdHeader" style="text-align: center;" colspan="3" >
+                 Pares
+              </td>
+              <td class="columnTdHeader" style="text-align: center;" colspan="3" >
+                 Reais
+              </td>
+              <td class="columnTdHeader" style="text-align: center;" colspan="4" >
+                 Realizado Ano Anterior
+              </td>
+              <td class="columnTdHeader" style="text-align: center;" colspan="4" >
+                 Clientes Atendidos
+              </td>
+              <td class="columnTdHeader" style="text-align: center;" colspan="2" >
+                 Faltam
+              </td>
+            </tr>
+
+
+
+
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" >
+                Representante
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Previsto
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Realizado
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                %
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Previsto
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Realizado
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                %
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Pares
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                %
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Reais
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                %
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Ano Anterior
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Ano Atual
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Dif.
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                %
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                R$ Meta
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                R$ Ano Ant.
+              </td>
+
+
+			  
+			  
+            </tr>
+
+            <%
+          }
+          String style_bl_report_Jw_acompanhamento_diario_vendas="";
+          if (!((i_bl_report_Jw_acompanhamento_diario_vendas%2)!=0)) {
+            style_bl_report_Jw_acompanhamento_diario_vendas="rowColor";
+          } else {
+            style_bl_report_Jw_acompanhamento_diario_vendas="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_acompanhamento_diario_vendas %>' id="TRbl_report_Jw_acompanhamento_diario_vendas<%=i_bl_report_Jw_acompanhamento_diario_vendas%>" >
+            <td class="reportColumn" style="text-align:left;" >
+              <%= rep_cdgo %>
+              -
+              <%= rep_rzao %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares_previsto_ano, "#,##0.##") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares_realizado_ano, "#,##0.##") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(dif_pares_ano, "##,##0.00") %>
+            </td>
+
+             <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(reais_previsto_ano, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(reais_realizado_ano, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(dif_reais_ano, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares_realizado_ant, "#,##0.##") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(dif_pares_realizado, "##,##0.00") %>
+            </td>
+
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(reais_realizado_ant, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(dif_reais_realizado, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((cli_atend_ant!=null)?cli_atend_ant.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((cli_atend_ano!=null)?cli_atend_ano.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((dif_cli_atend!=null)?dif_cli_atend.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(dif_clientes_atendidos, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor_meta, "##,##0.00") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor_ano_ant, "##,##0.00") %>
+            </td>
+			
+
+			
+
+          </tr>
+
+          <%
+          _b0_control = _b0_value;
+          _b1_control = _b1_value;
+          _b2_control = _b2_value;
+          i_bl_report_Jw_acompanhamento_diario_vendas++;
+          if (i_bl_report_Jw_acompanhamento_diario_vendas<res_Jw_acompanhamento_diario_vendas.size()) {
+            t_jw_acompanhamento_diario_vendas = (portalbr.dbobj.view.Jw_acompanhamento_diario_vendas)res_Jw_acompanhamento_diario_vendas.elementAt(i_bl_report_Jw_acompanhamento_diario_vendas);
+            periodo = t_jw_acompanhamento_diario_vendas.getPeriodo();
+            periodo_ano_anterior = t_jw_acompanhamento_diario_vendas.getPeriodo_ano_anterior();
+            codigo_regional = t_jw_acompanhamento_diario_vendas.getCodigo_regional();
+            nome_regional = t_jw_acompanhamento_diario_vendas.getNome_regional()==null?"":t_jw_acompanhamento_diario_vendas.getNome_regional();
+            codigo_marca = t_jw_acompanhamento_diario_vendas.getCodigo_marca();
+            descricao_marca = t_jw_acompanhamento_diario_vendas.getDescricao_marca()==null?"":t_jw_acompanhamento_diario_vendas.getDescricao_marca();
+            rep_cdgo = t_jw_acompanhamento_diario_vendas.getRep_cdgo()==null?"":t_jw_acompanhamento_diario_vendas.getRep_cdgo();
+            rep_rzao = t_jw_acompanhamento_diario_vendas.getRep_rzao()==null?"":t_jw_acompanhamento_diario_vendas.getRep_rzao();
+            pares_previsto_ano = t_jw_acompanhamento_diario_vendas.getPares_previsto_ano();
+            pares_realizado_ano = t_jw_acompanhamento_diario_vendas.getPares_realizado_ano();
+            pares_realizado_ant = t_jw_acompanhamento_diario_vendas.getPares_realizado_ant();
+            reais_previsto_ano = t_jw_acompanhamento_diario_vendas.getReais_previsto_ano();
+            reais_realizado_ano = t_jw_acompanhamento_diario_vendas.getReais_realizado_ano();
+            reais_realizado_ant = t_jw_acompanhamento_diario_vendas.getReais_realizado_ant();
+            cli_atend_ant = t_jw_acompanhamento_diario_vendas.getCli_atend_ant();
+            cli_atend_ano = t_jw_acompanhamento_diario_vendas.getCli_atend_ano();
+            dif_cli_atend = t_jw_acompanhamento_diario_vendas.getDif_cli_atend();
+            dif_pares_ano = t_jw_acompanhamento_diario_vendas.getDif_pares_ano();
+            dif_reais_ano = t_jw_acompanhamento_diario_vendas.getDif_reais_ano();
+            dif_clientes_atendidos = t_jw_acompanhamento_diario_vendas.getDif_clientes_atendidos();
+            dif_pares_realizado = t_jw_acompanhamento_diario_vendas.getDif_pares_realizado();
+            dif_reais_realizado = t_jw_acompanhamento_diario_vendas.getDif_reais_realizado();
+            valor_meta = t_jw_acompanhamento_diario_vendas.getValor_meta();
+            valor_ano_ant = t_jw_acompanhamento_diario_vendas.getValor_ano_ant();
+            _b0_value = periodo;
+            _b1_value = periodo + "_" + com.egen.util.text.FormatNumber.format(codigo_regional);
+            _b2_value = periodo + "_" + com.egen.util.text.FormatNumber.format(codigo_regional) + "_" + com.egen.util.text.FormatNumber.format(codigo_marca);
+          } else {
+            _b0_control = "__";
+            _b1_control = "__";
+            _b2_control = "__";
+          }
+          if (_b2_control != null && !_b2_control.equals(_b2_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td>
+                 <b>Total Marca:</b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares_previsto_ano_1, "#,##0.##") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares_realizado_ano_1, "#,##0.##") %></b>
+              </td>
+
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaParesAno(sum_pares_previsto_ano_1,sum_pares_realizado_ano_1) %></b>
+              </td>
+
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_previsto_ano_1, "##,##0.00") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ano_1, "##,##0.00") %></b>
+              </td>
+
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaReaisAno(sum_reais_previsto_ano_1,sum_reais_realizado_ano_1) %></b>
+              </td>
+
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares_realizado_ant_1, "#,##0.##") %></b>
+              </td>
+
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(sum_pares_realizado_ano_1,sum_pares_realizado_ant_1) %></b>
+              </td>
+
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ant_1, "##,##0.00") %></b>
+              </td>
+
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(sum_reais_realizado_ano_1,sum_reais_realizado_ant_1) %></b>
+              </td>
+
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(cli_atend_marca_ant , "#,##0.##") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(cli_atend_marca_ano , "#,##0.##") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(dif_cli_marca_atend , "#,##0.##") %></b>
+              </td>
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(cli_atend_marca_ano,cli_atend_marca_ant) %></b>
+              </td>
+
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_previsto_ano_1 - sum_reais_realizado_ano_1, "##,##0.00") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ano_1 - sum_reais_realizado_ant_1, "##,##0.00") %></b>
+              </td>
+            </tr>
+
+            <%
+            sum_pares_previsto_ano_1 = 0;
+            sum_pares_realizado_ano_1 = 0;
+            sum_pares_realizado_ant_1 = 0;
+            sum_reais_previsto_ano_1 = 0;
+            sum_reais_realizado_ano_1 = 0;
+            sum_reais_realizado_ant_1 = 0;
+            sum_valor_meta_1 = 0; 
+            sum_valor_ano_anterior_1 = 0;
+          }
+          if (_b1_control != null && !_b1_control.equals(_b1_value)) {
+            %>
+<%
+ if(!(sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO")||
+    sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL"))){
+%>
+
+
+            <tr class="totalColumn">
+              <td>
+                 <b>Total Regional:</b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares_previsto_ano_2, "#,##0.##") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares_realizado_ano_2, "#,##0.##") %></b>
+              </td>
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaParesAno(sum_pares_previsto_ano_2,sum_pares_realizado_ano_2) %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_previsto_ano_2, "##,##0.00") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ano_2, "##,##0.00") %></b>
+              </td>
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaReaisAno(sum_reais_previsto_ano_2,sum_reais_realizado_ano_2) %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares_realizado_ant_2, "#,##0.##") %></b>
+              </td>
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(sum_pares_realizado_ano_2,sum_pares_realizado_ant_2) %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ant_2, "##,##0.00") %></b>
+              </td>
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(sum_reais_realizado_ano_2,sum_reais_realizado_ant_2) %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+
+<%
+{
+/*
+        int i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais = 0;
+        while (i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais <res_Jw_acompanhamento_diario_vendas_total_regionais.size()) {
+          portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_regionais t_jw_acompanhamento_diario_vendas_total_regionais = (portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_regionais)res_Jw_acompanhamento_diario_vendas_total_regionais.elementAt(i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais);
+          if(codigo_regional.intValue() == t_jw_acompanhamento_diario_vendas_total_regionais.getCodigo_regional().intValue()){
+             cli_atend_regional_ano = t_jw_acompanhamento_diario_vendas_total_regionais.getCli_atend_regional_ano();
+             cli_atend_regional_ant = t_jw_acompanhamento_diario_vendas_total_regionais.getCli_atend_regional_ant();
+             dif_cli_regional_atend = cli_atend_regional_ano  - cli_atend_regional_ant;
+          }
+          i_bl_report_Jw_acompanhamento_diario_vendas_total_regionais++;
+        }
+*/
+}
+%>
+
+
+                <b><%= com.egen.util.text.FormatNumber.format(cli_atend_regional_ant , "#,##0.##") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(cli_atend_regional_ano , "#,##0.##") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(dif_cli_regional_atend , "#,##0.##") %></b>
+              </td>
+              <td class="reportColumn" style="text-align:right;" >
+                <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(cli_atend_regional_ano,cli_atend_regional_ant) %></b>
+              </td>
+
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_previsto_ano_2 - sum_reais_realizado_ano_2 , "##,##0.00") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ano_2 - sum_reais_realizado_ant_2, "##,##0.00") %></b>
+              </td>
+            </tr>
+
+<% } %>
+
+
+            <%
+            sum_pares_previsto_ano_2 = 0;
+            sum_pares_realizado_ano_2 = 0;
+            sum_pares_realizado_ant_2 = 0;
+            sum_reais_previsto_ano_2 = 0;
+            sum_reais_realizado_ano_2 = 0;
+            sum_reais_realizado_ant_2 = 0;
+            sum_valor_meta_2 = 0; 
+            sum_valor_ano_anterior_2 = 0;
+          }
+        }
+
+        portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_regionais t_jw_acompanhamento_diario_vendas_total_geral = (portalbr.dbobj.view.Jw_acompanhamento_diario_vendas_total_regionais)res_Jw_acompanhamento_diario_vendas_total_geral.elementAt(0);
+        %>
+
+        <tr class="totalColumn">
+          <td>
+             <b>Total Geral:</b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares_previsto_ano_0, "#,##0.##") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares_realizado_ano_0, "#,##0.##") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+            <b><%= acompanhamentoDiarioVendas.diferencaParesAno(sum_pares_previsto_ano_0,sum_pares_realizado_ano_0) %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_reais_previsto_ano_0, "##,##0.00") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ano_0, "##,##0.00") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+            <b><%= acompanhamentoDiarioVendas.diferencaReaisAno(sum_reais_previsto_ano_0,sum_reais_realizado_ano_0) %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares_realizado_ant_0, "#,##0.##") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+            <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(sum_pares_realizado_ano_0,sum_pares_realizado_ant_0) %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ant_0, "##,##0.00") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+            <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(sum_reais_realizado_ano_0,sum_reais_realizado_ant_0) %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(t_jw_acompanhamento_diario_vendas_total_geral.getCli_atend_regional_ant(), "#,##0.##") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(t_jw_acompanhamento_diario_vendas_total_geral.getCli_atend_regional_ano(), "#,##0.##") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(t_jw_acompanhamento_diario_vendas_total_geral.getCli_atend_regional_ano()-t_jw_acompanhamento_diario_vendas_total_geral.getCli_atend_regional_ant(), "#,##0.##") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= acompanhamentoDiarioVendas.diferencaAnoAtualAnterior(t_jw_acompanhamento_diario_vendas_total_geral.getCli_atend_regional_ano(),t_jw_acompanhamento_diario_vendas_total_geral.getCli_atend_regional_ant()) %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_reais_previsto_ano_0 - sum_reais_realizado_ano_0 , "##,##0.00") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_reais_realizado_ano_0 - sum_reais_realizado_ant_0, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>periodo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>periodo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>MM/yyyy</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>periodo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getPeriodo()==null?"":t_jw_acompanhamento_diario_vendas.getPeriodo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>codigo_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_regional</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getCodigo_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nome_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>nome_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>nome_regional</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getNome_regional()==null?"":t_jw_acompanhamento_diario_vendas.getNome_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>codigo_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_marca</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getCodigo_marca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>descricao_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>descricao_marca</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getDescricao_marca()==null?"":t_jw_acompanhamento_diario_vendas.getDescricao_marca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>rep_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Representante</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getRep_cdgo()==null?"":t_jw_acompanhamento_diario_vendas.getRep_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>true</columnDisplayCodeCustomized>
+<columnDisplayCode><td 
+ class="reportColumn" style="text-align:left;" ><%= rep_cdgo %> - <%= rep_rzao %>
+</td> 
+
+</columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep_rzao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>rep_rzao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>rep_rzao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getRep_rzao()==null?"":t_jw_acompanhamento_diario_vendas.getRep_rzao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares_previsto_ano</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>pares_previsto_ano</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Previsto</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getPares_previsto_ano()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares_realizado_ano</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>pares_realizado_ano</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Realizado</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getPares_realizado_ano()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares_realizado_ant</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>pares_realizado_ant</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Ano Anterior</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getPares_realizado_ant()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>reais_previsto_ano</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>reais_previsto_ano</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Previsto</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getReais_previsto_ano()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>reais_realizado_ano</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>reais_realizado_ano</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Realizado</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getReais_realizado_ano()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>reais_realizado_ant</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>reais_realizado_ant</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Ano Anterior</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getReais_realizado_ant()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_atend_ant</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>cli_atend_ant</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Ano Anterior</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getCli_atend_ant()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_atend_ano</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>cli_atend_ano</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Ano Atual</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getCli_atend_ano()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>dif_cli_atend</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>dif_cli_atend</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cli. Atend.</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getDif_cli_atend()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor_meta</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>valor_meta</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>R$ Meta</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getValor_meta()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor_ano_ant</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>valor_ano_ant</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>R$ Ano Ant.</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getValor_ano_ant()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>periodo_ano_anterior</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>periodo_ano_anterior</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>periodo_ano_anterior</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getPeriodo_ano_anterior()==null?"":t_jw_acompanhamento_diario_vendas.getPeriodo_ano_anterior()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_atend_regional_ano</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>cli_atend_regional_ano</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cli_atend_regional_ano</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getCli_atend_regional_ano()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_atend_regional_ant</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>cli_atend_regional_ant</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cli_atend_regional_ant</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getCli_atend_regional_ant()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>dif_cli_regional_atend</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_acompanhamento_diario_vendas</block_name>
+<role_item></role_item>
+<database_column>dif_cli_regional_atend</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>dif_cli_regional_atend</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>3</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_acompanhamento_diario_vendas.getDif_cli_regional_atend()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>Acompanhamento</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/AcompanhamentoDiarioVendas_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:submit accesskey="a" styleClass="baseButton" property="back_action">
+    <bean:message bundle="ApplicationResources" key="jsp.back"/>
+</html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>back_action</property>
+<forward>/com/AcompanhamentoDiarioVendasForm.jsp</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>AcompanhamentoDiarioVendas_rActionForm</name>
+<type>portalbr.com.AcompanhamentoDiarioVendas_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/AcompanhamentoDiarioVendas_rForm</path>
+<type>portalbr.com.AcompanhamentoDiarioVendas_rAction</type>
+<name>AcompanhamentoDiarioVendas_rActionForm</name>
+<attribute></attribute>
+<input>/com/AcompanhamentoDiarioVendas_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/AcompanhamentoDiarioVendas_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Acompanhamento Diário de Vendas</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(31)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

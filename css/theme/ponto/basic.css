@@ -1,0 +1,391 @@
+html
+	{
+	height:100%;
+	overflow:hidden;
+	}
+
+body
+	{
+	background:#7897C4 url(img/body-bg.jpg) repeat-x;
+	height:100%;
+	}
+
+div.body
+	{
+	background:transparent url(img/body-concept-bg.gif) no-repeat;
+	width:100%;
+	height:100%;
+	}
+
+div.body-modal div.top,
+div.body-modal div.bar,
+div.body-modal div.column-navigation
+	{
+	display:none;
+	}
+
+div.body-modal
+	{
+	margin-top:15px;
+	background:white !important;
+	}
+	
+div.body-modal div.column-content,
+div.body-modal div.column-content div.content,
+div.body-modal div.column-content div.center,
+div.body-modal div.column-content div.form
+	{
+	margin:0;
+	width:auto !important;
+	position:static !important;
+	background:white !important;
+	}
+
+div.body-modal div.column-content div.form
+	{
+	position:static;
+	clear:both;
+	margin-top:-15px;
+	padding-top:0 !important;
+	}
+	
+div.body-modal div.column-navigation
+	{
+	display:none;
+	}
+
+div.body-modal a.close
+	{
+	float:left;
+	background-position:right -20px;
+	}
+
+div.body-modal ul.toolbar
+	{
+	top:-18px;
+	margin:0;
+	background-position:0 0;
+	}
+
+div.body-modal h1
+	{
+	top:-22px;
+	margin-left:0 !important;
+	font-size:1.1em;
+	}
+	
+div.body-modal div.column-content
+	{
+	margin-left:0;
+	}
+
+div.body-modal div.column-content h1,
+div.body-modal div.column-content ul.breadcrumb
+	{
+	margin-left:20px;
+	}
+	
+div.body-modal div.column-content div.form
+	{
+	left:35px;
+	}
+
+div.body-modal div.column-content,
+div.body-modal div.column-content div.content,
+div.body-modal div.column-content div.center
+	{
+	width:93.5%;
+	}
+
+a.logo
+	{
+	background:transparent url(img/logo.png) no-repeat;
+	display:block;
+	width:200px;
+	height:55px;
+	text-indent:-9999px;
+	margin:0px 0 0 0px;
+	}
+	
+div.bar
+	{
+	background:transparent url(img/bar-bg.gif) repeat-x;
+	display:block;
+	margin-left:20%;
+	height:32px;
+	}
+
+div.bar ul.links
+	{
+	background:transparent url(img/bar-links-bg.gif) no-repeat;
+	margin:0;
+	padding:0 0 0 5px;
+	list-style:none;
+	float:left;
+	height:32px;
+	}
+
+div.bar ul.links li
+	{
+	float:left;
+	}
+	
+div.bar ul.links a
+	{
+	float:left;
+	color:#223955;
+	text-transform:lowercase;
+	height:16px;
+	font-size:0.9em;
+	margin:2px 0 3px 8px;
+	padding:1px 10px 0 15px;
+	border-right:1px solid #A1B7D3;
+	outline:0;
+	}
+
+ul.links a.dashboard
+	{
+	background:transparent url(img/bar-icon-dashboard.gif) no-repeat 0 3px;
+	}
+ul.links a.manuals
+	{
+	background:transparent url(img/bar-icon-manuals.gif) no-repeat 0 3px;
+	}
+ul.links a.about
+	{
+	background:transparent url(img/bar-icon-about.gif) no-repeat 0 3px;
+	}
+
+ul.links a:hover
+	{
+	color:#6282AA;
+	background-position:0 -47px;
+	}
+ul.links a:active
+	{
+	color:#001E46;
+	background-position:0 -97px;
+	}
+ul.links a.disabled
+	{
+	color:#A8B5C6;
+	background-position:0 -147px !important;
+	}	
+
+
+div.login
+	{
+	margin:2px 10px 0 0;
+	float:right;
+	}
+
+div.login span.user
+	{
+	float:left;
+	font-size:0.9em;
+	font-weight:bold;
+	}
+
+div.login a.icon
+	{
+	float:left;
+	font-size:0.75em;
+	color:#223955;
+	border:0;
+	margin:0 4px 0 0;
+ 	padding:2px 0 0 10px;
+	height:12px;
+	background:transparent url(img/login-icons.gif) no-repeat 0 3px;
+	}
+div.login a.logoff
+	{
+	background-position:0 3px;
+	}
+div.login a.logoff:hover
+	{
+	background-position:0 -26px;
+	}
+
+div.login a.config
+	{
+	border-left:1px solid #677D94;
+	padding-left:18px;
+	margin-left:10px;
+	margin-right:7px;
+	background-position:-107px 2px;
+	}
+div.login a.config:hover
+	{
+	background-position:-107px -26px;
+	}
+
+div.login a:hover
+	{
+	color:#265CA6;
+	}
+	
+	
+div.column
+	{
+	position:fixed;
+	top:100px;
+	bottom:20px;
+	}
+
+div.column-navigation
+	{
+	width:20%;
+	float:left;
+	}
+
+div.column-content,
+div.column-content div.content,
+div.column-content div.center,
+div.column-content div.form
+	{
+	position:fixed;
+	top:100px;
+	bottom:20px;
+	width:79%;
+	margin-left:19.5%;
+	}
+	
+div.column-content
+	{
+	width:78.5%;
+	background:white url(img/content-tl-bg.gif) no-repeat;
+	}
+
+div.column-content div.content
+	{
+	background:transparent url(img/content-br-bg.gif) no-repeat 0 100%;
+	margin-bottom:-5px;
+	margin-left:0;
+	}	
+
+div.column-content div.center{min-height:1%;}
+div.column-content div.center:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+		
+div.column-content div.center
+	{
+	margin-bottom:-3px;
+	margin-left:4px;
+	background:transparent url(img/content-bl-bg.gif) no-repeat 100% 100%;
+	}
+div.column-content div.form
+	{
+	height:auto;
+	margin-left:10px;
+	background-attachment:fixed;
+	bottom:21px;
+	right:13px;
+	left:20%;
+	width:auto;
+	overflow:auto;
+	margin-top:40px;
+	padding:15px 10px;
+	*right:12px;
+	}	
+
+
+div.column-close div.column-navigation
+	{
+	width:5%;
+	position:absolute;
+	}
+
+div.column-close a.close
+	{
+	float:left;
+	background-position:right -20px;
+	}
+	
+div.column-close div.column-content
+	{
+	margin-left:30px;
+	}
+
+div.column-close div.column-content h1,
+div.column-close div.column-content ul.breadcrumb
+	{
+	margin-left:207px;
+	}
+	
+div.column-close div.column-content div.form
+	{
+	left:35px;
+	}
+
+div.column-close div.column-content,
+div.column-close div.column-content div.content,
+div.column-close div.column-content div.center
+	{
+	width:96%;
+	}
+
+	
+div.menu
+	{
+	background:transparent url(img/menu-bg.png) repeat-x;
+	margin:10px;
+	position:fixed;
+	top:0px;
+	bottom:0;
+	right:0%;
+	left:0;
+	padding:5px;
+	border:1px solid #ADC6E4;
+	}
+
+ul.breadcrumb
+	{
+	position:relative;
+	top:-45px;
+	background:transparent url(img/breadcrumb.gif) no-repeat 0 3px;
+	list-style:none;
+	margin:0 0 0 15px;
+	height:13px;
+	padding:0 0 0 10px;
+	}
+ul.breadcrumb li
+	{
+	list-style:none;
+	display:inline;
+	background:transparent url(img/breadcrumb.gif) no-repeat 100% -34px;
+	margin:0;
+	line-height:0.9em;
+	padding:0 10px 0 0;
+	}
+ul.breadcrumb li.current
+	{
+	background:transparent;
+	}
+ul.breadcrumb a
+	{
+	text-transform:uppercase;
+	font-size:0.8em;
+	color:#305078;
+	font-family:Trebuchet MS,Arial,Serif;
+	}
+ul.breadcrumb a:hover
+	{
+	text-decoration:underline;
+	}
+	
+h1
+	{
+	float:left;
+	position:relative;
+	top:-45px;
+	margin:0 35px 0 12px;
+	color:#002C66;
+	font-size:1.8em;
+	}
+
+
+	
+	
+	
+	
+	
+	

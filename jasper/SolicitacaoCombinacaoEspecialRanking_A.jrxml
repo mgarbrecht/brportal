@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecialRanking_A" language="groovy" columnCount="5" printOrder="Horizontal" pageWidth="555" pageHeight="555" columnWidth="111" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07d37b51-0a69-437b-ba3f-20cef07c14f4">
+	<property name="ireport.zoom" value="1.7715610000000117"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_DT_INICIAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_DT_FINAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_DT_ENTRADA_FINAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QUERY" class="java.lang.String">
+		<defaultValueExpression><![CDATA[" AND 1 = 1 "]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT /*+ all_rows*/
+ qry.lin_cdgo
+,qry.ref_cdgo
+,qry.cab_cdgo
+,qry.cor_cdgo
+,qry.lin_cdgo || '-' || qry.ref_cdgo || '-' || qry.cab_cdgo || '-' || qry.cor_cdgo modelo
+,qry.lin_cdgo || '-' || qry.ref_cdgo || '-' || qry.cab_cdgo || '-' || qry.cor_cdgo || '.gif' imagem
+,ROUND(qry.pares_realizado, 2) pares_realizado
+,ROUND(qry.valor_realizado, 2) valor_realizado
+,ROUND(qry.pares_realizado / (qry.pares_realizado_total / 100), 2) representatividade_pares
+,ROUND(qry.pares_realizado / (qry.valor_realizado_total / 100), 2) representatividade_valor
+  FROM (SELECT qry.lin_cdgo
+              ,qry.ref_cdgo
+              ,qry.cab_cdgo
+              ,qry.cor_cdgo
+              ,qry.pares_realizado
+              ,qry.valor_realizado
+              ,qry.pares_realizado_total
+              ,qry.valor_realizado_total
+          FROM (SELECT qry.lin_cdgo
+                      ,qry.ref_cdgo
+                      ,qry.cab_cdgo
+                      ,qry.cor_cdgo
+                      ,qry.pares_realizado
+                      ,qry.valor_realizado
+                      ,SUM(qry.pares_realizado) OVER() pares_realizado_total
+                      ,SUM(qry.valor_realizado) OVER() valor_realizado_total
+                  FROM (SELECT rce.lin_cdgo
+                              ,rce.ref_cdgo
+                              ,rce.cab_cdgo
+                              ,rce.cor_cdgo
+                              ,SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
+                              ,SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
+                          FROM brio.ref_combinacao_especial rce
+                         WHERE rce.rep_cdgo IS NOT NULL
+                           AND rce.situacao_solicitacao = 'A'
+                           AND rce.data_solicitacao >= TO_DATE($P{P_DT_INICIAL}, 'dd/mm/yyyy')
+                           AND rce.data_solicitacao < TO_DATE($P{P_DT_FINAL}, 'dd/mm/yyyy') + 1 $P!{P_QUERY}
+                         GROUP BY rce.lin_cdgo
+                                 ,rce.ref_cdgo
+                                 ,rce.cab_cdgo
+                                 ,rce.cor_cdgo) qry
+                 GROUP BY qry.lin_cdgo
+                         ,qry.ref_cdgo
+                         ,qry.cab_cdgo
+                         ,qry.cor_cdgo
+                         ,qry.pares_realizado
+                         ,qry.valor_realizado
+                 ORDER BY qry.pares_realizado DESC) qry
+         WHERE ROWNUM <= 10) qry]]>
+	</queryString>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="CAB_CDGO" class="java.math.BigDecimal"/>
+	<field name="COR_CDGO" class="java.math.BigDecimal"/>
+	<field name="MODELO" class="java.lang.String"/>
+	<field name="IMAGEM" class="java.lang.String"/>
+	<field name="PARES_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="VALOR_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_PARES" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_VALOR" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ce7c3312-618e-45cd-a4d8-259ea4d2681b" x="0" y="0" width="555" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ranking de Modelos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="119" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement uuid="97ab0d76-78de-4d92-9ac7-339643c30d56" x="29" y="88" width="52" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="a5b36a3f-35d6-4d30-aefe-7c3dbaca5207" x="29" y="100" width="52" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" onErrorType="Blank" evaluationTime="Auto">
+				<reportElement uuid="41cd6921-a438-49f4-bc49-82f9db89d03b" x="0" y="13" width="110" height="75"/>
+				<imageExpression><![CDATA['/opt/tomcat/webapps/brportal/imagens/pequenas/' + $F{IMAGEM}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="c5a559ad-643a-4cfe-9332-63cd0e37a70e" x="0" y="88" width="29" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pares:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="44d6cfcc-e4b7-44d0-90d3-416605cfa691" x="0" y="100" width="29" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="fd5de491-e009-47f9-9b4d-a37dae127266" x="0" y="1" width="110" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MODELO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="4b62bee4-a6b0-4868-b0bf-bab248a04c16" x="81" y="88" width="20" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE_PARES}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="97187210-e86c-4713-be7e-c2244407a686" x="81" y="100" width="20" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE_VALOR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e060ae12-5024-4be7-ba76-697b4e84d4b4" x="101" y="88" width="9" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0e5d5432-71f4-417d-9f6d-07b2d9605931" x="101" y="100" width="9" height="12"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

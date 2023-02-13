@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VendaEstrategicos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="10">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="P_CODIGO_MARCA" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_LIN_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_REF_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_CAB_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_COR_CDGO" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_IMPRIMIR_IMAGENS" class="java.lang.String">
+		<defaultValueExpression><![CDATA["S"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_MOSTRAR_PRECO" class="java.lang.String">
+		<defaultValueExpression><![CDATA["S"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_MIX" class="java.lang.String">
+		<defaultValueExpression><![CDATA["T"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QTDE_INICIAL" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QTDE_FINAL" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM (SELECT fct_mask_modelo(qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo) produto
+              ,qry.lin_cdgo
+              ,qry.ref_cdgo
+              ,qry.cab_cdgo
+              ,qry.desc_cab
+              ,qry.cor_cdgo
+              ,qry.cor_cdgo || '-' || pck_cor.get_nome(qry.cor_cdgo) cor_desc
+              ,fct_preco_produto_est102('N', 32, qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo) preco
+              ,'/opt/tomcat/webapps/brportal/imagens/pequenas/' || fct_retorna_fit_imagem(qry.lin_cdgo, qry.ref_cdgo, qry.cab_cdgo, qry.cor_cdgo) imagem
+              ,SUM(qry.qtde_atual) qtde_atual_total
+          FROM (SELECT d.emp_empresa
+                      ,d.fil_filial
+                      ,d.unn_codigo
+                      ,d.les_codigo
+                      ,d.tes_codigo
+                      ,d.tco_codigo
+                      ,r.codigo_marca
+                      ,fct_mask_modelo(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo) ies_codigo
+                      ,d.cor_cdgo
+                      ,d.cor_cdgo cor2
+                      ,DECODE(NULL, NULL, d.tai_codigo, pck_numeracao_continentes.get_numeracao_by_num_brasil(NULL, d.tai_codigo)) tai_codigo
+                      ,' Grade ' || LTRIM(TO_CHAR(NVL(d.gde_cdgo, 99))) gde_cdgo
+                      ,d.qtde_atual
+                      ,INITCAP(pck_cabedal.get_nome(i.cab_cdgo)) desc_cab
+                      ,d.gde_cdgo codigo_grade
+                      ,i.lin_cdgo
+                      ,i.ref_cdgo
+                      ,i.cab_cdgo
+                      ,q.qtd_pars
+                      ,CEIL(row_number() OVER(PARTITION BY d.emp_empresa, d.fil_filial, d.unn_codigo, d.les_codigo, d.tes_codigo, d.tco_codigo, fct_mask_modelo(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo), d.cor_cdgo, d.tai_codigo ORDER BY d.emp_empresa, d.fil_filial, d.unn_codigo, d.les_codigo, d.tes_codigo, d.tco_codigo, fct_mask_modelo(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo), d.cor_cdgo, d.tai_codigo) / 8) quebra
+                  FROM dom_item_estoque i
+                      ,REF r
+                      ,qtd q
+                      ,(SELECT *
+                          FROM dom_local_item_estoque_gre d
+                         WHERE d.qtde_atual > 0) d
+                      ,(SELECT d.ies_codigo
+                              ,d.cor_cdgo
+                              ,d.emp_empresa
+                              ,d.fil_filial
+                              ,d.unn_codigo
+                              ,d.les_codigo
+                              ,d.tes_codigo
+                              ,d.tco_codigo
+                              ,SUM(d.qtde_atual) soma
+                          FROM dom_local_item_estoque_gre d
+                         WHERE d.qtde_atual > 0
+                           AND d.tco_codigo = 1
+                           AND d.tes_codigo IN (14, 15, 21, 51, 54)
+                         GROUP BY d.ies_codigo
+                                 ,d.cor_cdgo
+                                 ,d.emp_empresa
+                                 ,d.fil_filial
+                                 ,d.unn_codigo
+                                 ,d.les_codigo
+                                 ,d.tes_codigo
+                                 ,d.tco_codigo) dd
+                 WHERE d.ies_codigo = i.codigo
+                   AND d.gde_cdgo = q.gde_cdgo
+                   AND ($P{P_LIN_CDGO} is null or i.lin_cdgo = $P{P_LIN_CDGO})
+                   AND ($P{P_REF_CDGO} is null or i.ref_cdgo = $P{P_REF_CDGO})
+                   AND ($P{P_CAB_CDGO} is null or i.cab_cdgo = $P{P_CAB_CDGO})
+                   AND ($P{P_COR_CDGO} is null or d.cor_cdgo = $P{P_COR_CDGO})
+                   AND d.tai_codigo = q.qtd_nume
+                   AND d.emp_empresa = dd.emp_empresa
+                   AND d.fil_filial = dd.fil_filial
+                   AND d.unn_codigo = dd.unn_codigo
+                   AND d.cor_cdgo = dd.cor_cdgo
+                   AND d.les_codigo = dd.les_codigo
+                   AND d.tes_codigo = dd.tes_codigo
+                   AND d.tco_codigo = dd.tco_codigo
+                   AND dd.ies_codigo = i.codigo
+                   AND d.ies_codigo = dd.ies_codigo
+                   AND NVL(i.tipo, NULL) = 'A'
+                   AND NVL(i.lin_cdgo, NULL) = NVL(NULL, i.lin_cdgo)
+                   AND NVL(i.ref_cdgo, NULL) = NVL(NULL, i.ref_cdgo)
+                   AND NVL(i.cab_cdgo, NULL) = NVL(NULL, i.cab_cdgo)
+                   AND r.lin_cdgo = i.lin_cdgo
+                   AND r.ref_cdgo = i.ref_cdgo
+                   AND r.codigo_marca = NVL( $P{P_CODIGO_MARCA}, r.codigo_marca)
+                   AND ($P{P_MIX} = 'T' OR fct_mix_produto(r.lin_cdgo, r.ref_cdgo) = $P{P_MIX})
+                ) qry
+         GROUP BY qry.lin_cdgo
+                 ,qry.ref_cdgo
+                 ,qry.cab_cdgo
+                 ,qry.desc_cab
+                 ,qry.cor_cdgo) qry
+ WHERE ($P{P_QTDE_INICIAL} IS NULL OR qry.qtde_atual_total >= $P{P_QTDE_INICIAL})
+   AND ($P{P_QTDE_FINAL} IS NULL OR qry.qtde_atual_total <= $P{P_QTDE_FINAL})
+ ORDER BY qry.lin_cdgo
+         ,qry.ref_cdgo
+         ,qry.cab_cdgo
+         ,qry.cor_cdgo]]>
+	</queryString>
+	<field name="PRODUTO" class="java.lang.String"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="CAB_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESC_CAB" class="java.lang.String"/>
+	<field name="COR_CDGO" class="java.math.BigDecimal"/>
+	<field name="COR_DESC" class="java.lang.String"/>
+	<field name="PRECO" class="java.math.BigDecimal"/>
+	<field name="IMAGEM" class="java.lang.String"/>
+	<field name="QTDE_ATUAL_TOTAL" class="java.math.BigDecimal"/>
+	<variable name="QTDE_ATUAL_TOTAL_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{QTDE_ATUAL_TOTAL}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{PRODUTO}]]></groupExpression>
+		<groupHeader>
+			<band height="13" splitType="Prevent">
+				<frame>
+					<reportElement mode="Opaque" x="-21" y="0" width="597" height="13" forecolor="#B89F7D" backcolor="#CCCCCC"/>
+					<textField>
+						<reportElement x="22" y="0" width="69" height="12"/>
+						<textElement>
+							<font size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{PRODUTO}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="91" y="0" width="127" height="12"/>
+						<textElement>
+							<font size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{DESC_CAB}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="225" y="0" width="25" height="12">
+							<printWhenExpression><![CDATA[$P{P_MOSTRAR_PRECO} == "S"]]></printWhenExpression>
+						</reportElement>
+						<textElement textAlignment="Center">
+							<font size="8"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{PRECO}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group2" keepTogether="true">
+		<groupExpression><![CDATA[$F{COR_CDGO}]]></groupExpression>
+		<groupHeader>
+			<band height="43" splitType="Prevent">
+				<textField>
+					<reportElement x="70" y="0" width="127" height="12"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{COR_DESC}]]></textFieldExpression>
+				</textField>
+				<subreport>
+					<reportElement x="197" y="1" width="358" height="42"/>
+					<subreportParameter name="P_LIN_CDGO">
+						<subreportParameterExpression><![CDATA[$F{LIN_CDGO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="P_REF_CDGO">
+						<subreportParameterExpression><![CDATA[$F{REF_CDGO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="P_CAB_CDGO">
+						<subreportParameterExpression><![CDATA[$F{CAB_CDGO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="P_COR_CDGO">
+						<subreportParameterExpression><![CDATA[$F{COR_CDGO}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA["VendaEstrategicosGrade.jasper"]]></subreportExpression>
+				</subreport>
+				<image onErrorType="Blank">
+					<reportElement x="1" y="0" width="69" height="43">
+						<printWhenExpression><![CDATA[$P{P_IMPRIMIR_IMAGENS} == "S"]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA[$F{IMAGEM}]]></imageExpression>
+				</image>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="17" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement style="Column header" x="480" y="-12" width="75" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="446" y="-12" width="34" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-3" y="0" width="558" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Venda de Estratégicos]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="16" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="70" height="13" forecolor="#000000"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Produto]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="204" y="0" width="25" height="13" forecolor="#000000">
+					<printWhenExpression><![CDATA[$P{P_MOSTRAR_PRECO} == "S"]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Preço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="70" y="0" width="127" height="13" forecolor="#000000"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Column header" x="435" y="4" width="80" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="515" y="4" width="40" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="24">
+			<textField>
+				<reportElement x="104" y="3" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{QTDE_ATUAL_TOTAL_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="3" width="104" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Geral]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

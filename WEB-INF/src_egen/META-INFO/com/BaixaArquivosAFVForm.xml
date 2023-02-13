@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>04/04/2013</generation_day>
+<module>com</module>
+<file_name>BaixaArquivosAFV</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>04/04/2007 09:13:49</creationDate>
+<lastModifyDate>04/04/2013 09:45:40</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title> </title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>default</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/BaixaArquivosAFVForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>permissao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>permissao</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><%
+if(!user.isSuperUsuario() && !user.isAutorizado(130)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></codeItem><script_free></script_free>
+</fields_item>
+</fields>
+<formTemplate></formTemplate>
+<form_code><html:form action="com/BaixaArquivosAFVForm.do" method="POST" styleClass="baseForm">
+  <table class="bannerTable" style='width:99%;'>
+    <tr>
+      <td class=tableHeader>
+      </td>
+    </tr>
+<%
+     util.consultas.Parametros parametros = new util.consultas.Parametros();
+     String codigo_regional="";
+     String carga="";
+     String tipo="";
+     String arquivo="";
+     String programa="";
+     acesso.Usuario u = new acesso.Usuario();
+     u = (acesso.Usuario)session.getAttribute("User");
+     acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+     acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+
+     if(!(u.getEntidadeNegocio()==null)){
+          ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+          tipoent = (acesso.TipoEntidadeNegocio) ent.getTipoEntidadeNegocio();
+          tipo = tipoent.getTipo()+"";
+          if((tipo.equals("REPRESENTANTE COMERCIAL")) || (tipo.equals("REPRESENTANTE EXPORTACAO"))){
+            carga = parametros.retornaParametro("link_arquivos_afv") +"BeiraRio."+ent.getChave()+".zip";
+            arquivo = parametros.retornaParametro("diretorio_arquivos_afv") + "BeiraRio."+ent.getChave()+".zip";
+          }
+     }
+     programa = parametros.retornaParametro("diretorio_arquivos_afv") + "instalaafv_xp.exe";
+
+%>
+  </table>
+  <table class="itemTable" style='width:99%;'>
+
+<%
+if(!user.isSuperUsuario() && !user.isAutorizado(130)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%>
+
+
+</table>
+<div align="center">
+<table class="separatorTable" style='width:50%;'  >
+    <tr class="separatorTr">
+      <td colspan="2" class="separatorTd" align="center">
+          <b>
+          <big>Arquivos Disponíveis</big>
+          <b>
+          </td>
+        </tr>
+<%
+        java.io.File arq = new java.io.File(arquivo);
+        if(arq.isFile()) {
+%>
+        <tr>
+          <td class="formField" width="1%";>
+            <a href="<%= carga %>" target="_blank"><img border=0 src="../img/180.jpg" onmouseover = "this.src='../img/180_s.jpg'" onmouseout = "this.src='../img/180.jpg'" /></a>
+          </td>
+          <td>Carga Completa AFV</td>
+        </tr>
+<%
+}
+%>
+<%
+        java.io.File arq2 = new java.io.File(programa);
+        if(arq2.isFile()) {
+%>
+       <tr>
+          <td class="formField" width="1%";>
+            <%
+            String link_programa = parametros.retornaParametro("link_arquivos_afv") + "instalaafv_xp.exe";
+            %>
+            <a href="<%= link_programa %>" target="_blank"><img border=0 src="../img/180.jpg" onmouseover = "this.src='../img/180_s.jpg'" onmouseout = "this.src='../img/180.jpg'" /></a>
+          </td>
+          <td>Última Versão do Programa AFV</td>
+        </tr>
+<% 
+}
+%>
+       </table>
+      <table class="itemTable" style='width:100%;'>
+      </table>
+</div>
+
+</html:form></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>BaixaArquivosAFVActionForm</name>
+<type>portalbr.com.BaixaArquivosAFVActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/BaixaArquivosAFVForm</path>
+<type>portalbr.com.BaixaArquivosAFVAction</type>
+<name>BaixaArquivosAFVActionForm</name>
+<attribute></attribute>
+<input>/com/BaixaArquivosAFVForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/BaixaArquivosAFVForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Baixa de Arquivos AFV</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

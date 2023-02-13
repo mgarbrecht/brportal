@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaMarca" pageWidth="595" pageHeight="802" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6ef3bf15-a9f3-4ab8-857c-c8fde5061fa1">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset_marca" uuid="39ff9312-61f5-4ada-877d-a98407833442">
+		<queryString>
+			<![CDATA[SELECT /*+ all_rows */ ctl.codigo_marca
+     , SUM(NVL(ctl.entped_pp_pares, 0)) pr_pp
+     , SUM(NVL(ctl.entped_pp_vlr, 0)) vlr_pp
+     , (SUM(NVL(ctl.entped_pg_pares, 0)) + SUM(NVL(ctl.entped_rr_pares, 0))) pr_pg
+     , ROUND(SUM(NVL(ctl.entped_pg_vlr, 0)) + SUM(NVL(ctl.entped_rr_vlr, 0)), 2) vlr_pg
+     , COUNT(DISTINCT ctl.cli_cdgo) clientes
+     , (SUM(NVL(ctl.entped_pp_pares, 0)) + (SUM(NVL(ctl.entped_pg_pares, 0)) + SUM(NVL(ctl.entped_rr_pares, 0)))) tot_pares
+     , ROUND(SUM(NVL(ctl.entped_pp_vlr, 0)) +(SUM(NVL(ctl.entped_pg_vlr, 0)) + SUM(NVL(ctl.entped_rr_vlr, 0))), 2) tot_vlr
+  FROM tmp_mapa_automatico_resumo ctl
+     , gerentes_regionais_vendas  ger
+     , regionais_vendas           reg
+ WHERE empresa = '01'
+   AND nvl(ctl.codigo_marca,null) = 1
+   AND filial NOT IN ('GER', 'TOC', 'MOL', 'BEI', 'VIZ', 'MOD', 'MLK')
+   and data = '01-jul-2015'
+   AND NVL(ctl.codigo_gerente, NULL) = NVL(ger.codigo_gerente, NULL)
+   AND NVL(ger.codigo_regional, NULL) = reg.codigo_regional
+   AND (NVL(ctl.entped_pp_pares, 0) + NVL(ctl.entped_pg_pares, 0) +
+       NVL(ctl.entped_rr_pares, 0)) > 0
+   AND (NVL(ctl.entped_pp_vlr, 0) + NVL(ctl.entped_pg_vlr, 0) +
+       NVL(ctl.entped_rr_vlr, 0)) > 0
+ GROUP BY data, ctl.codigo_marca]]>
+		</queryString>
+		<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+		<field name="PR_PP" class="java.math.BigDecimal"/>
+		<field name="VLR_PP" class="java.math.BigDecimal"/>
+		<field name="PR_PG" class="java.math.BigDecimal"/>
+		<field name="VLR_PG" class="java.math.BigDecimal"/>
+		<field name="CLIENTES" class="java.math.BigDecimal"/>
+		<field name="TOT_PARES" class="java.math.BigDecimal"/>
+		<field name="TOT_VLR" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="P_MARCA" class="java.lang.String"/>
+	<parameter name="P_DATA_INICIAL" class="java.lang.String"/>
+	<parameter name="P_DATA_FINAL" class="java.lang.String"/>
+	<parameter name="P_TIPO_MERCADO" class="java.lang.String"/>
+	<parameter name="P_QTD_MAIORES_CLIENTES" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QTD_DESEMPENHO_REPRESENTANTE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QTD_MODELOS_MAIS_VENDIDOS" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_REGIONAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT codigo_marca
+      ,descricao_marca
+      ,DECODE(NVL($P{P_TIPO_MERCADO}, 'T'), 'T', 'Todos', 'MI', 'Mercado Interno', 'EX', 'Mercado Externo') tipo_mercado
+      ,NVL((SELECT rv.sigla_regional
+             FROM regionais_vendas rv
+            WHERE rv.codigo_regional = $P{P_REGIONAL}), 'Todas') regional
+  FROM marcas_produtos
+ WHERE status = 'A'
+   AND codigo_marca = NVL($P{P_MARCA}, codigo_marca)]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="TIPO_MERCADO" class="java.lang.String"/>
+	<field name="REGIONAL" class="java.lang.String"/>
+	<group name="REGIONAIS"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement uuid="f294853d-cc7e-49a1-92b6-d97654792cd9" style="Column header" x="530" y="22" width="25" height="12" forecolor="#000000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9c80d050-6015-48aa-acc0-dfa11747d32d" x="1" y="25" width="558" height="17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ficha da Marca]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b5058707-e17d-4bc9-be7a-dc64a72f8415" style="Column header" x="450" y="22" width="80" height="12" forecolor="#000000"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="02a44e46-5507-4fd5-8620-28d223d1d2bc" positionType="FixRelativeToBottom" x="0" y="41" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="a7952f25-8949-4fc9-a985-449d5e0e5cc2" x="37" y="0" width="45" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DATA_INICIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b77d0651-588a-47d1-82e4-3e2e8e6abf8a" x="95" y="0" width="45" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DATA_FINAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="45ad55b9-c295-43d5-a91e-59ba582e1f76" x="1" y="0" width="36" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Período:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f944b31b-7de3-4ad3-a53e-c78e36c46c95" x="1" y="10" width="68" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Mercado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c389ab5a-9f37-4df0-a603-fe5520e37955" x="1" y="20" width="36" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9b6720d2-67e0-439a-b2e3-27f9cb5b946b" x="37" y="20" width="164" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_MARCA}.toString().equals( "" ) ? "Todas":$P{P_MARCA}.toString()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="66123c90-7167-4133-9a00-9abd48bb5cd5" x="82" y="0" width="13" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[a]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1d3f27a9-efc1-4e58-80e4-1d3d4c61a959" x="69" y="10" width="164" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TIPO_MERCADO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e5aed5c4-ceb1-4f66-8dfa-8615a3ec2202" x="37" y="30" width="164" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_REGIONAL}.equals( "" ) ? "Todas":$F{REGIONAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7595e392-4ec2-4ec9-9692-3a1caf5f1bbc" x="1" y="30" width="36" height="10"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Regional:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="150" splitType="Stretch">
+			<frame>
+				<reportElement uuid="a3189b2a-d5a2-4408-8108-3c0625121e9e" mode="Opaque" x="0" y="0" width="555" height="12"/>
+			</frame>
+			<subreport>
+				<reportElement uuid="da3a9314-ad5e-4198-98b2-53402f1e988b" x="1" y="1" width="200" height="43"/>
+				<subreportParameter name="P_REGIONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGIONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_TIPO_MERCADO">
+					<subreportParameterExpression><![CDATA[$P{P_TIPO_MERCADO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DATA_INICIAL">
+					<subreportParameterExpression><![CDATA[$P{P_DATA_INICIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DATA_FINAL">
+					<subreportParameterExpression><![CDATA[$P{P_DATA_FINAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_MARCA">
+					<subreportParameterExpression><![CDATA[$P{P_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["FichaMarcaGeral.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="a2a87ef4-64b0-4fab-93bd-3826db51bf5b" x="1" y="48" width="200" height="100"/>
+				<subreportParameter name="P_QTD_MODELOS_MAIS_VENDIDOS">
+					<subreportParameterExpression><![CDATA[$P{P_QTD_MODELOS_MAIS_VENDIDOS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_REGIONAL">
+					<subreportParameterExpression><![CDATA[$P{P_REGIONAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_TIPO_MERCADO">
+					<subreportParameterExpression><![CDATA[$P{P_TIPO_MERCADO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DATA_INICIAL">
+					<subreportParameterExpression><![CDATA[$P{P_DATA_INICIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_DATA_FINAL">
+					<subreportParameterExpression><![CDATA[$P{P_DATA_FINAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_QTD_DESEMPENHO_REPRESENTANTE">
+					<subreportParameterExpression><![CDATA[$P{P_QTD_DESEMPENHO_REPRESENTANTE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_QTD_MAIORES_CLIENTES">
+					<subreportParameterExpression><![CDATA[$P{P_QTD_MAIORES_CLIENTES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_MARCA">
+					<subreportParameterExpression><![CDATA[$P{P_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["FichaMarcaMaisVendidos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,2479 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>25/02/2015</generation_day>
+<module>ind</module>
+<file_name>Pse0050</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate></jspTemplate>
+<jspCode><%@ include file="../system/HeaderStrutsForm.jsp"%>
+<%@ page extends='acesso.web.HttpJspSessao' import='portalbr.dbobj.table.*,portalbr.dbobj.view.*,portalbr.dbobj.procedure.*' %>
+<html>
+  <bean:message key="page.css"/>
+
+
+  <script type="text/javascript" src="../script/util.js"></script> 
+  <script type="text/javascript" src="../script/jquery-1.7.2.min.js"></script>  
+  <script type="text/javascript" src="../script/jquery.noty.packaged.min.js"></script>  
+  <script>$.noConflict();</script>
+
+
+
+  <bean:message key="page.dwrscripts"/>
+  <script type="text/javascript" src="../dwr/interface/Pse0050ActionForm.js">
+  </script>
+  <script type="text/javascript">
+    var ActionFormClass = Pse0050ActionForm;
+    var hashMapLabel = new HashMap();
+    hashMapLabel.set("free","");
+    hashMapLabel.set("tipo","Tipo de Leitura");
+    hashMapLabel.set("fornecedor","Fornecedor");
+    hashMapLabel.set("fornecedor_desc","");
+    hashMapLabel.set("pro_codigo","Processo");
+    hashMapLabel.set("pro_nome","");
+    hashMapLabel.set("f_i","");
+    hashMapLabel.set("codigo_barra","Código de Barras");
+    hashMapLabel.set("lido","");
+    hashMapLabel.set("mensagem","");
+    hashMapLabel.set("f_f","");
+    var reportColumns = new Array(new Array("for_codigo"));
+  </script>
+  <bean:message key="page.ajaxscript"/>
+  <head>
+    <title>
+      Atelier Pré-Envio - Coletor
+    </title>
+  </head>
+  <center>
+    <body onload="if('<%= (String)request.getAttribute("codigobarra") %>' != 'null'){document.forms[0].codigo_barra.focus();}">
+      <table class="mainTable" style='width:99%;'>
+        <tr class="mainTr">
+          <td class="mainTd">
+            <table class="headerTable" style="width:99%" >
+              <tr>
+
+                <td class="td10">
+                  <%@ include file="../system/header.jsp" %>
+                  <%
+                  if(!user.isSuperUsuario() && !user.isAutorizado(150)){
+                    response.sendRedirect("../system/Error.jsp");
+                  }
+                  %>
+                </td>
+
+              </tr>
+
+            </table>
+
+            <html:form action="ind/Pse0050Form.do" method="post" styleClass="baseForm">
+              <table class="messageTable" style='width:99%;'>
+                <tr class="messageTr" >
+                  <td class="messageTd">
+                    <bean:message key="div.campos*"/>
+                    <html:errors property="tipo"/>
+                    <html:errors property="fornecedor"/>
+                    <html:errors property="fornecedor_desc"/>
+                    <html:errors property="pro_codigo"/>
+                    <html:errors property="pro_nome"/>
+                    <html:errors property="codigo_barra"/>
+                    <html:errors property="mensagem"/>
+                    <html:errors property="ActionErrors.GLOBAL_ERROR_bl_form"/>
+                  </td>
+                </tr>
+              </table>
+
+              <table class="itemTable"  style="width:99%;">
+                <%
+                String for_codigo="";
+                String tipo="";
+                acesso.Usuario u = new acesso.Usuario();
+                u = (acesso.Usuario)session.getAttribute("User");
+                acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+                acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+
+                if(!(u.getEntidadeNegocio()==null)){
+                  ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+                  tipoent = (acesso.TipoEntidadeNegocio) ent.getTipoEntidadeNegocio();
+                  tipo = tipoent.getTipo()+"";
+                  if(tipo.equals("ATELIER")){
+                    for_codigo = ent.getChave()+"";
+                  }
+                }
+                %>
+                <tr class="itemTr">
+                  <td class="formLabel">
+                    <span class="spamFormLabel">
+                      Tipo de Leitura
+                    </span>
+                  </td>
+                  <td class="formField">
+                    <html:select property="tipo" styleId="tipo" styleClass="disabled" tabindex="-1" size="1">
+                      <html:option styleClass="baseOption" value="R">
+                        Retorno
+                      </html:option>
+                    </html:select>
+                  </td>
+                </tr>
+
+                <tr class="itemTr">
+                  <td class="formLabel">
+                    <span class="spamFormLabel">
+                      <%
+                      if(for_codigo.equals("")){
+                        %>
+                        Fornecedor
+                        <%
+                      }
+                      %>
+
+                    </span>
+                  </td>
+                  <td class="formField">
+                    <%
+                    if(!for_codigo.equals("")){
+                      %>
+                      <html:hidden property="fornecedor" value="<%= for_codigo %>"/>
+                      <%
+                    } else {
+                      %>
+                      <html:text property="fornecedor" onblur="fillFields(0,new Array('fornecedor'),'Pse0050ActionForm.getFornecedor_desc_Ajax',new Array('fornecedor_desc'));" styleClass="baseField" size="9" maxlength="9"/>
+                      <input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_fornecedor()"  >
+
+
+                      <script type="text/javascript">
+                        function lov_open_fornecedor() {
+                          window.open('..//lov/LvFornecedorAtelierLov.do?resetfull_action=&returnBlock=0&return0=fornecedor&return1=fornecedor_desc','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+                        }
+                      </script>
+                      <span class="spamFormLabel">
+                      </span>
+                      <html:text property="fornecedor_desc" styleId="fornecedor_desc" styleClass="disabled" tabindex="-1" readonly="true" size="45" maxlength="40"/>
+                    </td>
+                  </tr>
+
+                  <%
+                }
+                %>
+                <tr class="itemTr">
+                  <td class="formLabel">
+                    <span class="spamFormLabel">
+                      Processo
+                    </span>
+                    <bean:message key="jsp.fieldnotnull"/>
+                  </td>
+                  <td class="formField">
+                    <html:text property="pro_codigo" styleId="pro_codigo" onblur="fillFields(0,new Array('pro_codigo'),'Pse0050ActionForm.getPro_nome_Ajax',new Array('pro_nome'));" styleClass="baseField" size="3" maxlength="3"/>
+                    <input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_pro_codigo()"  >
+                    <script type="text/javascript">
+                      function lov_open_pro_codigo() {
+                        window.open('..//lov/LvProcesso_fabLov.do?resetfull_action=&returnBlock=0&return0=pro_codigo&return1=pro_nome','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+                      }
+                    </script>
+                    <span class="spamFormLabel">
+                    </span>
+                    <html:text property="pro_nome" styleId="pro_nome" styleClass="disabled" tabindex="-1" size="45" maxlength="40"/>
+                  </td>
+                </tr>
+
+              </table>
+              <table class="separatorTable">
+                <tr >
+                  <td colspan="2" class="separatorTd">
+                  </td>
+                </tr>
+                <tr class="itemTr">
+                  <td class="formLabel">
+                    <span class="spamFormLabel">
+                      Código de Barras
+                    </span>
+                  </td>
+                  <td class="formField">
+                    <html:text property="codigo_barra" styleId="codigo_barra" onblur="if(this.value!=''){document.forms[0].lido.value='S';processa_action.click();}" styleClass="baseField"/>
+                  </td>
+                </tr>
+
+                <html:hidden property="lido"/>
+                <tr class="itemTr">
+                  <td class="formLabel">
+                    <span class="spamFormLabel">
+                    </span>
+                  </td>
+                  <td class="formField">
+                    <%
+                    portalbr.ind.Pse0050ActionForm Pse0050ActionForm = (portalbr.ind.Pse0050ActionForm)session.getAttribute("Pse0050ActionForm");
+                    if(!(request.getAttribute("codigobarra")+"").equals("null")){
+                      if((Pse0050ActionForm.getMensagem()+"").indexOf("ok")==-1){
+                        %>
+                        <html:text property="mensagem" styleId="mensagem" style="font-size:13; background-color:#FFA07A; border-color:gray; cursor:default; font-weight:bold;text-align:center;" styleClass="baseField" tabindex="-1" readonly="true" size="120" maxlength="120"/>
+                        <%
+                      } else {
+                        %>
+                        <html:text property="mensagem" styleId="mensagem" style="font-size:13; background-color:#B0C4DE; border-color:gray; cursor:default; font-weight:bold;text-align:center;" styleClass="baseField" tabindex="-1" readonly="true" size="120" maxlength="120"/>
+                        <%
+                      } }
+                      %>
+
+                    </td>
+                  </tr>
+
+
+                </table>
+                <table class="itemTable" style='width:99%;'>
+                </table>
+
+                <table class="buttonTable" style='width:99%;'>
+                  <tr class="buttonTr">
+                    <td class="buttonTd">
+                      <html:submit accesskey="p" value="processa" styleClass="myhidden" property="processa_action">
+                      </html:submit>
+                      <html:submit accesskey="l" styleClass="myhidden" property="resetfull_action">
+                        <bean:message bundle="ApplicationResources" key="jsp.reset"/>
+                      </html:submit>
+                      <html:submit styleClass="myhidden" property="resetfull_talao_action">
+                        <bean:message bundle="ApplicationResources" key="jsp.reset"/>
+                      </html:submit>
+                      <html:button accesskey="l" onclick="resetfull_action.click();" styleClass="baseButton" property="resetfull1_action">
+                        <bean:message bundle="ApplicationResources" key="jsp.reset"/>
+                      </html:button>
+
+
+
+                      <script>
+                        function getKeySite(keyStroke) {
+                          isNetscape=(document.layers);
+                          eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+                          which = String.fromCharCode(eventChooser).toLowerCase();
+                          keyBuffer = which;
+                          if(eventChooser == 13){
+                            document.forms[0].processa_action.click();
+                          }
+                        }
+                      </script>
+                      <SCRIPT>
+                        document.onkeypress = getKeySite;
+                        </SCRIPT><html:button accesskey="l" value="Limpar Talões Lidos" onclick="resetfull_talao_action.click();" styleClass="baseButton" property="resetfull_talao1_action"></html:button>
+                        <html:submit styleClass="myhidden" property="resetfull2_action"><bean:message bundle="ApplicationResources" key="jsp.reset"/></html:submit>
+                        </td>
+                        </tr>
+                        </table>
+
+                        </html:form><script type="text/javascript">
+                        var focusControl = document.forms[0].elements["pro_codigo"];
+                        if (focusControl.type != "hidden"){
+                          focusControl.focus();
+                        }
+                      </script>
+
+                      <%
+                      {
+                        %>
+
+                        <%
+                        java.util.Vector<String> res_Atelier_pre_envio = (java.util.Vector<String>)session.getAttribute("v_atelier");
+                        if(session.getAttribute("atelier_cor")==null){
+                          session.setAttribute("atelier_cor","c");
+                        }
+                        %>
+
+                        <form  name="bl_report_Atelier_pre_envio" id="bl_report_Atelier_pre_envio" class="baseForm" method="post" >
+                          <%
+                          if (res_Atelier_pre_envio!=null && res_Atelier_pre_envio.size()>0) {
+                            %>
+
+                            <table id="TRbl_report_Atelier_pre_envio"  class="reportTable"   style="width:99%;" border=1;  >
+
+                              <tr class="reportTr">
+                                <td class="columnTdHeader" style="text-align:left;" >
+                                  <b>
+                                    Talões lidos
+                                  </b>
+                                </td>
+                              </tr>
+                              <%
+                              int i_bl_report_Atelier_pre_envio = 0;
+                              for(int x=res_Atelier_pre_envio.size()-1;x>=0;x--){
+                                String style_bl_report_Atelier_pre_envio="";
+                                if (res_Atelier_pre_envio.elementAt(x).substring(0,1).equals("c")) {
+                                  style_bl_report_Atelier_pre_envio="rowColor";
+                                } else {
+                                  style_bl_report_Atelier_pre_envio="rowBlank";
+                                }
+                                %>
+                                <tr class='<%= style_bl_report_Atelier_pre_envio %>' id="TRbl_report_Atelier_pre_envio<%=i_bl_report_Atelier_pre_envio%>" >
+                                  <td class="reportColumn" style="text-align:left;" >
+                                    <%= res_Atelier_pre_envio.elementAt(x).substring(1,res_Atelier_pre_envio.elementAt(x).length()) %>
+                                  </td>
+                                </tr>
+                                <%
+                                i_bl_report_Atelier_pre_envio++;
+                              }
+                              %>
+
+                            </table>
+
+                            <%
+                          }
+                          %>
+
+                        </form>
+                        <%
+                      }
+                      %>
+
+                    </td>
+                  </tr>
+                </table>
+
+              </body>
+
+
+<% if(session.getAttribute("ultimoTalaoRemessa")!=null) { %>
+
+<script type="text/javascript">
+    function generate(type) {
+        var n = noty({
+            text        : type,
+            type        : type,
+            dismissQueue: false,
+            layout      : 'topCenter',
+            theme       : 'relax'
+        });
+        return n;
+    }
+
+    jQuery(document).ready(function () {
+        var information = generate('information');
+         setTimeout(function () {
+            jQuery.noty.setText(information.options.id, '<%= session.getAttribute("ultimoTalaoRemessa") %>');
+        }, 0);
+
+        setTimeout(function () {
+            jQuery.noty.closeAll();
+        }, 4000);
+
+    });
+
+</script>
+
+<%
+ }
+ session.removeAttribute("ultimoTalaoRemessa"); 
+%>
+
+
+            </center>
+          </html></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>31/08/2009 14:45:37</creationDate>
+<lastModifyDate>25/02/2015 15:25:24</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>Parametros</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>default</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>ind/Pse0050Form.do</action>
+<enctype></enctype>
+<focus>pro_codigo</focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>free</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>free</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><%
+     String for_codigo="";
+     String tipo="";
+     acesso.Usuario u = new acesso.Usuario();
+     u = (acesso.Usuario)session.getAttribute("User");
+     acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+     acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+
+     if(!(u.getEntidadeNegocio()==null)){
+          ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+          tipoent = (acesso.TipoEntidadeNegocio) ent.getTipoEntidadeNegocio();
+          tipo = tipoent.getTipo()+"";
+          if(tipo.equals("ATELIER")){
+            for_codigo = ent.getChave()+"";
+          }
+     }
+%></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>tipo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>tipo</property>
+<label>Tipo de Leitura</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>tipo</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>R</value>
+<label>Retorno</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>fornecedor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>fornecedor</property>
+<label>Fornecedor</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('fornecedor'),'Pse0050ActionForm.getFornecedor_desc_Ajax',new Array('fornecedor_desc'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem><tr class="itemTr">
+<td class="formLabel">
+<span class="spamFormLabel">
+<%
+   if(for_codigo.equals("")){
+%>
+Fornecedor
+<% } %>
+
+</span>
+</td> 
+<td class="formField">
+<%
+if(!for_codigo.equals("")){
+%>
+<html:hidden property="fornecedor" value="<%= for_codigo %>"/>
+<% } else { %>
+<html:text property="fornecedor" onblur="fillFields(0,new Array('fornecedor'),'Pse0050ActionForm.getFornecedor_desc_Ajax',new Array('fornecedor_desc'));" styleClass="baseField" size="9" maxlength="9"/><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_fornecedor()"  >
+
+
+<script type="text/javascript"> 
+ function lov_open_fornecedor() {
+   window.open('..//lov/LvFornecedorAtelierLov.do?resetfull_action=&returnBlock=0&return0=fornecedor&return1=fornecedor_desc','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value><%= for_codigo %></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>fornecedor_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>fornecedor_desc</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>fornecedor_desc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Jw_fornecedores_atelier</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>fornecedor</master_name>
+<slave_name>usua_usuario</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>fornecedor_desc</master_name>
+<slave_name>usua_nome</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate>ajax_field_relation</fieldRelationTemplate>
+<fieldRelationCode></fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem><span 
+ class="spamFormLabel"></span>
+<html:text property="fornecedor_desc" styleId="fornecedor_desc" styleClass="disabled" tabindex="-1" readonly="true" size="45" maxlength="40"/></td> 
+</tr>
+
+<% } %></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>pro_codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>pro_codigo</property>
+<label>Processo</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>true</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>..//lov/LvProcesso_fabLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=pro_codigo</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=pro_nome</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_pro_codigo()"  ><script type="text/javascript"> 
+ function lov_open_pro_codigo() {
+   window.open('..//lov/LvProcesso_fabLov.do?resetfull_action=&returnBlock=0&return0=pro_codigo&return1=pro_nome','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>true</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('pro_codigo'),'Pse0050ActionForm.getPro_nome_Ajax',new Array('pro_nome'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>pro_codigo</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>3</size>
+<maxlength>3</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>pro_nome</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>pro_nome</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>pro_nome</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Processo_fab</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>pro_codigo</master_name>
+<slave_name>pro_numero</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>pro_nome</master_name>
+<slave_name>pro_nome</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate>ajax_field_relation</fieldRelationTemplate>
+<fieldRelationCode></fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>45</size>
+<maxlength>40</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_i</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_i</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem></table>
+<table class="separatorTable">
+  <tr >
+    <td colspan="2" class="separatorTd">
+    </td>
+  </tr>
+</codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>codigo_barra</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_barra</property>
+<label>Código de Barras</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>if(this.value!=''){document.forms[0].lido.value='S';processa_action.click();}</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>codigo_barra</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Cli</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>codigo_barra</master_name>
+<slave_name>cla_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>lido</master_name>
+<slave_name>cli_nome</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate>ajax_field_relation</fieldRelationTemplate>
+<fieldRelationCode></fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>lido</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>lido</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>mensagem</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>mensagem</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>center</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style>font-size:13; background-color:#E0FFFF; border-color:gray; cursor:default; font-weight:bold;</style>
+<styleClass></styleClass>
+<styleId>mensagem</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation></field_relation>
+<codeItem><tr class="itemTr">
+<td class="formLabel"><span class="spamFormLabel">
+</span>
+</td> 
+<td class="formField">
+<%
+ portalbr.ind.Pse0050ActionForm Pse0050ActionForm = (portalbr.ind.Pse0050ActionForm)session.getAttribute("Pse0050ActionForm");
+ if(!(request.getAttribute("codigobarra")+"").equals("null")){
+   if((Pse0050ActionForm.getMensagem()+"").indexOf("ok")==-1){
+%>
+   <html:text property="mensagem" styleId="mensagem" style="font-size:13; background-color:#FFA07A; border-color:gray; cursor:default; font-weight:bold;text-align:center;" styleClass="baseField" tabindex="-1" readonly="true" size="120" maxlength="120"/>
+<% } else { %>
+   <html:text property="mensagem" styleId="mensagem" style="font-size:13; background-color:#B0C4DE; border-color:gray; cursor:default; font-weight:bold;text-align:center;" styleClass="baseField" tabindex="-1" readonly="true" size="120" maxlength="120"/>
+<% } } %>
+
+</td> 
+</tr>
+
+
+</codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>120</size>
+<maxlength>120</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>f_f</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>f_f</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template>end_separator_table_free_field</template>
+<codeItem></codeItem><script_free></script_free>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>processa_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>processa</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_processa_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    Pse0050ActionForm f = (Pse0050ActionForm) form;
+    java.util.Vector<String> v_atelier = null;
+    brportal.ind.Pse0050 p = new brportal.ind.Pse0050();
+    if(f.getTipo().equals("R")){
+         f.setMensagem(p.processaPreRetorno( f.getCodigo_barra()
+                                           , f.getFornecedor()
+                                           , f.getPro_codigo()
+                                           , request));
+    } else {
+         f.setMensagem(p.processaPreEnvio( f.getCodigo_barra()
+                                         , f.getFornecedor()
+                                         , f.getPro_codigo()
+                                         , request));
+    }
+    f.setCodigo_barra("");
+    request.setAttribute("codigobarra","lido");
+//---------------------------------------------------------
+    if((f.getMensagem()+"").indexOf("ok")==-1){
+    } else {
+       if(session.getAttribute("v_atelier")==null){
+          session.setAttribute("atelier_cor","c");
+          v_atelier = new java.util.Vector<String>();
+          v_atelier.add("c"+f.getMensagem());
+       } else {
+          if(((String)session.getAttribute("atelier_cor")).equals("c")){
+             session.setAttribute("atelier_cor","b");
+          } else {
+             session.setAttribute("atelier_cor","c");
+          }
+          v_atelier = (java.util.Vector)session.getAttribute("v_atelier");
+          v_atelier.add((String)session.getAttribute("atelier_cor")+f.getMensagem());
+       }
+       session.setAttribute("v_atelier", v_atelier);
+    }
+//---------------------------------------------------------
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}
+</action_code>
+<property>processa_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull_talao_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_resetfull_talao_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    session.removeAttribute("v_atelier");
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}
+
+</action_code>
+<property>resetfull_talao_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>resetfull1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>resetfull_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><html:button accesskey="l" onclick="resetfull_action.click();" styleClass="baseButton" property="resetfull1_action"><bean:message bundle="ApplicationResources" key="jsp.reset"/></html:button>
+
+
+
+<script>
+function getKeySite(keyStroke) {
+      isNetscape=(document.layers);
+      eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+      which = String.fromCharCode(eventChooser).toLowerCase();
+      keyBuffer = which;
+      if(eventChooser == 13){ 
+         document.forms[0].processa_action.click();
+      }
+    }
+</script>
+<SCRIPT>
+    document.onkeypress = getKeySite;
+</SCRIPT></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>resetfull_talao1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>Limpar Talões Lidos</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>resetfull_talao_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull_talao1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull2_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_resetfull2_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    Pse0050ActionForm f = (Pse0050ActionForm) form;
+    form.reset(mapping, request);
+    session.setAttribute(mapping.getName(), form);
+    session.removeAttribute("v_atelier");
+    session.removeAttribute("atelier_cor");
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  }
+  return actionForward;
+}
+
+</action_code>
+<property>resetfull2_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Atelier_pre_envio</name>
+<title>Atelier</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Atelier_pre_envio</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector<String> res_Atelier_pre_envio = (java.util.Vector<String>)session.getAttribute("v_atelier");
+  if(session.getAttribute("atelier_cor")==null){
+     session.setAttribute("atelier_cor","c");
+  }
+  %>
+
+  <form  name="bl_report_Atelier_pre_envio" id="bl_report_Atelier_pre_envio" class="baseForm" method="post" >
+    <%
+    if (res_Atelier_pre_envio!=null && res_Atelier_pre_envio.size()>0) {
+      %>
+
+      <table id="TRbl_report_Atelier_pre_envio"  class="reportTable"   style="width:99%;" border=1;  >
+
+        <tr class="reportTr">
+          <td class="columnTdHeader" style="text-align:left;" >
+            <b>Talões lidos</b>
+          </td>
+        </tr>
+        <%
+        int i_bl_report_Atelier_pre_envio = 0;
+        for(int x=res_Atelier_pre_envio.size()-1;x>=0;x--){
+           String style_bl_report_Atelier_pre_envio="";
+           if (res_Atelier_pre_envio.elementAt(x).substring(0,1).equals("c")) {
+              style_bl_report_Atelier_pre_envio="rowColor";
+           } else {
+              style_bl_report_Atelier_pre_envio="rowBlank";
+           }
+        %>
+        <tr class='<%= style_bl_report_Atelier_pre_envio %>' id="TRbl_report_Atelier_pre_envio<%=i_bl_report_Atelier_pre_envio%>" >
+          <td class="reportColumn" style="text-align:left;" >
+            <%= res_Atelier_pre_envio.elementAt(x).substring(1,res_Atelier_pre_envio.elementAt(x).length()) %>
+          </td>
+        </tr>
+        <%
+        i_bl_report_Atelier_pre_envio++;
+        }
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>for_codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Atelier_pre_envio</block_name>
+<role_item></role_item>
+<database_column>for_codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>For_codigo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_atelier_pre_envio.getFor_codigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>Pse0050ActionForm</name>
+<type>portalbr.ind.Pse0050ActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/ind/Pse0050Form</path>
+<type>portalbr.ind.Pse0050Action</type>
+<name>Pse0050ActionForm</name>
+<attribute></attribute>
+<input>/ind/Pse0050Form.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/ind/Pse0050Form.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Atelier Pré-Envio - Coletor</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body>
+<class>com.egen.develop.generator.Body</class>
+<id></id>
+<class_></class_>
+<style></style>
+<title></title>
+<dir></dir>
+<lang></lang>
+<onload>if('<%= (String)request.getAttribute("codigobarra") %>' != 'null'){document.forms[0].codigo_barra.focus();}</onload>
+<onunload></onunload>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<bodySetProperty>
+</bodySetProperty>
+</bodySetProperty>
+</body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(150)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>true</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

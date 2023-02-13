@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MaioresCompras" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f62cd1b0-9887-49a1-832c-19b2bbcc1404">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{RANKING} == 10 || $F{RANKING} == 20 || $F{RANKING} == 50 || $F{RANKING} == 100]]></conditionExpression>
+			<style backcolor="#FFF2CC"/>
+		</conditionalStyle>
+	</style>
+	<style name="style2">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{RANKING} == 10 || $F{RANKING} == 20 || $F{RANKING} == 50 || $F{RANKING} == 100]]></conditionExpression>
+			<style backcolor="#FFF2CC"/>
+		</conditionalStyle>
+	</style>
+	<style name="style_mais">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{RANKING} == 5]]></conditionExpression>
+			<style forecolor="#FFFFFF" backcolor="#FFF2CC"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="P_DATA_INICIAL" class="java.util.Date"/>
+	<parameter name="P_DATA_FINAL" class="java.util.Date"/>
+	<parameter name="P_CODIGO_REGIONAL" class="java.lang.String"/>
+	<parameter name="P_REP_CDGO" class="java.lang.String"/>
+	<parameter name="P_CODIGO_MARCA" class="java.lang.String"/>
+	<parameter name="P_TIPO_MERCADO" class="java.lang.String"/>
+	<parameter name="P_DESCRICAO_REGIONAL" class="java.lang.String"/>
+	<parameter name="P_DESCRICAO_REP_CDGO" class="java.lang.String"/>
+	<parameter name="P_DESCRICAO_MARCA" class="java.lang.String"/>
+	<parameter name="P_DESCRICAO_TIPO_MERCADO" class="java.lang.String"/>
+	<parameter name="P_QUANTIDADE_CLIENTES" class="java.lang.String"/>
+	<parameter name="P_DESCRICAO_REG_CDGO" class="java.lang.String"/>
+	<parameter name="P_REG_CDGO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT ranking
+      ,cli_cdgo
+      ,razao_social
+      ,cliente
+      ,moe_codigo
+      ,valor_Realizado
+      ,pares_realizado
+      ,preco_medio
+      ,prazo_medio
+      ,representatividade
+      ,representatividade_string
+      ,valor_realizado_total
+      ,pares_realizado_total
+      ,dias_uteis
+      ,ROUND(DECODE(valor_realizado_total, 0, 0, (valor_realizado /
+                     (valor_realizado_total / 100))), 2) representatividade
+
+      ,TRIM(REPLACE(to_char(ROUND(DECODE(valor_realizado_total, 0, 0, (SUM(CASE
+                                                 WHEN ranking <= 10 THEN
+                                                  valor_realizado
+                                               END)
+                                           over() /
+                                           (valor_realizado_total / 100))), 2), '990.99') || '%', '.', ',')) representatividade10
+      ,TRIM(REPLACE(to_char(ROUND(DECODE(valor_realizado_total, 0, 0, (SUM(CASE
+                                                 WHEN ranking <= 20 THEN
+                                                  valor_realizado
+                                               END)
+                                           over() /
+                                           (valor_realizado_total / 100))), 2), '990.99') || '%', '.', ',')) representatividade20
+      ,TRIM(REPLACE(to_char(ROUND(DECODE(valor_realizado_total, 0, 0, (SUM(CASE
+                                                 WHEN ranking <= 50 THEN
+                                                  valor_realizado
+                                               END)
+                                           over() /
+                                           (valor_realizado_total / 100))), 2), '990.99') || '%', '.', ',')) representatividade50
+      ,TRIM(REPLACE(to_char(ROUND(DECODE(valor_realizado_total, 0, 0, (SUM(CASE
+                                                 WHEN ranking <= 100 THEN
+                                                  valor_realizado
+                                               END)
+                                           over() /
+                                           (valor_realizado_total / 100))), 2), '990.99') || '%', '.', ',')) representatividade100
+,count(distinct ranking) over () registros
+  FROM (SELECT rank() over(ORDER BY SUM(qry.valor_realizado) DESC) ranking
+              ,qry.cli_cdgo
+              ,qry.razao_social
+              ,qry.cli_cdgo || '-' || qry.razao_social cliente
+               --      ,qry.situacao_cliente
+               --      ,qry.rep_cdgo
+               --      ,qry.rep_rzao
+               --      ,qry.codigo_marca
+               --      ,pck_marcas_produtos.get_nome(qry.codigo_marca) marca_descricao
+               --      ,qry.codigo_regional
+               --      ,pck_regionais_vendas.get_nome(qry.codigo_regional) regional_descricao
+              ,moe_codigo
+              ,SUM(qry.valor_realizado) valor_realizado
+              ,SUM(qry.pares_realizado) pares_realizado
+
+              ,ROUND(DECODE(NVL(SUM(qry.pares_realizado), 0), 0, 0, (SUM(qry.valor_realizado) /
+                             SUM(qry.pares_realizado))), 2) preco_medio
+              ,ROUND(AVG(prazo_medio), 2) prazo_medio
+              ,ROUND(DECODE(valor_realizado_total, 0, 0, (SUM(valor_realizado) /
+                             (valor_realizado_total / 100))), 2) representatividade
+              ,TRIM(REPLACE(to_char(ROUND(DECODE(valor_realizado_total, 0, 0, (SUM(valor_realizado) /
+                                                  (valor_realizado_total / 100))), 2), '990.99') || '%', '.', ',')) representatividade_string
+              ,valor_realizado_total
+              ,pares_realizado_total
+              ,(SELECT COUNT(DISTINCT c.data) dias_uteis
+                  FROM calendarios_semanal c
+                 WHERE c.data >=
+                       $P{P_DATA_INICIAL}
+                   AND c.data <=
+                       LAST_DAY($P{P_DATA_FINAL})
+                   AND c.feriado = 'N'
+                   AND c.cod_filial NOT IN ('15', '17', '20')) dias_uteis
+
+          FROM (SELECT NVL(g.gre_grupo, tmdap.cli_cdgo) cli_cdgo
+                      ,NVL(g.gre_descricao, cli.cli_rzao) razao_social
+                      ,cli.cli_situ situacao_cliente
+                       --               ,TO_CHAR(tmdap.codigo_representante) rep_cdgo
+                       --               ,rep.rep_rzao
+                       --               ,tmdap.codigo_marca
+                       --               ,rep.codigo_regional
+                      ,SUM(tmdap.entped_pg_pares + entped_pp_pares) pares_realizado
+                      ,SUM(tmdap.entped_pg_vlr + entped_pp_vlr) valor_realizado
+                      ,AVG(cnd.cnd_przmed) prazo_medio
+                      ,SUM(SUM(tmdap.entped_pg_vlr + entped_pp_vlr)) OVER() AS valor_realizado_total
+                      ,SUM(sum(tmdap.entped_pg_pares + entped_pp_pares)) OVER() AS pares_realizado_total
+                      ,p.moe_codigo
+                  FROM tmp_mapa_automatico_poi_a tmdap
+                      ,rep
+                      ,representante_marca       rm
+                      ,cli
+                      ,grupo_economico           g
+                      ,ped                       p
+                      ,cnd
+                      ,reg
+                      ,erp
+                      ,regionais_vendas rv
+                 WHERE rep.rep_cdgo = TO_CHAR(tmdap.codigo_representante)
+                   AND p.ped_nmro = tmdap.ped_nmro
+                   AND cnd.cnd_cdgo = p.cnd_cdgo
+                   AND reg.reg_cdgo = erp.reg_cdgo
+                   AND erp.rep_cdgo = rep.rep_cdgo
+                   AND rep.codigo_regional = rv.codigo_regional
+                   AND cli.cli_cdgo = tmdap.cli_cdgo
+                   AND g.cli_cdgo(+) = cli.cli_cdgo
+                   AND rm.codigo_representante = rep.rep_cdgo
+                   AND rm.marca_produto = tmdap.codigo_marca
+                   AND rm.situacao = 'A'
+                   AND g.status(+) = 'A'
+                   AND tmdap.data >= $P{P_DATA_INICIAL}
+                   AND tmdap.data <= LAST_DAY($P{P_DATA_FINAL})
+                   AND ($P{P_REP_CDGO} IS NULL OR tmdap.codigo_representante = '$P!{P_REP_CDGO}')
+                   AND ($P{P_REG_CDGO} IS NULL OR reg.reg_cdgo = '$P!{P_REG_CDGO}')
+                   AND ($P{P_CODIGO_MARCA} IS NULL OR tmdap.codigo_marca = $P{P_CODIGO_MARCA})
+                   AND ($P{P_CODIGO_REGIONAL} IS NULL OR rep.codigo_regional = $P{P_CODIGO_REGIONAL})
+                   AND ($P{P_TIPO_MERCADO} IS NULL OR cli.cli_tipo_mercado = '$P!{P_TIPO_MERCADO}')
+                   AND tmdap.filial <> '0'
+                   AND tmdap.cli_cdgo <> 0
+                   AND cli.cli_cdgo <> 40000
+                 GROUP BY NVL(g.gre_grupo, tmdap.cli_cdgo)
+                         ,p.moe_codigo
+                         ,NVL(g.gre_descricao, cli.cli_rzao)
+                         ,cli.cli_situ
+                         ,TO_CHAR(tmdap.codigo_representante)
+                         ,rep.rep_rzao
+                         ,tmdap.codigo_marca
+                         ,rep.codigo_regional) qry
+         GROUP BY qry.cli_cdgo
+                 ,qry.razao_social
+                  --         ,qry.situacao_cliente
+                  --         ,qry.rep_cdgo
+                  --         ,qry.rep_rzao
+                  --         ,qry.codigo_marca
+                  --         ,pck_marcas_produtos.get_nome(qry.codigo_marca)
+                  --         ,qry.codigo_regional
+                  --         ,pck_regionais_vendas.get_nome(qry.codigo_regional);
+                 ,moe_codigo)
+ ORDER BY ranking]]>
+	</queryString>
+	<field name="RANKING" class="java.math.BigDecimal"/>
+	<field name="CLI_CDGO" class="java.math.BigDecimal"/>
+	<field name="RAZAO_SOCIAL" class="java.lang.String"/>
+	<field name="CLIENTE" class="java.lang.String"/>
+	<field name="MOE_CODIGO" class="java.lang.String"/>
+	<field name="VALOR_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="PARES_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="PRECO_MEDIO" class="java.math.BigDecimal"/>
+	<field name="PRAZO_MEDIO" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_STRING" class="java.lang.String"/>
+	<field name="VALOR_REALIZADO_TOTAL" class="java.math.BigDecimal"/>
+	<field name="PARES_REALIZADO_TOTAL" class="java.math.BigDecimal"/>
+	<field name="DIAS_UTEIS" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE10" class="java.lang.String"/>
+	<field name="REPRESENTATIVIDADE20" class="java.lang.String"/>
+	<field name="REPRESENTATIVIDADE50" class="java.lang.String"/>
+	<field name="REPRESENTATIVIDADE100" class="java.lang.String"/>
+	<field name="REGISTROS" class="java.math.BigDecimal"/>
+	<variable name="VALOR_REALIZADO_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR_REALIZADO}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="PARES_REALIZADO_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{PARES_REALIZADO}]]></variableExpression>
+	</variable>
+	<variable name="PRECO_MEDIO_1" class="java.math.BigDecimal" resetType="Column" calculation="Average">
+		<variableExpression><![CDATA[$F{PRECO_MEDIO}]]></variableExpression>
+	</variable>
+	<variable name="PRAZO_MEDIO_1" class="java.math.BigDecimal" resetType="Column" calculation="Average">
+		<variableExpression><![CDATA[$F{PRAZO_MEDIO}]]></variableExpression>
+	</variable>
+	<variable name="QUANTIDADE_REGISTROS" class="java.math.BigDecimal" resetType="Column" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{RANKING}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="VALOR_REALIZADO_2" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR_REALIZADO}]]></variableExpression>
+	</variable>
+	<variable name="VALOR_REALIZADO_3" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR_REALIZADO}]]></variableExpression>
+	</variable>
+	<group name="GRUPO_GERAL">
+		<groupExpression><![CDATA[true]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f9136cd5-2326-40b0-a678-f2781cb1375a" x="0" y="0" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Data Inicial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="84a66b4a-ba82-455d-a39f-722de9eda427" x="0" y="10" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Data Final:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2efdb52d-7137-4dcf-be25-4268918aba03" x="0" y="20" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Regional:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb06dc80-10b9-448b-bfe6-744d43de3bcf" x="0" y="40" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Representante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fe77dbc4-8044-4d9b-80bd-de8e7b136173" x="0" y="50" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Marca:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d5e709c-cd87-477a-a374-8eea93597645" x="0" y="60" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Tipo de Mercado:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="25e889f6-9683-4e02-a015-b006807016b3" x="63" y="0" width="100" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DATA_INICIAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="2c38c262-392a-49c9-aab8-7eebd2f0e94e" x="63" y="10" width="100" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DATA_FINAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="00e94366-7697-41a5-8643-ee5429d6662c" x="63" y="20" width="263" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DESCRICAO_REGIONAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c7c4af7-7b7a-4e91-85aa-3c7af33f0b5f" x="63" y="40" width="263" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DESCRICAO_REP_CDGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="edf123cb-b995-4b19-ac62-577ac1900df5" x="63" y="50" width="263" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DESCRICAO_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3b8ac08d-1346-4c53-b8a4-e10f703081f3" x="63" y="60" width="263" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DESCRICAO_TIPO_MERCADO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b56aa374-1375-4121-ba5b-72982c9164b3" x="1" y="47" width="802" height="25"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Maiores Compras]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6df18f5e-4fdf-47fe-b216-5c517a1ff998" x="0" y="30" width="63" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Micro Região:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="15aaa506-fd7e-43d8-ba9b-34ab482992ef" x="63" y="30" width="263" height="10"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_DESCRICAO_REG_CDGO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement uuid="71372589-0dd9-4f32-ab22-c59a8b6dd627" isPrintRepeatedValues="false" x="0" y="0" width="802" height="24" isPrintInFirstWholeBand="true">
+					<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+				</reportElement>
+				<staticText>
+					<reportElement uuid="6078e604-d698-49f0-9eec-15cd8fb3d0de" mode="Opaque" x="0" y="0" width="30" height="12" backcolor="#D9D9D9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Seq.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d9aaca1f-9372-428e-b7d8-dd92667b6f96" mode="Opaque" x="30" y="0" width="245" height="12" backcolor="#D9D9D9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Grp. Empresarial]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="a4ed2f95-e22c-4099-8a47-841732cd67d9" mode="Opaque" x="376" y="0" width="70" height="12" backcolor="#D9D9D9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Pares]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="496eda03-fc99-43d7-b1af-856c7d85510e" mode="Opaque" x="275" y="0" width="101" height="12" backcolor="#D9D9D9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="5328501f-ac06-4189-a6b4-4c04a71921e4" mode="Opaque" x="446" y="0" width="59" height="12" backcolor="#D9D9D9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Preço Médio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="b940c671-6ba2-4a21-8e37-29490477a2fc" mode="Opaque" x="505" y="0" width="58" height="12" backcolor="#D9D9D9"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Prazo Médio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="48273330-40db-4ce6-8c52-e8b58fcf8ed2" mode="Opaque" x="577" y="12" width="45" height="12" backcolor="#FFFF00"/>
+					<box leftPadding="0">
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[% Part.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="d84fc90f-1dfa-4803-9f61-3503001f4dd4" mode="Opaque" x="0" y="12" width="30" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[0]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="f397f9ab-cca8-4e8b-b90c-ad11b4d29615" mode="Opaque" x="30" y="12" width="245" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="b5abbfe7-13b4-4850-a8dd-c9bdccdf9d07" mode="Opaque" x="622" y="12" width="45" height="12" backcolor="#FFFF00">
+						<printWhenExpression><![CDATA[$F{REGISTROS} > 0]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["10 Mais"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Column" pattern="#,##0.00">
+					<reportElement uuid="50fd725a-cb47-488d-ae98-984ec3610d25" mode="Opaque" x="291" y="12" width="85" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="1"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{VALOR_REALIZADO_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Column" pattern="#,##0">
+					<reportElement uuid="3316c802-0631-40e6-a0b2-4bd27edcbf10" mode="Opaque" x="376" y="12" width="70" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PARES_REALIZADO_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="fcac2b19-a419-46d6-bc69-b881d9d4bc8b" mode="Opaque" x="275" y="12" width="16" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="1"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{MOE_CODIGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="97daab10-3693-42ea-a6c7-aba0f61a9fc0" mode="Opaque" x="446" y="12" width="16" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement>
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{MOE_CODIGO}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Column" pattern="#,##0.00">
+					<reportElement uuid="4a3e1a60-e19d-4741-8513-749083a6a93b" mode="Opaque" x="462" y="12" width="43" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PRECO_MEDIO_1}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Column" pattern="#,##0.00">
+					<reportElement uuid="1992b48c-f1a3-467f-84fb-334d22954354" mode="Opaque" x="505" y="12" width="58" height="12" backcolor="#FFFF00"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{PRAZO_MEDIO_1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="8ad04a12-d524-4904-82d8-35c4674e6187" mode="Opaque" x="667" y="12" width="45" height="12" backcolor="#FFFF00">
+						<printWhenExpression><![CDATA[$F{REGISTROS} >=20]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["20 Mais"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="923834e5-017b-4885-bef8-a3e76a6f7200" mode="Opaque" x="712" y="12" width="45" height="12" backcolor="#FFFF00">
+						<printWhenExpression><![CDATA[$F{REGISTROS} >= 50]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["50 Mais"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="e3862909-e767-457d-ab33-97b67b82d2c9" mode="Opaque" x="757" y="12" width="45" height="12" backcolor="#FFFF00">
+						<printWhenExpression><![CDATA[$F{REGISTROS} >= 100]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA["100 Mais"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement uuid="ecf75697-fa4c-4593-887f-64a6d63d2d4f" style="style1" mode="Opaque" x="0" y="0" width="30" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RANKING}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="56770708-d8b8-4142-8be5-bcca0c7d4d2c" style="style1" mode="Opaque" x="30" y="0" width="245" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="59be2ac7-c4bc-4333-b54b-086b76a85b94" style="style1" mode="Opaque" x="376" y="0" width="70" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="16dfe3eb-b598-412a-b2bf-031c4af8e1ef" style="style1" mode="Opaque" x="291" y="0" width="85" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="30bf6f9a-0c0e-4460-8fff-a3c737a20142" style="style1" mode="Opaque" x="462" y="0" width="43" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRECO_MEDIO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6639a92a-9c1a-4852-9299-6ee318a2195c" style="style1" mode="Opaque" x="505" y="0" width="58" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PRAZO_MEDIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="30a16474-5e1d-4399-a8d5-98e2300b8843" style="style1" mode="Opaque" x="275" y="0" width="16" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOE_CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6a55c309-c94c-4681-954a-3bf80b6eff62" style="style1" mode="Opaque" x="446" y="0" width="16" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOE_CODIGO}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="99d3f84c-716b-46ff-aa31-2e53fe4aef64" x="622" y="0" width="45" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[$F{RANKING} == 10]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="959620fa-ea33-45ba-8f10-c2da3552a53c" mode="Opaque" x="622" y="0" width="45" height="12" isPrintWhenDetailOverflows="true" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[$F{RANKING} <= 10]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5f7fe53a-9fb4-4232-8c1b-08678cec5cd3" x="622" y="0" width="45" height="12" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{RANKING} == 10]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="29e1a756-eba8-4a9d-b45d-a18590f2fa84" x="667" y="0" width="45" height="12" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[(($F{RANKING} == 20) && ($F{REGISTROS} >= 20))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="55fbe76e-62ed-44f2-991d-f0bdb39f5cea" mode="Opaque" x="667" y="0" width="45" height="12" isPrintWhenDetailOverflows="true" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 20)&&($F{REGISTROS}>=20))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="67f241a6-3ed4-40b1-ac19-7acca276a948" x="712" y="0" width="45" height="12" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[(($F{RANKING} == 50) && ($F{REGISTROS} >= 50))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8a467c92-793f-45ab-b26f-02c85b8be8d2" mode="Opaque" x="712" y="0" width="45" height="12" isPrintWhenDetailOverflows="true" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 50) && ($F{REGISTROS} >= 50))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c1afed0a-3c08-4c98-927c-371ad00fc3d5" x="712" y="0" width="45" height="12" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{RANKING} == 50]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="704612ed-8dbb-44c6-afe8-0e6cd3d1528e" mode="Opaque" x="712" y="0" width="45" height="12" isPrintWhenDetailOverflows="true" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 50) && ($F{REGISTROS} >= 50))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="a81f1260-7ce9-4597-8808-7fabfbf95590" mode="Opaque" x="577" y="0" width="45" height="12" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$F{RANKING} <= 100]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE_STRING}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="062ee553-7bb9-4afc-888a-e3c2bf105d6b" x="623" y="0" width="134" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[$F{RANKING} == 100]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8a9c621c-0c3e-4283-b269-09883aed0551" x="623" y="0" width="89" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[$F{RANKING} == 50]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e9da165e-8cb2-4762-b1c9-1d8a9c2ad573" x="623" y="0" width="44" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[$F{RANKING} == 20]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="60b481da-5670-4536-b624-39bab03554d2" style="style_mais" mode="Opaque" x="623" y="1" width="43" height="10" forecolor="#000000" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} == 5) && ($V{QUANTIDADE_REGISTROS} > 0 && $V{QUANTIDADE_REGISTROS} < 20))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE10}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="80907ada-ea9d-4a61-b9e9-bcaf4e4eec9d" x="667" y="0" width="45" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 20) && ($F{REGISTROS} >= 20))]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="1e3dcd12-a8e2-4d36-b83c-68df991b07c7" mode="Opaque" x="667" y="0" width="45" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} == 10) && ($F{REGISTROS} >= 20))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE20}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="ae189ab4-64a1-47ce-91b5-c22ce80904dd" x="712" y="0" width="45" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="51589e6e-e851-4017-82fb-84c36dfcf0dd" mode="Opaque" x="713" y="1" width="43" height="10" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} == 25) && ($F{REGISTROS} >= 50))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE50}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="cc015033-6b30-4cce-a2ae-b7df15aac5f3" x="757" y="0" width="43" height="12" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 100) && ($F{REGISTROS} >= 100))]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="58a8c020-5ee9-4d6f-a489-8f2ae9b57be4" mode="Opaque" x="757" y="0" width="45" height="12" isPrintWhenDetailOverflows="true" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 100) && ($F{REGISTROS} >= 100))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ff430216-5925-4860-8df5-956d90cafd90" x="757" y="0" width="45" height="12" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{RANKING} == 100]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="11bc0f2b-3ec7-4bfc-96b8-d8fd0c2e59fc" mode="Opaque" x="759" y="0" width="43" height="12" isPrintWhenDetailOverflows="true" backcolor="#FFF2CC">
+					<printWhenExpression><![CDATA[(($F{REGISTROS} >= 100) && ($F{RANKING} == 50))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE100}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="17281aeb-6947-4904-80db-4edc3db8e468" x="667" y="0" width="45" height="12">
+					<printWhenExpression><![CDATA[(($F{RANKING} <= 20) && ($F{REGISTROS} >= 20))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6728a7c2-466d-4c74-8888-bcfdd6b7a03d" x="667" y="0" width="45" height="12">
+					<printWhenExpression><![CDATA[(($F{RANKING} == 20) && ($F{REGISTROS} >= 20))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

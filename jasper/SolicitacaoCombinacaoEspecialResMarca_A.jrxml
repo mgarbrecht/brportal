@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecialResMarca_A" language="groovy" pageWidth="170" pageHeight="100" orientation="Landscape" columnWidth="170" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_QUERY" class="java.lang.String">
+		<defaultValueExpression><![CDATA[" AND 1 = 1 "]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT rce.codigo_marca
+      ,INITCAP(pck_marcas_produtos.get_nome(rce.codigo_marca)) nome_marca
+      ,ROUND(AVG(rce.ll_alteracao_solicitada), 2) media_ll
+  FROM brio.ref_combinacao_especial rce
+      ,cg_ref_codes cgr
+      ,cg_ref_codes crc
+ WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
+   AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial
+   AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'
+   AND crc.rv_low_value(+) = rce.subtipo_solicitacao_comb_espec
+   AND rce.situacao_solicitacao <> 'C'
+   AND rce.ll_alteracao_solicitada IS NOT NULL
+   AND rce.codigo_marca IS NOT NULL $P!{P_QUERY}
+ GROUP BY rce.codigo_marca
+ ORDER BY DECODE(rce.codigo_marca, 1, 1, 16, 2, 3, 3, 17, 4, 19, 5, 9, 6, 7)]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="MEDIA_LL" class="java.math.BigDecimal"/>
+	<variable name="MEDIA_LL_1" class="java.math.BigDecimal" calculation="Average">
+		<variableExpression><![CDATA[$F{MEDIA_LL}]]></variableExpression>
+	</variable>
+	<group name="CODIGO_MARCA">
+		<groupExpression><![CDATA[$F{CODIGO_MARCA}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="0" y="0" width="78" height="20"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NOME_MARCA}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="78" y="0" width="81" height="20"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{MEDIA_LL}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="78" y="0" width="81" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Média do LL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="25">
+			<textField evaluationTime="Group" evaluationGroup="CODIGO_MARCA" pattern="#,##0.00">
+				<reportElement x="78" y="0" width="81" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MEDIA_LL_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="78" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Média Geral]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

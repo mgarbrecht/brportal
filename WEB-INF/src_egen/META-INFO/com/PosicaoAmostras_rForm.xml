@@ -1,0 +1,1872 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>02/04/2013</generation_day>
+<module>com</module>
+<file_name>PosicaoAmostras_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>05/01/2011 05:22:37</creationDate>
+<lastModifyDate>02/04/2013 15:43:23</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Ped_amostra_rep_vw</name>
+<title>Posicao</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Ped_amostra_rep_vw</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><script type="text/javascript" src="../script/jquery.js"></script>
+<script type="text/javascript" src="../script/thickbox.js"></script>  
+
+<%
+ com.egen.util.jdbc.JdbcUtil j = null;
+ try {
+   j = new com.egen.util.jdbc.JdbcUtil();
+   %>
+
+  <%
+  java.util.Vector res_Ped_amostra_rep_vw = (java.util.Vector)session.getAttribute("res_Ped_amostra_rep_vw");
+  %>
+
+  <form  name="bl_report_Ped_amostra_rep_vw" id="bl_report_Ped_amostra_rep_vw" class="baseForm" method="post" >
+    <%
+    if (res_Ped_amostra_rep_vw!=null && res_Ped_amostra_rep_vw.size()>0) {
+      %>
+
+      <table id="TRbl_report_Ped_amostra_rep_vw"  class="reportTable"   style="width:99%; "  border="1" >
+        <%
+        java.lang.Integer nfs_nmro =  null;
+        java.lang.Integer ped_nmro =  null;
+        java.lang.Integer lin_cdgo =  null;
+        java.lang.String tipo_produto =  null;
+        java.lang.String rep =  null;
+        java.lang.String regional =  null;
+        java.lang.String cliente =  null;
+        java.lang.String observacao =  null;
+        java.lang.String obs_atendente =  null;
+        java.lang.String usuario_data_inclusao =  null;
+        java.lang.String tra =  null;
+        java.lang.String consig =  null;
+        java.lang.Integer regional_cdgo =  null;
+        java.lang.String rep_cdgo =  null;
+        java.lang.Integer cli_cdgo =  null;
+        java.sql.Date ped_dadg =  null;
+        java.lang.String estagios =  null;
+        java.lang.String estagios_marcados =  null;
+        String[] estagios_split = null;
+        java.lang.String estagios_codigos =  null;
+        String[] estagios_codigos_split = null;
+        java.lang.Integer id_situacao =  null;
+        int posicao = 0;
+        %>
+
+        <tr class="reportTr">
+          <td class="columnTdHeader" style="text-align:center;" >
+            Nota Fiscal
+          </td>
+
+          <td class="columnTdHeader" style="text-align:center;" >
+            Pedido
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Linha
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Representante
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Regional
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Cliente
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Transportadora
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Consig.
+          </td>
+
+          <td class="columnTdHeader" style="text-align:center;" >
+            Data
+          </td>
+
+          <td class="columnTdHeader" style="text-align:center;"  >
+            Usuário /<br>Data Inclusão
+          </td>
+
+          <td class="columnTdHeader" style="text-align:center;" >
+            Recebido
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Observação
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Obs. Atendente
+          </td>
+
+        </tr>
+
+        <%
+        int i_bl_report_Ped_amostra_rep_vw = 0;
+        while (i_bl_report_Ped_amostra_rep_vw<res_Ped_amostra_rep_vw.size()) {
+          portalbr.dbobj.table.Ped_amostra_rep_vw t_ped_amostra_rep_vw = (portalbr.dbobj.table.Ped_amostra_rep_vw)res_Ped_amostra_rep_vw.elementAt(i_bl_report_Ped_amostra_rep_vw);
+          nfs_nmro = t_ped_amostra_rep_vw.getNfs_nmro();
+          ped_nmro = t_ped_amostra_rep_vw.getPed_nmro();
+          rep = t_ped_amostra_rep_vw.getRep()==null?"":t_ped_amostra_rep_vw.getRep();
+          regional = t_ped_amostra_rep_vw.getRegional()==null?"":t_ped_amostra_rep_vw.getRegional();
+          cliente = t_ped_amostra_rep_vw.getCliente()==null?"":t_ped_amostra_rep_vw.getCliente();
+          tra = t_ped_amostra_rep_vw.getTra()==null?"":t_ped_amostra_rep_vw.getTra();
+          consig = t_ped_amostra_rep_vw.getConsig()==null?"":t_ped_amostra_rep_vw.getConsig();
+          regional_cdgo = t_ped_amostra_rep_vw.getRegional_cdgo();
+          rep_cdgo = t_ped_amostra_rep_vw.getRep_cdgo()==null?"":t_ped_amostra_rep_vw.getRep_cdgo();
+          cli_cdgo = t_ped_amostra_rep_vw.getCli_cdgo();
+          lin_cdgo = t_ped_amostra_rep_vw.getLin_cdgo();
+          tipo_produto = t_ped_amostra_rep_vw.getTipo_produto()==null?"":t_ped_amostra_rep_vw.getTipo_produto();
+          ped_dadg = (java.sql.Date)t_ped_amostra_rep_vw.getPed_dadg();
+          estagios_marcados = t_ped_amostra_rep_vw.getEstagios_marcados()==null?"":t_ped_amostra_rep_vw.getEstagios_marcados();
+          usuario_data_inclusao= t_ped_amostra_rep_vw.getUsuario_data_inclusao()==null?"":t_ped_amostra_rep_vw.getUsuario_data_inclusao();
+          observacao = t_ped_amostra_rep_vw.getObservacao()==null?"":t_ped_amostra_rep_vw.getObservacao();
+          obs_atendente = t_ped_amostra_rep_vw.getObs_atendente()==null?"":t_ped_amostra_rep_vw.getObs_atendente();
+          id_situacao = t_ped_amostra_rep_vw.getId_situacao();
+          String style_bl_report_Ped_amostra_rep_vw="";
+          if (!((i_bl_report_Ped_amostra_rep_vw%2)!=0)) {
+            style_bl_report_Ped_amostra_rep_vw="rowColor";
+          } else {
+            style_bl_report_Ped_amostra_rep_vw="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Ped_amostra_rep_vw %>' id="TRbl_report_Ped_amostra_rep_vw<%=i_bl_report_Ped_amostra_rep_vw%>" >
+            <td class="reportColumn" style="text-align:center;" >
+              <%= ((nfs_nmro!=null)?nfs_nmro.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:center;" >
+              <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+                 <a href="../com/ConsultaPedidos_iForm.do?select_action=&pedido_beira_rio=<%= ped_nmro %>" target="_self" STYLE="cursor:hand">
+                    <%= ((ped_nmro!=null)?ped_nmro.toString():"") %>
+                 </a>
+              <% } else { %>
+                    <%= ((ped_nmro!=null)?ped_nmro.toString():"") %>
+              <% } %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= lin_cdgo %> - <%= tipo_produto %>
+            </td>
+           
+            <td class="reportColumn" style="text-align:left;" >
+              <%= rep %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= regional %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= cliente %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= tra %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= consig %>
+            </td>
+
+            <td class="reportColumn" style="text-align:center;" >
+              <%= com.egen.util.text.FormatDate.format(ped_dadg, "dd/MM/yyyy") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:center;" >
+              <small><%= usuario_data_inclusao %></small>
+            </td>
+
+
+        <td class="reportColumn" style="text-align:center;" width="1%" >
+                <%
+                if(estagios_marcados.equals("1")){
+                   %>
+                   <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+                      <img src="../img/cb_checked.png" style="cursor:hand;border:'red'" onclick="if(this.src.indexOf('cb_checked.png')!=-1){jQuery.post('PosicaoAmostras_rForm.do?uncheck_action=&ped_nmro=<%= ped_nmro %>&indice=<%= posicao %>',function(){alert('Registro salvo com sucesso!')});this.src='../img/cb_unchecked.png';}else{jQuery.post('PosicaoAmostras_rForm.do?check_action=&ped_nmro=<%= ped_nmro %>&indice=<%= posicao %>',function(){alert('Registro salvo com sucesso!')});this.src='../img/cb_checked.png';}"/>
+                   <% } else { %>
+                      <b>x</b>
+                   <% } %>
+                   <%
+                 } else {
+                   %>
+                   <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+                      <img src="../img/cb_unchecked.png" style="cursor:hand;border:'red'" onclick="if(this.src.indexOf('cb_unchecked.png')!=-1){jQuery.post('PosicaoAmostras_rForm.do?check_action=&ped_nmro=<%= ped_nmro %>&indice=<%= posicao %>',function(){alert('Registro salvo com sucesso!')});this.src='../img/cb_checked.png';}else{jQuery.post('PosicaoAmostras_rForm.do?uncheck_action=&ped_nmro=<%= ped_nmro %>&indice=<%= posicao %>',function(){alert('Registro salvo com sucesso!')});this.src='../img/cb_unchecked.png';}"/>
+                   <% } %>
+                   <%
+                 }
+                 %>
+               </td>    
+
+
+            <td class="reportColumn" style="text-align:left;" >
+            <% if(observacao.equals("")){ %>
+              <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+               <a href='../com/PosicaoAmostras_iForm.do?select_action=&ped_nmro=<%= ped_nmro %>&posicao=<%= posicao %>&?keepThis=true&TB_iframe=true&height=280&width=600' title='Observação' class='thickbox'>
+                  <div id="<%= ped_nmro %>"
+                     <font color="red" style="cursor:hand">Adicionar Observação</font>
+                  </div>
+               </a>
+              <% } else { %>
+                     <font color="red" style="cursor:hand">Adicionar Observação</font>
+              <% } %>
+            <% } else { %>
+              <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+               <a href='../com/PosicaoAmostras_iForm.do?select_action=&ped_nmro=<%= ped_nmro %>&posicao=<%= posicao %>&?keepThis=true&TB_iframe=true&height=280&width=600' title='Observação' class='thickbox'>
+                 <div id="<%= ped_nmro %>">
+                   <font style="cursor:hand"><%= observacao %></font>
+                 </div>
+               </a>
+               <% } else { %>
+                   <font style="cursor:hand"><%= observacao %></font>
+               <% } %>
+            <% } %>
+           </td>
+
+
+
+            <td class="reportColumn" style="text-align:left;" >
+            <% if(obs_atendente.equals("")){ %>
+              <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+               <a href='../com/PosicaoAmostras_oForm.do?select_action=&ped_nmro=<%= ped_nmro %>&posicao=<%= posicao %>&?keepThis=true&TB_iframe=true&height=280&width=600' title='Observação Atendente' class='thickbox'>
+                  <div id="obs<%= ped_nmro %>"
+                     <font color="red" style="cursor:hand">Adicionar Observação</font>
+                  </div>
+               </a>
+              <% } else { %>
+                     <font color="red" style="cursor:hand">Adicionar Observação</font>
+              <% } %>
+            <% } else { %>
+              <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+               <a href='../com/PosicaoAmostras_oForm.do?select_action=&ped_nmro=<%= ped_nmro %>&posicao=<%= posicao %>&?keepThis=true&TB_iframe=true&height=280&width=600' title='Observação Atendente' class='thickbox'>
+                 <div id="obs<%= ped_nmro %>">
+                   <font style="cursor:hand"><%= obs_atendente %></font>
+                 </div>
+               </a>
+               <% } else { %>
+                   <font style="cursor:hand"><%= obs_atendente %></font>
+               <% } %>
+            <% } %>
+           </td>
+
+
+          </tr>
+          <% ++posicao; %>
+
+          <%
+          i_bl_report_Ped_amostra_rep_vw++;
+          if (i_bl_report_Ped_amostra_rep_vw<res_Ped_amostra_rep_vw.size()) {
+            t_ped_amostra_rep_vw = (portalbr.dbobj.table.Ped_amostra_rep_vw)res_Ped_amostra_rep_vw.elementAt(i_bl_report_Ped_amostra_rep_vw);
+            nfs_nmro = t_ped_amostra_rep_vw.getNfs_nmro();
+            ped_nmro = t_ped_amostra_rep_vw.getPed_nmro();
+            rep = t_ped_amostra_rep_vw.getRep()==null?"":t_ped_amostra_rep_vw.getRep();
+            regional = t_ped_amostra_rep_vw.getRegional()==null?"":t_ped_amostra_rep_vw.getRegional();
+            cliente = t_ped_amostra_rep_vw.getCliente()==null?"":t_ped_amostra_rep_vw.getCliente();
+            tra = t_ped_amostra_rep_vw.getTra()==null?"":t_ped_amostra_rep_vw.getTra();
+            consig = t_ped_amostra_rep_vw.getConsig()==null?"":t_ped_amostra_rep_vw.getConsig();
+            regional_cdgo = t_ped_amostra_rep_vw.getRegional_cdgo();
+            rep_cdgo = t_ped_amostra_rep_vw.getRep_cdgo()==null?"":t_ped_amostra_rep_vw.getRep_cdgo();
+            cli_cdgo = t_ped_amostra_rep_vw.getCli_cdgo();
+            lin_cdgo = t_ped_amostra_rep_vw.getLin_cdgo();
+            tipo_produto = t_ped_amostra_rep_vw.getTipo_produto()==null?"":t_ped_amostra_rep_vw.getTipo_produto();
+            ped_dadg = (java.sql.Date)t_ped_amostra_rep_vw.getPed_dadg();
+            estagios_marcados = t_ped_amostra_rep_vw.getEstagios_marcados()==null?"":t_ped_amostra_rep_vw.getEstagios_marcados();
+            observacao = t_ped_amostra_rep_vw.getObservacao()==null?"":t_ped_amostra_rep_vw.getObservacao();
+            obs_atendente = t_ped_amostra_rep_vw.getObs_atendente()==null?"":t_ped_amostra_rep_vw.getObs_atendente();
+            usuario_data_inclusao= t_ped_amostra_rep_vw.getUsuario_data_inclusao()==null?"":t_ped_amostra_rep_vw.getUsuario_data_inclusao();
+            id_situacao = t_ped_amostra_rep_vw.getId_situacao();
+          } else {
+          }
+        }
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+ <%
+ } finally {
+   if (j != null) {
+     j.close();
+   }
+ }
+ %>
+
+<script>
+function atualiza(pedido, valor){
+  jQuery('#'+pedido).html(valor);
+}
+
+function atualizaobservacao(pedido, valor){
+  jQuery('#obs'+pedido).html(valor);
+}
+</script>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nfs_nmro</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>nfs_nmro</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Nota Fiscal</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getNfs_nmro()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ped_nmro</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>ped_nmro</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedido</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getPed_nmro()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>rep</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Representante</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getRep()==null?"":t_ped_amostra_rep_vw.getRep()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Regional</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getRegional()==null?"":t_ped_amostra_rep_vw.getRegional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cliente</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>cliente</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cliente</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getCliente()==null?"":t_ped_amostra_rep_vw.getCliente()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>tra</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>tra</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Transportadora</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getTra()==null?"":t_ped_amostra_rep_vw.getTra()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>consig</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>consig</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Consig.</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getConsig()==null?"":t_ped_amostra_rep_vw.getConsig()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>regional_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>regional_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Regional_cdgo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getRegional_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>rep_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Rep_cdgo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getRep_cdgo()==null?"":t_ped_amostra_rep_vw.getRep_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>cli_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cli_cdgo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_ped_amostra_rep_vw.getCli_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ped_dadg</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Ped_amostra_rep_vw</block_name>
+<role_item></role_item>
+<database_column>ped_dadg</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>dd/MM/yyyy</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Data</label>
+<type>java.sql.Date</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>(java.sql.Date)t_ped_amostra_rep_vw.getPed_dadg()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Peso_corrugados</name>
+<title>Ped</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Peso_corrugados</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/PosicaoAmostras_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>ped_nmro</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Peso_corrugados</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ped_nmro</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>estagio</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Peso_corrugados</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>estagio</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>indice</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Peso_corrugados</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>indice</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Peso_corrugados</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+   <html:submit accesskey="a" styleClass="baseButton" property="back_action"><bean:message bundle="ApplicationResources" key="jsp.back"/></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>back_action</property>
+<forward>/com/PosicaoAmostrasForm.jsp</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>check_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Peso_corrugados</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>check</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+  <html:submit value="check" styleClass="myhidden" property="check_action"></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_check_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    PosicaoAmostras_rActionForm f = (PosicaoAmostras_rActionForm) form;
+    util.consultas.Query query = new util.consultas.Query();
+    acesso.Sessao sessao = new acesso.Sessao(session);
+//---- Verifica se já está inserido na tabela ------------------------
+    String existe = query.retorna(j, "SELECT 1 FROM brio.ped_amostra_situacoes_estagios WHERE ped_nmro = "+f.getPed_nmro());
+    if(existe.equals("1")){
+       query.execute(j, "UPDATE brio.ped_amostra_situacoes_estagios SET estagio = 1 WHERE ped_nmro = "+f.getPed_nmro());
+    } else {
+       query.execute(j, "insert INTO brio.ped_amostra_situacoes_estagios VALUES ((SELECT nvl(max(id_situacao)+1,1) FROM brio.PED_AMOSTRA_SITUACOES_ESTAGIOS),"+f.getPed_nmro()+",1,null,'"+sessao.getUsuario()+"',SYSDATE,null)");
+    }
+//--------------------------------------------------------------------
+    java.util.Vector res_Ped_amostra_rep_vw = (java.util.Vector)session.getAttribute("res_Ped_amostra_rep_vw");
+    portalbr.dbobj.table.Ped_amostra_rep_vw r = (portalbr.dbobj.table.Ped_amostra_rep_vw) res_Ped_amostra_rep_vw.elementAt(Integer.parseInt(f.getIndice()));
+    r.setEstagios_marcados("1");
+//--------------------------------------------------------------------
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Peso_corrugados", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}
+</action_code>
+<property>check_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>uncheck_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Peso_corrugados</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>uncheck</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+  <html:submit value="uncheck" styleClass="myhidden" property="uncheck_action"></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_uncheck_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    util.consultas.Query query = new util.consultas.Query();
+    PosicaoAmostras_rActionForm f = (PosicaoAmostras_rActionForm) form;
+    acesso.Sessao sessao = new acesso.Sessao(session);
+//---- Verifica se já está inserido na tabela ------------------------
+    String existe = query.retorna(j, "SELECT 1 FROM brio.ped_amostra_situacoes_estagios WHERE ped_nmro = "+f.getPed_nmro());
+    if(existe.equals("1")){
+       query.execute(j, "UPDATE brio.ped_amostra_situacoes_estagios SET estagio = 2 WHERE ped_nmro = "+f.getPed_nmro());
+    } else {
+       query.execute(j, "insert INTO brio.ped_amostra_situacoes_estagios VALUES ((SELECT nvl(max(id_situacao)+1,1) FROM brio.PED_AMOSTRA_SITUACOES_ESTAGIOS),"+f.getPed_nmro()+",2,null,'"+sessao.getUsuario()+"',SYSDATE)");
+    }
+//--------------------------------------------------------------------
+    java.util.Vector res_Ped_amostra_rep_vw = (java.util.Vector)session.getAttribute("res_Ped_amostra_rep_vw");
+    portalbr.dbobj.table.Ped_amostra_rep_vw r = (portalbr.dbobj.table.Ped_amostra_rep_vw) res_Ped_amostra_rep_vw.elementAt(Integer.parseInt(f.getIndice()));
+    r.setEstagios_marcados("");
+//--------------------------------------------------------------------
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Peso_corrugados", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}</action_code>
+<property>uncheck_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>PosicaoAmostras_rActionForm</name>
+<type>portalbr.com.PosicaoAmostras_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/PosicaoAmostras_rForm</path>
+<type>portalbr.com.PosicaoAmostras_rAction</type>
+<name>PosicaoAmostras_rActionForm</name>
+<attribute></attribute>
+<input>/com/PosicaoAmostras_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/PosicaoAmostras_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Posição de Entregas de Amostras</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(179)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

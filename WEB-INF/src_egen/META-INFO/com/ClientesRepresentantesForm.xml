@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>22/02/2008</generation_day>
+<module>com</module>
+<file_name>ClientesRepresentantes</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>03/08/2006 08:24:24</creationDate>
+<lastModifyDate>22/02/2008 08:54:11</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_representantes</name>
+<title> </title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>portalbr.dbobj.view.Jw_clientes_representantes</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><table id="TRbl_report_Jw_clientes_representantes" class="reportTable" style=width:99%;>
+  <%
+  int counterbl_report_Jw_clientes_representantes=0;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try{
+      j = new com.egen.util.jdbc.JdbcUtil();    
+      portalbr.dbobj.view.Jw_clientes_representantes t_jw_clientes_representantes = new portalbr.dbobj.view.Jw_clientes_representantes();
+      java.util.Vector res_Jw_clientes_representantes = null;
+      String chave = "0";
+      acesso.Usuario u = new acesso.Usuario();
+      u = (acesso.Usuario)session.getAttribute("User");
+      acesso.EntidadeNegocio ent = new acesso.EntidadeNegocio();
+      acesso.TipoEntidadeNegocio tipoent = new acesso.TipoEntidadeNegocio();
+      if(!(u.getEntidadeNegocio()==null)){
+           ent = (acesso.EntidadeNegocio) u.getEntidadeNegocio();
+           chave = ent.getChave()+"";
+      }
+      String[][] select =  null;
+      String[]    order = {"representante"};
+      Object[][]  where = {
+                             {"codigo_cliente","=",chave}
+                          };
+      res_Jw_clientes_representantes = j.select(t_jw_clientes_representantes,select,where,null,null,order);
+  
+  if (res_Jw_clientes_representantes!=null && res_Jw_clientes_representantes.size()>0) {
+    java.lang.String codigo_cliente        =  null;
+    java.lang.String codigo_representante  =  null;
+    java.lang.String representante         =  null;
+    java.lang.String rep_nome              =  null;
+    java.lang.String marca                 =  null;
+    java.lang.String telefone              =  null;
+    int i_bl_report_Jw_clientes_representantes = 0;
+    t_jw_clientes_representantes = (portalbr.dbobj.view.Jw_clientes_representantes)res_Jw_clientes_representantes.elementAt(i_bl_report_Jw_clientes_representantes);
+    codigo_cliente       = t_jw_clientes_representantes.getCodigo_cliente()==null?"":t_jw_clientes_representantes.getCodigo_cliente();
+    codigo_representante = t_jw_clientes_representantes.getCodigo_representante()==null?"":t_jw_clientes_representantes.getCodigo_representante();
+    representante        = t_jw_clientes_representantes.getRepresentante()==null?"":t_jw_clientes_representantes.getRepresentante();
+    rep_nome             = t_jw_clientes_representantes.getRep_nome()==null?"":t_jw_clientes_representantes.getRep_nome();
+    marca                = t_jw_clientes_representantes.getMarca()==null?"":t_jw_clientes_representantes.getMarca();
+    telefone             = t_jw_clientes_representantes.getTelefone()==null?"":t_jw_clientes_representantes.getTelefone();
+
+
+    portalbr.dbobj.view.Jw_telefones_representantes cr_db_object2 = new portalbr.dbobj.view.Jw_telefones_representantes();
+//------------- Telefones do Representante --------------
+ portalbr.dbobj.view.Jw_telefones_representantes cr_db_object = new portalbr.dbobj.view.Jw_telefones_representantes();
+            Object[][] where2 = {
+                                   {"rep_cdgo","=",codigo_representante}
+                                };
+            java.util.Vector results = j.select(cr_db_object, where2, null);
+            if (results!=null && results.size()>0) {
+              cr_db_object = (portalbr.dbobj.view.Jw_telefones_representantes)results.elementAt(0);
+              telefone = ((cr_db_object.getFone()!=null)?cr_db_object.getFone():"");
+            }
+//-------------------------------------------------------
+    java.lang.String b0_representante =  null;
+    while (i_bl_report_Jw_clientes_representantes<res_Jw_clientes_representantes.size()){
+      counterbl_report_Jw_clientes_representantes++;
+      b0_representante = representante;
+      while (i_bl_report_Jw_clientes_representantes<res_Jw_clientes_representantes.size() &&  (b0_representante==null?"":b0_representante).equals((representante==null?"":representante))){
+        counterbl_report_Jw_clientes_representantes++;
+        String style="";
+        if (!((i_bl_report_Jw_clientes_representantes%2)!=0)) {
+          style="class=rowColor";
+        } else {
+          style="class=rowBlank";
+        }
+        %>
+         <table id="TRbl_report_Jw_clientes_representantes" class="reportTable" style=width:99%; border=1; >
+        <tr class="reportHeader" >
+          <td colspan=3>
+            <%= representante %>
+          </td>
+        </tr>
+
+          <tr <%= style %> id='TRbl_report_Jw_clientes_representantes<%=counterbl_report_Jw_clientes_representantes%>' >
+            <td class="reportColumn" style="text-align:left;">
+              <b>Nome: </b><%= rep_nome %><br>
+              <b>Marca: </b><%= marca %><br>
+              <b>Telefone: </b><%= telefone %><br>
+              <b>Email: </b><a href="mailto:brrep<%= codigo_representante %>@beirario.com.br">brrep<%= codigo_representante %>@beirario.com.br</a>
+          </tr> 
+          </table>
+        <%
+        if (++i_bl_report_Jw_clientes_representantes >= res_Jw_clientes_representantes.size()) {
+          break;
+        }
+        t_jw_clientes_representantes = (portalbr.dbobj.view.Jw_clientes_representantes)res_Jw_clientes_representantes.elementAt(i_bl_report_Jw_clientes_representantes);
+        codigo_cliente       = t_jw_clientes_representantes.getCodigo_cliente()==null?"":t_jw_clientes_representantes.getCodigo_cliente();
+        codigo_representante = t_jw_clientes_representantes.getCodigo_representante()==null?"":t_jw_clientes_representantes.getCodigo_representante();
+        representante        = t_jw_clientes_representantes.getRepresentante()==null?"":t_jw_clientes_representantes.getRepresentante();
+        rep_nome             = t_jw_clientes_representantes.getRep_nome()==null?"":t_jw_clientes_representantes.getRep_nome();
+        marca                = t_jw_clientes_representantes.getMarca()==null?"":t_jw_clientes_representantes.getMarca();
+        telefone             = t_jw_clientes_representantes.getTelefone()==null?"":t_jw_clientes_representantes.getTelefone();
+//------------- Telefones do Representante --------------
+          Object[][] where3 = {
+                                 {"rep_cdgo","=",codigo_representante}
+                              };
+          java.util.Vector results2 = j.select(cr_db_object2, where3, null);
+            if (results2!=null && results2.size()>0) {
+              cr_db_object2 = (portalbr.dbobj.view.Jw_telefones_representantes)results2.elementAt(0);
+              telefone = ((cr_db_object2.getFone()!=null)?cr_db_object2.getFone():"");
+            }
+//-------------------------------------------------------
+      }
+    }
+  }
+} finally {
+  if(j!=null) {
+       j.close();
+       j = null;
+  }
+}
+%>
+</table>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title> </title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>default</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/ClientesRepresentantesForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<formTemplate>clean_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>ClientesRepresentantesActionForm</name>
+<type>portalbr.com.ClientesRepresentantesActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/ClientesRepresentantesForm</path>
+<type>portalbr.com.ClientesRepresentantesAction</type>
+<name>ClientesRepresentantesActionForm</name>
+<attribute></attribute>
+<input>/com/ClientesRepresentantesForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/ClientesRepresentantesForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Listagem dos Representantes do Cliente</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_sem_ajuda.jsp</include>
+<freeSource></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

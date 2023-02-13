@@ -1,0 +1,3097 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>18/03/2019</generation_day>
+<module>com</module>
+<file_name>NecessidadeMateriais</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>19/03/2015 08:13:35</creationDate>
+<lastModifyDate>18/03/2019 08:56:52</lastModifyDate>
+<userGenerate>admin</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Jw_necessidade_materiais</name>
+<title>necessidade_materiais</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_necessidade_materiais</db_object>
+<script_block>jQuery(document).ready(function($) {
+   $("#dt_inicial").mask("99/99/9999");
+   $("#dt_final").mask("99/99/9999");
+   $("#dt_inicial_importacao").mask("99/99/9999");
+   $("#dt_final_importacao").mask("99/99/9999");
+});</script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>user</message_type>
+<message_text><div class\='div10l'> Um dos campos com <img src='../img/opcional.gif' border\='0' title\='Not Null' style\='cursor\:pointer'> deve ser preenchido. </div></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/NecessidadeMateriaisForm.do</action>
+<enctype></enctype>
+<focus>emp_empresa</focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>emp_empresa</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>emp_empresa</property>
+<label>Empresa<img src="../img/opcional.gif" border="0" title="Opcional" style="cursor:pointer"/></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>..//lov/LvEmpresaLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=emp_empresa</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=emp_razsoc</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_emp_empresa()"  ><script type="text/javascript"> 
+ function lov_open_emp_empresa() {
+   window.open('..//lov/LvEmpresaLov.do?resetfull_action=&returnBlock=0&return0=emp_empresa&return1=emp_razsoc','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('emp_empresa'),'NecessidadeMateriaisActionForm.getEmp_razsoc_Ajax',new Array('emp_razsoc'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>emp_empresa</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>3</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>emp_razsoc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>emp_razsoc</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>emp_razsoc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Empresa</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>emp_empresa</master_name>
+<slave_name>emp_empresa</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>emp_razsoc</master_name>
+<slave_name>emp_razsoc</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate>ajax_field_relation</fieldRelationTemplate>
+<fieldRelationCode></fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>55</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ano_fatura</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ano_fatura</property>
+<label>Ano da Fatura <img src="../img/opcional.gif" border="0" title="Opcional" style="cursor:pointer"/></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>ano_fatura</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>4</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>numero_fatura</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>numero_fatura</property>
+<label>Nr. da Fatura <img src="../img/opcional.gif" border="0" title="Opcional" style="cursor:pointer"/></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>numero_fatura</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>4</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>fil_filial</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column>fil_filial</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>250</top>
+<z_index></z_index>
+<property>fil_filial</property>
+<label>Filial</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>..//lov/LvFilialLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=fil_filial</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=fil_razsoc</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_fil_filial()"  ><script type="text/javascript"> 
+ function lov_open_fil_filial() {
+   window.open('..//lov/LvFilialLov.do?resetfull_action=&returnBlock=0&return0=fil_filial&return1=fil_razsoc','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('fil_filial'),'NecessidadeMateriaisActionForm.getFil_razsoc_Ajax',new Array('fil_razsoc'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>fil_filial</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>4</size>
+<maxlength>10</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>fil_razsoc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>fil_razsoc</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>fil_razsoc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Filial</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>fil_filial</master_name>
+<slave_name>fil_filial</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>fil_razsoc</master_name>
+<slave_name>fil_razsoc</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate>ajax_field_relation</fieldRelationTemplate>
+<fieldRelationCode></fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>50</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>dt_inicial</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>dt_inicial</property>
+<label>Data Entrada Pedidos Inicial<img src="../img/opcional.gif" border="0" title="Opcional" style="cursor:pointer"/></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message>calendar</validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>dt_inicial</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>10</size>
+<maxlength>10</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>dt_final</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>dt_final</property>
+<label>Data Entrada Pedidos Final<img src="../img/opcional.gif" border="0" title="Opcional" style="cursor:pointer"/></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message>calendar</validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>dt_final</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>10</size>
+<maxlength>10</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>importados</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>importados</property>
+<label>Materiais Importados</label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>importados</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>S</value>
+<label>Sim</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>N</value>
+<label>Não</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>dt_inicial_importacao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>dt_inicial_importacao</property>
+<label>Data Aquisição da Matéria Prima Inicial </label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message>calendar</validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>dt_inicial_importacao</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>10</size>
+<maxlength>10</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>dt_final_importacao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>dt_final_importacao</property>
+<label>Data Aquisição da Matéria Prima Final</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message>calendar</validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>dt_final_importacao</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>10</size>
+<maxlength>10</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>abrir_fatura</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>abrir_fatura</property>
+<label>Abre Fatura</label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>abrir_fatura</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>N</value>
+<label>Não</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>S</value>
+<label>Sim</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>grupos_materiais</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>grupos_materiais</property>
+<label>Grupos de Materiais</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>..//lov/LvGrupoMaterialGrdLov.do?select_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=grupos_materiais</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>Grupos de Materiais</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton"  value="Grupos de Materiais"  onclick="javascript:lov_open_grupos_materiais()"  ><script type="text/javascript"> 
+ function lov_open_grupos_materiais() {
+   window.open('..//lov/LvGrupoMaterialGrdGrid.do?select_action=&returnBlock=0&return0=grupos_materiais','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>grupos_materiais</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem><tr class="itemTr">
+<td class="formLabel"><span class="spamFormLabel">Grupos de Materiais</span>
+</td> 
+<td class="formField"><html:hidden property="grupos_materiais" />
+
+<input type="button" class="lovButton"  value="Grupos de Materiais"  onclick="javascript:lov_open_grupos_materiais()"  >
+
+<% if(session.getAttribute("grupos_selecionados")!=null) { %>
+<input type="button" class="lovButton"  value="Limpar"  onclick="resetgrupos_action.click();"  >
+<% } %>
+
+
+<script type="text/javascript"> 
+ function lov_open_grupos_materiais() {
+   window.open('..//lov/LvGrupoMaterialGrdGrid.do?select_action=&returnBlock=0&return0=grupos_materiais','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+
+</td> 
+</tr>
+
+
+
+
+
+<tr>
+      <td class="formLabel">
+        <span class="spamFormLabel" >
+        </span>
+      </td>
+<td class="formField">
+<%
+ int counterbl_report_Jw_clientes_enderecos =0;
+ int i_bl_report_Jw_clientes_enderecos =0;
+   java.util.Vector res_grupos_selecionados = (java.util.Vector)session.getAttribute("grupos_selecionados");
+  if (res_grupos_selecionados!=null && res_grupos_selecionados.size()>0) {
+  %>
+<table class="reportTable" style=width:340px; border=1;  >
+        <tr class="reportHeader" >
+          <td align="center">
+            Grupos de Materiais Selecionados
+          </td>
+        </tr>
+  <%
+     for (int x=0;x<res_grupos_selecionados.size(); x++){
+        counterbl_report_Jw_clientes_enderecos++;
+        String style="";
+        if (!((i_bl_report_Jw_clientes_enderecos%2)!=0)) {
+             style="class=rowColor";
+        } else {
+               style="class=rowBlank";
+          }
+      %>
+      <tr <%= style %> >
+        <td class="reportColumn" style="text-align:left;">
+            <%= res_grupos_selecionados.elementAt(x) %>
+        </td>
+      </tr>
+      <% 
+     }
+   
+%></table><%
+ }
+
+%>
+
+
+
+      </td>
+    </tr></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Checkbox</class>
+<name>cb_considerar_pp</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cb_considerar_pp</property>
+<label>Considerar PP</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>cb_considerar_pp</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<value>S</value>
+<falseValue>N</falseValue>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>select1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><html:button accesskey="p" onclick="resetfull1_action.disabled=true;bloqueia();this.disabled=true;document.forms[0].select_action.click();" styleClass="baseButton" property="select1_action"><bean:message bundle="ApplicationResources" key="jsp.select"/></html:button>
+<script>
+function getKeySite(keyStroke) {
+      isNetscape=(document.layers);
+      eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+      which = String.fromCharCode(eventChooser).toLowerCase();
+      keyBuffer = which;
+      if(eventChooser == 13){ 
+                              if(document.forms[0].select1_action.disabled==true){return false;}
+                              document.forms[0].select1_action.disabled=true;
+                              document.forms[0].resetfull1_action.disabled=true;
+                              bloqueia();
+                              document.forms[0].select_action.click();
+      }
+    }
+</script>
+<SCRIPT>
+    document.onkeypress = getKeySite;
+</SCRIPT></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>select_button_action</template>
+<action_code></action_code>
+<property>select1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>resetfull1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>resetfull_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>340</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    NecessidadeMateriaisActionForm f = (NecessidadeMateriaisActionForm) form;
+    select_action(j, mapping, form, request, response);
+    actionForward = new ActionForward("/com/NecessidadeMateriais_rForm.jsp",true);
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_necessidade_materiais", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}
+private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  session.removeAttribute("res_Jw_necessidade_materiais_faturas");
+  session.removeAttribute("res_Jw_necessidade_materiais");
+  session.removeAttribute("res_Jw_necessidade_materiais_pp");
+  NecessidadeMateriaisActionForm f = (NecessidadeMateriaisActionForm) form;
+  Jw_necessidade_materiais table = new Jw_necessidade_materiais();
+  Jw_necessidade_materiais_faturas tablef = new Jw_necessidade_materiais_faturas();
+  Jw_necessidade_materiais_pp tablepp = new Jw_necessidade_materiais_pp();
+  boolean informouFatura = false;
+  boolean informouPeriodo = false;
+  boolean informouPeriodoImportacao = false;
+  String[][] select = null;
+  String abreFilial = "N";
+  String gruposMateriais = null;
+
+  if(f.getDt_inicial_importacao()!=""){
+     informouPeriodoImportacao = true;
+  }
+  if(f.getDt_final_importacao()!=""){
+     informouPeriodoImportacao = true;
+  }
+
+  if(f.getFil_filial()!=""){
+     abreFilial = "S";
+  }
+  if(f.getNumero_fatura()!="" && f.getAno_fatura()!="" && f.getEmp_empresa()!=""){
+     informouFatura = true;
+  }
+
+  if(!informouFatura){
+     if(f.getDt_inicial()!="" && f.getDt_final()!=""){
+        informouPeriodo = true;
+     }
+  }
+
+  if(!informouFatura && !informouPeriodo){
+     throw new Exception("A fatura ou o período devem ser informados!");
+  }
+  
+  if(session.getAttribute("codigos_grupos_selecionados")!=null){
+     gruposMateriais = " AND fct_grupo_material(d.codigo) IN ("+(String)session.getAttribute("codigos_grupos_selecionados")+") ";
+  }
+
+  StringBuilder sb = new StringBuilder();
+  sb.append(" SELECT qry.ies_codigo ");
+  sb.append("      , pck_item_estoque.get_nome(qry.ies_codigo) descricao ");
+  sb.append("      , qry.cor_cdgo ");
+  sb.append("      , pck_cor.get_nome(qry.cor_cdgo) cor_desc ");
+  sb.append("      , qry.tai_codigo ");
+  sb.append("      , qry.fil_filial ");
+  sb.append("      , qry.ped_invoice ");
+  sb.append("      , SUM(qry.consumo) consumo ");
+  sb.append("      , qry.unm_codigo ");
+  sb.append("      , qry.ncm ");
+  sb.append("      , dio.oco_numero ");
+  sb.append("      , dio.preco_unitario ");
+  sb.append("      , dneo.nfe_numero ");
+  sb.append("      , dneo.nfe_serie ");
+  sb.append("      , dneo.edo_empresa ");
+  sb.append("      , pck_fornecedor.get_nome(dneo.edo_empresa) fornecedor ");
+  sb.append("  FROM (SELECT ped.ped_nmro ");
+  sb.append("              ,ped.emp_empresa ");
+  sb.append("              ,CASE ");
+  sb.append("                  WHEN '"+abreFilial+"' = 'N' THEN ");
+  sb.append("                  NULL ");
+  sb.append("                 ELSE ");
+  sb.append("                  fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+  sb.append("               END fil_filial ");
+  sb.append("              ,CASE ");
+  sb.append("                  WHEN '"+f.getAbrir_fatura()+"' = 'N' THEN ");
+  sb.append("                  NULL ");
+  sb.append("                 ELSE ");
+  sb.append("                  ped.ped_invoice ");
+  sb.append("               END ped_invoice ");
+  sb.append("              ,c.set_cdgo ");
+  sb.append("              ,p.codigo cod_peca ");
+  sb.append("              ,p.descricao desc_peca ");
+  sb.append("              ,fct_grupo_material(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro)) gpo_material ");
+  sb.append("              ,i.lin_cdgo ");
+  sb.append("              ,i.ref_cdgo ");
+  sb.append("              ,NVL(DECODE(d.cor, 'S', cc.cor_mater), 0) cor_cdgo ");
+  sb.append("              ,CASE ");
+  sb.append("                 WHEN (NVL(d.tamanho, 'N') = 'S') THEN ");
+  sb.append("                  fct_converte_tamanho(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro), q.qtp_nume) ");
+  sb.append("                 ELSE ");
+  sb.append("                  '0' ");
+  sb.append("               END AS tai_codigo ");
+  sb.append("              ,p.cmp_cdgo ");
+  sb.append("              ,DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ies_codigo ");
+  sb.append("              ,'PE' origem ");
+  sb.append("              ,SUM((i.ite_qtde / ");
+  sb.append("                   (SELECT SUM(q1.qtp_pars) ");
+  sb.append("                       FROM qtd_prg q1 ");
+  sb.append("                      WHERE q1.ped_nmro = i.ped_nmro ");
+  sb.append("                        AND q1.ite_seqn = i.ite_seqn) * q.qtp_pars) * ");
+  sb.append("                   c.com_consum) AS consumo ");
+  sb.append("              ,SUM(CASE ");
+  sb.append("                     WHEN (p.cmp_cdgo = 49) THEN ");
+  sb.append("                      (1.37 / p.conver * (.97 * (q.qtp_pars * c.com_consum))) / ");
+  sb.append("                      DECODE(d.unm_codigo, 'M2', 1.37, 1) ");
+  sb.append("                     ELSE ");
+  sb.append("                      NULL ");
+  sb.append("                   END) comprimento ");
+  sb.append("              ,d.unm_codigo ");
+  sb.append("              ,pck_item_estoque.get_classificacao_fiscal(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro)) ncm ");
+  sb.append("          FROM ped ");
+  sb.append("              ,ite              i ");
+  sb.append("              ,qtd_prg          q ");
+  sb.append("              ,ficha_tec        f ");
+  sb.append("              ,componente       c ");
+  sb.append("              ,cor_compo        cc ");
+  sb.append("              ,dom_item_estoque d ");
+  sb.append("              ,pecas            p ");
+  sb.append("         WHERE q.ped_nmro = i.ped_nmro ");
+  sb.append("           AND q.ite_seqn = i.ite_seqn ");
+  sb.append("           AND q.qtp_pars > 0 ");
+  sb.append("           AND i.ped_nmro = ped.ped_nmro ");
+  sb.append("           AND f.lin_cdgo = NVL(i.lin_cdgo, NULL) ");
+  sb.append("           AND f.ref_cdgo = NVL(i.ref_cdgo, NULL) ");
+  sb.append("           AND f.cab_cdgo = NVL(i.cab_cdgo, NULL) ");
+  sb.append("           AND f.fit_versao = fct_ficha_versao(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo, ped.emp_empresa, fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn)) ");
+  sb.append("           AND f.emp_empresa = NVL(ped.emp_empresa, f.emp_empresa) ");
+  sb.append("           AND c.lin_cdgo = f.lin_cdgo ");
+  sb.append("           AND c.ref_cdgo = f.ref_cdgo ");
+  sb.append("           AND c.cab_cdgo = f.cab_cdgo ");
+  sb.append("           AND c.com_destin = 'I' ");
+  sb.append("           AND c.fit_versao = f.fit_versao ");
+  sb.append("           AND d.codigo = c.mat_nro ");
+  sb.append("           AND cc.lin_cdgo(+) = c.lin_cdgo ");
+  sb.append("           AND cc.ref_cdgo(+) = c.ref_cdgo ");
+  sb.append("           AND cc.cab_cdgo(+) = c.cab_cdgo ");
+  sb.append("           AND ((NVL(d.cor, 'N') = 'N' AND cc.cor_ref IS NULL) OR (cc.cor_ref = i.cor_cdgo)) ");
+  sb.append("           AND cc.com_seq(+) = c.com_seq ");
+  sb.append("           AND cc.com_nivel(+) = c.com_nivel ");
+  sb.append("           AND cc.fit_versao(+) = c.fit_versao ");
+  sb.append("           AND ((NVL(d.tamanho, 'N') = 'N') OR (EXISTS (SELECT NULL ");
+  sb.append("                                                          FROM dom_tamanho_item_corresponde t ");
+  sb.append("                                                         WHERE t.ies_codigo = DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ");
+  sb.append("                                                           AND NVL(t.tai_codigo2, NULL) = q.qtp_nume))) ");
+  sb.append("           AND p.codigo = c.cod_peca ");
+  if(informouFatura){
+     sb.append("        AND ped.ped_invoice  = lpad('"+f.getNumero_fatura()+"',4,0)||'/'||'"+f.getAno_fatura()+"' ");
+     sb.append("        AND nvl(ped.emp_empresa,NULL) = '"+f.getEmp_empresa()+"' ");
+  }
+  if(informouPeriodo){
+     sb.append("        AND ped.ped_dadg >= to_date('"+f.getDt_inicial()+"','dd/mm/yyyy') ");
+     sb.append("        AND ped.ped_dadg < TO_date('"+f.getDt_final()+"','dd/mm/yyyy')+1 ");
+  }
+  sb.append("           AND NVL(ped.ped_tipo, NULL) = 'EX' ");
+  sb.append("           AND NVL(ped.ped_stat, NULL) <> 'C' ");
+
+    sb.append("           AND NVL(ped.ped_especie_pedido, NULL) <> 'R' ");
+    sb.append("           AND pck_pedidos.get_origem_pedido(ped.ped_nmro) <> 'ESTRATEGICO' ");
+
+  if(gruposMateriais!=null){
+     sb.append(gruposMateriais);
+  }
+  if(abreFilial.equals("S")){
+     sb.append("         AND nvl(fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn),null) = '"+f.getFil_filial()+"' ");
+  }
+  sb.append("         GROUP BY ped.ped_nmro ");
+  sb.append("                 ,ped.emp_empresa ");
+  sb.append("                 ,c.set_cdgo ");
+  sb.append("                 ,p.codigo ");
+  sb.append("                 ,p.descricao ");
+  sb.append("                 ,fct_grupo_material(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro)) ");
+  sb.append("                 ,i.lin_cdgo ");
+  sb.append("                 ,i.ref_cdgo ");
+  sb.append("                 ,DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ");
+  sb.append("                 ,NVL(DECODE(d.cor, 'S', cc.cor_mater), 0) ");
+  sb.append("                 ,CASE ");          
+  sb.append("                    WHEN (NVL(d.tamanho, 'N') = 'S') THEN ");
+  sb.append("                     fct_converte_tamanho(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro), q.qtp_nume) ");
+  sb.append("                    ELSE ");
+  sb.append("                     '0' ");
+  sb.append("                  END ");
+  sb.append("                 ,p.cmp_cdgo ");
+  sb.append("                 ,CASE ");
+  sb.append("                     WHEN '"+abreFilial+"' = 'N' THEN ");
+  sb.append("                      NULL ");
+  sb.append("                     ELSE ");
+  sb.append("                      fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+  sb.append("                   END ");
+  sb.append("                  ,CASE ");
+  sb.append("                     WHEN '"+f.getAbrir_fatura()+"' = 'N' THEN ");
+  sb.append("                      NULL ");
+  sb.append("                     ELSE ");
+  sb.append("                      ped.ped_invoice ");
+  sb.append("                   END ");
+  sb.append("                 , d.unm_codigo ");
+  sb.append("                 ,PCK_ITEM_ESTOQUE.GET_CLASSIFICACAO_FISCAL(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro)) ");
+  sb.append("        UNION ALL ");
+  sb.append("        SELECT p.ped_nmro ");
+  sb.append("              ,p.emp_empresa ");
+  sb.append("              ,CASE ");
+  sb.append("                  WHEN '"+abreFilial+"' = 'N' THEN ");
+  sb.append("                  NULL ");
+  sb.append("                 ELSE ");
+  sb.append("                  fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+  sb.append("               END fil_filial ");
+  sb.append("              ,CASE ");
+  sb.append("                  WHEN '"+f.getAbrir_fatura()+"' = 'N' THEN ");
+  sb.append("                  NULL ");
+  sb.append("                 ELSE ");
+  sb.append("                  p.ped_invoice ");
+  sb.append("               END ped_invoice ");
+  sb.append("              ,'EXPED' set_cdgo ");
+  sb.append("              ,105 cod_peca ");
+  sb.append("              ,'CORRUGADO' desc_peca ");
+  sb.append("              ,2 grupo_material ");
+  sb.append("              ,i.lin_cdgo ");
+  sb.append("              ,i.ref_cdgo ");
+  sb.append("              ,0 AS cor_cdgo ");
+  sb.append("              ,'0' tai_codigo ");
+  sb.append("              ,46 AS cmp_cdgo ");
+  sb.append("              ,d.codigo ies_codigo ");
+  sb.append("              ,'PE' origem ");
+  sb.append("              ,SUM(fct_calcula_volumes_ped(p.ped_nmro, i.ite_seqn)) consumo ");
+  sb.append("              ,SUM(NULL) comprimento ");
+  sb.append("              ,d.unm_codigo ");
+  sb.append("              ,NULL ncm ");
+  sb.append("          FROM ped              p ");
+  sb.append("              ,ite              i ");
+  sb.append("              ,dom_item_estoque d ");
+  sb.append("         WHERE p.ped_nmro = i.ped_nmro ");
+  sb.append("           AND d.codigo = fct_corrugado(i.lin_cdgo, i.ref_cdgo, p.ped_tipo_corrugado, i.codigo_corrugado) ");
+  if(informouFatura){
+     sb.append("        AND p.ped_invoice  = lpad('"+f.getNumero_fatura()+"',4,0)||'/'||'"+f.getAno_fatura()+"' ");
+     sb.append("        AND nvl(p.emp_empresa,NULL) = '"+f.getEmp_empresa()+"' ");
+  }
+  if(informouPeriodo){
+     sb.append("        AND p.ped_dadg >= to_date('"+f.getDt_inicial()+"','dd/mm/yyyy') ");
+     sb.append("        AND p.ped_dadg < TO_date('"+f.getDt_final()+"','dd/mm/yyyy')+1 ");
+  }
+  sb.append("           AND NVL(p.ped_tipo, NULL) = 'EX' ");
+  sb.append("           AND NVL(p.ped_stat, NULL) <> 'C' ");
+  sb.append("           AND NVL(p.ped_especie_pedido, NULL) <> 'R' ");
+  sb.append("           AND pck_pedidos.get_origem_pedido(p.ped_nmro) <> 'ESTRATEGICO' ");
+  if(gruposMateriais!=null){
+     sb.append(gruposMateriais);
+  }
+  if(abreFilial.equals("S")){
+     sb.append("        AND nvl(fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn),null) = '"+f.getFil_filial()+"' ");
+  }  
+  sb.append("         GROUP BY p.ped_nmro ");
+  sb.append("                 ,p.emp_empresa ");
+  sb.append("                 ,i.lin_cdgo ");
+  sb.append("                 ,i.ref_cdgo ");
+  sb.append("                 ,d.codigo ");
+  sb.append("                  ,CASE ");
+  sb.append("                     WHEN '"+abreFilial+"' = 'N' THEN ");
+  sb.append("                      NULL ");
+  sb.append("                     ELSE ");
+  sb.append("                      fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+  sb.append("                   END ");
+  sb.append("                  ,CASE ");
+  sb.append("                     WHEN '"+f.getAbrir_fatura()+"' = 'N' THEN ");
+  sb.append("                      NULL ");
+  sb.append("                     ELSE ");
+  sb.append("                      p.ped_invoice ");
+  sb.append("                   END ");
+  sb.append("                  ,d.unm_codigo) qry ");
+  sb.append("      ,dom_ordem_compra            o ");
+  sb.append("      ,dom_item_ordem_compra       dio ");
+  sb.append("      ,dom_nota_entrada_ord_compra dneo ");
+  sb.append("      ,rem_ped                     rp ");
+  sb.append("      ,brio.ordem_compra_remessa   ocr ");
+  if(f.getImportados().equals("S") || informouPeriodoImportacao){  
+     sb.append("   ,rdo.dom_item_estoque_cst_imp d ");
+  }
+  sb.append(" WHERE o.numero = dio.oco_numero ");
+  sb.append("   AND dio.oco_numero = dneo.oco_numero ");
+  sb.append("   AND dio.sequencia = dneo.ioc_sequencia ");
+  if(f.getImportados().equals("S") || informouPeriodoImportacao){
+     sb.append("    AND  d.ies_codigo = qry.ies_codigo ");
+     sb.append("    AND d.cor_cdgo = qry.cor_cdgo ");
+     sb.append("    AND d.tai_codigo = qry.tai_codigo ");
+     if(informouPeriodoImportacao){
+        if(f.getDt_inicial_importacao()!=""){
+           sb.append(" AND d.data_ultimo_entrada >= to_date('"+f.getDt_inicial_importacao()+"','dd/mm/yyyy') ");
+        }
+        if(f.getDt_final_importacao()!=""){
+           sb.append(" AND d.data_ultimo_entrada < to_date('"+f.getDt_final_importacao()+"','dd/mm/yyyy')+1 ");
+        }
+     }
+  }  
+  sb.append("   AND o.for_codigo = dneo.edo_empresa ");
+  sb.append("   AND o.fen_seq = dneo.edo_filial ");
+  sb.append("   AND dio.ies_codigo = qry.ies_codigo ");
+  sb.append("   AND dio.cor_cdgo = qry.cor_cdgo ");
+  sb.append("   AND dio.tai_codigo = qry.tai_codigo ");
+  sb.append("   AND rp.ped_nmro = qry.ped_nmro ");
+  sb.append("   AND rp.rem_nro = ocr.rem_nro ");
+  sb.append("   AND ocr.oco_numero = dneo.oco_numero ");
+  sb.append("   AND ocr.ioc_sequencia = dneo.ioc_sequencia ");
+  sb.append("   AND dio.oco_numero(+) = ocr.oco_numero ");
+  sb.append("   AND dio.sequencia(+) = ocr.ioc_sequencia ");
+  sb.append(" GROUP BY qry.ies_codigo ");
+  sb.append("         ,pck_item_estoque.get_nome(qry.ies_codigo) ");
+  sb.append("         ,qry.cor_cdgo ");
+  sb.append("         ,pck_cor.get_nome(qry.cor_cdgo) ");
+  sb.append("         ,qry.tai_codigo ");
+  sb.append("         ,qry.fil_filial ");
+  sb.append("         ,qry.ped_invoice ");
+  sb.append("         ,qry.unm_codigo ");
+  sb.append("         ,qry.ncm ");
+  sb.append("         ,dio.oco_numero ");
+  sb.append("         ,dio.preco_unitario ");
+  sb.append("         ,dneo.nfe_numero ");
+  sb.append("         ,dneo.nfe_serie ");
+  sb.append("         ,dneo.edo_empresa ");
+  sb.append("         ,pck_fornecedor.get_nome(dneo.edo_empresa) ");
+  sb.append(" ORDER BY fil_filial ");
+  sb.append("        , ped_invoice ");
+  sb.append("        , ies_codigo ");
+  sb.append("        , descricao ");
+  sb.append("        , cor_cdgo ");
+  sb.append("        , cor_desc ");
+  sb.append("        , tai_codigo ");
+ 
+  acesso.Usuario usuario = (acesso.Usuario)session.getAttribute("User");
+  if(usuario.mostraQuery()){
+     throw new Exception(sb.toString());
+  }
+
+
+  StringBuilder sbf = new StringBuilder();
+  sbf.append(" SELECT LPAD(numero_fatura_proforma, 4, 0) || '/' || ano_fatura_proforma fatura ");
+  sbf.append("       ,(SELECT SUM(quantidade_pares) ");
+  sbf.append("          FROM itens_faturas_proformas i ");
+  sbf.append("         WHERE i.ano_fatura_proforma = qr.ano_fatura_proforma ");
+  sbf.append("           AND i.numero_fatura_proforma = qr.numero_fatura_proforma ");
+  sbf.append("           AND i.empresa_fatura_proforma = qr.empresa_fatura_proforma) pares ");
+  sbf.append("   FROM (SELECT DISTINCT ii.empresa_fatura_proforma ");
+  sbf.append("                        ,ii.numero_fatura_proforma ");
+  sbf.append("                        ,ii.ano_fatura_proforma ");
+  sbf.append("                        ,ii.numero_item_fatura_proforma ");
+  sbf.append("           FROM ite ii ");
+  sbf.append("          WHERE ii.ped_nmro IN (SELECT DISTINCT ped_nmro ");
+  sbf.append("                                  FROM (SELECT ped.ped_nmro ");
+  sbf.append("                                              ,NVL(DECODE(d.cor, 'S', cc.cor_mater), 0) cor_cdgo ");
+  sbf.append("                                              ,CASE ");
+  sbf.append("                                                 WHEN (NVL(d.tamanho, 'N') = 'S') THEN ");
+  sbf.append("                                                  fct_converte_tamanho(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro), q.qtp_nume) ");
+  sbf.append("                                                 ELSE ");
+  sbf.append("                                                  '0' ");
+  sbf.append("                                               END AS tai_codigo ");
+  sbf.append("                                              ,DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ies_codigo ");
+  sbf.append("                                          FROM ped ");
+  sbf.append("                                              ,ite i ");
+  sbf.append("                                              ,qtd_prg q ");
+  sbf.append("                                              ,ficha_tec f ");
+  sbf.append("                                              ,componente c ");
+  sbf.append("                                              ,cor_compo cc ");
+  sbf.append("                                              ,dom_item_estoque d ");
+  sbf.append("                                              ,pecas p ");
+  sbf.append("                                         WHERE q.ped_nmro = i.ped_nmro ");
+  sbf.append("                                           AND q.ite_seqn = i.ite_seqn ");
+  sbf.append("                                           AND q.qtp_pars > 0 ");
+  sbf.append("                                           AND i.ped_nmro = ped.ped_nmro ");
+  sbf.append("                                           AND f.lin_cdgo = NVL(i.lin_cdgo, NULL) ");
+  sbf.append("                                           AND f.ref_cdgo = NVL(i.ref_cdgo, NULL) ");
+  sbf.append("                                           AND f.cab_cdgo = NVL(i.cab_cdgo, NULL) ");
+  sbf.append("                                           AND f.fit_versao = fct_ficha_versao(i.lin_cdgo, i.ref_cdgo, i.cab_cdgo, ped.emp_empresa, fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn)) ");
+  sbf.append("                                           AND f.emp_empresa = NVL(ped.emp_empresa, f.emp_empresa) ");
+  sbf.append("                                           AND c.lin_cdgo = f.lin_cdgo ");
+  sbf.append("                                           AND c.ref_cdgo = f.ref_cdgo ");
+  sbf.append("                                           AND c.cab_cdgo = f.cab_cdgo ");
+  sbf.append("                                           AND c.com_destin = 'I' ");
+  sbf.append("                                           AND c.fit_versao = f.fit_versao ");
+  sbf.append("                                           AND d.codigo = c.mat_nro ");
+  sbf.append("                                           AND cc.lin_cdgo(+) = c.lin_cdgo ");
+  sbf.append("                                           AND cc.ref_cdgo(+) = c.ref_cdgo ");
+  sbf.append("                                           AND cc.cab_cdgo(+) = c.cab_cdgo ");
+  sbf.append("                                           AND ((NVL(d.cor, 'N') = 'N' AND cc.cor_ref IS NULL) OR (cc.cor_ref = i.cor_cdgo)) ");
+  sbf.append("                                           AND cc.com_seq(+) = c.com_seq ");
+  sbf.append("                                           AND cc.com_nivel(+) = c.com_nivel ");
+  sbf.append("                                           AND cc.fit_versao(+) = c.fit_versao ");
+  sbf.append("                                           AND ((NVL(d.tamanho, 'N') = 'N') OR (EXISTS (SELECT NULL ");
+  sbf.append("                                                                                          FROM dom_tamanho_item_corresponde t ");
+  sbf.append("                                                                                         WHERE t.ies_codigo = DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ");
+  sbf.append("                                                                                           AND NVL(t.tai_codigo2, NULL) = q.qtp_nume))) ");
+  sbf.append("                                           AND p.codigo = c.cod_peca ");
+  if(informouFatura){
+     sbf.append("         AND ped.ped_invoice  = lpad('"+f.getNumero_fatura()+"',4,0)||'/'||'"+f.getAno_fatura()+"' ");
+     sbf.append("         AND nvl(ped.emp_empresa,NULL) = '"+f.getEmp_empresa()+"' ");
+  }
+  if(informouPeriodo){
+     sbf.append("         AND ped.ped_dadg >= to_date('"+f.getDt_inicial()+"','dd/mm/yyyy') ");
+     sbf.append("         AND ped.ped_dadg < TO_date('"+f.getDt_final()+"','dd/mm/yyyy')+1 ");
+  }
+  sbf.append("                                           AND NVL(ped.ped_tipo, NULL) = 'EX' ");
+  sbf.append("                                           AND NVL(ped.ped_stat, NULL) <> 'C' ");
+
+  
+    sbf.append("  AND NVL(ped.ped_especie_pedido, NULL) <> 'R' ");
+    sbf.append("  AND pck_pedidos.get_origem_pedido(ped.ped_nmro) <> 'ESTRATEGICO' ");  
+  if(gruposMateriais!=null){
+     sbf.append(gruposMateriais);
+  }
+  if(abreFilial.equals("S")){
+     sbf.append("         AND nvl(fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn),null) = '"+f.getFil_filial()+"' ");
+  }
+  sbf.append("                                        UNION ");
+  sbf.append("                                        SELECT p.ped_nmro ");
+  sbf.append("                                              ,0 AS cor_cdgo ");
+  sbf.append("                                              ,'0' tai_codigo ");
+  sbf.append("                                              ,d.codigo ies_codigo ");
+  sbf.append("                                          FROM ped p ");
+  sbf.append("                                              ,ite i ");
+  sbf.append("                                              ,dom_item_estoque d ");
+  sbf.append("                                         WHERE p.ped_nmro = i.ped_nmro ");
+  sbf.append("                                           AND d.codigo = fct_corrugado(i.lin_cdgo, i.ref_cdgo, p.ped_tipo_corrugado, i.codigo_corrugado) ");
+  if(informouFatura){
+     sbf.append("         AND p.ped_invoice  = lpad('"+f.getNumero_fatura()+"',4,0)||'/'||'"+f.getAno_fatura()+"' ");
+     sbf.append("         AND nvl(p.emp_empresa,NULL) = '"+f.getEmp_empresa()+"' ");
+  }
+  if(informouPeriodo){
+     sbf.append("         AND p.ped_dadg >= to_date('"+f.getDt_inicial()+"','dd/mm/yyyy') ");
+     sbf.append("         AND p.ped_dadg < TO_date('"+f.getDt_final()+"','dd/mm/yyyy')+1 ");
+  }
+  sbf.append("                                           AND NVL(p.ped_tipo, NULL) = 'EX' ");
+  sbf.append("                                           AND NVL(p.ped_stat, NULL) <> 'C' ");
+  sbf.append("                                           AND NVL(p.ped_especie_pedido, NULL) <> 'R' ");
+  if(gruposMateriais!=null){
+     sbf.append(gruposMateriais);
+  }
+  if(abreFilial.equals("S")){
+     sbf.append("         AND nvl(fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn),null) = '"+f.getFil_filial()+"' ");
+  }
+  sbf.append("                                           AND pck_pedidos.get_origem_pedido(p.ped_nmro) <> 'ESTRATEGICO') qry ");
+  if(f.getImportados().equals("S")){
+     sbf.append("                                   ,rdo.dom_item_estoque_cst_imp d ");
+     sbf.append("                              WHERE d.ies_codigo = qry.ies_codigo ");
+     sbf.append("                                AND d.cor_cdgo = qry.cor_cdgo ");
+     sbf.append("                                AND d.tai_codigo = qry.tai_codigo ");
+  }
+  sbf.append(" )) qr ");
+  sbf.append("  GROUP BY LPAD(numero_fatura_proforma, 4, 0) || '/' || ano_fatura_proforma ");
+  sbf.append("          ,qr.ano_fatura_proforma ");
+  sbf.append("          ,qr.numero_fatura_proforma ");
+  sbf.append("          ,qr.empresa_fatura_proforma ");
+  sbf.append("  ORDER BY 1 ");
+
+
+StringBuilder sbp = new StringBuilder();
+if((f.getCb_considerar_pp()+"").equalsIgnoreCase("S")){
+sbp.append("SELECT qry.ies_codigo Material, ");
+sbp.append("       pck_item_estoque.get_nome(qry.ies_codigo) descricao, ");
+sbp.append("       qry.cor_cdgo cor, ");
+sbp.append("       pck_cor.get_nome(qry.cor_cdgo) DESCRICAO_COR, ");
+sbp.append("       qry.tai_codigo tamanho, ");
+sbp.append("       SUM(qry.consumo) consumo, ");
+sbp.append("       qry.unm_codigo UNIDADE_DE_MEDIDA ");
+sbp.append("  FROM (SELECT ped.ped_nmro, ");
+sbp.append("               ped.emp_empresa, ");
+sbp.append("               CASE ");
+sbp.append("                 WHEN 'N' = 'N' THEN ");
+sbp.append("                  NULL ");
+sbp.append("                 ELSE ");
+sbp.append("                  fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+sbp.append("               END fil_filial, ");
+sbp.append("               CASE ");
+sbp.append("                 WHEN 'N' = 'N' THEN ");
+sbp.append("                  NULL ");
+sbp.append("                 ELSE ");
+sbp.append("                  ped.ped_invoice ");
+sbp.append("               END ped_invoice, ");
+sbp.append("               c.set_cdgo, ");
+sbp.append("               p.codigo cod_peca, ");
+sbp.append("               p.descricao desc_peca, ");
+sbp.append("               fct_grupo_material(DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro)) gpo_material, ");
+sbp.append("               i.lin_cdgo, ");
+sbp.append("               i.ref_cdgo, ");
+sbp.append("               NVL(DECODE(d.cor, 'S', cc.cor_mater), 0) cor_cdgo, ");
+sbp.append("               CASE ");
+sbp.append("                 WHEN (NVL(d.tamanho, 'N') = 'S') THEN ");
+sbp.append("                  fct_converte_tamanho(DECODE(d.cor, ");
+sbp.append("                                              'S', ");
+sbp.append("                                              cc.mat_nro, ");
+sbp.append("                                              c.mat_nro), ");
+sbp.append("                                       q.qtp_nume) ");
+sbp.append("                 ELSE ");
+sbp.append("                  '0' ");
+sbp.append("               END AS tai_codigo, ");
+sbp.append("               p.cmp_cdgo, ");
+sbp.append("               DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ies_codigo, ");
+sbp.append("               'PE' origem, ");
+sbp.append("               SUM((i.ite_qtde / ");
+sbp.append("                   (SELECT SUM(q1.qtp_pars) ");
+sbp.append("                       FROM qtd_prg q1 ");
+sbp.append("                      WHERE q1.ped_nmro = i.ped_nmro ");
+sbp.append("                        AND q1.ite_seqn = i.ite_seqn) * q.qtp_pars) * ");
+sbp.append("                   c.com_consum) AS consumo, ");
+sbp.append("               SUM(CASE ");
+sbp.append("                     WHEN (p.cmp_cdgo = 49) THEN ");
+sbp.append("                      (1.37 / p.conver * (.97 * (q.qtp_pars * c.com_consum))) / ");
+sbp.append("                      DECODE(d.unm_codigo, 'M2', 1.37, 1) ");
+sbp.append("                     ELSE ");
+sbp.append("                      NULL ");
+sbp.append("                   END) comprimento, ");
+sbp.append("               d.unm_codigo ");
+sbp.append("          FROM ped, ");
+sbp.append("               ite              i, ");
+sbp.append("               qtd_prg          q, ");
+sbp.append("               ficha_tec        f, ");
+sbp.append("               componente       c, ");
+sbp.append("               cor_compo        cc, ");
+sbp.append("               dom_item_estoque d, ");
+sbp.append("               pecas            p ");
+sbp.append("         WHERE q.ped_nmro = i.ped_nmro ");
+sbp.append("           AND q.ite_seqn = i.ite_seqn ");
+sbp.append("           AND q.qtp_pars > 0 ");
+sbp.append("           AND i.ped_nmro = ped.ped_nmro ");
+sbp.append("           AND f.lin_cdgo = NVL(i.lin_cdgo, NULL) ");
+sbp.append("           AND f.ref_cdgo = NVL(i.ref_cdgo, NULL) ");
+sbp.append("           AND f.cab_cdgo = NVL(i.cab_cdgo, NULL) ");
+sbp.append("           AND f.fit_versao = ");
+sbp.append("               fct_ficha_versao(i.lin_cdgo, ");
+sbp.append("                                i.ref_cdgo, ");
+sbp.append("                                i.cab_cdgo, ");
+sbp.append("                                ped.emp_empresa, ");
+sbp.append("                                fct_retorna_fil_producao(i.ped_nmro, ");
+sbp.append("                                                         i.ite_seqn)) ");
+sbp.append("           AND f.emp_empresa = NVL(ped.emp_empresa, f.emp_empresa) ");
+sbp.append("           AND c.lin_cdgo = f.lin_cdgo ");
+sbp.append("           AND c.ref_cdgo = f.ref_cdgo ");
+sbp.append("           AND c.cab_cdgo = f.cab_cdgo ");
+sbp.append("           AND c.com_destin = 'I' ");
+sbp.append("           AND c.fit_versao = f.fit_versao ");
+sbp.append("           AND d.codigo = c.mat_nro ");
+sbp.append("           AND cc.lin_cdgo(+) = c.lin_cdgo ");
+sbp.append("           AND cc.ref_cdgo(+) = c.ref_cdgo ");
+sbp.append("           AND cc.cab_cdgo(+) = c.cab_cdgo ");
+sbp.append("           AND ((NVL(d.cor, 'N') = 'N' AND cc.cor_ref IS NULL) OR ");
+sbp.append("               (cc.cor_ref = i.cor_cdgo)) ");
+sbp.append("           AND cc.com_seq(+) = c.com_seq ");
+sbp.append("           AND cc.com_nivel(+) = c.com_nivel ");
+sbp.append("           AND cc.fit_versao(+) = c.fit_versao ");
+sbp.append("           AND ((NVL(d.tamanho, 'N') = 'N') OR ");
+sbp.append("               (EXISTS ");
+sbp.append("                (SELECT NULL ");
+sbp.append("                    FROM dom_tamanho_item_corresponde t ");
+sbp.append("                   WHERE t.ies_codigo = ");
+sbp.append("                         DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro) ");
+sbp.append("                     AND NVL(t.tai_codigo2, NULL) = q.qtp_nume))) ");
+sbp.append("           AND p.codigo = c.cod_peca ");
+sbp.append("           AND ped.ped_invoice = LPAD('"+f.getNumero_fatura()+"', 4, 0) || '/' || '"+f.getAno_fatura()+"' ");
+sbp.append("           AND NVL(ped.emp_empresa, NULL) = '"+f.getEmp_empresa()+"' ");
+sbp.append("           AND NVL(ped.ped_tipo, NULL) = 'EX' ");
+sbp.append("           AND NVL(ped.ped_stat, NULL) <> 'C' ");
+sbp.append("         GROUP BY ped.ped_nmro, ");
+sbp.append("                  ped.emp_empresa, ");
+sbp.append("                  c.set_cdgo, ");
+sbp.append("                  p.codigo, ");
+sbp.append("                  p.descricao, ");
+sbp.append("                  fct_grupo_material(DECODE(d.cor, ");
+sbp.append("                                            'S', ");
+sbp.append("                                            cc.mat_nro, ");
+sbp.append("                                            c.mat_nro)), ");
+sbp.append("                  i.lin_cdgo, ");
+sbp.append("                  i.ref_cdgo, ");
+sbp.append("                  DECODE(d.cor, 'S', cc.mat_nro, c.mat_nro), ");
+sbp.append("                  NVL(DECODE(d.cor, 'S', cc.cor_mater), 0), ");
+sbp.append("                  CASE ");
+sbp.append("                    WHEN (NVL(d.tamanho, 'N') = 'S') THEN ");
+sbp.append("                     fct_converte_tamanho(DECODE(d.cor, ");
+sbp.append("                                                 'S', ");
+sbp.append("                                                 cc.mat_nro, ");
+sbp.append("                                                 c.mat_nro), ");
+sbp.append("                                          q.qtp_nume) ");
+sbp.append("                    ELSE ");
+sbp.append("                     '0' ");
+sbp.append("                  END, ");
+sbp.append("                  p.cmp_cdgo, ");
+sbp.append("                  CASE ");
+sbp.append("                    WHEN 'N' = 'N' THEN ");
+sbp.append("                     NULL ");
+sbp.append("                    ELSE ");
+sbp.append("                     fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+sbp.append("                  END, ");
+sbp.append("                  CASE ");
+sbp.append("                    WHEN 'N' = 'N' THEN ");
+sbp.append("                     NULL ");
+sbp.append("                    ELSE ");
+sbp.append("                     ped.ped_invoice ");
+sbp.append("                  END, ");
+sbp.append("                  d.unm_codigo ");
+sbp.append("        UNION ALL ");
+sbp.append("        SELECT p.ped_nmro, ");
+sbp.append("               p.emp_empresa, ");
+sbp.append("               CASE ");
+sbp.append("                 WHEN 'N' = 'N' THEN ");
+sbp.append("                  NULL ");
+sbp.append("                 ELSE ");
+sbp.append("                  fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+sbp.append("               END fil_filial, ");
+sbp.append("               CASE ");
+sbp.append("                 WHEN 'N' = 'N' THEN ");
+sbp.append("                  NULL ");
+sbp.append("                 ELSE ");
+sbp.append("                  p.ped_invoice ");
+sbp.append("               END ped_invoice, ");
+sbp.append("               'EXPED' set_cdgo, ");
+sbp.append("               105 cod_peca, ");
+sbp.append("               'CORRUGADO' desc_peca, ");
+sbp.append("               2 grupo_material, ");
+sbp.append("               i.lin_cdgo, ");
+sbp.append("               i.ref_cdgo, ");
+sbp.append("               0 AS cor_cdgo, ");
+sbp.append("               '0' tai_codigo, ");
+sbp.append("               46 AS cmp_cdgo, ");
+sbp.append("               d.codigo ies_codigo, ");
+sbp.append("               'PE' origem, ");
+sbp.append("               SUM(fct_calcula_volumes_ped(p.ped_nmro, i.ite_seqn)) consumo, ");
+sbp.append("               SUM(NULL) comprimento, ");
+sbp.append("               d.unm_codigo ");
+sbp.append("          FROM ped p, ite i, dom_item_estoque d ");
+sbp.append("         WHERE p.ped_nmro = i.ped_nmro ");
+sbp.append("           AND d.codigo = fct_corrugado(i.lin_cdgo, ");
+sbp.append("                                        i.ref_cdgo, ");
+sbp.append("                                        p.ped_tipo_corrugado, ");
+sbp.append("                                        i.codigo_corrugado) ");
+sbp.append("           AND p.ped_invoice = LPAD('"+f.getNumero_fatura()+"', 4, 0) || '/' || '"+f.getAno_fatura()+"' ");
+sbp.append("           AND NVL(p.emp_empresa, NULL) = '"+f.getEmp_empresa()+"' ");
+sbp.append("           AND NVL(p.ped_tipo, NULL) = 'EX' ");
+sbp.append("           AND NVL(p.ped_stat, NULL) <> 'C' ");
+sbp.append("         GROUP BY p.ped_nmro, ");
+sbp.append("                  p.emp_empresa, ");
+sbp.append("                  i.lin_cdgo, ");
+sbp.append("                  i.ref_cdgo, ");
+sbp.append("                  d.codigo, ");
+sbp.append("                  CASE ");
+sbp.append("                    WHEN 'N' = 'N' THEN ");
+sbp.append("                     NULL ");
+sbp.append("                    ELSE ");
+sbp.append("                     fct_retorna_fil_producao(i.ped_nmro, i.ite_seqn) ");
+sbp.append("                  END, ");
+sbp.append("                  CASE ");
+sbp.append("                    WHEN 'N' = 'N' THEN ");
+sbp.append("                     NULL ");
+sbp.append("                    ELSE ");
+sbp.append("                     p.ped_invoice ");
+sbp.append("                  END, ");
+sbp.append("                  d.unm_codigo) qry, ");
+sbp.append("       rdo.dom_item_estoque_cst_imp d ");
+sbp.append(" WHERE d.ies_codigo = qry.ies_codigo ");
+sbp.append("   AND d.cor_cdgo = qry.cor_cdgo ");
+sbp.append("   AND d.tai_codigo = qry.tai_codigo ");
+sbp.append(" GROUP BY qry.ies_codigo, ");
+sbp.append("          pck_item_estoque.get_nome(qry.ies_codigo), ");
+sbp.append("          qry.cor_cdgo, ");
+sbp.append("          pck_cor.get_nome(qry.cor_cdgo), ");
+sbp.append("          qry.tai_codigo, ");
+sbp.append("          qry.unm_codigo ");
+sbp.append(" ORDER BY qry.ies_codigo, ");
+sbp.append("          descricao, ");
+sbp.append("          qry.cor_cdgo, ");
+sbp.append("          'DESCRICAO COR', ");
+sbp.append("          qry.tai_codigo ");
+
+}
+
+
+  Vector res_Jw_necessidade_materiais_faturas = null;
+  Vector res_Jw_necessidade_materiais_pp = null;
+
+  
+  if(f.getAbrir_fatura().equalsIgnoreCase("N")){
+     if(!informouFatura){
+        res_Jw_necessidade_materiais_faturas = j.select(tablef, sbf.toString(), null);
+        session.setAttribute("res_Jw_necessidade_materiais_faturas",res_Jw_necessidade_materiais_faturas);
+     }
+  }
+
+    if((f.getCb_considerar_pp()+"").equalsIgnoreCase("S")){
+    res_Jw_necessidade_materiais_pp = j.select(tablepp, sbp.toString(), null);
+    session.setAttribute("res_Jw_necessidade_materiais_pp",res_Jw_necessidade_materiais_pp);
+
+  if (!(res_Jw_necessidade_materiais_pp!= null && res_Jw_necessidade_materiais_pp.size() > 0)) {
+    ActionErrors errors = (ActionErrors) request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
+    if (errors == null) {
+      errors = new ActionErrors();
+    }
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_necessidade_materiais_pp", new ActionMessage("warn.norowsselected",""));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+  }
+    }
+
+
+if(!(f.getCb_considerar_pp()+"").equalsIgnoreCase("S")){
+    Vector res_Jw_necessidade_materiais = j.select(table, sb.toString(), null);
+  session.setAttribute("res_Jw_necessidade_materiais",res_Jw_necessidade_materiais);
+  if (!(res_Jw_necessidade_materiais != null && res_Jw_necessidade_materiais.size() > 0)) {
+    ActionErrors errors = (ActionErrors) request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
+    if (errors == null) {
+      errors = new ActionErrors();
+    }
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_necessidade_materiais", new ActionMessage("warn.norowsselected",""));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+  }
+}
+ 
+
+
+  
+  session.setAttribute("mapping.getName()", form);
+}</action_code>
+<property>select_action</property>
+<forward>/com/NecessidadeMateriais_rForm.jsp</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>340</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>r</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers>
+<triggers_item>
+<class>com.egen.develop.generator.form.Trigger</class>
+<name>tg_resetfull_action</name>
+<type>pos</type>
+<connectionType></connectionType>
+<transact>true</transact>
+<businessProcess></businessProcess>
+<triggerTemplate></triggerTemplate>
+<triggerCode>private void tg_resetfull_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  try {
+    NecessidadeMateriaisActionForm f = (NecessidadeMateriaisActionForm) form;
+    session.removeAttribute("res_Jw_necessidade_materiais_faturas");
+    session.removeAttribute("grupos_selecionados");
+    session.removeAttribute("codigos_grupos_selecionados");
+    session.setAttribute(mapping.getName(), form);
+  } catch (Exception e) {
+    throw e;
+  } finally {
+  }
+}
+
+</triggerCode>
+<develHelp></develHelp>
+<triggerSetProperty>
+</triggerSetProperty>
+</triggerSetProperty>
+</triggers_item>
+</triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>refresh_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.refresh</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>refresh_button_action</template>
+<action_code></action_code>
+<property>refresh_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetgrupos_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_necessidade_materiais</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>resetgrupos</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_resetgrupos_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  try {
+    NecessidadeMateriaisActionForm f = (NecessidadeMateriaisActionForm) form;
+    session.removeAttribute("grupos_selecionados");
+    session.removeAttribute("codigos_grupos_selecionados");
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_necessidade_materiais", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+  }
+  return actionForward;
+}
+</action_code>
+<property>resetgrupos_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>NecessidadeMateriaisActionForm</name>
+<type>portalbr.com.NecessidadeMateriaisActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/NecessidadeMateriaisForm</path>
+<type>portalbr.com.NecessidadeMateriaisAction</type>
+<name>NecessidadeMateriaisActionForm</name>
+<attribute></attribute>
+<input>/com/NecessidadeMateriaisForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/NecessidadeMateriaisForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Necessidade Materiais Exportação - Acumulada/Fatura Proforma</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(163)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>true</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

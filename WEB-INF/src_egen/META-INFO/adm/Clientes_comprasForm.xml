@@ -1,0 +1,1900 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>25/03/2020</generation_day>
+<module>adm</module>
+<file_name>Clientes_compras</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>04/09/2006 09:03:24</creationDate>
+<lastModifyDate>25/03/2020 15:56:20</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_atendidos</name>
+<title> </title>
+<i18n></i18n>
+<database>session</database>
+<db_object>portalbr.dbobj.view.Jw_clientes_atendidos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame>box</frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><table id="TRbl_report_Jw_clientes_atendidos" class="reportTable" style=width:99%;  border=1  frame=box>
+  <%
+  int counterbl_report_Jw_clientes_atendidos=0;
+  {
+    portalbr.dbobj.view.Jw_clientes_atendidos t_jw_clientes_atendidos = new portalbr.dbobj.view.Jw_clientes_atendidos();
+    java.util.Vector res_Jw_clientes_atendidos = (java.util.Vector)session.getAttribute("res_Jw_clientes_atendidos");
+    if (res_Jw_clientes_atendidos!=null && res_Jw_clientes_atendidos.size()>0) {
+      java.lang.String cli_cdgo =  null;
+      java.lang.String cli_nome =  null;
+      java.lang.String cli_rzao =  null;
+      java.lang.String cidade =  null;
+      java.lang.String email =  null;
+      java.lang.String fones =  null;
+      java.sql.Timestamp cli_dult =  null;
+      int pares =  0;
+      int pares_recolocado =  0;
+      int total_pares = 0;
+      int total_pares_recolocado = 0;
+      double valor =  0;
+      double saldo =  0;
+      double limite_credito =  0;
+      double valor_recolocado =  0;
+      double total_valor = 0;
+      double total_valor_recolocado = 0;
+      int i_bl_report_Jw_clientes_atendidos = 0;
+      t_jw_clientes_atendidos = (portalbr.dbobj.view.Jw_clientes_atendidos)res_Jw_clientes_atendidos.elementAt(i_bl_report_Jw_clientes_atendidos);
+      cli_cdgo = t_jw_clientes_atendidos.getCli_cdgo()==null?"":t_jw_clientes_atendidos.getCli_cdgo();
+      cli_nome = t_jw_clientes_atendidos.getCli_nome()==null?"":t_jw_clientes_atendidos.getCli_nome();
+      cli_rzao = t_jw_clientes_atendidos.getCli_rzao()==null?"":t_jw_clientes_atendidos.getCli_rzao();
+      cidade = t_jw_clientes_atendidos.getCidade()==null?"":t_jw_clientes_atendidos.getCidade();
+      email = t_jw_clientes_atendidos.getEmail()==null?"":t_jw_clientes_atendidos.getEmail();
+      fones = t_jw_clientes_atendidos.getFones()==null?"":t_jw_clientes_atendidos.getFones();
+      cli_dult = (java.sql.Timestamp)t_jw_clientes_atendidos.getCli_dult();
+      pares = t_jw_clientes_atendidos.getPares();
+      valor = t_jw_clientes_atendidos.getValor();
+      saldo = t_jw_clientes_atendidos.getSaldo();
+      limite_credito = t_jw_clientes_atendidos.getLimite_credito();
+      pares_recolocado = t_jw_clientes_atendidos.getPares_recolocado();
+      valor_recolocado = t_jw_clientes_atendidos.getValor_recolocado();
+      %>
+
+            <tr class="reportHeader" valign="bottom">
+               <td class="columnTdHeader" style="text-align: left;" colspan="7">
+               </td>        
+               <td class="columnTdHeader" style="text-align: center;" colspan="2">
+                 Entrada<br>Mês
+               </td>        
+               <td class="columnTdHeader" style="text-align: center;" colspan="2">
+                 Recolocados<br>Fora Mês
+               </td>        
+<%         if(((String)session.getAttribute("ca_consulta_saldo_limite_credito")).equalsIgnoreCase("S")){ %>
+               <td class="columnTdHeader" style="text-align: left;" colspan="2">
+               </td>     
+<% } %>
+            </tr>
+            <tr class="reportHeader" valign="bottom">
+              <td class="columnTdHeader" style="text-align:left;">
+                Código
+              </td>
+              <td class="columnTdHeader" style="text-align:left;">
+                Nome
+              </td>
+              <td class="columnTdHeader" style="text-align:left;">
+                Razão Social
+              </td>
+              <td class="columnTdHeader" style="text-align:left;">
+                Cidade
+              </td>
+              <td class="columnTdHeader" style="text-align:left;">
+                Email
+              </td>
+              <td class="columnTdHeader" style="text-align:left;">
+                Fone
+              </td>
+              <td class="columnTdHeader" style="text-align:center;">
+<% if(!(request.getParameter("excel")+"").equals("true")){ %>
+                <img style=cursor:pointer src=../img/ballhelp.gif border=0 onmouseout="this.src='../img/ballhelp.gif'" onmouseover="this.src='../img/ballhelp_c.gif'" onclick="javascript:window.open('../lov/HelpForm.jsp?help=Data da última compra do cliente no período, marca e linha informados; levando em consideração apenas os pedidos que não estejam cancelados. (Período com base na data de digitação dos pedidos).','def','scrollbars,height=400,width=340,TOP=0,LEFT=0')">
+<% } %>
+                <br>
+                Data Última Compra
+              </td>
+              <td class="columnTdHeader" style="text-align:right;">
+                Pares
+              </td>
+              <td class="columnTdHeader" style="text-align:right;">
+                Valor
+              </td>
+              <td class="columnTdHeader" style="text-align:right;">
+                Pares
+              </td>
+              <td class="columnTdHeader" style="text-align:right;">
+                Valor
+              </td>
+
+<%      
+        if(((String)session.getAttribute("ca_consulta_saldo_limite_credito")).equalsIgnoreCase("S")){
+%>
+
+              <td class="columnTdHeader" style="text-align:right;">
+                Saldo
+              </td>
+              <td class="columnTdHeader" style="text-align:right;">
+                Limite Crédito
+              </td>        
+
+<% } %>      
+
+            </tr>
+      <%
+      while (i_bl_report_Jw_clientes_atendidos<res_Jw_clientes_atendidos.size()){
+        counterbl_report_Jw_clientes_atendidos++;
+        String style="";
+        if (!((i_bl_report_Jw_clientes_atendidos%2)!=0)) {
+          style="class=rowColor";
+        } else {
+          style="class=rowBlank";
+        }
+        %>
+        <tr <%= style %> id='TRbl_report_Jw_clientes_atendidos<%=counterbl_report_Jw_clientes_atendidos%>' >
+          <td class="reportColumn" style="text-align:left;">
+            <%= cli_cdgo %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= cli_nome %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= cli_rzao %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= cidade %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= email %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= fones %>
+          </td>
+          <td class="reportColumn" style="text-align:center;" >
+            <%= com.egen.util.text.FormatDate.format(cli_dult, "dd/MM/yyyy") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;">
+            <% 
+            total_pares += pares;
+            total_valor += valor;
+            %>
+            <%= com.egen.util.text.FormatNumber.format(pares, "###,###,##0") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;">
+            <%= com.egen.util.text.FormatNumber.format(valor, "##,##0.00") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;">
+            <% 
+            total_pares_recolocado += pares_recolocado;
+            total_valor_recolocado += valor_recolocado;
+            %>
+            <% if(pares_recolocado>0) { %>
+            <%= com.egen.util.text.FormatNumber.format(pares_recolocado, "###,###,##0") %>
+            <% } else { %>
+               <font color="gray">0</font>
+            <% } %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;">
+            <% if(valor_recolocado > 0) { %>
+            <%= com.egen.util.text.FormatNumber.format(valor_recolocado, "##,##0.00") %>
+            <% } else { %>
+              <font color="gray">0</font>
+            <% } %>
+          </td>
+
+<%        if(((String)session.getAttribute("ca_consulta_saldo_limite_credito")).equalsIgnoreCase("S")){ %>
+
+          <td class="reportColumn" style="text-align:right;">
+            <% if(saldo> 0) { %>
+            <%= com.egen.util.text.FormatNumber.format(saldo, "##,##0.00") %>
+            <% } else { %>
+              <font color="gray">0</font>
+            <% } %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;">
+            <% if(limite_credito> 0) { %>
+            <%= com.egen.util.text.FormatNumber.format(limite_credito, "##,##0.00") %>
+            <% } else { %>
+              <font color="gray">0</font>
+            <% } %>
+          </td>
+
+<% } %>
+
+        </tr>
+        <%
+        if (++i_bl_report_Jw_clientes_atendidos >= res_Jw_clientes_atendidos.size()) {
+          break;
+        }
+        t_jw_clientes_atendidos = (portalbr.dbobj.view.Jw_clientes_atendidos)res_Jw_clientes_atendidos.elementAt(i_bl_report_Jw_clientes_atendidos);
+        cli_cdgo = t_jw_clientes_atendidos.getCli_cdgo()==null?"":t_jw_clientes_atendidos.getCli_cdgo();
+        cli_nome = t_jw_clientes_atendidos.getCli_nome()==null?"":t_jw_clientes_atendidos.getCli_nome();
+        cli_rzao = t_jw_clientes_atendidos.getCli_rzao()==null?"":t_jw_clientes_atendidos.getCli_rzao();
+        cidade = t_jw_clientes_atendidos.getCidade()==null?"":t_jw_clientes_atendidos.getCidade();
+        email = t_jw_clientes_atendidos.getEmail()==null?"":t_jw_clientes_atendidos.getEmail();
+        fones = t_jw_clientes_atendidos.getFones()==null?"":t_jw_clientes_atendidos.getFones();
+        cli_dult = (java.sql.Timestamp)t_jw_clientes_atendidos.getCli_dult();
+        pares = t_jw_clientes_atendidos.getPares();
+        valor = t_jw_clientes_atendidos.getValor();
+        saldo = t_jw_clientes_atendidos.getSaldo();
+        limite_credito = t_jw_clientes_atendidos.getLimite_credito();
+        pares_recolocado = t_jw_clientes_atendidos.getPares_recolocado();
+        valor_recolocado = t_jw_clientes_atendidos.getValor_recolocado();
+      }
+    %>
+          <td class="reportColumn" style="text-align:right;" colspan="7">
+             <b>Total:</b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+             <b><%= com.egen.util.text.FormatNumber.format(total_pares-total_pares_recolocado, "###,###,##0") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+             <b><%= com.egen.util.text.FormatNumber.format(total_valor-total_valor_recolocado, "###,###,##0.00") %></b>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;" >
+             <b><%= com.egen.util.text.FormatNumber.format(total_pares_recolocado, "###,###,##0") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" >
+             <b><%= com.egen.util.text.FormatNumber.format(total_valor_recolocado, "###,###,##0.00") %></b>
+          </td>
+</tr>
+
+<tr>
+          <td class="reportColumn" style="text-align:right;" colspan="7">
+             <b>Total Geral:</b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" colspan="2" >
+             <b><%= com.egen.util.text.FormatNumber.format(total_pares+total_pares_recolocado, "###,###,##0") %></b>
+          </td>
+          <td class="reportColumn" style="text-align:right;" colspan="2" >
+             <b><%= com.egen.util.text.FormatNumber.format(total_valor+total_valor_recolocado, "###,###,##0.00") %></b>
+          </td>
+
+        
+</tr>
+
+    <%
+    }
+  }
+  %>
+</table></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>cli_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Código</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_nome</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>cli_nome</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Nome</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_rzao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>cli_rzao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Razão Social</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cidade</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>cidade</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cidade</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_dult</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>cli_dult</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>dd/MM/yyyy</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Dt. Última Compra</label>
+<type>java.sql.Timestamp</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pares</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_atendidos</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Jw_clientes_compras</name>
+<title> </title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>portalbr.dbobj.view.Jw_clientes_atendidos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>error</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>adm/Clientes_comprasForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>rep_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>rep_cdgo</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>codigo_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_regional</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>codigo_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>codigo_marca</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>segmento</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>segmento</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>limite</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>limite</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Hidden</class>
+<name>meses</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>meses</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<value></value>
+<codeItem></codeItem>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>310</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:submit styleClass="myhidden" property="select_action"><bean:message bundle="ApplicationResources" key="jsp.select"/></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();    
+    select_action(j, mapping, form, request, response);
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_clientes_compras", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+         j.close();
+         j = null;
+    }
+  }
+  return actionForward;
+}
+
+private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  Clientes_comprasActionForm f = (Clientes_comprasActionForm) form;
+  portalbr.dbobj.view.Jw_clientes_atendidos table = new portalbr.dbobj.view.Jw_clientes_atendidos();
+  java.sql.PreparedStatement pstm = null;
+  java.sql.ResultSet rset = null;
+
+  try {
+        String limite_qry    = "";
+        String segmento      = "";
+        String limite        = "";
+	String representante = "";
+	String marca         = "";
+	String regional      = "";
+	if(!(f.getRep_cdgo()==null)){
+		representante = f.getRep_cdgo();
+	} else {
+		representante = "null";
+	}
+
+	if(!(f.getCodigo_marca()==null)){
+		marca = f.getCodigo_marca();
+	} else {
+		marca = "null";
+	}
+	if(!(f.getCodigo_regional()==null)){
+		regional = f.getCodigo_regional();
+	} else {
+		regional = "null";
+	}
+
+
+	if(!(f.getSegmento()==null)){
+		segmento = f.getSegmento();
+	} else {
+		segmento = "null";
+	}
+
+	if(!(f.getLimite()==null)){
+		limite = f.getLimite();
+                if(limite.equals("p")){
+                   limite_qry = " AND limite_credito <= 50000 ";
+                }
+                if(limite.equals("m")){
+                   limite_qry = " AND limite_credito > 50000 and limite_credito <= 200000 ";
+                }
+                if(limite.equals("g")){
+                   limite_qry = " AND limite_credito > 200000 ";
+                }
+	} 
+
+	StringBuilder query = new StringBuilder();
+	query.append(" SELECT /*+ all_rows */ cli_cdgo ");
+	query.append("      , cli_nome ");
+	query.append("      , cli_rzao ");
+	query.append("      , cli_dult ");
+	query.append("      , NVL(SUM(pares), 0) - NVL(SUM(pares_recolocado), 0) pares ");
+	query.append("      , NVL(SUM(valor), 0) - NVL(SUM(valor_recolocado), 0) valor ");
+	query.append("      , NVL(SUM(pares_recolocado), 0) pares_recolocado ");
+	query.append("      , NVL(SUM(valor_recolocado), 0) valor_recolocado ");
+        if(((String)session.getAttribute("ca_consulta_saldo_limite_credito")).equalsIgnoreCase("S")){
+           query.append("   , fnc_ctr_saldo_limite(cli_cdgo, '01') saldo ");
+        } else {
+           query.append("   , 0 saldo ");
+        }
+        query.append("      , limite_credito ");
+        query.append("      , COUNT(DISTINCT mes_ano) quantidade_meses ");
+	query.append("   FROM ( SELECT cli.cli_cdgo ");
+	query.append("               , cli.cli_nome ");
+	query.append("               , cli.cli_rzao ");
+	query.append("               , cli.cli_dult ");
+	query.append("               , res.pares pares ");
+	query.append("               , res.valor valor ");
+	query.append("               , 0 pares_recolocado ");
+	query.append("               , 0 valor_recolocado ");
+        query.append("               , nvl(cli_valor_credito_analista,0) limite_credito ");
+        query.append("               , to_char(data_dig, 'mm/yyyy') mes_ano ");
+	query.append("            FROM resumo_ped res ");
+	query.append("               , cli ");
+	query.append("               , rep ");
+	query.append("               , cliente_representante clr ");
+	query.append("               , representante_marca rm ");
+        query.append("               , seg ");
+        query.append("               , parametros_cliente par ");
+	query.append("           WHERE res.data_dig              >= to_date('").append(session.getAttribute("dt_inicial")).append("','dd/MM/yyyy') ");
+	query.append("             AND res.data_dig              <  to_date('").append(session.getAttribute("dt_final")).append("','dd/MM/yyyy')+1 ");
+	query.append("             AND res.lin_cdgo              =  nvl(").append(session.getAttribute("lin_cdgo")).append(",res.lin_cdgo) ");
+	query.append("             AND res.codigo_marca          =  nvl(").append(session.getAttribute("codigo_marca")).append(",res.codigo_marca) ");
+	query.append("             AND res.codigo_regional       =  nvl(").append(session.getAttribute("codigo_regional")).append(",res.codigo_regional) ");
+        query.append("             AND par.cli_cdgo              =  cli.cli_cdgo ");
+        query.append("             AND seg.seg_cdgo              =  cli.seg_cdgo ");
+	query.append("             AND cli.cli_cdgo              =  res.cli_cdgo ");
+	query.append("             AND rep.rep_cdgo              =  res.rep_cdgo ");
+	query.append("             AND clr.codigo_representante  =  rep.rep_cdgo ");
+	query.append("             AND cli.cli_cdgo              =  clr.codigo_cliente ");
+	query.append("             AND res.esc_seqn              =  clr.codigo_sequencial ");
+	query.append("             AND rm.marca_produto          =  res.codigo_marca ");
+	query.append("             AND rm.codigo_representante   =  rep.rep_cdgo   ");
+	query.append("             AND cli.cli_situ              =  nvl('A',cli.cli_situ) ");
+	query.append("             AND cli.seg_cdgo              NOT IN (9,153) ");
+	query.append("             AND res.codigo_marca          =  nvl(").append(marca).append(",res.codigo_marca) ");
+	query.append("             AND res.codigo_regional       =  nvl(").append(regional).append(",res.codigo_regional) ");
+	query.append("             AND seg.seg_cdgo              =  nvl(").append(segmento).append(",seg.seg_cdgo) ");
+	query.append("             AND res.rep_cdgo              =  nvl(").append(representante).append(",res.rep_cdgo ) ");
+	query.append("             AND rep.rep_situ              =  nvl(").append(session.getAttribute("situacao_representante")).append(",rep.rep_situ) ");
+	query.append("             AND clr.situacao              =  nvl(").append(session.getAttribute("situacao_cliente_representante")).append(",clr.situacao) ");
+	query.append("             AND rm.situacao               =  nvl(").append(session.getAttribute("situacao_representante_marca")).append(",rm.situacao) ");
+        query.append(limite_qry);
+	query.append("           UNION ALL ");
+	query.append("          SELECT cli.cli_cdgo ");
+	query.append("               , cli.cli_nome ");
+	query.append("               , cli.cli_rzao ");
+	query.append("               , cli.cli_dult ");
+	query.append("               , res.pares pares ");
+	query.append("               , res.valor valor ");
+	query.append("               , 0 pares_recolocado ");
+	query.append("               , 0 valor_recolocado ");
+        query.append("               , nvl(cli_valor_credito_analista,0) limite_credito ");
+        query.append("               , to_char(data_dig, 'mm/yyyy') mes_ano ");
+	query.append("            FROM resumo_pedidos res ");
+	query.append("               , cli ");
+	query.append("               , rep ");
+	query.append("               , cliente_representante clr ");
+	query.append("               , representante_marca rm ");
+        query.append("               , seg ");
+        query.append("               , parametros_cliente par ");
+	query.append("           WHERE res.data_dig              >= to_date('").append(session.getAttribute("dt_inicial")).append("','dd/MM/yyyy') ");
+	query.append("             AND res.data_dig              <  to_date('").append(session.getAttribute("dt_final")).append("','dd/MM/yyyy')+1 ");
+	query.append("             AND res.lin_cdgo              =  nvl(").append(session.getAttribute("lin_cdgo")).append(",res.lin_cdgo) ");
+	query.append("             AND res.codigo_marca          =  nvl(").append(session.getAttribute("codigo_marca")).append(",res.codigo_marca) ");
+	query.append("             AND res.codigo_regional       =  nvl(").append(session.getAttribute("codigo_regional")).append(",res.codigo_regional) ");
+        query.append("             AND par.cli_cdgo              =  cli.cli_cdgo ");
+        query.append("             AND seg.seg_cdgo              =  cli.seg_cdgo ");
+	query.append("             AND cli.cli_cdgo              =  res.cli_cdgo ");
+	query.append("             AND rep.rep_cdgo              =  res.rep_cdgo ");
+	query.append("             AND res.esc_seqn              =  clr.codigo_sequencial ");
+	query.append("             AND rm.marca_produto          =  res.codigo_marca ");
+	query.append("             AND clr.codigo_representante  =  rep.rep_cdgo ");
+	query.append("             AND cli.cli_cdgo              =  clr.codigo_cliente ");
+	query.append("             AND rm.codigo_representante   =  rep.rep_cdgo ");
+	query.append("             AND cli.cli_situ              =  nvl('A',cli.cli_situ) ");
+	query.append("             AND cli.seg_cdgo              NOT IN (9,153) ");
+	query.append("             AND res.codigo_marca          =  nvl(").append(marca).append(",res.codigo_marca) ");
+	query.append("             AND res.codigo_regional       =  nvl(").append(regional).append(",res.codigo_regional) ");
+	query.append("             AND seg.seg_cdgo              =  nvl(").append(segmento).append(",seg.seg_cdgo) ");
+	query.append("             AND res.rep_cdgo              =  nvl(").append(representante).append(",res.rep_cdgo ) ");
+	query.append("             AND rep.rep_situ              =  nvl(").append(session.getAttribute("situacao_representante")).append(",rep.rep_situ) ");
+	query.append("             AND clr.situacao              =  nvl(").append(session.getAttribute("situacao_cliente_representante")).append(",clr.situacao) ");
+	query.append("             AND rm.situacao               =  nvl(").append(session.getAttribute("situacao_representante_marca")).append(",rm.situacao) ");
+        query.append(limite_qry);
+	query.append("           UNION ALL ");
+	query.append("          SELECT cli.cli_cdgo ");
+	query.append("               , cli.cli_nome ");
+	query.append("               , cli.cli_rzao ");
+	query.append("               , cli.cli_dult ");
+	query.append("               , 0 pares ");
+	query.append("               , 0 valor ");
+	query.append("               , res.pares pares_recolocado ");
+	query.append("               , res.valor valor_recolocado ");
+        query.append("               , nvl(cli_valor_credito_analista,0) limite_credito ");
+        query.append("               , to_char(data_dig, 'mm/yyyy') mes_ano ");
+	query.append("            FROM resumo_pedidos res ");
+	query.append("               , cli ");
+	query.append("               , rep ");
+	query.append("               , cliente_representante clr ");
+	query.append("               , representante_marca rm ");
+        query.append("               , seg ");
+        query.append("               , parametros_cliente par ");
+	query.append("           WHERE res.data_dig              >= to_date('").append(session.getAttribute("dt_inicial")).append("','dd/MM/yyyy') ");
+	query.append("             AND res.data_dig              <  to_date('").append(session.getAttribute("dt_final")).append("','dd/MM/yyyy')+1 ");
+	query.append("             AND res.lin_cdgo              =  nvl(").append(session.getAttribute("lin_cdgo")).append(",res.lin_cdgo) ");
+	query.append("             AND res.codigo_marca          =  nvl(").append(session.getAttribute("codigo_marca")).append(",res.codigo_marca) ");
+	query.append("             AND res.codigo_regional       =  nvl(").append(session.getAttribute("codigo_regional")).append(",res.codigo_regional) ");
+        query.append("             AND par.cli_cdgo              =  cli.cli_cdgo ");
+        query.append("             AND seg.seg_cdgo              =  cli.seg_cdgo ");
+	query.append("             AND cli.cli_cdgo              =  res.cli_cdgo ");
+	query.append("             AND rep.rep_cdgo              =  res.rep_cdgo ");
+	query.append("             AND res.esc_seqn              =  clr.codigo_sequencial ");
+	query.append("             AND rm.marca_produto          =  res.codigo_marca ");
+	query.append("             AND clr.codigo_representante  =  rep.rep_cdgo ");
+	query.append("             AND cli.cli_cdgo              =  clr.codigo_cliente ");
+	query.append("             AND rm.codigo_representante   =  rep.rep_cdgo ");
+	query.append("             AND cli.cli_situ              =  nvl('A',cli.cli_situ) ");
+	query.append("             AND cli.seg_cdgo              NOT IN (9,153) ");
+	query.append("             AND res.codigo_marca          =  nvl(").append(marca).append(",res.codigo_marca) ");
+	query.append("             AND res.codigo_regional       =  nvl(").append(regional).append(",res.codigo_regional) ");
+	query.append("             AND seg.seg_cdgo              =  nvl(").append(segmento).append(",seg.seg_cdgo) ");
+	query.append("             AND res.rep_cdgo              =  nvl(").append(representante).append(",res.rep_cdgo ) ");
+	query.append("             AND rep.rep_situ              =  nvl(").append(session.getAttribute("situacao_representante")).append(",rep.rep_situ) ");
+	query.append("             AND clr.situacao              =  nvl(").append(session.getAttribute("situacao_cliente_representante")).append(",clr.situacao) ");
+	query.append("             AND rm.situacao               =  nvl(").append(session.getAttribute("situacao_representante_marca")).append(",rm.situacao) ");
+        query.append(" 		   AND NOT EXISTS (SELECT 1 ");
+        query.append("                 		     FROM ped ped ");
+        query.append("               		    WHERE ped.cli_cdgo = cli.cli_cdgo ");
+        query.append("                      	      AND ped.rep_cdgo = rep.rep_cdgo ");
+        query.append("                       	      AND ped.ped_especie_pedido <> 'C' ");
+        query.append("                       	      AND ped.ped_dadg >= TO_DATE('").append(session.getAttribute("dt_inicial")).append("', 'dd/MM/yyyy') ");
+        query.append("                       	      AND ped.ped_dadg <= TO_DATE('").append(session.getAttribute("dt_final")).append("', 'dd/MM/yyyy') + 1 ");
+        query.append("                       	      AND NOT EXISTS (SELECT 1 ");
+        query.append("                                                  FROM ped pdd ");
+        query.append("                                    	       WHERE pdd.ped_nmro = ped.ped_recolocado ");
+        query.append("                                      	         AND pdd.ped_dadg < TO_DATE('").append(session.getAttribute("dt_inicial")).append("', 'dd/MM/yyyy'))) ");
+        query.append(limite_qry);
+	query.append("        ) ");
+	query.append("  GROUP BY cli_cdgo ");
+	query.append("         , cli_nome ");
+	query.append("         , cli_rzao ");
+	query.append("         , cli_dult ");
+        query.append("         , limite_credito ");
+        query.append("    HAVING COUNT(DISTINCT mes_ano) = ").append(f.getMeses());
+	query.append("  ORDER BY quantidade_meses ");
+        query.append("         , cli_cdgo ");
+
+        if(false){throw new Exception(query.toString());}
+	Vector res_Jw_clientes_atendidos= j.select(table,
+						   query.toString(),
+						   null);
+
+	//------------------------------------------------------------
+	StringBuilder query2 = new StringBuilder();
+	query2.append(" SELECT /*+ all_rows */ MAX(data_ultima_compra)data_ultima_compra ");
+	query2.append("   FROM ( ");
+	query2.append(" SELECT MAX(rp.data_dig) data_ultima_compra ");
+	query2.append("   FROM resumo_ped rp ");
+	query2.append("  WHERE rp.cli_cdgo         = ? ");
+	query2.append("    AND rp.codigo_marca     =  nvl(").append(session.getAttribute("codigo_marca")).append(",rp.codigo_marca) ");
+	query2.append("    AND rp.codigo_regional  =  nvl(").append(session.getAttribute("codigo_regional")).append(",rp.codigo_regional) ");
+	query2.append("    AND rp.lin_cdgo         =  nvl(").append(session.getAttribute("lin_cdgo")).append(",rp.lin_cdgo) ");
+	query2.append("    AND rp.codigo_marca     =  nvl(").append(marca).append(",rp.codigo_marca) ");
+	query2.append("    AND rp.codigo_regional  =  nvl(").append(regional).append(",rp.codigo_regional) ");
+	query2.append("    AND rp.rep_cdgo         =  nvl(").append(representante).append(",rp.rep_cdgo ) ");
+	query2.append("  UNION ALL ");
+	query2.append(" SELECT MAX(rp.data_dig) data_ultima_compra ");
+	query2.append("   FROM resumo_pedidos rp ");
+	query2.append("  WHERE rp.cli_cdgo         = ? ");
+	query2.append("    AND rp.codigo_marca     =  nvl(").append(session.getAttribute("codigo_marca")).append(",rp.codigo_marca) ");
+	query2.append("    AND rp.codigo_regional  =  nvl(").append(session.getAttribute("codigo_regional")).append(",rp.codigo_regional) ");
+	query2.append("    AND rp.lin_cdgo         =  nvl(").append(session.getAttribute("lin_cdgo")).append(",rp.lin_cdgo) ");
+	query2.append("    AND rp.codigo_marca     =  nvl(").append(marca).append(",rp.codigo_marca) ");
+	query2.append("    AND rp.codigo_regional  =  nvl(").append(regional).append(",rp.codigo_regional) ");
+	query2.append("    AND rp.rep_cdgo         =  nvl(").append(representante).append(",rp.rep_cdgo ) )");
+
+       
+	pstm = j.getConn().prepareStatement(query2.toString());
+	util.consultas.Cidades cid = new util.consultas.Cidades();
+	for(int i=0; i<res_Jw_clientes_atendidos.size(); i++){
+		portalbr.dbobj.view.Jw_clientes_atendidos  r = (portalbr.dbobj.view.Jw_clientes_atendidos) res_Jw_clientes_atendidos.elementAt(i);
+		pstm.setString(1, r.getCli_cdgo());
+		pstm.setString(2, r.getCli_cdgo());
+		rset = pstm.executeQuery();
+		while (rset.next()) {
+			r.setCli_dult(rset.getTimestamp(1));
+			r.setCidade(cid.retornaCidades(r.getCli_cdgo()+""));
+                        r.setEmail(cid.retornaEmails());
+                        r.setFones(cid.retornaFones());
+		}
+	}
+	//------------------------------------------------------------
+	session.setAttribute("res_Jw_clientes_atendidos",res_Jw_clientes_atendidos);
+	if (!(res_Jw_clientes_atendidos != null && res_Jw_clientes_atendidos.size() > 0)) {
+		ActionErrors errors = (ActionErrors) request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
+		if (errors == null) {
+		errors = new ActionErrors();
+		}
+		errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_clientes_compras", new ActionMessage("warn.norowsselected",""));
+		request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+	}
+ } finally {
+     if (rset != null) {
+       rset.close();
+     }
+     if (pstm != null) {
+       pstm.close();
+     }
+ }		
+  session.setAttribute("mapping.getName()", form);
+}</action_code>
+<property>select_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_clientes_compras</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>320</left>
+<top>310</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>history.go(-1);</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:button accesskey="a" onclick="history.go(-1);" styleClass="baseButton" property="back_action"><bean:message bundle="ApplicationResources" key="jsp.back"/></html:button>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>back_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>Clientes_comprasActionForm</name>
+<type>portalbr.adm.Clientes_comprasActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/adm/Clientes_comprasForm</path>
+<type>portalbr.adm.Clientes_comprasAction</type>
+<name>Clientes_comprasActionForm</name>
+<attribute></attribute>
+<input>/adm/Clientes_comprasForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/adm/Clientes_comprasForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Clientes Compras <%= (String)(request.getParameter("cab")+"").replace('*','&') %></title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_data.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(58)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

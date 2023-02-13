@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>26/02/2014</generation_day>
+<module>adm</module>
+<file_name>DownloadArquivos</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>06/02/2014 15:25:48</creationDate>
+<lastModifyDate>26/02/2014 14:04:11</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Links_dinamicos</name>
+<title>links_dinamicos</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Links_dinamicos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{{"lidi_tien_id","=", ":notnull"},
+{"lidi_tien_id","=", ":notnull"}}
+</where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  acesso.Sessao sessao = new acesso.Sessao(session);
+  String tipoEntidadeNegocio = "";
+  String entNegocio = "";
+  if((sessao.getTipoEntidadeNegocioId()!=null && sessao.getTipoEntidadeNegocioId()==2047)){
+     entNegocio = sessao.getEntidadeNegocioId()+"";
+  }
+  if((sessao.getTipoEntidadeNegocioId()!=null && sessao.getTipoEntidadeNegocioId()!=2047)){
+     tipoEntidadeNegocio = sessao.getTipoEntidadeNegocioId()+"";
+  }
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    java.util.Vector res_Links_dinamicos = null;
+    try {
+      portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = new portalbr.dbobj.table.Links_dinamicos();
+      String[][] select = null;
+      Object[][] where = null;
+      where = new Object[][]{{"lidi_tien_id","=", tipoEntidadeNegocio}, {"lidi_enne_id","=", entNegocio },{"lidi_marca","=","0"}}
+    ;
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order = {"lidi_tien_id"};
+    res_Links_dinamicos = j.select(t_links_dinamicos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+  }
+  %>
+
+  <form  name="bl_report_Links_dinamicos" id="bl_report_Links_dinamicos" class="baseForm" method="post" >
+    <%
+    if (res_Links_dinamicos!=null && res_Links_dinamicos.size()>0) {
+      %>
+
+      <table id="TRbl_report_Links_dinamicos"  class="reportTable"   style="width:99%; "  border="1" >
+        <%
+        java.lang.String free =  null;
+        java.lang.Integer lidi_tien_id =  null;
+        java.lang.Integer lidi_enne_id =  null;
+        java.lang.String tien_tipo =  null;
+		
+        int lidi_id =  0;
+        java.lang.String lidi_titulo =  null;
+        java.lang.String lidi_descricao =  null;
+        java.lang.String lidi_caminho =  null;
+        String _b0_control = "__";
+        int i_bl_report_Links_dinamicos = 0;
+        while (i_bl_report_Links_dinamicos<res_Links_dinamicos.size()) {
+          portalbr.dbobj.table.Links_dinamicos t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos);
+          lidi_tien_id = t_links_dinamicos.getLidi_tien_id();
+          lidi_enne_id = t_links_dinamicos.getLidi_enne_id();
+          lidi_id = t_links_dinamicos.getLidi_id();
+          lidi_titulo = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+          lidi_descricao = t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao();
+          lidi_caminho = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+          tien_tipo = "";
+          {
+            if(lidi_tien_id!=null) {
+
+              Tipos_entidade_negocio cr_db_object = new Tipos_entidade_negocio();
+              String[][] select = null;
+              Object[][] where = {{"tien_id","=",lidi_tien_id}};
+              java.util.Vector results = j.select(cr_db_object, select, where, null, null, null);
+              if (results!=null && results.size()>0) {
+                cr_db_object = (Tipos_entidade_negocio)results.elementAt(0);
+                tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+              }
+            }
+            };
+          {
+            if(lidi_enne_id!=null) {
+
+              Entidades_negocio cr_db_object2 = new Entidades_negocio();
+              String[][] select2 = null;
+              Object[][] where2 = {{"enne_id","=",lidi_enne_id}};
+              java.util.Vector results2 = j.select(cr_db_object2, select2, where2, null, null, null);
+              if (results2!=null && results2.size()>0) {
+                cr_db_object2 = (Entidades_negocio)results2.elementAt(0);
+                tien_tipo = ((cr_db_object2.getEnne_descricao()!=null)?cr_db_object2.getEnne_descricao()+"":"");
+              }
+            }
+            };			
+            String _b0_value = com.egen.util.text.FormatNumber.format(lidi_tien_id);
+            if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+              %>
+              <tr class="reportHeader2">
+                <td colspan="4">
+                    Tipo Usuário : <%= tien_tipo %>
+                </td>
+              </tr>
+              <%
+              %>
+
+              <tr class="reportTr">
+                <td class="columnTdHeader" style="text-align:right;" >
+                  ID
+                </td>
+
+                <td class="columnTdHeader" style="text-align:left;" >
+                  Título
+                </td>
+
+                <td class="columnTdHeader" style="text-align:left;" >
+                  Descrição
+                </td>
+
+                <td class="columnTdHeader" style="text-align:left;" >
+                  Arquivo
+                </td>
+
+              </tr>
+
+              <%
+            }
+            String style_bl_report_Links_dinamicos="";
+            if (!((i_bl_report_Links_dinamicos%2)!=0)) {
+              style_bl_report_Links_dinamicos="rowColor";
+            } else {
+              style_bl_report_Links_dinamicos="rowBlank";
+            }
+            %>
+
+            <tr class='<%= style_bl_report_Links_dinamicos %>' id="TRbl_report_Links_dinamicos<%=i_bl_report_Links_dinamicos%>" >
+              <td class="reportColumn" style="text-align:right;" >
+                <%= lidi_id %>
+              </td>
+
+              <td class="reportColumn" style="text-align:left;" >
+                <%= lidi_titulo %>
+              </td>
+
+              <td class="reportColumn" style="text-align:left;" >
+                <%= lidi_descricao %>
+              </td>
+
+              <td class="reportColumn" style="text-align:left;" >
+                <a href="../arquivos/manuais/<%= lidi_caminho %>" ><%= lidi_caminho %></a>
+              </td>
+
+            </tr>
+
+            <%
+            _b0_control = _b0_value;
+            i_bl_report_Links_dinamicos++;
+            if (i_bl_report_Links_dinamicos<res_Links_dinamicos.size()) {
+              t_links_dinamicos = (portalbr.dbobj.table.Links_dinamicos)res_Links_dinamicos.elementAt(i_bl_report_Links_dinamicos);
+              lidi_tien_id = t_links_dinamicos.getLidi_tien_id();
+              lidi_enne_id = t_links_dinamicos.getLidi_enne_id();
+              lidi_id = t_links_dinamicos.getLidi_id();
+              lidi_titulo = t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo();
+              lidi_descricao = t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao();
+              lidi_caminho = t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho();
+              tien_tipo = "";
+              {
+                if(lidi_tien_id!=null) {
+                  Tipos_entidade_negocio cr_db_object = new Tipos_entidade_negocio();
+                  String[][] select = null;
+                  Object[][] where = {
+                  {"tien_id","=",lidi_tien_id}
+                  };
+                  String[] group = null;
+                  String[] having = null;
+                  String[] order = null;
+                  java.util.Vector results = j.select(cr_db_object, select, where, group, having, order);
+                  if (results!=null && results.size()>0) {
+                    cr_db_object = (Tipos_entidade_negocio)results.elementAt(0);
+                    tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+                  }
+                }
+                };
+                _b0_value = com.egen.util.text.FormatNumber.format(lidi_tien_id);
+              } else {
+                _b0_control = "__";
+              }
+            }
+            %>
+
+          </table>
+
+          <%
+        }
+        %>
+
+      </form>
+      <%
+    } catch (Exception e) {
+      session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+      %>
+      <jsp:forward page="/system/ErrorPage.jsp"/>
+      <%
+    } finally {
+    if(j!=null){j.close(); }
+  }
+  %>
+  <%
+}
+%></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>free</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label></label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>false</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>true</columnDisplayCodeCustomized>
+<columnDisplayCode><%
+    acesso.Sessao sessao = new acesso.Sessao(session);
+%></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_tien_id</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_tien_id</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Tipo Usuário</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_tien_id()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>tien_tipo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label></label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>false</base_table>
+<column_order></column_order>
+<formula>"";
+        {
+          if(lidi_tien_id!=null) {
+            Tipos_entidade_negocio cr_db_object = new Tipos_entidade_negocio();
+            String[][] select = null;
+            Object[][] where = {
+                              {"tien_id","=",lidi_tien_id}
+                               };
+            String[] group = null;
+            String[] having = null;
+            String[] order = null;
+            java.util.Vector results = j.select(cr_db_object, select, where, group, having, order);
+            if (results!=null && results.size()>0) {
+              cr_db_object = (Tipos_entidade_negocio)results.elementAt(0);
+              tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+              }
+      }
+        }</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation><class>com.egen.develop.generator.report.ColumnRelation</class>
+<db_object>Tipos_entidade_negocio</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.report.ElementRelation</class>
+<master_name>lidi_tien_id</master_name>
+<slave_name>tien_id</slave_name>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<columnRelationTemplate></columnRelationTemplate>
+<columnRelationCode>"";
+        {
+          if(lidi_tien_id!=null) {
+            Tipos_entidade_negocio cr_db_object = new Tipos_entidade_negocio();
+            String[][] select = null;
+            Object[][] where = {
+                              {"tien_id","=",lidi_tien_id}
+                               };
+            String[] group = null;
+            String[] having = null;
+            String[] order = null;
+            java.util.Vector results = j.select(cr_db_object, select, where, group, having, order);
+            if (results!=null && results.size()>0) {
+              cr_db_object = (Tipos_entidade_negocio)results.elementAt(0);
+              tien_tipo = ((cr_db_object.getTien_tipo()!=null)?cr_db_object.getTien_tipo()+"":"");
+              }
+      }
+        }</columnRelationCode>
+<columnRelationEnumerationFile></columnRelationEnumerationFile>
+<columnRelationSetProperty>
+</columnRelationSetProperty>
+</columnRelationSetProperty>
+</columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_id</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_id</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>ID</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_id()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_titulo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_titulo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Título</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_titulo()==null?"":t_links_dinamicos.getLidi_titulo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_descricao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_descricao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Descrição</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_descricao()==null?"":t_links_dinamicos.getLidi_descricao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lidi_caminho</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Links_dinamicos</block_name>
+<role_item></role_item>
+<database_column>lidi_caminho</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Lidi_caminho</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_links_dinamicos.getLidi_caminho()==null?"":t_links_dinamicos.getLidi_caminho()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>DownloadArquivosActionForm</name>
+<type>portalbr.adm.DownloadArquivosActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/adm/DownloadArquivosForm</path>
+<type>portalbr.adm.DownloadArquivosAction</type>
+<name>DownloadArquivosActionForm</name>
+<attribute></attribute>
+<input>/adm/DownloadArquivosForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/adm/DownloadArquivosForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Download de Arquivos</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(21)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

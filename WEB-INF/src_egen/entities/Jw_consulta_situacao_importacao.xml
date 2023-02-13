@@ -1,0 +1,266 @@
+<class>com.egen.develop.integration.model.VObject</class>
+<lastUsedTemplate>e-gen_jdbcutil_standard_entity_mapping</lastUsedTemplate>
+<componentType>com.egen.webide.integration.components.StandardJavaview</componentType>
+<name>Jw_consulta_situacao_importacao</name>
+<columns>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>tipo</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>25</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>tipo</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.String</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>40</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>pares</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>pares</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Integer</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>valor</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>valor</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+</columns>
+<properties>
+<properties_item>
+<$key>schema</$key>
+<$value></$value>
+</properties_item>
+<properties_item>
+<$key>db_type</$key>
+<$value>javaview</$value>
+</properties_item>
+<properties_item>
+<$key>query</$key>
+<$value>SELECT 'Com importação automática' tipo,
+       SUM(NVL(i.quantidade_item, 0)) pares
+       ,SUM((DECODE(p.tipo_pedido, 'EX', 0, (NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0)) -
+                     (NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0) *
+                     NVL(p.bonificacao_cliente, 0) / 100) -
+                     (((NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0)) -
+                     (NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0)) *
+                     NVL(p.bonificacao_cliente, 0) / 100) *
+                     NVL(p.bonificacao_promocao, 0) / 100)) +
+            ((DECODE(p.tipo_pedido, 'EX', (NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0)) -
+                       (NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0) *
+                       NVL(p.bonificacao_cliente, 0) / 100) -
+                       (((NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0)) -
+                       (NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0)) *
+                       NVL(p.bonificacao_cliente, 0) / 100) *
+                       NVL(p.bonificacao_promocao, 0) / 100), 0)) * 1))) valor
+   FROM temp_pedidos_afv p
+       ,temp_itens_afv   i
+       ,lin              l
+       ,REF              r
+       ,rep              u
+       ,marcas_produtos  m
+  WHERE p.data_emissao >= TRUNC(SYSDATE - 520)
+    AND p.pedido_ifv = i.pedido_ifv
+    AND p.pedido_beira_rio = i.pedido_beira_rio
+    AND p.tipo_registro = i.tipo_registro
+    AND NVL(i.codigo_linha, NULL) = l.lin_cdgo
+    AND NVL(i.codigo_linha, NULL) = r.lin_cdgo
+    AND NVL(i.codigo_referencia, NULL) = r.ref_cdgo
+    AND NVL(p.status_pedido, NULL) NOT IN ('C')
+    AND p.especie_pedido IN ('F', 'N', 'X', 'P', 'M')
+    AND NVL(p.codigo_cliente, NULL) <> 40000
+    AND p.codigo_representante = u.rep_cdgo
+    AND r.codigo_marca = m.codigo_marca
+    AND NVL(p.amostra_brinde, 'A') <> 'B'
+    AND NVL(p.ped_devolver_repres, 'N') = 'N'
+    AND NOT EXISTS (SELECT 1 FROM ped WHERE ped.ped_nmro = p.ped_nmro)
+ UNION all
+ SELECT 'Sem importação automática' tipo, SUM(NVL(i.quantidade_item, 0)) pares
+       ,SUM((DECODE(p.tipo_pedido, 'EX', 0, (NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0)) -
+                     (NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0) *
+                     NVL(p.bonificacao_cliente, 0) / 100) -
+                     (((NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0)) -
+                     (NVL(i.quantidade_item, 0) *
+                     NVL(i.valor_bruto, 0)) *
+                     NVL(p.bonificacao_cliente, 0) / 100) *
+                     NVL(p.bonificacao_promocao, 0) / 100)) +
+            ((DECODE(p.tipo_pedido, 'EX', (NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0)) -
+                       (NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0) *
+                       NVL(p.bonificacao_cliente, 0) / 100) -
+                       (((NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0)) -
+                       (NVL(i.quantidade_item, 0) *
+                       NVL(i.valor_bruto, 0)) *
+                       NVL(p.bonificacao_cliente, 0) / 100) *
+                       NVL(p.bonificacao_promocao, 0) / 100), 0)) * 1))) valor
+   FROM temp_pedidos_afv p
+       ,temp_itens_afv   i
+       ,lin              l
+       ,REF              r
+       ,rep              u
+       ,marcas_produtos  m
+  WHERE p.data_emissao >= TRUNC(SYSDATE - 520)
+    AND p.pedido_ifv = i.pedido_ifv
+    AND p.pedido_beira_rio = i.pedido_beira_rio
+    AND p.tipo_registro = i.tipo_registro
+    AND NVL(i.codigo_linha, NULL) = l.lin_cdgo
+    AND NVL(i.codigo_linha, NULL) = r.lin_cdgo
+    AND NVL(i.codigo_referencia, NULL) = r.ref_cdgo
+    AND NVL(p.status_pedido, NULL) NOT IN ('C')
+    AND p.especie_pedido IN ('F', 'N', 'X', 'P', 'M')
+    AND NVL(p.codigo_cliente, NULL) <> 40000
+    AND p.codigo_representante = u.rep_cdgo
+    AND r.codigo_marca = m.codigo_marca
+    AND NVL(p.amostra_brinde, 'A') <> 'B'
+    AND NVL(p.ped_devolver_repres, 'N') = 'N'
+ </$value>
+</properties_item>
+<properties_item>
+<$key>metadata</$key>
+<$value></$value>
+</properties_item>
+</properties>

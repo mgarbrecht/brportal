@@ -1,0 +1,62 @@
+ul.treeview, ul.treeview ul
+	{ 
+	padding:0;
+	margin:0 0 0 7px;
+	list-style:none;
+	}
+
+ul.treeview ul
+	{
+	margin-left:0;
+	margin-top:4px;
+	}
+
+ul.treeview .hitarea
+	{
+	background:url(img/treeview-default.gif) -64px -25px no-repeat;
+	height:16px;
+	width:16px;
+	margin-left:-16px;
+	float:left;
+	cursor:pointer;
+	}
+
+/* fix for IE6 */
+* html .hitarea
+	{
+	display:inline;
+	float:none;
+	}
+
+ul.treeview li
+	{ 
+	margin:0;
+	padding:3px 0pt 3px 16px;
+	}
+
+ul.treeview a,
+ul.treeview span
+	{
+	color:#002C66;
+	}
+ul.treeview a:hover
+	{
+	color:black;
+	}	
+
+ul.treeview a.selected
+	{
+	background-color:#eee;
+	}
+
+ul.treeview li { background:url(img/treeview-default-line.gif) 0 0 no-repeat; }
+ul.treeview li.collapsable, ul.treeview li.expandable { background-position:0 -176px; }
+
+ul.treeview .expandable-hitarea { background-position:-80px -3px; }
+
+ul.treeview li.last { background-position:0 -1766px }
+ul.treeview li.lastCollapsable, ul.treeview li.lastExpandable { background-image:url(img/treeview-default.gif); }  
+ul.treeview li.lastCollapsable { background-position:0 -111px }
+ul.treeview li.lastExpandable { background-position:-32px -67px }
+
+ul.treeview div.lastCollapsable-hitarea, ul.treeview div.lastExpandable-hitarea { background-position:0; }

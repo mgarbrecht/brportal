@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ClientesAtendidos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ae81af2a-50f1-4052-9b3c-60d9105b2a46">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="P_MES" class="java.lang.String"/>
+	<parameter name="P_ANO" class="java.lang.String"/>
+	<parameter name="P_CODIGO_REGIONAL" class="java.lang.String"/>
+	<parameter name="P_CODIGO_REPRESENTANTE" class="java.lang.String"/>
+	<parameter name="P_CODIGO_CLIENTE" class="java.lang.String"/>
+	<parameter name="P_CODIGO_MARCA" class="java.lang.String"/>
+	<parameter name="P_GRE_GRUPO" class="java.lang.String"/>
+	<parameter name="P_TIPO" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT /*+ all_rows*/
+       mes
+      ,ano
+      ,regional
+      ,codigo_regional
+      ,nome_regional
+      ,rep_cdgo
+      ,rep_rzao
+      ,cli_cdgo
+      ,cli_rzao
+      ,codigo_marca
+      ,descricao_marca
+      ,gre_grupo
+      ,gre_descricao
+      ,pares_realizado
+      ,valor_realizado
+      ,parametro_tipo
+      , parametro_regional
+      , parametro_representante
+      , parametro_grupo
+      , parametro_cliente
+      ,parametro_marca
+from (
+SELECT mes
+      ,ano
+      ,regional
+      ,codigo_regional
+      ,nome_regional
+      ,rep_cdgo
+      ,rep_rzao
+      ,cli_cdgo
+      ,cli_rzao
+      ,codigo_marca
+      ,descricao_marca
+      ,gre_grupo
+      ,gre_descricao
+      ,case when $P{P_TIPO} = 'T' then nvl(pares_realizado_pg,0) + nvl(pares_realizado_pp,0)
+            when $P{P_TIPO} = 'PG' then nvl(pares_realizado_pg,0) when $P{P_TIPO} = 'PP' then nvl(pares_realizado_pp,0) end pares_realizado
+      ,case when $P{P_TIPO} = 'T' then nvl(valor_realizado_pg,0) + nvl(valor_realizado_pp,0)
+            when $P{P_TIPO} = 'PG' then nvl(valor_realizado_pg,0) when $P{P_TIPO} = 'PP' then nvl(valor_realizado_pp,0) end valor_realizado
+     , case when $P{P_TIPO} = 'T' then 'Todos' when $P{P_TIPO} = 'PG' then 'Clientes Atendidos PG' when $P{P_TIPO} = 'PP' then 'Clientes Atendidos PP' end parametro_tipo
+     , case when pck_regionais_vendas.get_nome($P{P_CODIGO_REGIONAL}) is null then 'Todas' else $P{P_CODIGO_REGIONAL}||' - '||pck_regionais_vendas.get_nome($P{P_CODIGO_REGIONAL}) end parametro_regional
+     , case when pck_representante.get_razao_social($P{P_CODIGO_REPRESENTANTE}) is null then 'Todos' else $P{P_CODIGO_REPRESENTANTE}||' - '||pck_representante.get_razao_social($P{P_CODIGO_REPRESENTANTE}) end parametro_representante
+     , case when pck_grupo_economico.get_nome($P{P_GRE_GRUPO}) is null then 'Todos' else $P{P_GRE_GRUPO}||' - '||pck_grupo_economico.get_nome($P{P_GRE_GRUPO}) end parametro_grupo
+     , case when pck_cliente.get_nome($P{P_CODIGO_CLIENTE}) is null then 'Todos' else $P{P_CODIGO_CLIENTE}||' - '||pck_cliente.get_nome($P{P_CODIGO_CLIENTE}) end parametro_cliente
+     , case when pck_marcas_produtos.get_nome($P{P_CODIGO_MARCA}) is null then 'Todas' else $P{P_CODIGO_MARCA}||' - '||pck_marcas_produtos.get_nome($P{P_CODIGO_MARCA}) end parametro_marca
+  FROM (SELECT qry.regional
+              ,qry.codigo_regional
+              ,qry.nome_regional
+              ,qry.rep_cdgo
+              ,qry.rep_rzao
+              ,qry.mes
+              ,qry.ano
+              ,qry.cli_cdgo
+              ,qry.cli_rzao
+              ,qry.codigo_marca
+              ,qry.descricao_marca
+              ,qry.gre_grupo
+              ,qry.gre_descricao
+              ,ROUND(SUM(qry.pares_realizado_pg), 2) pares_realizado_pg
+              ,ROUND(SUM(qry.valor_realizado_pg), 2) valor_realizado_pg
+              ,ROUND(SUM(qry.pares_realizado_pp), 2) pares_realizado_pp
+              ,ROUND(SUM(qry.valor_realizado_pp), 2) valor_realizado_pp
+          FROM (
+                SELECT mc.mes
+                       ,mc.ano
+                       ,rv.sigla_regional regional
+                       ,rep.codigo_regional codigo_regional
+                       ,rep.rep_cdgo
+                       ,rep.rep_rzao
+                       ,rv.nome_regional
+                       ,cli.cli_cdgo
+                       ,cli.cli_rzao
+                       ,mp.codigo_marca
+                       ,mp.descricao_marca
+                       ,pck_cliente.get_grupo_economico(cli.cli_cdgo) gre_grupo
+                       ,pck_grupo_economico.get_nome(pck_cliente.get_grupo_economico(cli.cli_cdgo)) gre_descricao
+                       ,SUM(NVL(tmdap.entped_pg_pares, 0)) pares_realizado_pg
+                       ,SUM(NVL(tmdap.entped_pg_vlr, 0)) valor_realizado_pg
+                       ,SUM(NVL(tmdap.entped_pp_pares, 0)) pares_realizado_pp
+                       ,SUM(NVL(tmdap.entped_pp_vlr, 0)) valor_realizado_pp
+                  FROM tmp_mapa_automatico_poi_a tmdap
+                       ,marca_reg_rep_cli_posicao mc
+                       ,cli
+                       ,rep
+                       ,regionais_vendas          rv
+                       ,marcas_produtos mp
+                 WHERE 1=1
+                   AND cli.cli_cdgo = tmdap.cli_cdgo
+                   AND mc.ano = extract(YEAR FROM tmdap.data)
+                   AND mc.mes = extract(MONTH FROM tmdap.data)
+                   AND mc.codigo_marca = tmdap.codigo_marca
+                   AND mc.codigo_regional = rv.codigo_regional
+                   AND mc.rep_cdgo = rep.rep_cdgo
+                   AND mc.cli_cdgo = tmdap.cli_cdgo
+                   and mp.codigo_marca = tmdap.codigo_marca
+                   AND tmdap.filial <> '0'
+                   AND rep.rep_cdgo = TO_CHAR(tmdap.codigo_representante)
+                   AND rv.codigo_regional = rep.codigo_regional
+                   AND tmdap.cli_cdgo IS NOT NULL
+                 GROUP BY rv.sigla_regional
+                          ,rep.codigo_regional
+                          ,rv.nome_regional
+                          ,rep.rep_cdgo
+                          ,rep.rep_rzao
+                          ,mc.mes
+                          ,mc.ano
+                          ,cli.cli_cdgo
+                          ,cli.cli_rzao
+                          ,mp.codigo_marca
+                          ,mp.descricao_marca
+                          ) qry
+         WHERE qry.codigo_regional <> 99
+           AND ($P{P_ANO} is null or ano = $P{P_ANO})
+           AND ($P{P_MES} is null or mes = $P{P_MES})
+           AND ($P{P_CODIGO_REGIONAL} is null or codigo_regional = $P{P_CODIGO_REGIONAL})
+           AND ($P{P_CODIGO_REPRESENTANTE} is null or rep_cdgo = $P{P_CODIGO_REPRESENTANTE})
+           AND ($P{P_CODIGO_MARCA} is null or codigo_marca = $P{P_CODIGO_MARCA})
+           AND ($P{P_CODIGO_CLIENTE} is null or cli_cdgo = $P{P_CODIGO_CLIENTE})
+           AND ($P{P_GRE_GRUPO} is null or gre_grupo = $P{P_GRE_GRUPO})
+         GROUP BY regional
+                 ,codigo_regional
+                 ,nome_regional
+                 ,rep_cdgo
+                 ,rep_rzao
+                 ,mes
+                 ,ano
+                 ,cli_cdgo
+                 ,cli_rzao
+                 ,codigo_marca
+                 ,descricao_marca
+                 ,gre_grupo
+                 ,gre_descricao
+                 )
+)
+ where pares_realizado > 0
+ ORDER BY pares_realizado DESC]]>
+	</queryString>
+	<field name="MES" class="java.math.BigDecimal"/>
+	<field name="ANO" class="java.math.BigDecimal"/>
+	<field name="REGIONAL" class="java.lang.String"/>
+	<field name="CODIGO_REGIONAL" class="java.math.BigDecimal"/>
+	<field name="NOME_REGIONAL" class="java.lang.String"/>
+	<field name="REP_CDGO" class="java.lang.String"/>
+	<field name="REP_RZAO" class="java.lang.String"/>
+	<field name="CLI_CDGO" class="java.math.BigDecimal"/>
+	<field name="CLI_RZAO" class="java.lang.String"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="GRE_GRUPO" class="java.math.BigDecimal"/>
+	<field name="GRE_DESCRICAO" class="java.lang.String"/>
+	<field name="PARES_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="VALOR_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="PARAMETRO_TIPO" class="java.lang.String"/>
+	<field name="PARAMETRO_REGIONAL" class="java.lang.String"/>
+	<field name="PARAMETRO_REPRESENTANTE" class="java.lang.String"/>
+	<field name="PARAMETRO_GRUPO" class="java.lang.String"/>
+	<field name="PARAMETRO_CLIENTE" class="java.lang.String"/>
+	<field name="PARAMETRO_MARCA" class="java.lang.String"/>
+	<variable name="V_TOTAL_PARES" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{PARES_REALIZADO}]]></variableExpression>
+	</variable>
+	<variable name="V_TOTAL_VALOR" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR_REALIZADO}]]></variableExpression>
+	</variable>
+	<variable name="V_TOTAL_CLIENTES" class="java.math.BigDecimal" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{CLI_CDGO}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="110" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="a15aa04f-f32f-4a2a-8c75-1995f1adbf2a" x="0" y="89" width="802" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consulta de clientes atendidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="92fb31cb-c20d-419b-b4f2-94e5d9d3bef4" x="0" y="11" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mês:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c0edac7-6e93-4e7a-aadd-9764fa9a3cab" x="0" y="22" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ano:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7635cbe7-defd-4b98-9072-bd753dd3f0a5" x="0" y="33" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Regional:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="12d8f17d-02bb-4145-9c17-02fb3acd57f6" x="0" y="44" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Representante:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f52ded9-2b89-4ad9-a758-1ffa083d44cd" x="0" y="66" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="97311b16-0526-4b1e-a008-c1b7413f1407" x="0" y="77" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Marca:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5f58edf3-63a5-4e44-92a7-5fdd017e8703" x="81" y="11" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_MES}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="1a1b7c6e-6f7b-4aaa-a08f-4036f5859096" x="81" y="22" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_ANO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c046e271-135c-4d3f-adfc-9a459b2e4a54" x="81" y="33" width="286" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARAMETRO_REGIONAL}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="9189f281-0851-4bea-bdbc-a028be441be9" x="81" y="44" width="286" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARAMETRO_REPRESENTANTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="4eb21203-3043-4728-88c3-b8a68f482de6" x="81" y="66" width="286" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARAMETRO_CLIENTE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e1307440-df51-4951-8eeb-ec26c6d9e2c2" x="81" y="77" width="286" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARAMETRO_MARCA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ea26c728-2748-458b-9633-415e283a2490" x="0" y="55" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Grupo:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c3c31d3f-18e3-481f-b0e3-7cf9d8dcab32" x="81" y="55" width="286" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARAMETRO_GRUPO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="fcdfe8d3-b7c8-47bb-8424-24fa1e6db9a6" x="81" y="0" width="286" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARAMETRO_TIPO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="27e89782-74c7-443b-99f8-c3b00ddb7bd1" x="0" y="0" width="81" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tipo:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0e8168d5-96fb-4190-b4de-c503ebd022ad" x="0" y="2" width="20" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mês]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="19ee4fea-fbb5-43d7-8da8-c2d5336ede5c" x="19" y="2" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ano]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fdad3dcd-8322-4385-80ec-a9c0b55b0999" x="47" y="2" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Regional]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="701afaa2-2e3f-4e2e-adc8-0805c75f8fc4" x="150" y="2" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c68d3b94-8eae-41fd-8524-87d6046a6442" x="316" y="2" width="38" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2bc63b06-a0f8-46e8-a858-2d65e92622e5" x="684" y="2" width="50" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6620778f-ac4e-4bd5-bc98-8d1d7c3d4a6e" x="734" y="2" width="68" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d74142e3-0688-4347-972f-a433016a81b7" x="0" y="14" width="802" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="41a2b656-d2b9-4c78-86b5-7849da963660" x="0" y="0" width="802" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="9ffe0100-469e-4954-849d-908aaf1027a3" x="393" y="2" width="67" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Representante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="08c1f7ad-d96f-40b4-afb8-9565ac7a7943" x="539" y="2" width="67" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Grupo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="44b066c2-d6f2-4f45-a0c0-e41c6fc5fda0" x="563" y="0" width="120" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRE_DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="6ec6cc5e-d673-42e2-965c-e07562b2e59c" x="539" y="0" width="25" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRE_GRUPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="543e3c04-828a-4836-9f1b-f46396679c08" x="0" y="0" width="20" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="33352ad4-0794-429e-ae84-e5dc97306165" x="19" y="0" width="25" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ANO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="18769fed-b7ec-47c9-9581-9f33c30aabdf" x="47" y="0" width="15" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODIGO_REGIONAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9141b773-158e-4ce1-94c2-c9ba826dd292" x="59" y="0" width="90" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME_REGIONAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f2237484-51d6-4b2a-a07c-df77a3c1169f" x="150" y="0" width="32" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLI_CDGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c8a18d6d-d7ee-40af-b055-45338d6c6c5e" x="182" y="0" width="132" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLI_RZAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d8f98714-7500-4c5d-8d07-1a23fe277a24" x="316" y="0" width="15" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODIGO_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6d3487c0-e21e-4131-b44b-bfdcdeda5efe" x="331" y="0" width="60" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0effcf9-7968-4cef-aa0c-409a2d20a522" x="393" y="0" width="25" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REP_CDGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cc19596d-6903-4ce1-b881-3d4b37bd9aa0" x="417" y="0" width="120" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REP_RZAO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="c2bd8212-c866-4770-933a-b6ea07f02976" x="684" y="0" width="50" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="ba54e6fe-7db6-4a44-b34b-097dc0c887e1" x="734" y="0" width="68" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR_REALIZADO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="18" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement uuid="974cab24-f827-4699-9ea4-c41526227be8" x="684" y="5" width="50" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{V_TOTAL_PARES}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="ac70b190-8c9a-4380-80e0-33687eac32b5" x="734" y="5" width="68" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{V_TOTAL_VALOR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement uuid="137b194b-a86b-42d7-9665-86293f4d71dd" x="259" y="5" width="68" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{V_TOTAL_CLIENTES}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="2835f4c9-d9ca-462c-a88d-699c208bb06d" x="0" y="3" width="802" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="f41c39af-c27d-46be-b2ee-b4967a52b77a" x="150" y="5" width="110" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total de clientes atendidos:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,1228 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>02/04/2013</generation_day>
+<module>adm</module>
+<file_name>SugestaoMaioresClientesLimiteCredito_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>03/08/2010 10:02:50</creationDate>
+<lastModifyDate>02/04/2013 13:42:00</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_maiores_clientes_limite_credito</name>
+<title>Sugestão de Clientes com Limite de Crédito Disponível para Venda</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_maiores_clientes_limite_credito</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+util.consultas.Query query = new util.consultas.Query();
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+   j = new com.egen.util.jdbc.JdbcUtil();
+  %>
+
+  <%
+  java.util.Vector res_Jw_maiores_clientes_limite_credito = (java.util.Vector)session.getAttribute("res_Jw_maiores_clientes_limite_credito");
+  %>
+
+  <form  name="bl_report_Jw_maiores_clientes_limite_credito" id="bl_report_Jw_maiores_clientes_limite_credito" class="baseForm" method="post" >
+    <%
+    if (res_Jw_maiores_clientes_limite_credito!=null && res_Jw_maiores_clientes_limite_credito.size()>0) {
+      if ( ((String)request.getParameter("_ordered"))!=null && ((String)request.getParameter("_ordered")).length()>0 ) {
+        boolean reverse = false;
+        if ( ((String)request.getParameter("_reverse"))!=null && ((String)request.getParameter("_reverse")).equals("true") ){
+          reverse = true;
+        }
+        try {
+          res_Jw_maiores_clientes_limite_credito = com.egen.util.text.Sort.execute(res_Jw_maiores_clientes_limite_credito,((String)request.getParameter("_ordered")),reverse);
+          session.setAttribute("res_Jw_maiores_clientes_limite_credito", res_Jw_maiores_clientes_limite_credito);
+        } catch (Exception e) {}
+      }
+      %>
+
+      <table id="TRbl_report_Jw_maiores_clientes_limite_credito"  class="reportTable"   style="width:99%; "  border="1" >
+        <%
+        java.lang.Integer codigo =  null;
+        java.lang.String razao =  null;
+        java.lang.String tipo =  null;
+        double limite =  0;
+        double pedidos_producao =  0;
+        double pedidos_nao_liberados =  0;
+        double saldo =  0;
+        double p_qtd_vencer =  0;
+        double p_vlr_vencer =  0;
+        double p_qtd_vencido =  0;
+        double p_vlr_vencido =  0;
+        double percentual_pontualidade =  0;
+        double total_vencer = 0;
+        double total_vencido = 0;
+        double total_percentual = 0;
+        double total_pedidos_producao = 0;
+        double total_pedidos_nao_liberados = 0;
+        double total_saldo = 0;
+        double total_limite = 0;
+        int contador = 0;
+        %>
+
+        <tr class="reportTr">
+          <td class="columnTdHeader" style="text-align:right;" >
+            Código
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","codigo")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","codigo")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" width="30%" >
+            Nome
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","razao")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","razao")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>           
+          </td>
+
+          <td class="columnTdHeader" style="text-align:left;" >
+            Tipo
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","tipo")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","tipo")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Limite
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","limite")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","limite")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Bloqueados no Crédito
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","pedidos_nao_liberados")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","pedidos_nao_liberados")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Pedidos Produção
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","pedidos_producao")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","pedidos_producao")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Duplicatas à vencer
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","p_vlr_vencer")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","p_vlr_vencer")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Duplicatas Vencidas
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","p_vlr_vencido")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","p_vlr_vencido")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+
+
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Saldo
+            <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+            <%
+            if ( (request.getParameter("_reverse")==null || ((String)request.getParameter("_reverse")).equals("true")) || request.getParameter("_ordered")==null ){
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","false","_ordered","saldo")%>' class="reportOrder">
+                <bean:message key="report.orderedasc"/>
+              </a>
+              <%
+            } else {
+              %>
+              <a href='SugestaoClientesLimiteCredito_rForm.jsp<%=com.egen.util.servlet.Parameter.reWriteUrl(request,"_reverse","true","_ordered","saldo")%>' class="reportOrder">
+                <bean:message key="report.ordereddesc"/>
+              </a>
+              <%
+            }
+            %>
+            <% } %>
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+           % Pont.
+          </td>
+          
+
+        </tr>
+
+        <%
+        int i_bl_report_Jw_maiores_clientes_limite_credito = 0;
+        while (i_bl_report_Jw_maiores_clientes_limite_credito<res_Jw_maiores_clientes_limite_credito.size()) {
+          portalbr.dbobj.view.Jw_maiores_clientes_limite_credito t_jw_maiores_clientes_limite_credito = (portalbr.dbobj.view.Jw_maiores_clientes_limite_credito)res_Jw_maiores_clientes_limite_credito.elementAt(i_bl_report_Jw_maiores_clientes_limite_credito);
+          codigo = t_jw_maiores_clientes_limite_credito.getCodigo();
+          razao = t_jw_maiores_clientes_limite_credito.getRazao()==null?"":t_jw_maiores_clientes_limite_credito.getRazao();
+          tipo = t_jw_maiores_clientes_limite_credito.getTipo()==null?"":t_jw_maiores_clientes_limite_credito.getTipo();
+          limite = t_jw_maiores_clientes_limite_credito.getLimite();
+          pedidos_producao = t_jw_maiores_clientes_limite_credito.getPedidos_producao();
+          saldo = t_jw_maiores_clientes_limite_credito.getSaldo();
+          p_qtd_vencer = t_jw_maiores_clientes_limite_credito.getP_qtd_vencer();
+          p_vlr_vencer = t_jw_maiores_clientes_limite_credito.getP_vlr_vencer();
+          p_qtd_vencido = t_jw_maiores_clientes_limite_credito.getP_qtd_vencido();
+          p_vlr_vencido = t_jw_maiores_clientes_limite_credito.getP_vlr_vencido();
+          percentual_pontualidade = t_jw_maiores_clientes_limite_credito.getPercentual_pontualidade();
+          pedidos_nao_liberados = t_jw_maiores_clientes_limite_credito.getPedidos_nao_liberados();
+          String style_bl_report_Jw_maiores_clientes_limite_credito="";
+          if (!((i_bl_report_Jw_maiores_clientes_limite_credito%2)!=0)) {
+            style_bl_report_Jw_maiores_clientes_limite_credito="rowColor";
+          } else {
+            style_bl_report_Jw_maiores_clientes_limite_credito="rowBlank";
+          }
+          %>
+
+          <tr valign="top" class='<%= style_bl_report_Jw_maiores_clientes_limite_credito %>' id="TRbl_report_Jw_maiores_clientes_limite_credito<%=i_bl_report_Jw_maiores_clientes_limite_credito%>" >
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((codigo!=null)?codigo.toString():"") %>
+              <% if(tipo.equals("Grupo")) { %>
+              <% } %>
+            </td>
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= razao %>
+              <% if(tipo.equals("Grupo")) { %>
+                <br><br>
+                <%= query.retorna(j,"SELECT '('||rowtocol('SELECT distinct '' ''|| g.cli_cdgo||'' '' FROM grupo_economico g, cli c WHERE NVL(g.status,NULL) = ''A'' AND g.cli_cdgo = c.cli_cdgo  and nvl(c.cli_situ,null) = ''A''  AND g.gre_grupo = "+codigo+" order by 1')||')' FROM dual") %>
+              <% } %>
+            </td>
+
+
+            <td class="reportColumn" style="text-align:left;" >
+              <%= tipo %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(limite, "##,##0.00") %>
+              <% total_limite += limite; %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pedidos_nao_liberados, "##,##0.00") %>
+              <% total_pedidos_nao_liberados += pedidos_nao_liberados; %> 
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pedidos_producao, "##,##0.00") %>
+              <% total_pedidos_producao += pedidos_producao; %> 
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(p_vlr_vencer, "##,##0.00") %>
+              <% total_vencer += p_vlr_vencer; %> 
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(p_vlr_vencido, "##,##0.00") %>
+              <% total_vencido += p_vlr_vencido; %> 
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(saldo, "##,##0.00") %>
+              <% total_saldo += saldo; %> 
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(percentual_pontualidade, "##,##0.00") %>
+              <% total_percentual += percentual_pontualidade; %> 
+            </td>
+
+            <% ++contador; %>
+
+
+          </tr>
+
+          <%
+          i_bl_report_Jw_maiores_clientes_limite_credito++;
+          if (i_bl_report_Jw_maiores_clientes_limite_credito<res_Jw_maiores_clientes_limite_credito.size()) {
+            t_jw_maiores_clientes_limite_credito = (portalbr.dbobj.view.Jw_maiores_clientes_limite_credito)res_Jw_maiores_clientes_limite_credito.elementAt(i_bl_report_Jw_maiores_clientes_limite_credito);
+            codigo = t_jw_maiores_clientes_limite_credito.getCodigo();
+            razao = t_jw_maiores_clientes_limite_credito.getRazao()==null?"":t_jw_maiores_clientes_limite_credito.getRazao();
+            tipo = t_jw_maiores_clientes_limite_credito.getTipo()==null?"":t_jw_maiores_clientes_limite_credito.getTipo();
+            limite = t_jw_maiores_clientes_limite_credito.getLimite();
+            pedidos_producao = t_jw_maiores_clientes_limite_credito.getPedidos_producao();
+            p_qtd_vencer = t_jw_maiores_clientes_limite_credito.getP_qtd_vencer();
+            p_vlr_vencer = t_jw_maiores_clientes_limite_credito.getP_vlr_vencer();
+            p_qtd_vencido = t_jw_maiores_clientes_limite_credito.getP_qtd_vencido();
+            p_vlr_vencido = t_jw_maiores_clientes_limite_credito.getP_vlr_vencido();
+            saldo = t_jw_maiores_clientes_limite_credito.getSaldo();
+            percentual_pontualidade = t_jw_maiores_clientes_limite_credito.getPercentual_pontualidade();
+            pedidos_nao_liberados = t_jw_maiores_clientes_limite_credito.getPedidos_nao_liberados();
+          } else {
+          }
+        }
+        %>
+
+          <tr>
+            <td class="reportColumn" style="text-align:right;" >
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <b><%= com.egen.util.text.FormatNumber.format(total_limite, "##,##0.00") %></b>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <b><%= com.egen.util.text.FormatNumber.format(total_pedidos_nao_liberados, "##,##0.00") %></b>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <b><%= com.egen.util.text.FormatNumber.format(total_pedidos_producao, "##,##0.00") %></b>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <b><%= com.egen.util.text.FormatNumber.format(total_vencer, "##,##0.00") %></b>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <b><%= com.egen.util.text.FormatNumber.format(total_vencido, "##,##0.00") %></b>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <b><%= com.egen.util.text.FormatNumber.format(total_saldo, "##,##0.00") %></b>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+             <b><%= com.egen.util.text.FormatNumber.format((total_percentual/contador), "##,##0.00") %></b>
+            </td>
+          </tr>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+} finally {
+  if (j != null){ j.close();}
+
+}
+%>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_maiores_clientes_limite_credito</block_name>
+<role_item></role_item>
+<database_column>codigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Código</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_maiores_clientes_limite_credito.getCodigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>razao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_maiores_clientes_limite_credito</block_name>
+<role_item></role_item>
+<database_column>razao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Nome</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_maiores_clientes_limite_credito.getRazao()==null?"":t_jw_maiores_clientes_limite_credito.getRazao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>tipo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_maiores_clientes_limite_credito</block_name>
+<role_item></role_item>
+<database_column>tipo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Tipo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_maiores_clientes_limite_credito.getTipo()==null?"":t_jw_maiores_clientes_limite_credito.getTipo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>limite</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_maiores_clientes_limite_credito</block_name>
+<role_item></role_item>
+<database_column>limite</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Limite</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_maiores_clientes_limite_credito.getLimite()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pedidos_producao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_maiores_clientes_limite_credito</block_name>
+<role_item></role_item>
+<database_column>pedidos_producao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pedidos Produção</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_maiores_clientes_limite_credito.getPedidos_producao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>saldo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_maiores_clientes_limite_credito</block_name>
+<role_item></role_item>
+<database_column>saldo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Saldo</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order>Both</column_order>
+<formula>t_jw_maiores_clientes_limite_credito.getSaldo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>Maiores</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>adm/SugestaoClientesLimiteCredito_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>back_action</property>
+<forward>/adm/MaioresClientesLimiteCreditoForm.jsp</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate></formTemplate>
+<form_code><html:form action="adm/SugestaoClientesLimiteCredito_rForm.do" method="post" styleClass="baseForm">
+  <table class="messageTable" style='width:99%;'>
+    <tr class="messageTr" >
+      <td class="messageTd">
+      </td>
+    </tr>
+  </table>
+
+  <% if(!(request.getParameter("excel")+"").equals("true")){ %>
+  <table class="buttonTable" style='width:99%;'>
+    <tr class="buttonTr">
+      <td class="buttonTd">
+        <html:submit accesskey="a" styleClass="baseButton" property="back_action">
+          <bean:message bundle="ApplicationResources" key="jsp.back"/>
+        </html:submit>
+      </td>
+    </tr>
+  </table>
+  <% } %>
+
+</html:form>
+</form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>SugestaoClientesLimiteCredito_rActionForm</name>
+<type>portalbr.adm.SugestaoClientesLimiteCredito_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/adm/SugestaoClientesLimiteCredito_rForm</path>
+<type>portalbr.adm.SugestaoClientesLimiteCredito_rAction</type>
+<name>SugestaoClientesLimiteCredito_rActionForm</name>
+<attribute></attribute>
+<input>/adm/SugestaoClientesLimiteCredito_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/adm/SugestaoClientesLimiteCredito_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>back</name>
+<path>/adm/SugestaoClientesLimiteCredito_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Sugestão de Clientes com Limite de Crédito Disponível para Venda</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(168)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

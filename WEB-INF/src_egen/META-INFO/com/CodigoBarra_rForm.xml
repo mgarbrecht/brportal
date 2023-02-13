@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>19/10/2017</generation_day>
+<module>com</module>
+<file_name>CodigoBarra_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>06/03/2006 12:50:05</creationDate>
+<lastModifyDate>19/10/2017 11:03:05</lastModifyDate>
+<userGenerate>wbrio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_cod_barra</name>
+<title> </title>
+<i18n></i18n>
+<database>session</database>
+<db_object>portalbr.dbobj.view.Jw_cod_barra</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page></record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame>box</frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_cod_barra = (java.util.Vector)session.getAttribute("res_Jw_cod_barra");
+  %>
+
+  <%
+  if (res_Jw_cod_barra!=null && res_Jw_cod_barra.size()>0) {
+    %>
+
+    <table id="TRbl_report_Jw_cod_barra"  class="reportTable"   style="width:99%; "  border="1"  frame="box">
+      <%
+      java.lang.String linha_ref =  null;
+      java.lang.String cabedal =  null;
+      java.lang.String cor =  null;
+      java.lang.String grade =  null;
+      java.lang.String cod_barra =  null;
+      java.lang.String status =  null;
+      java.lang.Integer codigo_marca = null;
+      java.lang.Integer cor_cdgo = null;
+      java.lang.Integer cab_cdgo = null;
+      java.lang.String descricao_marca = null;
+      java.lang.String cor_desc = null;
+      java.lang.String cab_desc = null;
+
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center; width:1%" >
+           Marca
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+           Descrição Marca
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          <bean:message bundle="ComercialResources" key="CodigoBarra_r.linha_ref"/>
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          <bean:message bundle="ComercialResources" key="CodigoBarra_r.cabedal"/>
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+           Descrição Cabedal
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          <bean:message bundle="ComercialResources" key="CodigoBarra_r.cor"/>
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          Descrição Cor
+        </td>
+
+        <td class="columnTdHeader" style="text-align:left;" >
+          <bean:message bundle="ComercialResources" key="CodigoBarra_r.grade"/>
+        </td>
+
+        <td class="columnTdHeader" style="text-align:center;" >
+          <bean:message bundle="ComercialResources" key="CodigoBarra_r.cod_barra"/>
+        </td>
+
+        <td class="columnTdHeader" style="text-align:center;" >
+          <bean:message bundle="ComercialResources" key="CodigoBarra_r.status"/>
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Jw_cod_barra = 0;
+      while (i_bl_report_Jw_cod_barra<res_Jw_cod_barra.size()) {
+        portalbr.dbobj.view.Jw_cod_barra t_jw_cod_barra = (portalbr.dbobj.view.Jw_cod_barra)res_Jw_cod_barra.elementAt(i_bl_report_Jw_cod_barra);
+        linha_ref = t_jw_cod_barra.getLinha_ref()==null?"":t_jw_cod_barra.getLinha_ref();
+        cabedal = t_jw_cod_barra.getCabedal()==null?"":t_jw_cod_barra.getCabedal();
+        cor = t_jw_cod_barra.getCor()==null?"":t_jw_cod_barra.getCor();
+        grade = t_jw_cod_barra.getGrade()==null?"":t_jw_cod_barra.getGrade();
+        cod_barra = t_jw_cod_barra.getCod_barra()==null?"":t_jw_cod_barra.getCod_barra();
+        status = t_jw_cod_barra.getStatus()==null?"":t_jw_cod_barra.getStatus();
+        codigo_marca = t_jw_cod_barra.getCodigo_marca();
+        cor_cdgo = t_jw_cod_barra.getCor_cdgo();
+        cab_cdgo = t_jw_cod_barra.getCab_cdgo();
+        descricao_marca = t_jw_cod_barra.getDescricao_marca()==null?"":t_jw_cod_barra.getDescricao_marca();
+        cor_desc = t_jw_cod_barra.getCor_desc()==null?"":t_jw_cod_barra.getCor_desc();
+        cab_desc = t_jw_cod_barra.getCab_desc()==null?"":t_jw_cod_barra.getCab_desc();
+        if(status.equals("A")){
+          status = java.util.ResourceBundle.getBundle("ComercialResources").getString("CodigoBarraDun14.ativas");
+        } else {
+          status = java.util.ResourceBundle.getBundle("ComercialResources").getString("CodigoBarraDun14.inativas");
+        }
+
+
+
+
+
+
+
+        ;
+        String style_bl_report_Jw_cod_barra="";
+        if (!((i_bl_report_Jw_cod_barra%2)!=0)) {
+          style_bl_report_Jw_cod_barra="rowColor";
+        } else {
+          style_bl_report_Jw_cod_barra="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Jw_cod_barra %>' id="TRbl_report_Jw_cod_barra<%=i_bl_report_Jw_cod_barra%>" >
+
+          <td class="reportColumn" style="text-align:center;" >
+            <%= codigo_marca %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= descricao_marca %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= linha_ref %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cab_cdgo %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cab_desc %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cor_cdgo %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= cor_desc %>
+          </td>
+
+          <td class="reportColumn" style="text-align:left;" >
+            <%= grade %>
+          </td>
+
+          <td class="reportColumn" style="text-align:center;" >
+            <%
+            if(!(request.getParameter("excel")+"").equals("true")){
+              %>
+              <%= cod_barra %>
+              <%
+            } else {
+              %>
+              <%= cod_barra %>
+               
+              <%
+            }
+            %>
+          </td>
+
+          <td class="reportColumn" style="text-align:center;" >
+            <%= status %>
+          </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Jw_cod_barra++;
+        if (i_bl_report_Jw_cod_barra<res_Jw_cod_barra.size()) {
+          t_jw_cod_barra = (portalbr.dbobj.view.Jw_cod_barra)res_Jw_cod_barra.elementAt(i_bl_report_Jw_cod_barra);
+          linha_ref = t_jw_cod_barra.getLinha_ref()==null?"":t_jw_cod_barra.getLinha_ref();
+          cabedal = t_jw_cod_barra.getCabedal()==null?"":t_jw_cod_barra.getCabedal();
+          cor = t_jw_cod_barra.getCor()==null?"":t_jw_cod_barra.getCor();
+          grade = t_jw_cod_barra.getGrade()==null?"":t_jw_cod_barra.getGrade();
+          cod_barra = t_jw_cod_barra.getCod_barra()==null?"":t_jw_cod_barra.getCod_barra();
+          status = t_jw_cod_barra.getStatus()==null?"":t_jw_cod_barra.getStatus();
+          codigo_marca = t_jw_cod_barra.getCodigo_marca();
+          cor_cdgo = t_jw_cod_barra.getCor_cdgo();
+          cab_cdgo = t_jw_cod_barra.getCab_cdgo();
+          descricao_marca = t_jw_cod_barra.getDescricao_marca()==null?"":t_jw_cod_barra.getDescricao_marca();
+          cor_desc = t_jw_cod_barra.getCor_desc()==null?"":t_jw_cod_barra.getCor_desc();
+          cab_desc = t_jw_cod_barra.getCab_desc()==null?"":t_jw_cod_barra.getCab_desc();
+          if(status.equals("A")){
+            status = java.util.ResourceBundle.getBundle("ComercialResources").getString("CodigoBarraDun14.ativas");
+          } else {
+            status = java.util.ResourceBundle.getBundle("ComercialResources").getString("CodigoBarraDun14.inativas");
+          }
+
+
+
+
+
+
+
+          ;
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+  <%
+}
+%>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>linha_ref</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_cod_barra</block_name>
+<role_item></role_item>
+<database_column>linha_ref</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>CodigoBarra_r.linha_ref</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_cod_barra.getLinha_ref()==null?"":t_jw_cod_barra.getLinha_ref()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cabedal</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_cod_barra</block_name>
+<role_item></role_item>
+<database_column>cabedal</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>CodigoBarra_r.cabedal</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_cod_barra.getCabedal()==null?"":t_jw_cod_barra.getCabedal()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_cod_barra</block_name>
+<role_item></role_item>
+<database_column>cor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>CodigoBarra_r.cor</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_cod_barra.getCor()==null?"":t_jw_cod_barra.getCor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>grade</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_cod_barra</block_name>
+<role_item></role_item>
+<database_column>grade</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>CodigoBarra_r.grade</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_cod_barra.getGrade()==null?"":t_jw_cod_barra.getGrade()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cod_barra</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_cod_barra</block_name>
+<role_item></role_item>
+<database_column>cod_barra</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>CodigoBarra_r.cod_barra</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_cod_barra.getCod_barra()==null?"":t_jw_cod_barra.getCod_barra()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>true</columnDisplayCodeCustomized>
+<columnDisplayCode><td 
+ class="reportColumn" style="text-align:center;" >
+<% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<%= cod_barra %>
+<% } else { %>
+<%= cod_barra %>&nbsp
+<% } %>
+</td> 
+
+</columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>status</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_cod_barra</block_name>
+<role_item></role_item>
+<database_column>status</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ComercialResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>CodigoBarra_r.status</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>false</base_table>
+<column_order></column_order>
+<formula>t_jw_cod_barra.getStatus()==null?"":t_jw_cod_barra.getStatus();
+if(status.equals("A")){
+   status = java.util.ResourceBundle.getBundle("ComercialResources").getString("CodigoBarraDun14.ativas");
+} else {
+   status = java.util.ResourceBundle.getBundle("ComercialResources").getString("CodigoBarraDun14.inativas");
+}
+
+
+
+
+
+
+
+</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title> </title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/CodigoBarra_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>history.back(-1);</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>back_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>clean_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>CodigoBarra_rActionForm</name>
+<type>portalbr.com.CodigoBarra_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/CodigoBarra_rForm</path>
+<type>portalbr.com.CodigoBarra_rAction</type>
+<name>CodigoBarra_rActionForm</name>
+<attribute></attribute>
+<input>/com/CodigoBarra_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/CodigoBarra_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title><bean:message bundle="ComercialResources" key="CodigoBarra_r.titulo"/></title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

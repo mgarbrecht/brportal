@@ -1,0 +1,1566 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>19/07/2016</generation_day>
+<module>adm</module>
+<file_name>ConsultaMapaDiario</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>04/03/2015 10:23:31</creationDate>
+<lastModifyDate>19/07/2016 10:48:50</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_consulta_mapa_diario</name>
+<title>Consulta_mapa_diario</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_consulta_mapa_diario</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_consulta_mapa_diario = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_consulta_mapa_diario t_jw_consulta_mapa_diario = new portalbr.dbobj.view.Jw_consulta_mapa_diario();
+    String[][] select = {{"data_tmp",null},{"entrada_dia_valor",null},{"entrada_dia_ant_valor",null},{"faturamento_dia_valor",null},{"faturamento_dia_ant",null},};
+    Object[][] where = null;
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order =  null;
+    res_Jw_consulta_mapa_diario = j.select(t_jw_consulta_mapa_diario,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Jw_consulta_mapa_diario" id="bl_report_Jw_consulta_mapa_diario" class="baseForm" method="post" >
+  <%
+  if (res_Jw_consulta_mapa_diario!=null && res_Jw_consulta_mapa_diario.size()>0) {
+    %>
+
+    <table id="TRbl_report_Jw_consulta_mapa_diario"  class="reportTable"   style="width:99%; "  border="1" >
+      <%
+      java.sql.Timestamp data_tmp =  null;
+      double entrada_dia_valor =  0;
+      double entrada_dia_ant_valor =  0;
+      double faturamento_dia_valor =  0;
+      double faturamento_dia_ant =  0;
+      double sum_entrada_dia_valor_0 = 0;
+      double sum_entrada_dia_ant_valor_0 = 0;
+      double sum_faturamento_dia_valor_0 = 0;
+      double sum_faturamento_dia_ant_0 = 0;
+      %>
+
+      <tr class="reportTr">
+        <td class="columnTdHeader" style="text-align:center;" >
+          Data
+        </td>
+
+        <td class="columnTdHeader" style="text-align:right;" >
+          Entrada
+        </td>
+
+        <td class="columnTdHeader" style="text-align:right;" >
+          Entrada Ant.
+        </td>
+
+        <td class="columnTdHeader" style="text-align:right;" >
+          Faturamento
+        </td>
+
+        <td class="columnTdHeader" style="text-align:right;" >
+          Faturamento Ant.
+        </td>
+
+      </tr>
+
+      <%
+      int i_bl_report_Jw_consulta_mapa_diario = 0;
+      while (i_bl_report_Jw_consulta_mapa_diario<res_Jw_consulta_mapa_diario.size()) {
+        portalbr.dbobj.view.Jw_consulta_mapa_diario t_jw_consulta_mapa_diario = (portalbr.dbobj.view.Jw_consulta_mapa_diario)res_Jw_consulta_mapa_diario.elementAt(i_bl_report_Jw_consulta_mapa_diario);
+        data_tmp = (java.sql.Timestamp)t_jw_consulta_mapa_diario.getData_tmp();
+        entrada_dia_valor = t_jw_consulta_mapa_diario.getEntrada_dia_valor();
+        entrada_dia_ant_valor = t_jw_consulta_mapa_diario.getEntrada_dia_ant_valor();
+        faturamento_dia_valor = t_jw_consulta_mapa_diario.getFaturamento_dia_valor();
+        faturamento_dia_ant = t_jw_consulta_mapa_diario.getFaturamento_dia_ant();
+        sum_entrada_dia_valor_0 += entrada_dia_valor;
+        sum_entrada_dia_ant_valor_0 += entrada_dia_ant_valor;
+        sum_faturamento_dia_valor_0 += faturamento_dia_valor;
+        sum_faturamento_dia_ant_0 += faturamento_dia_ant;
+        String style_bl_report_Jw_consulta_mapa_diario="";
+        if (!((i_bl_report_Jw_consulta_mapa_diario%2)!=0)) {
+          style_bl_report_Jw_consulta_mapa_diario="rowColor";
+        } else {
+          style_bl_report_Jw_consulta_mapa_diario="rowBlank";
+        }
+        %>
+
+        <tr class='<%= style_bl_report_Jw_consulta_mapa_diario %>' id="TRbl_report_Jw_consulta_mapa_diario<%=i_bl_report_Jw_consulta_mapa_diario%>" >
+          <td class="reportColumn" style="text-align:center;width:20%;" >
+            <%= com.egen.util.text.FormatDate.format(data_tmp, "dd/MM/yyyy") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;width:20%;" >
+            <%= com.egen.util.text.FormatNumber.format(entrada_dia_valor, "##,##0.00") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;width:20%;" >
+            <%= com.egen.util.text.FormatNumber.format(entrada_dia_ant_valor, "##,##0.00") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;width:20%;" >
+            <%= com.egen.util.text.FormatNumber.format(faturamento_dia_valor, "##,##0.00") %>
+          </td>
+
+          <td class="reportColumn" style="text-align:right;width:20%;" >
+            <%= com.egen.util.text.FormatNumber.format(faturamento_dia_ant, "##,##0.00") %>
+          </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Jw_consulta_mapa_diario++;
+        if (i_bl_report_Jw_consulta_mapa_diario<res_Jw_consulta_mapa_diario.size()) {
+          t_jw_consulta_mapa_diario = (portalbr.dbobj.view.Jw_consulta_mapa_diario)res_Jw_consulta_mapa_diario.elementAt(i_bl_report_Jw_consulta_mapa_diario);
+          data_tmp = (java.sql.Timestamp)t_jw_consulta_mapa_diario.getData_tmp();
+          entrada_dia_valor = t_jw_consulta_mapa_diario.getEntrada_dia_valor();
+          entrada_dia_ant_valor = t_jw_consulta_mapa_diario.getEntrada_dia_ant_valor();
+          faturamento_dia_valor = t_jw_consulta_mapa_diario.getFaturamento_dia_valor();
+          faturamento_dia_ant = t_jw_consulta_mapa_diario.getFaturamento_dia_ant();
+        } else {
+        }
+      }
+      %>
+
+      <tr class="totalColumn">
+        <td class="totalTdColumn"  style="text-align:left; width:20%;" >
+           <b>Mês Atual</b>
+        </td>
+        <td class="totalTdColumn"  style="text-align:right; width:20%;" >
+          <b><%= com.egen.util.text.FormatNumber.format(sum_entrada_dia_valor_0, "##,##0.00") %></b>
+        </td>
+        <td class="totalTdColumn"  style="text-align:right; width:20%;" >
+          <b><%= com.egen.util.text.FormatNumber.format(sum_entrada_dia_ant_valor_0, "#,##0.##") %></b>
+        </td>
+        <td class="totalTdColumn"  style="text-align:right; width:20%;" >
+          <b><%= com.egen.util.text.FormatNumber.format(sum_faturamento_dia_valor_0, "##,##0.00") %></b>
+        </td>
+        <td class="totalTdColumn"  style="text-align:right; width:20%;" >
+          <b><%= com.egen.util.text.FormatNumber.format(sum_faturamento_dia_ant_0, "##,##0.00") %></b>
+        </td>
+      </tr>
+
+      <%
+      %>
+
+
+
+<%
+  java.util.Vector res_Jw_consulta_mapa_diario_anterior = null;
+  com.egen.util.jdbc.JdbcUtil j2 = null;
+  try {
+    j2 = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_consulta_mapa_diario_anterior t_jw_consulta_mapa_diario_anterior = new portalbr.dbobj.view.Jw_consulta_mapa_diario_anterior();
+    String[][] select = {{"entrada_mes_ant_valor",null},{"variacao_entrada_valor",null},{"faturamento_mes_ant",null},{"variacao_faturamento_valor",null},};
+    Object[][] where = null;
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order =  null;
+    res_Jw_consulta_mapa_diario_anterior = j2.select(t_jw_consulta_mapa_diario_anterior,select,where,groupby,having,order);
+  } catch (Exception e){
+       e.printStackTrace();
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j2!=null){j2.close();}
+}
+%>
+
+
+
+
+
+<%
+  if (res_Jw_consulta_mapa_diario_anterior!=null && res_Jw_consulta_mapa_diario_anterior.size()>0) {
+    %>
+
+      <%
+      java.lang.String label =  null;
+      double entrada_mes_ant_valor =  0;
+      double variacao_entrada_valor =  0;
+      double faturamento_mes_ant =  0;
+      double variacao_faturamento_valor =  0;
+      %>
+
+      <%
+      int i_bl_report_Jw_consulta_mapa_diario_anterior = 0;
+      while (i_bl_report_Jw_consulta_mapa_diario_anterior<res_Jw_consulta_mapa_diario_anterior.size()) {
+        portalbr.dbobj.view.Jw_consulta_mapa_diario_anterior t_jw_consulta_mapa_diario_anterior = (portalbr.dbobj.view.Jw_consulta_mapa_diario_anterior)res_Jw_consulta_mapa_diario_anterior.elementAt(i_bl_report_Jw_consulta_mapa_diario_anterior);
+        entrada_mes_ant_valor = t_jw_consulta_mapa_diario_anterior.getEntrada_mes_ant_valor();
+        variacao_entrada_valor = t_jw_consulta_mapa_diario_anterior.getVariacao_entrada_valor();
+        faturamento_mes_ant = t_jw_consulta_mapa_diario_anterior.getFaturamento_mes_ant();
+        variacao_faturamento_valor = t_jw_consulta_mapa_diario_anterior.getVariacao_faturamento_valor();
+        String style_bl_report_Jw_consulta_mapa_diario_anterior="";
+        if (!((i_bl_report_Jw_consulta_mapa_diario_anterior%2)!=0)) {
+          style_bl_report_Jw_consulta_mapa_diario_anterior="rowColor";
+        } else {
+          style_bl_report_Jw_consulta_mapa_diario_anterior="rowBlank";
+        }
+        %>
+
+         <tr class="totalColumn">
+          <td class="totalTdColumn" style="text-align:left;width:20%;" >
+            <b>Ano Anterior</b>
+          </td>
+
+          <td class="totalTdColumn" style="text-align:right;width:20%;" >
+            <b><%= com.egen.util.text.FormatNumber.format(entrada_mes_ant_valor, "##,##0.00") %></b>
+          </td>
+
+          <td class="totalTdColumn" style="text-align:right;width:20%;" >
+            <b><%= com.egen.util.text.FormatNumber.format(variacao_entrada_valor, "##,##0.00") %></b>
+          </td>
+
+          <td class="totalTdColumn" style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(faturamento_mes_ant, "##,##0.00") %></b>
+          </td>
+
+          <td class="totalTdColumn" style="text-align:right;width:20%;" >
+            <b><%= com.egen.util.text.FormatNumber.format(variacao_faturamento_valor, "##,##0.00") %></b>
+          </td>
+
+        </tr>
+
+        <%
+        i_bl_report_Jw_consulta_mapa_diario_anterior++;
+        if (i_bl_report_Jw_consulta_mapa_diario_anterior<res_Jw_consulta_mapa_diario_anterior.size()) {
+          t_jw_consulta_mapa_diario_anterior = (portalbr.dbobj.view.Jw_consulta_mapa_diario_anterior)res_Jw_consulta_mapa_diario_anterior.elementAt(i_bl_report_Jw_consulta_mapa_diario_anterior);
+          entrada_mes_ant_valor = t_jw_consulta_mapa_diario_anterior.getEntrada_mes_ant_valor();
+          variacao_entrada_valor = t_jw_consulta_mapa_diario_anterior.getVariacao_entrada_valor();
+          faturamento_mes_ant = t_jw_consulta_mapa_diario_anterior.getFaturamento_mes_ant();
+          variacao_faturamento_valor = t_jw_consulta_mapa_diario_anterior.getVariacao_faturamento_valor();
+        } else {
+        }
+      }
+      %>
+
+    
+    <%
+  }
+  %>
+
+
+
+
+
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>data_tmp</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario</block_name>
+<role_item></role_item>
+<database_column>data_tmp</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>dd/MM/yyyy</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Data</label>
+<type>java.sql.Timestamp</type>
+<columnWidth>20%</columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>(java.sql.Timestamp)t_jw_consulta_mapa_diario.getData_tmp()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>entrada_dia_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario</block_name>
+<role_item></role_item>
+<database_column>entrada_dia_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Entrada</label>
+<type>double</type>
+<columnWidth>20%</columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario.getEntrada_dia_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>entrada_dia_ant_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario</block_name>
+<role_item></role_item>
+<database_column>entrada_dia_ant_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Entrada Ant.</label>
+<type>double</type>
+<columnWidth>20%</columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario.getEntrada_dia_ant_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>#,##0.##</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>faturamento_dia_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario</block_name>
+<role_item></role_item>
+<database_column>faturamento_dia_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Faturamento</label>
+<type>double</type>
+<columnWidth>20%</columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario.getFaturamento_dia_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>faturamento_dia_ant</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario</block_name>
+<role_item></role_item>
+<database_column>faturamento_dia_ant</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Faturamento Ant.</label>
+<type>double</type>
+<columnWidth>20%</columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario.getFaturamento_dia_ant()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_consulta_mapa_diario_totais</name>
+<title>jw_consulta_mapa_diario_totais</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_consulta_mapa_diario_totais</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_consulta_mapa_diario_totais = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_consulta_mapa_diario_totais t_jw_consulta_mapa_diario_totais = new portalbr.dbobj.view.Jw_consulta_mapa_diario_totais();
+    String[][] select = {{"total_para_mes_valor",null},{"carteira_atual_valor",null},{"carteira_anterior_valor",null},{"variacao_carteira_valor",null},};
+    Object[][] where = null;
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order =  null;
+    res_Jw_consulta_mapa_diario_totais = j.select(t_jw_consulta_mapa_diario_totais,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Jw_consulta_mapa_diario_totais" id="bl_report_Jw_consulta_mapa_diario_totais" class="baseForm" method="post" >
+  <%
+  if (res_Jw_consulta_mapa_diario_totais!=null && res_Jw_consulta_mapa_diario_totais.size()>0) {
+    %>
+
+    <table id="TRbl_report_Jw_consulta_mapa_diario_totais"  class="reportTable"   style="width:99%; "  border="1" >
+      <%
+      double total_para_mes_valor =  0;
+      double carteira_atual_valor =  0;
+      double carteira_anterior_valor =  0;
+      double variacao_carteira_valor =  0;
+      %>
+
+      <%
+      int i_bl_report_Jw_consulta_mapa_diario_totais = 0;
+      while (i_bl_report_Jw_consulta_mapa_diario_totais<res_Jw_consulta_mapa_diario_totais.size()) {
+        portalbr.dbobj.view.Jw_consulta_mapa_diario_totais t_jw_consulta_mapa_diario_totais = (portalbr.dbobj.view.Jw_consulta_mapa_diario_totais)res_Jw_consulta_mapa_diario_totais.elementAt(i_bl_report_Jw_consulta_mapa_diario_totais);
+        total_para_mes_valor = t_jw_consulta_mapa_diario_totais.getTotal_para_mes_valor();
+        carteira_atual_valor = t_jw_consulta_mapa_diario_totais.getCarteira_atual_valor();
+        carteira_anterior_valor = t_jw_consulta_mapa_diario_totais.getCarteira_anterior_valor();
+        variacao_carteira_valor = t_jw_consulta_mapa_diario_totais.getVariacao_carteira_valor();
+        String style_bl_report_Jw_consulta_mapa_diario_totais="";
+        if (!((i_bl_report_Jw_consulta_mapa_diario_totais%2)!=0)) {
+          style_bl_report_Jw_consulta_mapa_diario_totais="rowColor";
+        } else {
+          style_bl_report_Jw_consulta_mapa_diario_totais="rowBlank";
+        }
+        %>
+
+        <tr class="rowColor" >
+          <td class="reportColumn" style="text-align:left; width:20%">
+             <b>Total para mês</b>
+          </td>
+          <td class="reportColumn" style="text-align:left">
+            <b><%= com.egen.util.text.FormatNumber.format(total_para_mes_valor, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <tr class="rowColor" >
+          <td class="reportColumn" style="text-align:left; width:20%">
+             <b>Carteira Atual</b>
+          </td>
+          <td class="reportColumn" style="text-align:left;" >
+            <b><%= com.egen.util.text.FormatNumber.format(carteira_atual_valor, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+
+        <tr class="rowColor" >
+          <td class="reportColumn" style="text-align:left; width:20%">
+             <b>Carteira Anterior</b>
+          </td>
+          <td class="reportColumn" style="text-align:left;" >
+            <b><%= com.egen.util.text.FormatNumber.format(carteira_anterior_valor, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <tr class="rowColor" >
+          <td class="reportColumn" style="text-align:left; width:20%">
+             <b>Variação (%)</b>
+          </td>
+          <td class="reportColumn" style="text-align:left;" >
+            <b><%= com.egen.util.text.FormatNumber.format(variacao_carteira_valor, "##,##0.00") %></b>
+          </td>
+        </tr>
+ 
+
+        <%
+        i_bl_report_Jw_consulta_mapa_diario_totais++;
+        if (i_bl_report_Jw_consulta_mapa_diario_totais<res_Jw_consulta_mapa_diario_totais.size()) {
+          t_jw_consulta_mapa_diario_totais = (portalbr.dbobj.view.Jw_consulta_mapa_diario_totais)res_Jw_consulta_mapa_diario_totais.elementAt(i_bl_report_Jw_consulta_mapa_diario_totais);
+          total_para_mes_valor = t_jw_consulta_mapa_diario_totais.getTotal_para_mes_valor();
+          carteira_atual_valor = t_jw_consulta_mapa_diario_totais.getCarteira_atual_valor();
+          carteira_anterior_valor = t_jw_consulta_mapa_diario_totais.getCarteira_anterior_valor();
+          variacao_carteira_valor = t_jw_consulta_mapa_diario_totais.getVariacao_carteira_valor();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>total_para_mes_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario_totais</block_name>
+<role_item></role_item>
+<database_column>total_para_mes_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>total_para_mes_valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario_totais.getTotal_para_mes_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>carteira_atual_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario_totais</block_name>
+<role_item></role_item>
+<database_column>carteira_atual_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>carteira_atual_valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario_totais.getCarteira_atual_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>carteira_anterior_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario_totais</block_name>
+<role_item></role_item>
+<database_column>carteira_anterior_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>carteira_anterior_valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario_totais.getCarteira_anterior_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>variacao_carteira_valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_consulta_mapa_diario_totais</block_name>
+<role_item></role_item>
+<database_column>variacao_carteira_valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>variacao_carteira_valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_consulta_mapa_diario_totais.getVariacao_carteira_valor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_tmp_mapa_diario_msn</name>
+<title>jw_tmp_mapa_diario_msn</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_tmp_mapa_diario_msn</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate>default_report_block</reportTemplate>
+<report></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>texto</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_tmp_mapa_diario_msn</block_name>
+<role_item></role_item>
+<database_column>texto</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>MSG</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_tmp_mapa_diario_msn.getTexto()==null?"":t_jw_tmp_mapa_diario_msn.getTexto()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans></formBeans>
+<actions></actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Consulta Mapa Diário</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(154)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

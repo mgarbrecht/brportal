@@ -1,0 +1,27 @@
+<Context docBase="${catalina.home}/webapps/brportal/" debug="0" reloadable="true" allowLinking="true"  >
+  <Resource name="jdbc/Orasco" auth="Container" type="javax.sql.DataSource" 
+            maxActive="50" 
+			maxIdle="10" 
+			maxWait="10000" 
+			factory="org.apache.commons.dbcp.BasicDataSourceFactory" 
+            driverClassName="oracle.jdbc.driver.OracleDriver" 
+            url="jdbc:oracle:thin:@dbm0-scan1.beirario.intranet:1521/orabrio" 
+            username="wbrio" 
+            password="wbrio"
+     	    validationQuery="select 1 from dual" 
+			testWhileIdle="true"
+			timeBetweenEvictionRunsMillis="5000"
+			validationInterval="30000"
+            testOnBorrow="true"
+            testOnReturn="false"
+            removeAbandonedTimeout="60"
+            removeAbandoned="true"
+            logAbandoned="true"
+            minEvictableIdleTimeMillis="30000"			
+	/>
+</Context>
+
+<!--
+url="jdbc:oracle:thin:@10.0.0.41:1521/oradsv1" 
+url="jdbc:oracle:thin:@dbm0-scan1.beirario.intranet:1521/orabrio"
+-->

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecial_B" language="groovy" pageWidth="790" pageHeight="555" orientation="Landscape" columnWidth="790" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fb5951bc-93f7-462b-9b4b-b8127ccfe975">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_QUERY" class="java.lang.String">
+		<defaultValueExpression><![CDATA[" AND 1 = 1 "]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT INITCAP(tipo_solicitacao) tipo_solicitacao
+      ,ROUND((SUM(solicitacoes) / NULLIF((SELECT COUNT(DISTINCT rce.id_solicitacao)/100
+          FROM brio.ref_combinacao_especial rce
+         WHERE 1 = 1 $P!{P_QUERY}),0)
+         ),2) perc_solicitacoes
+      ,ROUND((SUM(pares) /
+     NULLIF((SELECT SUM(rce.pares_alteracao)/100
+          FROM brio.ref_combinacao_especial rce
+         WHERE 1 = 1 $P!{P_QUERY}),0)
+         ),2) perc_pares
+  FROM (SELECT cgr.rv_meaning tipo_solicitacao
+              ,COUNT(DISTINCT rce.id_solicitacao) solicitacoes
+              ,NVL(SUM(rce.pares_alteracao), 0) pares
+          FROM brio.ref_combinacao_especial rce
+              ,cg_ref_codes cgr
+         WHERE cgr.rv_domain = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
+           AND cgr.rv_low_value = rce.tipo_solicitacao_comb_especial $P!{P_QUERY}
+         GROUP BY cgr.rv_meaning)
+ GROUP BY INITCAP(tipo_solicitacao)
+ ORDER BY 1]]>
+	</queryString>
+	<field name="TIPO_SOLICITACAO" class="java.lang.String"/>
+	<field name="PERC_SOLICITACOES" class="java.math.BigDecimal"/>
+	<field name="PERC_PARES" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="207" splitType="Stretch">
+			<barChart>
+				<chart isShowLegend="true">
+					<reportElement uuid="5b28be2f-2f9a-4ee2-826b-876894a11f9f" x="0" y="0" width="392" height="200"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Percentual de Solicitações por Tipo de Solicitação"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{TIPO_SOLICITACAO}]]></seriesExpression>
+						<categoryExpression><![CDATA[""]]></categoryExpression>
+						<valueExpression><![CDATA[$F{PERC_SOLICITACOES}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true" isShowTickLabels="true">
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat verticalTickLabels="false"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<barChart>
+				<chart>
+					<reportElement uuid="34c74593-ca13-487e-8733-10f8cc5640c3" x="398" y="0" width="392" height="200"/>
+					<chartTitle>
+						<titleExpression><![CDATA["Percentual de Pares por Tipo de Solicitação"]]></titleExpression>
+					</chartTitle>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{TIPO_SOLICITACAO}]]></seriesExpression>
+						<categoryExpression><![CDATA[""]]></categoryExpression>
+						<valueExpression><![CDATA[$F{PERC_PARES}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot isShowLabels="true">
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat verticalTickLabels="false"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OrdemCompra" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="145"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="P_USUARIO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[TOMCAT]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QUERY" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1111]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT i.oco_numero
+      ,f.fil_filial
+      ,f.fil_razsoc
+      ,i.data_compra data_emissao
+      ,f.fil_endereco || ', ' || f.fil_cidade || '/'|| f.est_unifed endereco_filial
+      ,f.fil_cgc
+      ,f.fil_fax
+      ,f.fil_ddd||f.fil_fone fil_fone
+      ,i.observacoes observacoes_oc
+      ,fo.for_razsoc
+      ,fe.fen_Cgc
+      ,fe.fen_rua || decode(fe.fen_nro,null,null,', '||fe.fen_nro) endereco_fornecedor
+      ,fe.fen_cidade||'/'||fe.est_unifed cidade_fornecedor
+      ,'' fax_fornecedor
+      ,'' fone_fornecedor
+      ,'' cobranca
+      ,i.cond_pagto
+      ,'' transf_icms
+      ,'' comprador
+      ,'' frete
+      ,i.sequencia_item
+      ,i.ies_codigo
+      ,i.descricao_produto
+      ,i.cor_desc
+      ,i.quant_comprada
+      ,i.quant_comprada quantidade_total
+      ,i.unm_codigo
+      ,i.preco_unitario
+      ,i.data_entrega
+      ,i.rem_nro
+      ,(i.quant_comprada * i.preco_unitario) valor_total
+      ,i.tai_codigo
+      ,'Seq.: '||i.sequencia_item|| ' | Fábrica: '||f.fil_filial fabrica
+      ,i.nome_comprador
+      ,count(*) over (partition by i.oco_numero, i.ies_codigo, i.cor_cdgo ) quantidade_tamanhos
+  FROM interface_arq_compra_oc i
+      ,filial                  f
+      ,for_endere              fe
+      ,fornecedor fo
+ WHERE $P!{P_QUERY}
+   AND f.fil_filial = i.fil_filial
+   AND fe.fen_cgc = i.cnpj_fornecedor
+   and fo.for_codigo = fe.for_codigo
+   AND fen_ativo = 'S'
+ ORDER BY i.interface_arq_compra_id
+         ,i.sequencia_item]]>
+	</queryString>
+	<field name="OCO_NUMERO" class="java.math.BigDecimal"/>
+	<field name="FIL_FILIAL" class="java.lang.String"/>
+	<field name="FIL_RAZSOC" class="java.lang.String"/>
+	<field name="DATA_EMISSAO" class="java.sql.Timestamp"/>
+	<field name="ENDERECO_FILIAL" class="java.lang.String"/>
+	<field name="FIL_CGC" class="java.math.BigDecimal"/>
+	<field name="FIL_FAX" class="java.math.BigDecimal"/>
+	<field name="FIL_FONE" class="java.lang.String"/>
+	<field name="OBSERVACOES_OC" class="java.lang.String"/>
+	<field name="FOR_RAZSOC" class="java.lang.String"/>
+	<field name="FEN_CGC" class="java.math.BigDecimal"/>
+	<field name="ENDERECO_FORNECEDOR" class="java.lang.String"/>
+	<field name="CIDADE_FORNECEDOR" class="java.lang.String"/>
+	<field name="FAX_FORNECEDOR" class="java.lang.String"/>
+	<field name="FONE_FORNECEDOR" class="java.lang.String"/>
+	<field name="COBRANCA" class="java.lang.String"/>
+	<field name="COND_PAGTO" class="java.lang.String"/>
+	<field name="TRANSF_ICMS" class="java.lang.String"/>
+	<field name="COMPRADOR" class="java.lang.String"/>
+	<field name="FRETE" class="java.lang.String"/>
+	<field name="SEQUENCIA_ITEM" class="java.math.BigDecimal"/>
+	<field name="IES_CODIGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_PRODUTO" class="java.lang.String"/>
+	<field name="COR_DESC" class="java.lang.String"/>
+	<field name="QUANT_COMPRADA" class="java.math.BigDecimal"/>
+	<field name="QUANTIDADE_TOTAL" class="java.math.BigDecimal"/>
+	<field name="UNM_CODIGO" class="java.lang.String"/>
+	<field name="PRECO_UNITARIO" class="java.math.BigDecimal"/>
+	<field name="DATA_ENTREGA" class="java.sql.Timestamp"/>
+	<field name="REM_NRO" class="java.math.BigDecimal"/>
+	<field name="VALOR_TOTAL" class="java.math.BigDecimal"/>
+	<field name="TAI_CODIGO" class="java.lang.String"/>
+	<field name="FABRICA" class="java.lang.String"/>
+	<field name="NOME_COMPRADOR" class="java.lang.String"/>
+	<field name="QUANTIDADE_TAMANHOS" class="java.math.BigDecimal"/>
+	<variable name="V_VALOR_TOTAL" class="java.lang.Double" resetType="Group" resetGroup="OCO_NUMERO" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR_TOTAL}]]></variableExpression>
+	</variable>
+	<variable name="V_QUANTIDADE_TOTAL" class="java.lang.Double" resetType="Group" resetGroup="OCO_NUMERO" calculation="Sum">
+		<variableExpression><![CDATA[$F{QUANTIDADE_TOTAL}]]></variableExpression>
+	</variable>
+	<group name="OCO_NUMERO">
+		<groupExpression><![CDATA[$F{OCO_NUMERO}]]></groupExpression>
+		<groupHeader>
+			<band height="179">
+				<staticText>
+					<reportElement x="516" y="10" width="175" height="18"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Número OC:]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="SubTitle" x="691" y="10" width="111" height="18" forecolor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{OCO_NUMERO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="1" y="10" width="348" height="23"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{FIL_RAZSOC}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Transparent" x="0" y="0" width="802" height="78"/>
+				</rectangle>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="32" width="348" height="16"/>
+					<textElement>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ENDERECO_FILIAL}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement x="521" y="32" width="125" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{DATA_EMISSAO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="421" y="32" width="100" height="16"/>
+					<textElement/>
+					<text><![CDATA[DATA DE EMISSÃO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="1" y="47" width="49" height="16"/>
+					<textElement>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[CNPJ:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="51" y="47" width="149" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{FIL_CGC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="249" y="47" width="49" height="16"/>
+					<textElement/>
+					<text><![CDATA[FAX:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="421" y="47" width="49" height="16"/>
+					<textElement/>
+					<text><![CDATA[FONE:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="298" y="47" width="122" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{FIL_FAX}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="471" y="47" width="175" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{FIL_FONE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="2" y="62" width="48" height="16"/>
+					<textElement>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[Obs OC:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="51" y="62" width="750" height="16"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{OBSERVACOES_OC}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="84" width="85" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[FORNECEDOR:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="98" width="85" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[ENDEREÇO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="112" width="85" height="15"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[CIDADE:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="85" y="84" width="716" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{FOR_RAZSOC}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="85" y="98" width="716" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ENDERECO_FORNECEDOR}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="85" y="112" width="165" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{CIDADE_FORNECEDOR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="249" y="112" width="49" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[FAX:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="298" y="112" width="122" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{FAX_FORNECEDOR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="421" y="112" width="49" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[FONE:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="471" y="112" width="137" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{FONE_FORNECEDOR}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Transparent" x="0" y="82" width="802" height="97"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="136" width="85" height="15"/>
+					<textElement>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[COBRANÇA:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="150" width="85" height="15"/>
+					<textElement>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[COND. PAGTO:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="164" width="85" height="15"/>
+					<textElement>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<text><![CDATA[COMPRADOR:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="421" y="151" width="76" height="16"/>
+					<textElement/>
+					<text><![CDATA[TRANSF. ICMS:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="421" y="163" width="76" height="16"/>
+					<textElement/>
+					<text><![CDATA[FRETE:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="127" width="802" height="1"/>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="85" y="163" width="315" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{NOME_COMPRADOR}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="691" y="0" width="110" height="12"/>
+					<textElement textAlignment="Right">
+						<font size="8"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA['Pág. N°  ' + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="36">
+				<staticText>
+					<reportElement x="383" y="0" width="323" height="18"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor total da Ordem de Compra:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="383" y="18" width="323" height="18"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Quantidade total da Ordem de Compra:]]></text>
+				</staticText>
+				<textField pattern="#,##0.0000;-#,##0.0000">
+					<reportElement x="707" y="0" width="95" height="18"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="true"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{V_VALOR_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0">
+					<reportElement x="707" y="18" width="95" height="18"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="true"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{V_QUANTIDADE_TOTAL}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Transparent" x="0" y="0" width="802" height="36"/>
+				</rectangle>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="84" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="84" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{QUANTIDADE_TAMANHOS}==1]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textField>
+					<reportElement x="400" y="12" width="402" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{COR_DESC}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="73" y="72" width="61" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{QUANT_COMPRADA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="400" y="0" width="402" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="72" width="73" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Quantidade]]></text>
+				</staticText>
+				<textField pattern="#,##0.0000">
+					<reportElement x="533" y="48" width="269" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="2" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{VALOR_TOTAL}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="73" y="60" width="61" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TAI_CODIGO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="73" y="24" width="729" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{FABRICA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="73" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="533" y="36" width="269" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Valor Total]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="12" width="73" height="24"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{IES_CODIGO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="73" y="0" width="327" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="73" y="12" width="327" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DESCRICAO_PRODUTO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="48" width="134" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{QUANTIDADE_TOTAL}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="400" y="36" width="133" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Data Entrega]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="400" y="48" width="133" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DATA_ENTREGA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="36" width="134" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Quantidade Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="60" width="73" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Tamanho]]></text>
+				</staticText>
+				<textField pattern="#,##0.0000">
+					<reportElement x="267" y="48" width="133" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{PRECO_UNITARIO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="134" y="48" width="133" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{UNM_CODIGO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="134" y="36" width="133" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Unidade Medida]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="267" y="36" width="133" height="12"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Preço]]></text>
+				</staticText>
+			</frame>
+		</band>
+		<band height="41">
+			<frame>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="802" height="41" isRemoveLineWhenBlank="true" backcolor="#CCFFFF">
+					<printWhenExpression><![CDATA[$F{QUANTIDADE_TAMANHOS}>1]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

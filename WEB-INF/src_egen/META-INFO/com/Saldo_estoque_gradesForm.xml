@@ -1,0 +1,4027 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>10/02/2021</generation_day>
+<module>com</module>
+<file_name>Saldo_estoque_grades</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help>Consulta de Saldo de Estoque por Grade</help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>23/02/2006 14:44:49</creationDate>
+<lastModifyDate>10/02/2021 15:13:07</lastModifyDate>
+<userGenerate>admin</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Jw_saldo_estoque_cores</name>
+<title> </title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>portalbr.dbobj.view.Jw_saldo_estoque_cores</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>default</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError><html:errors property=ActionErrors.GLOBAL_ERROR/></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/Saldo_estoque_gradesForm.do</action>
+<enctype></enctype>
+<focus>lin_cdgo</focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope>session</scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target>_self</target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<fields>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>free</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>free</property>
+<label></label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem><%
+  session.setAttribute("opener", "saldo_estoque_grade");
+  if(session.getAttribute("tipos_estoque")==null){
+     com.egen.util.jdbc.JdbcUtil j = null;
+     try {
+        j = new com.egen.util.jdbc.JdbcUtil();    
+        java.util.Vector v = new java.util.Vector();
+        Jw_saldo_estoque_grade_tipo_estoque table = new Jw_saldo_estoque_grade_tipo_estoque();
+        String[][] select = null;
+        Object[][] where = null;
+        Vector res_Jw_saldo_estoque_grade_tipo_estoque = j.select(table, select, where, null, null, null);
+        session.setAttribute("res_Jw_saldo_estoque_grade_tipo_estoque",res_Jw_saldo_estoque_grade_tipo_estoque);
+        if (res_Jw_saldo_estoque_grade_tipo_estoque != null && res_Jw_saldo_estoque_grade_tipo_estoque.size() > 0) {
+           int contador = 0;
+           while (contador<res_Jw_saldo_estoque_grade_tipo_estoque.size()){
+              Jw_saldo_estoque_grade_tipo_estoque r = (Jw_saldo_estoque_grade_tipo_estoque) res_Jw_saldo_estoque_grade_tipo_estoque.elementAt(contador);
+              v.add(r.getCodigo()+"-"+r.getDescricao());
+              contador++;
+           }
+        }
+        session.setAttribute("tipos_estoque", v);
+     } finally {
+         if (j != null) {
+            j.close();
+            j = null;
+        }
+     }	
+  }
+  if(session.getAttribute("codigos_estoque")==null){
+     util.consultas.Query query = new util.consultas.Query();
+     session.setAttribute("codigos_estoque", query.retorna("select rowtocol('SELECT codigo FROM dom_tipo_estoque WHERE codigo IN (SELECT to_number(valor) FROM wbrio.parametros WHERE par_sist_codigo = ''BRNET'' AND nome = ''saldo_estoque_grade_tipo_estoque'')') from dual"));
+  }
+%></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>lin_cdgo</name>
+<help>Informe o código da linha. Máximo de 3 caracteres.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>lin_cdgo</property>
+<label>Linha</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>true</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>../lov/LvLinhaLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=lin_cdgo</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=lin_nome</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_lin_cdgo()"  ><script type="text/javascript"> 
+ function lov_open_lin_cdgo() {
+   window.open('../lov/LvLinhaLov.do?resetfull_action=&returnBlock=0&return0=lin_cdgo&return1=lin_nome','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>true</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('lin_cdgo'),'Saldo_estoque_gradesActionForm.getLin_nome_Ajax',new Array('lin_nome'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>1</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>7</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>lin_nome</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>lin_nome</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>lin_nome</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Lin</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>lin_cdgo</master_name>
+<slave_name>lin_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>lin_nome</master_name>
+<slave_name>lin_nome</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate></fieldRelationTemplate>
+<fieldRelationCode>public String getLin_nome() {
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (lin_cdgo !=null && lin_cdgo.length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Lin db_object = new Lin();
+    String[][] select = {{"lin_nome",null}};
+    Object[][] where = {
+                          {"lin_cdgo","=",com.egen.util.text.FormatNumber.toInt(lin_cdgo)}
+                       };
+    String[] group = null;
+    String[] having = null;
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, select, where, group, having, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Lin)results.elementAt(0);
+      lin_nome = (db_object.getLin_nome()!=null)?db_object.getLin_nome()+"":"";
+    } else {
+      lin_nome = "";
+    }
+  }
+} catch (Exception e) {
+      lin_nome = "";
+} finally {
+  if (j!=null){
+      j.close();
+      j = null;
+  }
+}
+return lin_nome;
+}
+
+public String[][] getLin_nome_Ajax(Saldo_estoque_gradesActionForm PARAM) {
+  String[][] list = new String[1][2];
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    if (PARAM.getLin_cdgo() !=null && PARAM.getLin_cdgo().length()>0) {
+      j = new com.egen.util.jdbc.JdbcUtil();
+      Lin db_object = new Lin();
+      Object[][] where = {
+                            {"lin_cdgo","like",PARAM.getLin_cdgo()}
+                         };
+      String[] order = null;
+      java.util.Vector results = j.select(db_object, where, order);
+      if (results!=null && results.size()>0) {
+        db_object = (Lin)results.elementAt(0);
+        list[0] = new String[]{"lin_nome", (db_object.getLin_nome()!=null)?db_object.getLin_nome()+"":""};
+      } else {
+        list[0] = new String[]{"lin_nome", ""};
+      }
+    }
+  } catch (Exception e) {
+      list[0] = new String[]{"lin_nome", ""};
+  } finally {
+      if (j!=null){
+        j.close();
+        j = null;
+      }
+  }
+  return list;
+}
+</fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>28</size>
+<maxlength>25</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ref_cdgo</name>
+<help>Informe o código da referência. Máximo de 3 caracteres.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>ref_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ref_cdgo</property>
+<label>Referência</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>../lov/LvRefLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=ref_cdgo</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=ref_desc</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_ref_cdgo()"  ><script type="text/javascript"> 
+ function lov_open_ref_cdgo() {
+   window.open('../lov/LvRefLov.do?resetfull_action=&returnBlock=0&return0=ref_cdgo&return1=ref_desc','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('lin_cdgo','ref_cdgo'),'Saldo_estoque_gradesActionForm.getRef_desc_Ajax',new Array('ref_desc'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>2</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>7</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>ref_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>ref_desc</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>ref_desc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Ref</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>lin_cdgo</master_name>
+<slave_name>lin_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>ref_cdgo</master_name>
+<slave_name>ref_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>ref_desc</master_name>
+<slave_name>ref_desc</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate></fieldRelationTemplate>
+<fieldRelationCode>public String getRef_desc() {
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (lin_cdgo !=null && lin_cdgo.length()>0 && ref_cdgo !=null && ref_cdgo.length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Ref db_object = new Ref();
+    String[][] select = {{"ref_desc",null}};
+    Object[][] where = {
+                          {"lin_cdgo","=",com.egen.util.text.FormatNumber.toInteger(lin_cdgo)},
+                          {"ref_cdgo","=",com.egen.util.text.FormatNumber.toInteger(ref_cdgo)},
+                       };
+    String[] group = null;
+    String[] having = null;
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, select, where, group, having, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Ref)results.elementAt(0);
+      ref_desc = (db_object.getRef_desc()!=null)?db_object.getRef_desc()+"":"";
+    } else {
+      ref_desc = "";
+    }
+  }
+} catch (Exception e) {
+      ref_desc = "";
+} finally {
+  if (j!=null) {
+     j.close();
+     j = null;
+  }
+}
+return ref_desc;
+}
+
+public String[][] getRef_desc_Ajax(Saldo_estoque_gradesActionForm PARAM) {
+  String[][] list = new String[1][2];
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (PARAM.getLin_cdgo() !=null && PARAM.getLin_cdgo().length()>0 && PARAM.getRef_cdgo() !=null && PARAM.getRef_cdgo().length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Ref db_object = new Ref();
+    Object[][] where = {
+                          {"lin_cdgo","=",PARAM.getLin_cdgo()},
+                          {"ref_cdgo","=",PARAM.getRef_cdgo()},
+                       };
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, where, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Ref)results.elementAt(0);
+      list[0] = new String[]{"ref_desc", (db_object.getRef_desc()!=null)?db_object.getRef_desc()+"":""};
+    } else {
+      list[0] = new String[]{"ref_desc", ""};
+    }
+  }
+} catch (Exception e) {
+      list[0] = new String[]{"ref_desc", ""};
+} finally {
+  if (j!=null) {
+     j.close();
+     j = null;
+  }
+}
+return list;
+}
+</fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>28</size>
+<maxlength>25</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>cab_cdgo</name>
+<help>Informe o código do cabedal. Máximo de 3 caracteres.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>cab_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cab_cdgo</property>
+<label>Cabedal</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>int</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>false</break_line>
+<lovObject><class>com.egen.develop.generator.form.Lov</class>
+<lovAction>../lov/LvCabedalLov.do?resetfull_action=</lovAction>
+<lovReturns>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return0=cab_cdgo</value>
+</lovReturns_item>
+<lovReturns_item>
+<class>java.lang.String</class>
+<value>return1=cab_desc</value>
+</lovReturns_item>
+</lovReturns>
+<lovParameters></lovParameters>
+<lovLabel>...</lovLabel>
+<lovStyle></lovStyle>
+<lovStyleClass>lovButton</lovStyleClass>
+<lovScrollbars>true</lovScrollbars>
+<lovHeight>510</lovHeight>
+<lovWidth>600</lovWidth>
+<lovTop>0</lovTop>
+<lovLeft>0</lovLeft>
+<lovTemplate></lovTemplate>
+<lovCode><input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_cab_cdgo()"  ><script type="text/javascript"> 
+ function lov_open_cab_cdgo() {
+   window.open('../lov/LvCabedalLov.do?resetfull_action=&returnBlock=0&return0=cab_cdgo&return1=cab_desc','','scrollbars=yes,height=510,width=600,top=0,left=0,');
+}
+</script>
+</lovCode>
+<lov_channelmode></lov_channelmode>
+<lov_directories></lov_directories>
+<lov_fullscreen></lov_fullscreen>
+<lov_location></lov_location>
+<lov_menubar></lov_menubar>
+<lov_resizable></lov_resizable>
+<lov_status></lov_status>
+<lov_titlebar></lov_titlebar>
+<lov_toolbar></lov_toolbar>
+<lov_modal>false</lov_modal>
+<lovSetProperty>
+</lovSetProperty>
+</lovSetProperty>
+</lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>true</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur>fillFields(0,new Array('cab_cdgo'),'Saldo_estoque_gradesActionForm.getCab_desc_Ajax',new Array('cab_desc'));</onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>3</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size>7</size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>cab_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cab_desc</property>
+<label></label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>disabled</styleClass>
+<styleId>cab_desc</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>-1</tabindex>
+<field_relation><class>com.egen.develop.generator.form.FieldRelation</class>
+<db_object>Cabedal</db_object>
+<elements>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>cab_cdgo</master_name>
+<slave_name>cab_cdgo</slave_name>
+<relation_type>P</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+<elements_item>
+<class>com.egen.develop.generator.ElementRelation</class>
+<master_name>cab_desc</master_name>
+<slave_name>cab_desc</slave_name>
+<relation_type>R</relation_type>
+<elementRelationSetProperty>
+</elementRelationSetProperty>
+</elementRelationSetProperty>
+</elements_item>
+</elements>
+<fieldRelationTemplate></fieldRelationTemplate>
+<fieldRelationCode>public String getCab_desc() {
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (cab_cdgo !=null && cab_cdgo.length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Cabedal db_object = new Cabedal();
+    String[][] select = {{"cab_desc",null}};
+    Object[][] where = {
+                          {"cab_cdgo","=",com.egen.util.text.FormatNumber.toInteger(cab_cdgo)}
+                       };
+    String[] group = null;
+    String[] having = null;
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, select, where, group, having, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Cabedal)results.elementAt(0);
+      cab_desc = (db_object.getCab_desc()!=null)?db_object.getCab_desc()+"":"";
+    } else {
+      cab_desc = "";
+    }
+  }
+} catch (Exception e) {
+      cab_desc = "";
+} finally {
+  if (j!=null) {
+     j.close();
+     j = null;
+  }
+}
+return cab_desc;
+}
+
+public String[][] getCab_desc_Ajax(Saldo_estoque_gradesActionForm PARAM) {
+  String[][] list = new String[1][2];
+com.egen.util.jdbc.JdbcUtil j = null;
+try {
+  if (PARAM.getCab_cdgo() !=null && PARAM.getCab_cdgo().length()>0) {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    Cabedal db_object = new Cabedal();
+    Object[][] where = {{"cab_cdgo","=",PARAM.getCab_cdgo()}};
+    String[] order = null;
+    java.util.Vector results = j.select(db_object, where, order);
+    if (results!=null && results.size()>0) {
+      db_object = (Cabedal)results.elementAt(0);
+      list[0] = new String[]{"cab_desc", (db_object.getCab_desc()!=null)?db_object.getCab_desc()+"":""};
+    } else {
+      list[0] = new String[]{"cab_desc", ""};
+    }
+  }
+} catch (Exception e) {
+      list[0] = new String[]{"cab_desc", ""};
+} finally {
+  if (j!=null) {
+     j.close();
+     j = null;
+  }
+}
+return list;
+}
+</fieldRelationCode>
+<fieldRelationEnumerationFile></fieldRelationEnumerationFile>
+<fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</fieldRelationSetProperty>
+</field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>true</readonly>
+<value></value>
+<size>40</size>
+<maxlength>35</maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>mix</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>mix</property>
+<label>Mix/Fora Mix</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>mix</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>T</value>
+<label>Todos</label>
+<i18n></i18n>
+<defaultValue>true</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>M</value>
+<label>Mix</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>F</value>
+<label>Fora Mix</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>comp</name>
+<help>Informe o comprometimento.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>comp</property>
+<label>Compr.</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex>4</tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>1</value>
+<label>Disponível</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>2</value>
+<label>Empenhado</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>null</value>
+<label>Todos</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Text</class>
+<name>tipo_estoque</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>tipo_estoque</property>
+<label>tipo_estoque</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>true</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>tipo_estoque</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem><tr class="itemTr">
+<td class="formLabel"><span 
+ class="spamFormLabel"></span>
+</td> 
+<td class="formField"><html:text property="tipo_estoque" disabled="true" styleId="tipo_estoque" styleClass="myhidden"/><input type="button" class="lovButton"  value="Tipo de Estoque"  onclick="javascript:lov_open_tipo_estoque()"  ><script type="text/javascript"> 
+ function lov_open_tipo_estoque() {
+   window.open('..//lov/LvTipoEstoqueGrdGrid.do?select_action=&opener=saldo_estoque_grade','','scrollbars=yes,height=510,width=730,top=0,left=0,');
+}
+</script>
+</td> 
+</tr>
+
+
+</codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<readonly>false</readonly>
+<value></value>
+<size></size>
+<maxlength></maxlength>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Free</class>
+<name>tipos_estoques</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>tipos_estoques</property>
+<label>tipos_estoques</label>
+<label_pos></label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align></label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification></justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>false</select_allowed>
+<update_allowed>false</update_allowed>
+<insert_allowed>false</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<template></template>
+<codeItem>
+<tr>
+      <td class="formLabel">
+        <span class="spamFormLabel" >
+        </span>
+      </td>
+<td class="formField">
+<%
+ int counterbl_report_Jw_clientes_enderecos =0;
+ int i_bl_report_Jw_clientes_enderecos =0;
+   java.util.Vector res_Jw_clientes_grupos_economicos = (java.util.Vector)session.getAttribute("tipos_estoque");
+  if (res_Jw_clientes_grupos_economicos!=null && res_Jw_clientes_grupos_economicos.size()>0) {
+  %>
+<table id="TRbl_report_Jw_clientes_enderecos" class="reportTable" style=width:340px; border=1;  >
+        <tr class="reportHeader" >
+          <td align="center">
+            Tipo Estoque selecionados
+          </td>
+        </tr>
+  <%
+     for (int x=0;x<res_Jw_clientes_grupos_economicos.size(); x++){
+        counterbl_report_Jw_clientes_enderecos++;
+        String style="";
+        if (!((i_bl_report_Jw_clientes_enderecos%2)!=0)) {
+             style="class=rowColor";
+        } else {
+               style="class=rowBlank";
+          }
+      %>
+      <tr <%= style %> id='TRbl_report_Jw_clientes_enderecos<%=counterbl_report_Jw_clientes_enderecos%>' >
+        <td class="reportColumn" style="text-align:left;">
+            <%= res_Jw_clientes_grupos_economicos.elementAt(x) %>
+        </td>
+      </tr>
+      <% 
+     }
+   
+%></table><%
+ }
+
+%>
+
+
+
+      </td>
+    </tr></codeItem><script_free></script_free>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Select</class>
+<name>mostrar_imagem</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>mostrar_imagem</property>
+<label>Mostrar Imagem</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange>refresh_action.click();</onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<size>1</size>
+<selectSize>1</selectSize>
+<multiple></multiple>
+<option>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>S</value>
+<label>Sim</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+<option_item>
+<class>com.egen.develop.generator.form.Option</class>
+<disabled>false</disabled>
+<style></style>
+<styleClass></styleClass>
+<value>N</value>
+<label>Não</label>
+<i18n></i18n>
+<defaultValue>false</defaultValue>
+<optionSetProperty>
+</optionSetProperty>
+</optionSetProperty>
+</option_item>
+</option>
+</fields_item>
+<fields_item>
+<class>com.egen.develop.generator.form.Checkbox</class>
+<name>cb_ignorar_grade_99</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs>tab0</tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<property>cb_ignorar_grade_99</property>
+<label>Ignorar Grade 99</label>
+<label_pos>Left</label_pos>
+<label_bg_color></label_bg_color>
+<label_fg_color></label_fg_color>
+<label_size></label_size>
+<label_align>start</label_align>
+<label_font></label_font>
+<labelPropertytext></labelPropertytext>
+<label_bold>false</label_bold>
+<label_italic>false</label_italic>
+<justification>start</justification>
+<not_null>false</not_null>
+<type>java.lang.String</type>
+<validate_message></validate_message>
+<validate_message_user></validate_message_user>
+<case_restriction></case_restriction>
+<break_line>true</break_line>
+<lovObject></lovObject>
+<lowest_value></lowest_value>
+<highest_value></highest_value>
+<validate_value>false</validate_value>
+<validate_type>false</validate_type>
+<validate_group>false</validate_group>
+<validate_email>false</validate_email>
+<validate_not_null>false</validate_not_null>
+<validate_minlength></validate_minlength>
+<validate_maxlength></validate_maxlength>
+<validate_regex></validate_regex>
+<src></src>
+<select_allowed>true</select_allowed>
+<update_allowed>true</update_allowed>
+<insert_allowed>true</insert_allowed>
+<isCustomized>false</isCustomized>
+<labelStyle></labelStyle>
+<labelTitle></labelTitle>
+<labelTitleKey></labelTitleKey>
+<i18nLabelTitleKey></i18nLabelTitleKey>
+<fieldGridSize></fieldGridSize>
+<queryOperator></queryOperator>
+<round_value></round_value>
+<field_prefix></field_prefix>
+<field_sufix></field_sufix>
+<write>false</write>
+<fieldSetProperty>
+</fieldSetProperty>
+</fieldSetProperty>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId>cb_ignorar_grade_99</styleId>
+<errorKey></errorKey>
+<errorStyle></errorStyle>
+<errorStyleClass></errorStyleClass>
+<errorStyleId></errorStyleId>
+<tabindex></tabindex>
+<field_relation></field_relation>
+<codeItem></codeItem>
+<onmouseout></onmouseout>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<value>1</value>
+<falseValue>0</falseValue>
+</fields_item>
+</fields>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>select1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>this.disabled=true;document.forms[0].select_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><html:button accesskey="p" tabindex="6" onclick="bloqueia();resetfull1_action.disabled=true;this.disabled=true;document.forms[0].select_action.click();" styleClass="baseButton" property="select1_action"><bean:message bundle="ApplicationResources" key="jsp.select"/></html:button>
+<script>
+function getKeySite(keyStroke) {
+      isNetscape=(document.layers);
+      eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+      which = String.fromCharCode(eventChooser).toLowerCase();
+      keyBuffer = which;
+      if(eventChooser == 13){ bloqueia();
+                              if(document.forms[0].select1_action.disabled==true){return false;}
+                              document.forms[0].select1_action.disabled=true;
+                              document.forms[0].resetfull1_action.disabled=true;
+                              document.forms[0].select_action.click();
+      }
+    }
+</script>
+<SCRIPT>
+    document.onkeypress = getKeySite;
+</SCRIPT></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>select1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>resetfull1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey>l</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>resetfull_action.click();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>resetfull1_action</property>
+<forward></forward>
+<forward_error></forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help>Executa a consulta, e mostra os registros encontrados.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>true</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+//-------------------------------------------------------------------------------------------
+// Autor             : Mateus Garbrecht (TechnoCorp)
+// Data de Criação   : 23/02/2006
+// Objetivo          : Executa um consulta na java view:
+//                     portalbr.dbobj.view.Jw_saldo_estoque_cores
+//-------------------------------------------------------------------------------------------
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();    
+    select_action(j, mapping, form, request, response);
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_saldo_estoque_cores", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+         j.close();
+         j = null;
+    }
+  }
+  return actionForward;
+}
+
+private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  Saldo_estoque_gradesActionForm f = (Saldo_estoque_gradesActionForm) form;
+  util.consultas.Query queryUtil = new util.consultas.Query();
+  String ignorarGrade99 = "N";
+  portalbr.dbobj.view.Jw_saldo_estoque_cores table = new portalbr.dbobj.view.Jw_saldo_estoque_cores();
+  String tiposEstoque = (String)session.getAttribute("codigos_estoque")==null?(queryUtil.retorna("select rowtocol('SELECT codigo FROM dom_tipo_estoque WHERE codigo IN (SELECT to_number(valor) FROM wbrio.parametros WHERE par_sist_codigo = ''BRNET'' AND nome = ''saldo_estoque_grade_tipo_estoque'')') from dual")):(String)session.getAttribute("codigos_estoque");
+  if(tiposEstoque.equals("")){
+     throw new Exception("Um tipo de estoque deve ser selecionado!");
+  }
+  if((f.getCb_ignorar_grade_99()+"").equals("1")){
+      ignorarGrade99 = "S";
+  } else {
+      ignorarGrade99 = "N";
+  }
+
+
+  StringBuilder query = new StringBuilder();
+
+  query.append(" SELECT /*+ all_rows */ ");
+  query.append("        DISTINCT ");
+  query.append("        i.cab_cdgo "); 
+  query.append("      , ca.cab_desc "); 
+  query.append("      , i.ref_cdgo ");
+  query.append("      , l.cor_cdgo "); 
+  query.append("      , c.cor_desc ");  
+  query.append("      , i.lin_cdgo "); 
+  query.append("   FROM dom_local_item_estoque_gre l "); 
+  query.append("      , dom_item_estoque           i ");
+  query.append("      , cor                        c ");
+  query.append("      , cabedal                    ca ");
+  query.append("  WHERE l.ies_codigo               = i.codigo "); 
+  query.append("    AND c.cor_cdgo                 = l.cor_cdgo ");
+  query.append("    AND ca.cab_cdgo                = i.cab_cdgo ");
+  query.append("    AND i.lin_cdgo                 = ").append(f.getLin_cdgo());
+  query.append("    AND i.ref_cdgo                 = nvl(").append((f.getRef_cdgo().equals("")?"null":f.getRef_cdgo()+"")).append(", i.ref_cdgo) ");
+  query.append("    AND i.cab_cdgo                 = nvl(").append((f.getCab_cdgo().equals("")?"null":f.getCab_cdgo()+"")).append(", i.cab_cdgo) ");
+  query.append("    AND l.tco_codigo               = nvl(").append(f.getComp()).append(", l.tco_codigo) ");
+  query.append("    AND l.tes_codigo               in ("+tiposEstoque+") ");
+  query.append("    AND nvl(i.tipo, null)          = 'A' ");
+  query.append("    AND (NVL('").append(f.getMix()).append("', 'T') = 'T' OR fct_mix_produto(i.lin_cdgo, i.ref_cdgo) = '").append(f.getMix()).append("') ");
+  query.append("    AND l.qtde_atual               > 0 ");
+  if(ignorarGrade99.equals("S")) {
+     query.append("    AND l.gde_cdgo <> 99 ");
+  }
+  Vector res_Jw_saldo_estoque_cores = j.select(table, query.toString(), null);
+
+  session.setAttribute("attr_mix",f.getMix());
+  session.setAttribute("attr_ignorar_grade_99", ignorarGrade99);
+  session.setAttribute("res_Jw_saldo_estoque_cores",res_Jw_saldo_estoque_cores);
+  if (!(res_Jw_saldo_estoque_cores != null && res_Jw_saldo_estoque_cores.size() > 0)) {
+      throw new Exception("Produto não possui Estoque!");   
+  }
+  session.setAttribute("mapping.getName()", form);
+}
+
+</action_code>
+<property>select_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>resetfull_action</name>
+<help>Limpa os campos da tela.</help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.reset</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers>
+<triggers_item>
+<class>com.egen.develop.generator.form.Trigger</class>
+<name>tg_resetfull_action</name>
+<type>pos</type>
+<connectionType></connectionType>
+<transact>true</transact>
+<businessProcess></businessProcess>
+<triggerTemplate></triggerTemplate>
+<triggerCode>private void tg_resetfull_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  try {
+    Saldo_estoque_gradesActionForm f = (Saldo_estoque_gradesActionForm) form;
+    com.egen.util.jdbc.JdbcUtil j = null;
+    java.util.Vector v = new java.util.Vector();
+    try {
+        j = new com.egen.util.jdbc.JdbcUtil();    
+        Jw_saldo_estoque_grade_tipo_estoque table = new Jw_saldo_estoque_grade_tipo_estoque();
+        String[][] select = null;
+        Object[][] where = null;
+        Vector res_Jw_saldo_estoque_grade_tipo_estoque = j.select(table, select, where, null, null, null);
+        session.setAttribute("res_Jw_saldo_estoque_grade_tipo_estoque",res_Jw_saldo_estoque_grade_tipo_estoque);
+        if (res_Jw_saldo_estoque_grade_tipo_estoque != null && res_Jw_saldo_estoque_grade_tipo_estoque.size() > 0) {
+           int contador = 0;
+           while (contador<res_Jw_saldo_estoque_grade_tipo_estoque.size()){
+              Jw_saldo_estoque_grade_tipo_estoque r = (Jw_saldo_estoque_grade_tipo_estoque) res_Jw_saldo_estoque_grade_tipo_estoque.elementAt(contador);
+              v.add(r.getCodigo()+"-"+r.getDescricao());
+              contador++;
+           }
+        }
+        session.setAttribute("tipos_estoque", v);
+     } finally {
+         if (j != null) {
+            j.close();
+            j = null;
+        }
+     }	
+    session.setAttribute("tipos_estoque", v);
+    util.consultas.Query query = new util.consultas.Query();
+    session.setAttribute("codigos_estoque", query.retorna("select rowtocol('SELECT codigo FROM dom_tipo_estoque WHERE codigo IN (SELECT to_number(valor) FROM wbrio.parametros WHERE par_sist_codigo = ''BRNET'' AND nome = ''saldo_estoque_grade_tipo_estoque'')') from dual"));
+    session.setAttribute(mapping.getName(), form);
+  } catch (Exception e) {
+    throw e;
+  } finally {
+  }
+}
+
+
+
+</triggerCode>
+<develHelp></develHelp>
+<triggerSetProperty>
+</triggerSetProperty>
+</triggerSetProperty>
+</triggers_item>
+</triggers>
+<template>reset_full_button_action</template>
+<action_code></action_code>
+<property>resetfull_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>refresh_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.refresh</value>
+<accesskey></accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>refresh_button_action</template>
+<action_code></action_code>
+<property>refresh_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_saldo_estoque_cores</name>
+<title>Cores</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>portalbr.dbobj.view.Jw_saldo_estoque_cores</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>portlet</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+//-------------------------------------------------------------------------------------------
+// Autor             : Mateus Garbrecht (TechnoCorp)
+// Data de Criação   : 23/02/2006
+// Objetivo          : Relatório que mostra os registros retornados pela consulta na java view:
+//                     portalbr.dbobj.view.Jw_saldo_estoque_cores.
+//                     Para cada registro retornado, é feito uma consulta na java view:
+//                     portalbr.dbobj.view.Jw_saldo_estoque_grades_dados, pra mostrar os 
+//                     detalhes.
+//-------------------------------------------------------------------------------------------
+%>
+<%
+session.setAttribute("saldo","N");
+int counterbl_report_Jw_saldo_estoque_cores=0;
+util.consultas.Parametros parametros = new util.consultas.Parametros();
+String diretorio_imagem = parametros.retornaParametro("diretorio_imagens_ranking");
+String ignorarGrade99 = "N";
+if(session.getAttribute("attr_ignorar_grade_99") != null) {
+   ignorarGrade99 = (String)session.getAttribute("attr_ignorar_grade_99");
+}
+  {
+    com.egen.util.jdbc.JdbcUtil j = null;
+    try{
+    j = new com.egen.util.jdbc.JdbcUtil();   
+    util.consultas.Query qr = new util.consultas.Query(); 
+    portalbr.com.Saldo_estoque_gradesActionForm Saldo_estoque_gradesActionForm = (portalbr.com.Saldo_estoque_gradesActionForm)session.getAttribute("Saldo_estoque_gradesActionForm");
+    portalbr.dbobj.view.Jw_saldo_estoque_grades_dados table = new portalbr.dbobj.view.Jw_saldo_estoque_grades_dados();
+    portalbr.dbobj.view.Jw_saldo_estoque_cores t_jw_saldo_estoque_cores = new portalbr.dbobj.view.Jw_saldo_estoque_cores();
+    java.util.Vector res_Jw_saldo_estoque_cores = (java.util.Vector)session.getAttribute("res_Jw_saldo_estoque_cores");
+    if (res_Jw_saldo_estoque_cores!=null && res_Jw_saldo_estoque_cores.size()>0) {
+      java.lang.Integer cab_cdgo  = null;
+      java.lang.String cab_desc   = null;
+      java.lang.Integer ref_cdgo  = null;
+      java.lang.Integer cor_cdgo  = null;
+      java.lang.String cor_desc   = null;  
+      java.lang.Integer lin_cdgo  = null;
+      java.lang.String referencia = null;
+      StringBuilder imagem = new StringBuilder();
+
+      int i_bl_report_Jw_saldo_estoque_cores = 0;
+
+      t_jw_saldo_estoque_cores = (portalbr.dbobj.view.Jw_saldo_estoque_cores)res_Jw_saldo_estoque_cores.elementAt(i_bl_report_Jw_saldo_estoque_cores);
+      cab_cdgo = t_jw_saldo_estoque_cores.getCab_cdgo();
+      ref_cdgo = t_jw_saldo_estoque_cores.getRef_cdgo();
+      cor_cdgo = t_jw_saldo_estoque_cores.getCor_cdgo();
+      cor_desc = t_jw_saldo_estoque_cores.getCor_desc()==null?"":t_jw_saldo_estoque_cores.getCor_desc();
+      cab_desc = t_jw_saldo_estoque_cores.getCab_desc()==null?"":t_jw_saldo_estoque_cores.getCab_desc();
+      lin_cdgo = t_jw_saldo_estoque_cores.getLin_cdgo();
+      referencia = ref_cdgo+"";
+ 
+      if ((ref_cdgo+"").length()==1){
+    	   referencia = "00" + ref_cdgo;
+      }
+      if ((ref_cdgo+"").length()==2){
+           referencia = "0" + ref_cdgo;
+      }
+
+      imagem = new StringBuilder(diretorio_imagem).append(qr.retorna("SELECT fct_retorna_fit_imagem("+lin_cdgo+","+referencia+","+cab_cdgo+","+cor_cdgo+") FROM dual"));
+
+      while (i_bl_report_Jw_saldo_estoque_cores<res_Jw_saldo_estoque_cores.size()){
+        counterbl_report_Jw_saldo_estoque_cores++;
+        String style="";
+        if (!((i_bl_report_Jw_saldo_estoque_cores%2)!=0)) {
+          style="class=rowColor";
+        } else {
+          style="class=rowBlank";
+        }
+        %>
+        <table id="TRbl_report_Jw_saldo_estoque_cores" class="reportTable" style=width:99%;  border=1  frame=box>
+        <tr class="reportHeader2" >
+        <%  
+               if(Saldo_estoque_gradesActionForm.getMostrar_imagem().equals("S")){
+        %>
+        <td class="reportColumn" style="text-align:center;" width=1>
+        </td>
+        <%
+              }
+        %>
+           <td class="columnTdHeader" style="text-align:left;" width="20%";>
+             Referência
+           </td>
+           <td class="columnTdHeader" style="text-align:left;" >
+             Cabedal
+           </td>
+           <td class="columnTdHeader" style="text-align:left;" >
+             Cor
+           </td>
+        </tr>
+<%
+//-----------------------------------------------------------------------------------
+  StringBuilder query = new StringBuilder();
+  query.append(" SELECT /*+ all_rows */ ");
+  query.append("        d.emp_empresa ");
+  query.append("      , d.fil_filial ");
+  query.append("      , d.unn_codigo ");
+  query.append("      , d.les_codigo ");
+  query.append("      , l.descricao dsp_les_codigo ");
+  query.append("      , d.tes_codigo ");
+  query.append("      , d.tco_codigo ");
+  query.append("      , d.gde_cdgo gde_codigo ");
+  query.append("      , g.gde_tota ");
+  query.append("      , (sum(d.qtde_atual) / g.gde_tota) caixas ");
+  query.append("      , sum(d.qtde_atual) quantidade ");
+  query.append("      , dte.descricao tes_descricao ");
+  query.append("      , dtc.descricao tco_descricao ");
+  query.append("   FROM dom_local_item_estoque_gre d ");
+  query.append("      , gre g ");
+  query.append("      , dom_local_estoque l ");
+  query.append("      , dom_tipo_estoque dte ");
+  query.append("      , dom_tipo_comprometimento dtc ");
+  query.append("  WHERE d.gde_cdgo   = g.gde_cdgo ");
+  query.append("    AND dtc.codigo   = d.tco_codigo ");
+  query.append("    AND dte.codigo   = d.tes_codigo ");
+  query.append("    AND d.gde_cdgo   is not null ");
+  query.append("    AND l.codigo     = d.les_codigo ");
+  query.append("    AND d.ies_codigo = fct_ies_codigo(").append(lin_cdgo).append(",").append(ref_cdgo).append(",").append(cab_cdgo).append(") ");
+  query.append("    AND d.cor_cdgo   = ").append(cor_cdgo);
+  query.append("    AND d.tco_codigo = nvl(").append(Saldo_estoque_gradesActionForm.getComp()).append(",d.tco_codigo) ");
+  query.append("    AND (NVL('"+(String)session.getAttribute("attr_mix")+"', 'T') = 'T' OR fct_mix_produto(").append(lin_cdgo).append(",").append(ref_cdgo).append(") = '"+(String)session.getAttribute("attr_mix")+"') ");
+  query.append("    AND d.gde_cdgo not in (90, 99) ");
+  if(ignorarGrade99.equals("S")) {
+     query.append(" AND d.gde_cdgo <> 99 ");
+  }
+  query.append("    AND d.tes_codigo in ("+(String)session.getAttribute("codigos_estoque")+") ");
+  query.append("  GROUP BY d.emp_empresa ");
+  query.append("         , d.fil_filial ");
+  query.append("         , d.unn_codigo ");
+  query.append("         , d.les_codigo ");
+  query.append("         , l.descricao ");
+  query.append("         , d.tes_codigo ");
+  query.append("         , d.tco_codigo ");
+  query.append("         , d.gde_cdgo ");
+  query.append("         , g.gde_tota ");
+  query.append("         , dte.descricao ");
+  query.append("         , dtc.descricao ");
+  query.append(" HAVING SUM(d.qtde_atual) > 0 ");
+  query.append(" UNION ");
+  query.append(" ( SELECT d.emp_empresa ");
+  query.append("        , d.fil_filial ");
+  query.append("        , d.unn_codigo ");
+  query.append("        , d.les_codigo ");
+  query.append("        , l.descricao ");
+  query.append("        , d.tes_codigo ");
+  query.append("        , d.tco_codigo ");
+  query.append("        , d.gde_cdgo ");
+  query.append("        , 0 gde_tota ");
+  query.append("        , sum(0) caixas ");
+  query.append("        , sum(d.qtde_atual) total_pares ");
+  query.append("        , dte.descricao tes_descricao ");
+  query.append("        , dtc.descricao tco_descricao ");
+  query.append("     FROM dom_local_item_estoque_gre d ");
+  query.append("        , dom_local_estoque l ");
+  query.append("        , dom_tipo_estoque dte ");
+  query.append("        , dom_tipo_comprometimento dtc ");
+  query.append("    WHERE d.gde_cdgo   is not null ");
+  query.append("      AND dtc.codigo   = d.tco_codigo ");
+  query.append("      AND dte.codigo   = d.tes_codigo ");
+  query.append("      AND l.codigo     = d.les_codigo ");
+  query.append("      AND d.ies_codigo = fct_ies_codigo(").append(lin_cdgo).append(",").append(ref_cdgo).append(",").append(cab_cdgo).append(") ");
+  query.append("      AND d.cor_cdgo   = ").append(cor_cdgo);
+  query.append("      AND d.tco_codigo = nvl(").append(Saldo_estoque_gradesActionForm.getComp()).append(",d.tco_codigo) ");
+  query.append("      AND d.gde_cdgo in (90, 99) ");
+  if(ignorarGrade99.equals("S")) {
+     query.append(" AND d.gde_cdgo <> 99 ");
+  }
+  query.append("      AND d.tes_codigo in ("+(String)session.getAttribute("codigos_estoque")+") ");
+  query.append("    GROUP BY d.emp_empresa ");
+  query.append("           , d.fil_filial ");
+  query.append("           , d.unn_codigo ");
+  query.append("           , d.les_codigo ");
+  query.append("           , l.descricao ");
+  query.append("           , d.tes_codigo ");
+  query.append("           , d.tco_codigo ");
+  query.append("           , d.gde_cdgo ");
+  query.append("           , 0 ");
+  query.append("           , dte.descricao ");
+  query.append("           , dtc.descricao ");
+  query.append("    HAVING sum(d.qtde_atual)> 0) ");
+  query.append("     ORDER BY emp_empresa ");
+  query.append("            , fil_filial ");
+  query.append("            , dsp_les_codigo ");
+  query.append("            , tes_codigo ");
+  query.append("            , tco_codigo ");
+  query.append("            , gde_codigo ");
+
+  Vector res_Jw_saldo_estoque_grades_dados = j.select(table, 
+                                                      query.toString(),
+                                                      null);
+
+//------------------------------------------------------------------------------------
+%>
+ <tr <%= style %> id='TRbl_report_Jw_saldo_estoque_cores<%=counterbl_report_Jw_saldo_estoque_cores%>' >
+          <% 
+               if(Saldo_estoque_gradesActionForm.getMostrar_imagem().equals("S")){
+          %>
+          <td class="reportColumn" style="text-align:center;" width=1>
+               <img src="<%= imagem.toString() %>" width=67 height=37>
+          </td>
+          <%
+               }
+          %>
+          <td class="reportColumn" style="text-align:left;">
+            <%= ((ref_cdgo!=null)?ref_cdgo.toString():"") %>
+          </td>
+          <td class="reportColumn" style="text-align:left;" >
+            <%= ((cab_cdgo!=null)?cab_cdgo.toString():"") %> - <%= cab_desc %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= ((cor_cdgo!=null)?cor_cdgo.toString():"") %>-<%= cor_desc %>
+          </td>
+        </tr>
+ </table>
+
+<table id="TRbl_report_Jw_saldo_estoque_grades_dados" class="reportTable" style=width:99%;  border=1  frame=box>
+  <%
+  int counterbl_report_Jw_saldo_estoque_grades_dados=0;
+  {
+
+    portalbr.dbobj.view.Jw_saldo_estoque_grades_dados t_jw_saldo_estoque_grades_dados = new portalbr.dbobj.view.Jw_saldo_estoque_grades_dados();
+
+    if (res_Jw_saldo_estoque_grades_dados!=null && res_Jw_saldo_estoque_grades_dados.size()>0) {
+      session.setAttribute("saldo","S");
+      java.lang.String emp_empresa    =  null;
+      java.lang.String fil_filial     =  null;
+      java.lang.String unn_codigo     =  null;
+      java.lang.String dsp_les_codigo =  null;
+      java.lang.String tco_descricao  =  null;
+      java.lang.String tes_descricao  =  null;
+      double les_codigo =  0;
+      double tes_codigo =  0;
+      double tco_codigo =  0;
+      double gde_codigo =  0;
+      double gde_tota   =  0;
+      double caixas     =  0;
+      double quantidade =  0;
+      int i_bl_report_Jw_saldo_estoque_grades_dados = 0;
+      t_jw_saldo_estoque_grades_dados = (portalbr.dbobj.view.Jw_saldo_estoque_grades_dados)res_Jw_saldo_estoque_grades_dados.elementAt(i_bl_report_Jw_saldo_estoque_grades_dados);
+      emp_empresa    = t_jw_saldo_estoque_grades_dados.getEmp_empresa()==null?"":t_jw_saldo_estoque_grades_dados.getEmp_empresa();
+      fil_filial     = t_jw_saldo_estoque_grades_dados.getFil_filial()==null?"":t_jw_saldo_estoque_grades_dados.getFil_filial();
+      tes_descricao  = t_jw_saldo_estoque_grades_dados.getTes_descricao()==null?"":t_jw_saldo_estoque_grades_dados.getTes_descricao();
+      tco_descricao  = t_jw_saldo_estoque_grades_dados.getTco_descricao()==null?"":t_jw_saldo_estoque_grades_dados.getTco_descricao();
+      unn_codigo     = t_jw_saldo_estoque_grades_dados.getUnn_codigo()==null?"":t_jw_saldo_estoque_grades_dados.getUnn_codigo();
+      les_codigo     = t_jw_saldo_estoque_grades_dados.getLes_codigo();
+      dsp_les_codigo = t_jw_saldo_estoque_grades_dados.getDsp_les_codigo()==null?"":t_jw_saldo_estoque_grades_dados.getDsp_les_codigo();
+      tes_codigo     = t_jw_saldo_estoque_grades_dados.getTes_codigo();
+      tco_codigo     = t_jw_saldo_estoque_grades_dados.getTco_codigo();
+      gde_codigo     = t_jw_saldo_estoque_grades_dados.getGde_codigo();
+      gde_tota       = t_jw_saldo_estoque_grades_dados.getGde_tota();
+      caixas         = t_jw_saldo_estoque_grades_dados.getCaixas();
+      quantidade     = t_jw_saldo_estoque_grades_dados.getQuantidade();
+
+      %>
+      <tr class="reportHeader" >
+        <td class="columnTdHeader" style="text-align:left;" width="5%";>
+          Empresa
+        </td>
+        <td class="columnTdHeader" style="text-align:left;" width="5%";>
+          Filial
+        </td>
+        <td class="columnTdHeader" style="text-align:left;" width="5%";>
+          Unn
+        </td>
+        <td class="columnTdHeader" style="text-align:left;">
+          Local
+        </td>
+        <td class="columnTdHeader" style="text-align:left;" >
+          Tes
+        </td>
+        <td class="columnTdHeader" style="text-align:left;" >
+          Tco
+        </td>
+        <td class="columnTdHeader" style="text-align:right;" width="5%";>
+          Gde
+        </td>
+        <td class="columnTdHeader" style="text-align:right;" width="5%";>
+          Caixas
+        </td>
+        <td class="columnTdHeader" style="text-align:right;" width="10%";>
+          Quantidade
+        </td>
+        <td class="columnTdHeader" style="text-align:center;" width="5%";>
+          Ver Grade
+        </td>
+      </tr>
+      <%
+      while (i_bl_report_Jw_saldo_estoque_grades_dados<res_Jw_saldo_estoque_grades_dados.size()){
+        counterbl_report_Jw_saldo_estoque_grades_dados++;
+
+        if (!((i_bl_report_Jw_saldo_estoque_grades_dados%2)!=0)) {
+          style="class=rowColor";
+        } else {
+          style="class=rowBlank";
+        }
+        %>
+        <tr <%= style %> id='TRbl_report_Jw_saldo_estoque_grades_dados<%=counterbl_report_Jw_saldo_estoque_grades_dados%>' >
+          <td class="reportColumn" style="text-align:left;" width="5%";>
+            <%= emp_empresa %>
+          </td>
+          <td class="reportColumn" style="text-align:left;" width="5%";>
+            <%= fil_filial %>
+          </td>
+          <td class="reportColumn" style="text-align:left;" width="5%";>
+            <%= unn_codigo %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= com.egen.util.text.FormatNumber.format(les_codigo, "0") %>-<%= dsp_les_codigo %>
+          </td>
+          <td class="reportColumn" style="text-align:left;" >
+            <%= com.egen.util.text.FormatNumber.format(tes_codigo, "0") %> - 
+            <%= tes_descricao %>
+          </td>
+          <td class="reportColumn" style="text-align:left;">
+            <%= com.egen.util.text.FormatNumber.format(tco_codigo, "0") %> - 
+            <%= tco_descricao %>
+          </td>
+          <td class="reportColumn" style="text-align:right;" width="5%";>
+            <%= com.egen.util.text.FormatNumber.format(gde_codigo, "0") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;" width="5%";>
+            <%= com.egen.util.text.FormatNumber.format(caixas, "0") %>
+          </td>
+          <td class="reportColumn" style="text-align:right;" width="10%";>
+            <%= com.egen.util.text.FormatNumber.format(quantidade, "##,##0.00") %>
+          </td>
+          <td class="reportColumn" style="text-align:center;" width="5%"; title="Ver Grade: <%= com.egen.util.text.FormatNumber.format(gde_codigo, "0") %>">
+            <img src="../img/viewmag.png" name="imagem" onmouseover="this.src='../img/viewmag_s.png'" onmouseout="this.src='../img/viewmag.png'" onclick="wopen('../com/Saldo_estoque_grades_gForm.do?select_action=&emp_empresa=<%= emp_empresa %>&fil_filial=<%= fil_filial %>&unn_codigo=<%= unn_codigo %>&les_codigo=<%= com.egen.util.text.FormatNumber.format(les_codigo, "0") %>&tes_codigo=<%= com.egen.util.text.FormatNumber.format(tes_codigo, "0") %>&tco_codigo=<%= com.egen.util.text.FormatNumber.format(tco_codigo, "0") %>&gde_codigo=<%= com.egen.util.text.FormatNumber.format(gde_codigo, "0") %>&lin_cdgo=<%= lin_cdgo %>&ref_cdgo=<%= ref_cdgo %>&cab_cdgo=<%= cab_cdgo %>&cor_cdgo=<%= cor_cdgo %>','_blank',640,60)" STYLE="cursor:hand">
+          </td>
+        </tr>
+
+        <%
+        if (++i_bl_report_Jw_saldo_estoque_grades_dados >= res_Jw_saldo_estoque_grades_dados.size()) {
+          break;
+        }
+        t_jw_saldo_estoque_grades_dados = (portalbr.dbobj.view.Jw_saldo_estoque_grades_dados)res_Jw_saldo_estoque_grades_dados.elementAt(i_bl_report_Jw_saldo_estoque_grades_dados);
+        emp_empresa    = t_jw_saldo_estoque_grades_dados.getEmp_empresa()==null?"":t_jw_saldo_estoque_grades_dados.getEmp_empresa();
+        fil_filial     = t_jw_saldo_estoque_grades_dados.getFil_filial()==null?"":t_jw_saldo_estoque_grades_dados.getFil_filial();
+        tes_descricao  = t_jw_saldo_estoque_grades_dados.getTes_descricao()==null?"":t_jw_saldo_estoque_grades_dados.getTes_descricao();
+        tco_descricao  = t_jw_saldo_estoque_grades_dados.getTco_descricao()==null?"":t_jw_saldo_estoque_grades_dados.getTco_descricao();
+        unn_codigo     = t_jw_saldo_estoque_grades_dados.getUnn_codigo()==null?"":t_jw_saldo_estoque_grades_dados.getUnn_codigo();
+        les_codigo     = t_jw_saldo_estoque_grades_dados.getLes_codigo();
+        dsp_les_codigo = t_jw_saldo_estoque_grades_dados.getDsp_les_codigo()==null?"":t_jw_saldo_estoque_grades_dados.getDsp_les_codigo();
+        tes_codigo     = t_jw_saldo_estoque_grades_dados.getTes_codigo();
+        tco_codigo     = t_jw_saldo_estoque_grades_dados.getTco_codigo();
+        gde_codigo     = t_jw_saldo_estoque_grades_dados.getGde_codigo();
+        gde_tota       = t_jw_saldo_estoque_grades_dados.getGde_tota();
+        caixas         = t_jw_saldo_estoque_grades_dados.getCaixas();
+        quantidade     = t_jw_saldo_estoque_grades_dados.getQuantidade();
+      }
+    }
+  }
+  %>
+  </table>
+  <br><br><br><br>
+
+        <%
+        if (++i_bl_report_Jw_saldo_estoque_cores >= res_Jw_saldo_estoque_cores.size()) {
+               break;
+        }
+        t_jw_saldo_estoque_cores = (portalbr.dbobj.view.Jw_saldo_estoque_cores)res_Jw_saldo_estoque_cores.elementAt(i_bl_report_Jw_saldo_estoque_cores);
+        cab_cdgo = t_jw_saldo_estoque_cores.getCab_cdgo();
+        ref_cdgo = t_jw_saldo_estoque_cores.getRef_cdgo();
+        cor_cdgo = t_jw_saldo_estoque_cores.getCor_cdgo();
+        cor_desc = t_jw_saldo_estoque_cores.getCor_desc()==null?"":t_jw_saldo_estoque_cores.getCor_desc();
+        cab_desc = t_jw_saldo_estoque_cores.getCab_desc()==null?"":t_jw_saldo_estoque_cores.getCab_desc();
+        lin_cdgo = t_jw_saldo_estoque_cores.getLin_cdgo();
+        referencia = ref_cdgo+"";
+        if ((ref_cdgo+"").length()==1){
+     		referencia = "00" + ref_cdgo;
+        }
+        if ((ref_cdgo+"").length()==2){
+    		referencia = "0" + ref_cdgo;
+        }
+        imagem = new StringBuilder(diretorio_imagem).append(qr.retorna("SELECT fct_retorna_fit_imagem("+lin_cdgo+","+referencia+","+cab_cdgo+","+cor_cdgo+") FROM dual"));
+      }
+    }
+
+ } catch (Exception e){
+    } finally {
+           if(j!=null){
+                j.close();
+                j=null;
+           }
+     }
+  }
+  %></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cab_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>cab_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cabedal</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ref_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>ref_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Referência</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>cor_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cor</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cor_desc</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>cor_desc</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Cor Desc.</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<link>
+<class>com.egen.develop.generator.report.ReportLink</class>
+<href>../com/Saldo_estoque_grades_dForm.do?select_action=</href>
+<target>_self</target>
+<parameters>
+<parameters_item>
+<class>java.lang.String</class>
+<value>cab_cdgo</value>
+</parameters_item>
+<parameters_item>
+<class>java.lang.String</class>
+<value>ref_cdgo</value>
+</parameters_item>
+<parameters_item>
+<class>java.lang.String</class>
+<value>cor_cdgo</value>
+</parameters_item>
+<parameters_item>
+<class>java.lang.String</class>
+<value>lin_cdgo</value>
+</parameters_item>
+<parameters_item>
+<class>java.lang.String</class>
+<value>compr</value>
+</parameters_item>
+</parameters>
+<cursor>hand</cursor>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<charset></charset>
+<rev></rev>
+<rel></rel>
+<link_type>HTML</link_type>
+<link_channelmode></link_channelmode>
+<link_directories></link_directories>
+<link_fullscreen></link_fullscreen>
+<link_height></link_height>
+<link_left></link_left>
+<link_location></link_location>
+<link_menubar></link_menubar>
+<link_resizable></link_resizable>
+<link_scrollbars></link_scrollbars>
+<link_status></link_status>
+<link_titlebar></link_titlebar>
+<link_toolbar></link_toolbar>
+<link_top></link_top>
+<link_width></link_width>
+<link_replace></link_replace>
+<link_modal>false</link_modal>
+<reportLinkSetProperty>
+</reportLinkSetProperty>
+</reportLinkSetProperty>
+</link>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lin_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>lin_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>lin_cdgo</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>compr</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_cores</block_name>
+<role_item></role_item>
+<database_column>compr</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label></label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>false</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_saldo_estoque_grade_total_linha</name>
+<title>total</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>portalbr.dbobj.view.Jw_saldo_estoque_grade_total_linha</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style>egen</navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+ if((session.getAttribute("saldo")+"").equals("S")){
+%>
+<table border=0 width="100%">
+<tr valign="top">
+<td width="50%">
+<%
+    double total1_geral = 0;
+    double total_geral = 0;
+%>
+<table id="TRbl_report_Jw_saldo_estoque_grade_total_linha" class="reportTable" style=width:99%; border=1 >
+  <%
+  int counterbl_report_Jw_saldo_estoque_grade_total_linha=0;
+  {
+    portalbr.dbobj.view.Jw_saldo_estoque_grade_total_linha t_jw_saldo_estoque_grade_total_linha = new portalbr.dbobj.view.Jw_saldo_estoque_grade_total_linha();
+    portalbr.com.Saldo_estoque_gradesActionForm Saldo_estoque_gradesActionForm = (portalbr.com.Saldo_estoque_gradesActionForm)session.getAttribute("Saldo_estoque_gradesActionForm");
+    java.util.Vector res_Jw_saldo_estoque_grade_total_linha = null;
+    com.egen.util.jdbc.JdbcUtil j = null;
+    ignorarGrade99 = "N";
+    if(session.getAttribute("attr_ignorar_grade_99") != null) {
+       ignorarGrade99 = (String)session.getAttribute("attr_ignorar_grade_99");
+    }
+
+    try {
+      j = new com.egen.util.jdbc.JdbcUtil();
+      String[][] select =  null;
+      Object[][] where = null;
+      String[] groupby =  null;
+      String[] having =  null;
+      String[] order = {};
+//    res_Jw_saldo_estoque_grade_total_linha = j.select(t_jw_saldo_estoque_grade_total_linha,select,where,groupby,having,order);
+
+
+    String cab_cdgo = "null";
+    String ref_cdgo = "null";
+    if((!((Saldo_estoque_gradesActionForm.getRef_cdgo()+"").equals("")))){
+       ref_cdgo = Saldo_estoque_gradesActionForm.getRef_cdgo()+"";
+    }
+    if((!((Saldo_estoque_gradesActionForm.getCab_cdgo()+"").equals("")))){
+       cab_cdgo = Saldo_estoque_gradesActionForm.getCab_cdgo()+"";
+    }
+    
+
+    StringBuilder query1 = new StringBuilder();
+    query1.append(" SELECT /*+ all_rows */ ");
+    query1.append("        DISTINCT "); 
+    query1.append("        i.lin_cdgo "); 
+    query1.append("      , l.gde_cdgo "); 
+    query1.append("      , sum(l.qtde_atual) total "); 
+    query1.append("   FROM cor                         c ");   
+    query1.append("      , cabedal                     ca "); 
+    query1.append("      , dom_local_item_estoque_gre  l "); 
+    query1.append("      , dom_item_estoque            i "); 
+    query1.append("  WHERE l.cor_cdgo            = c.cor_cdgo  ");  
+    query1.append("    AND ca.cab_cdgo           = i.cab_cdgo  ");
+    query1.append("    AND l.ies_codigo          = i.codigo ");  
+    query1.append("    AND l.tco_codigo          = nvl(").append(Saldo_estoque_gradesActionForm.getComp()).append(", l.tco_codigo)  ");
+    query1.append("    AND nvl(i.tipo, null)     = 'A' ");  
+    query1.append("    AND l.tes_codigo         in ("+(String)session.getAttribute("codigos_estoque")+") ");  
+    query1.append("    AND l.qtde_atual          > 0 "); 
+    query1.append("    AND i.lin_cdgo            = ").append(Saldo_estoque_gradesActionForm.getLin_cdgo());
+    query1.append("    AND i.ref_cdgo            = nvl(").append(ref_cdgo).append(",i.ref_cdgo) ");
+    query1.append("    AND i.cab_cdgo            = nvl(").append(cab_cdgo).append(",i.cab_cdgo) ");
+    query1.append("    AND (NVL('"+(String)session.getAttribute("attr_mix")+"', 'T') = 'T' OR fct_mix_produto(i.lin_cdgo,i.ref_cdgo) = '"+(String)session.getAttribute("attr_mix")+"') ");
+    if(ignorarGrade99.equals("S")) {
+       query1.append(" AND l.gde_cdgo <> 99 ");
+    }	
+    query1.append("  GROUP BY i.lin_cdgo ");
+    query1.append("         , l.gde_cdgo ");
+
+    res_Jw_saldo_estoque_grade_total_linha = j.select(t_jw_saldo_estoque_grade_total_linha,
+                                                      query1.toString(),      
+                                                      null);
+
+    } catch (Exception e){
+      session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+      %>
+      <jsp:forward page="/system/ErrorPage.jsp"/>
+      <%
+    } finally {
+      if(j!=null){
+           j.close();
+           j = null;
+      }
+  }
+
+  if (res_Jw_saldo_estoque_grade_total_linha!=null && res_Jw_saldo_estoque_grade_total_linha.size()>0) {
+    int lin_cdgo2 =  0;
+    int gde_cdgo  =  0;
+    double total1 =  0;
+    int i_bl_report_Jw_saldo_estoque_grade_total_linha = 0;
+    t_jw_saldo_estoque_grade_total_linha = (portalbr.dbobj.view.Jw_saldo_estoque_grade_total_linha)res_Jw_saldo_estoque_grade_total_linha.elementAt(i_bl_report_Jw_saldo_estoque_grade_total_linha);
+    lin_cdgo2 = t_jw_saldo_estoque_grade_total_linha.getLin_cdgo();
+    gde_cdgo = t_jw_saldo_estoque_grade_total_linha.getGde_cdgo();
+    total1 = t_jw_saldo_estoque_grade_total_linha.getTotal();
+    %>
+    <tr class="reportHeader3" >
+      <td class="columnTdHeader" style="text-align:left;" colspan = 4>
+        <big>Total da linha por Grade
+      </td>
+    </tr>
+    <tr class="reportHeader" >
+      <td class="columnTdHeader" style="text-align:right;" width="40%">
+        Grade
+      </td>
+      <td class="columnTdHeader" style="text-align:right;">
+        Total
+      </td>
+    </tr>
+    <%
+    while (i_bl_report_Jw_saldo_estoque_grade_total_linha<res_Jw_saldo_estoque_grade_total_linha.size()){
+      counterbl_report_Jw_saldo_estoque_grade_total_linha++;
+      String style="";
+      if (!((i_bl_report_Jw_saldo_estoque_grade_total_linha%2)!=0)) {
+        style="class=rowColor";
+      } else {
+        style="class=rowBlank";
+      }
+      %>
+      <tr <%= style %> id='TRbl_report_Jw_saldo_estoque_grade_total_linha<%=counterbl_report_Jw_saldo_estoque_grade_total_linha%>' >
+        <td class="reportColumn" style="text-align:right;" width="40%">
+          <%= gde_cdgo %>
+        </td>
+        <td class="reportColumn" style="text-align:right;">
+          <%= com.egen.util.text.FormatNumber.format(total1, "##,##0.00") %>
+          <% total1_geral += total1; %>
+        </td>
+      </tr>
+      <%
+      if (++i_bl_report_Jw_saldo_estoque_grade_total_linha >= res_Jw_saldo_estoque_grade_total_linha.size()) {
+        break;
+      }
+      t_jw_saldo_estoque_grade_total_linha = (portalbr.dbobj.view.Jw_saldo_estoque_grade_total_linha)res_Jw_saldo_estoque_grade_total_linha.elementAt(i_bl_report_Jw_saldo_estoque_grade_total_linha);
+      lin_cdgo2 = t_jw_saldo_estoque_grade_total_linha.getLin_cdgo();
+      gde_cdgo = t_jw_saldo_estoque_grade_total_linha.getGde_cdgo();
+      total1 = t_jw_saldo_estoque_grade_total_linha.getTotal();
+    }
+  }
+}
+%>
+</table>
+ 
+</td>
+<td width="50%">
+
+<table id="TRbl_report_Jw_saldo_estoque_grade_total_tamanho" class="reportTable" style=width:100%; border=1; >
+  <%
+  int counterbl_report_Jw_saldo_estoque_grade_total_tamanho=0;
+  {
+    portalbr.dbobj.view.Jw_saldo_estoque_grade_total_tamanho t_jw_saldo_estoque_grade_total_tamanho = new portalbr.dbobj.view.Jw_saldo_estoque_grade_total_tamanho();
+    portalbr.com.Saldo_estoque_gradesActionForm Saldo_estoque_gradesActionForm = (portalbr.com.Saldo_estoque_gradesActionForm)session.getAttribute("Saldo_estoque_gradesActionForm");
+    java.util.Vector res_Jw_saldo_estoque_grade_total_tamanho = null;
+    com.egen.util.jdbc.JdbcUtil j = null;
+    ignorarGrade99 = "N";
+    if(session.getAttribute("attr_ignorar_grade_99") != null) {
+       ignorarGrade99 = (String)session.getAttribute("attr_ignorar_grade_99");
+    }
+    try {
+      j = new com.egen.util.jdbc.JdbcUtil();
+      String cab_cdgo = "null";
+      String ref_cdgo = "null";
+      if((!((Saldo_estoque_gradesActionForm.getRef_cdgo()+"").equals("")))){
+         ref_cdgo = Saldo_estoque_gradesActionForm.getRef_cdgo()+"";
+      }
+      if((!((Saldo_estoque_gradesActionForm.getCab_cdgo()+"").equals("")))){
+         cab_cdgo = Saldo_estoque_gradesActionForm.getCab_cdgo()+"";
+      }
+
+      StringBuilder query2 = new StringBuilder();
+      query2.append(" SELECT /*+ all_rows */ ");
+      query2.append("        DISTINCT ");
+      query2.append("        l.tai_codigo ");
+      query2.append("      , i.lin_cdgo ");
+      query2.append("      , sum(l.qtde_atual) total ");
+      query2.append("   FROM dom_local_item_estoque_gre l ");
+      query2.append("      , dom_item_estoque           i ");
+      query2.append("      , cor                        c "); 
+      query2.append("      , cabedal                    ca ");
+      query2.append("  WHERE l.cor_cdgo            = c.cor_cdgo ");   
+      query2.append("    AND ca.cab_cdgo           = i.cab_cdgo ");   
+      query2.append("    AND l.ies_codigo          = i.codigo ");  
+      query2.append("    AND nvl(i.tipo, null)     = 'A'");  
+      query2.append("    AND l.tes_codigo         in ("+(String)session.getAttribute("codigos_estoque")+")"); 
+      query2.append("    AND l.tco_codigo          = nvl(").append(Saldo_estoque_gradesActionForm.getComp()).append(", l.tco_codigo)  "); 
+      query2.append("    AND l.qtde_atual          > 0");  
+      if(ignorarGrade99.equals("S")) {
+         query2.append(" AND l.gde_cdgo <> 99 ");
+      }	
+      query2.append("    AND i.lin_cdgo            = ").append(Saldo_estoque_gradesActionForm.getLin_cdgo());
+      query2.append("    AND i.ref_cdgo            = nvl(").append(ref_cdgo).append(", i.ref_cdgo)  ");
+      query2.append("    AND i.cab_cdgo            = nvl(").append(cab_cdgo).append(", i.cab_cdgo)  ");
+      query2.append("    AND (NVL('"+(String)session.getAttribute("attr_mix")+"', 'T') = 'T' OR fct_mix_produto(i.lin_cdgo,i.ref_cdgo) = '"+(String)session.getAttribute("attr_mix")+"') ");
+      query2.append("  GROUP BY i.lin_cdgo ");
+      query2.append("         , l.tai_codigo ");
+
+
+
+      res_Jw_saldo_estoque_grade_total_tamanho = j.select(t_jw_saldo_estoque_grade_total_tamanho,
+                                                          query2.toString(),
+                                                          null);
+
+    } catch (Exception e){
+      session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+      %>
+      <jsp:forward page="/system/ErrorPage.jsp"/>
+      <%
+    } finally {
+      if(j!=null){
+           j.close();
+           j = null;
+      }
+  }
+
+
+%>
+<%
+   if(res_Jw_saldo_estoque_grade_total_tamanho.size()>0){
+%>
+   <table width="100%">
+      <tr class="reportHeader3" >
+         <td class="columnTdHeader" style="text-align:left;">
+            <big>Total da linha por Tamanho</big>
+         </td>
+      </tr>
+   </table>
+<% 
+}
+%>
+<table border=1 width="100%">
+<tr class=rowBlank>
+ <%
+  for(int x=0;x<res_Jw_saldo_estoque_grade_total_tamanho.size();x++){
+      t_jw_saldo_estoque_grade_total_tamanho = (portalbr.dbobj.view.Jw_saldo_estoque_grade_total_tamanho)res_Jw_saldo_estoque_grade_total_tamanho.elementAt(x);
+        %>
+          <td class="reportColumn" style="text-align:center;" width="12%">
+            <%=  t_jw_saldo_estoque_grade_total_tamanho.getTai_codigo() %>
+          </td>    
+        <%
+      }
+%>
+</tr>
+<tr class=rowColor>
+ <%
+  for(int x=0;x<res_Jw_saldo_estoque_grade_total_tamanho.size();x++){
+      t_jw_saldo_estoque_grade_total_tamanho = (portalbr.dbobj.view.Jw_saldo_estoque_grade_total_tamanho)res_Jw_saldo_estoque_grade_total_tamanho.elementAt(x);
+        %>
+          <td class="reportColumn" style="text-align:center;" width="12%">
+            <%=   com.egen.util.text.FormatNumber.format(t_jw_saldo_estoque_grade_total_tamanho.getTotal(), "##,##0.00")  %>
+            <% total_geral += t_jw_saldo_estoque_grade_total_tamanho.getTotal(); %>
+          
+          </td>    
+        <%
+      }
+%>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<% if(total_geral>0) { %>
+<table width="100%" border=1;>
+   <tr class="reportHeader2" >
+      <td width="50%">
+         <table width="99%">
+            <tr>
+               <td>
+                  <big><b>Total:</b></big>
+               </td>
+               <td align="right">
+                   <big><b><%= com.egen.util.text.FormatNumber.format(total1_geral, "##,##0.00") %></b></big>
+               </td>
+            </tr>
+         </table>
+      </td>
+      <td>
+         <table width="100%">
+            <tr>
+               <td>
+                  <big><b>Total:</b></big>
+               </td>
+               <td align="right">
+                  <big><b><%= com.egen.util.text.FormatNumber.format(total_geral, "##,##0.00") %></b></big>
+               </td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+</table>
+<% } %>
+
+<% } %>
+
+<table>
+   <tr>
+      <td>
+         <br>
+      </td>
+   </tr>
+</table>
+
+<% } %>
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>lin_cdgo2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_grade_total_linha</block_name>
+<role_item></role_item>
+<database_column>lin_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>lin_cdgo</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>gde_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_grade_total_linha</block_name>
+<role_item></role_item>
+<database_column>gde_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>gde_cdgo</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>total1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_saldo_estoque_grade_total_linha</block_name>
+<role_item></role_item>
+<database_column>total</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>total</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula></formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>Saldo_estoque_gradesActionForm</name>
+<type>portalbr.com.Saldo_estoque_gradesActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/Saldo_estoque_gradesForm</path>
+<type>portalbr.com.Saldo_estoque_gradesAction</type>
+<name>Saldo_estoque_gradesActionForm</name>
+<attribute></attribute>
+<input>/com/Saldo_estoque_gradesForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope>session</scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/Saldo_estoque_gradesForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Saldo Em Estoque Por Grade</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(86)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>no_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>true</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

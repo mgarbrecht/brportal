@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<generation_day>06/01/2003</generation_day>
+<file_name>C:\fontes_egen\blank\src\com\egen\blank\menu\MainMenu.xml</file_name>
+<title>Main Menu</title>
+<menu>
+<class>com.egen.util.system.Menu</class>
+<roleinclude>false</roleinclude>
+<enabled>null</enabled>
+<sub_menus>
+<sub_menus_item>
+<class>com.egen.util.system.Menu</class>
+<label>e-Gen Administration</label>
+<target>_self</target>
+<roleinclude>false</roleinclude>
+<item_type>PLAIN</item_type>
+<enabled>TRUE</enabled>
+<sub_menus>
+<sub_menus_item>
+<class>com.egen.util.system.Menu</class>
+<label>Tomcat Manager</label>
+<link>/manager/html/</link>
+<target>_blank</target>
+<roleinclude>false</roleinclude>
+<item_type>PLAIN</item_type>
+<enabled>TRUE</enabled>
+</sub_menus_item>
+</sub_menus>
+</sub_menus_item>
+</sub_menus>
+</menu>
+</generator>

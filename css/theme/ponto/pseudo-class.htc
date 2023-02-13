@@ -1,0 +1,19 @@
+<public:component lightweight="true">
+<PUBLIC:ATTACH EVENT="onmouseover" ONEVENT="Over()" />
+<PUBLIC:ATTACH EVENT="onmouseout" ONEVENT="Out()" />
+
+<PUBLIC:ATTACH EVENT="onfocus" ONEVENT="Focus()" />
+<PUBLIC:ATTACH EVENT="onblur" ONEVENT="Blur()" />
+
+<PUBLIC:ATTACH EVENT="onactive" ONEVENT="Focus()" />
+<PUBLIC:ATTACH EVENT="ondeactive" ONEVENT="DeActive()" />
+<script type="text/javascript">
+	var h=" hover", f=" focus", a=" active";
+	function Over(){element.className += h;}
+	function Out(){element.className = element.className != h ? element.className.split(h).join("") : "";}	
+	function Focus(){element.className += f;}
+	function Blur(){element.className = element.className != f ? element.className.split(f).join("") : "";}
+	function Active(){element.className += a;}
+	function DeActive(){element.className = element.className != a ? element.className.split(a).join("") : "";}
+</script>
+</public:component>

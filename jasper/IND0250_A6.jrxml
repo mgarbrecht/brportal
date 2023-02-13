@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A6" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d0f9cf52-d742-4d8e-8cc3-58286d2efad3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<parameter name="P_LOGO_S3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["http://s3.sa-east-1.amazonaws.com/medias.calcadosbeirario.com.br/marcas/logos_grandes/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[WITH qry_geral AS
+ (SELECT q5.*
+    FROM (SELECT 'POR_MES' periodo
+                ,q4.*
+                ,ROUND(q4.total_amostra_mes_atual / DECODE(q4.total_amostra_mes_anterior, 0, 1, q4.total_amostra_mes_anterior) - 1, 2) * 100 perc_total_dif_pares
+                ,ROUND(q4.total_lote_mes_atual / DECODE(q4.total_lote_mes_anterior, 0, 1, q4.total_lote_mes_anterior) - 1, 2) * 100 perc_total_dif_lotes
+                ,
+                 --
+                 ROUND(q4.total_amostra_mes_atual / DECODE(q4.total_amostra_mes_anterior_2, 0, 1, q4.total_amostra_mes_anterior_2) - 1, 2) * 100 perc_total_dif_pares_2
+                ,ROUND(q4.total_lote_mes_atual / DECODE(q4.total_lote_mes_anterior_2, 0, 1, q4.total_lote_mes_anterior_2) - 1, 2) * 100 perc_total_dif_lotes_2
+            FROM (SELECT q3.*
+                        ,SUM(pares_amostra_anterior_dois) OVER(PARTITION BY 'TOTAL') total_amostra_mes_anterior_2
+                        ,SUM(pares_amostra_anterior) OVER(PARTITION BY 'TOTAL') total_amostra_mes_anterior
+                        ,SUM(pares_amostra_atual) OVER(PARTITION BY 'TOTAL') total_amostra_mes_atual
+                        ,SUM(lotes_anterior_dois) OVER(PARTITION BY 'TOTAL') total_lote_mes_anterior_2
+                        ,SUM(lotes_anterior) OVER(PARTITION BY 'TOTAL') total_lote_mes_anterior
+                        ,SUM(lotes_atual) OVER(PARTITION BY 'TOTAL') total_lote_mes_atual
+                    FROM (SELECT q2.*
+                                ,CASE
+                                   WHEN pares_amostra_anterior <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((pares_amostra_atual / pares_amostra_anterior - 1) * 100, 2)
+                                 END perc_dif_pares
+                                ,CASE
+                                   WHEN lotes_anterior <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((lotes_atual / lotes_anterior - 1) * 100, 2)
+                                 END perc_dif_lotes
+                                ,
+                                 --
+                                 CASE
+                                   WHEN pares_amostra_anterior_dois <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((pares_amostra_atual / pares_amostra_anterior_dois - 1) * 100, 2)
+                                 END perc_dif_pares_dois
+                                ,CASE
+                                   WHEN lotes_anterior_dois <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((lotes_atual / lotes_anterior_dois - 1) * 100, 2)
+                                 END perc_dif_lotes_dois
+                            FROM (SELECT q1.codigo_marca
+                                        ,q1.descricao_marca
+                                        ,SUM(NVL(q1.qtd_pes_anterior_dois, 0)) pares_amostra_anterior_dois
+                                        ,SUM(NVL(q1.qtd_pes_anterior, 0)) pares_amostra_anterior
+                                        ,SUM(NVL(q1.qtd_pes_atual, 0)) pares_amostra_atual
+                                        ,SUM(NVL(q1.lotes_anterior_dois, 0)) lotes_anterior_dois
+                                        ,SUM(NVL(q1.lotes_anterior, 0)) lotes_anterior
+                                        ,SUM(NVL(q1.lotes_atual, 0)) lotes_atual
+                                    FROM (SELECT qry1.codigo_marca
+                                                ,qry1.descricao_marca
+                                                ,NULL lotes_atual
+                                                ,COUNT(DISTINCT qry1.produto) lotes_anterior
+                                                ,NULL lotes_anterior_dois
+                                                ,NULL qtd_pes_atual
+                                                ,SUM(qry1.ite_qtde) qtd_pes_anterior
+                                                ,NULL qtd_pes_anterior_dois
+                                            FROM (SELECT r.codigo_marca
+                                                        ,mp.descricao_marca
+                                                        ,i.lin_cdgo || i.ref_cdgo || i.cab_cdgo || i.cor_cdgo produto
+                                                        ,SUM(i.ite_qtde) ite_qtde
+                                                        ,qry.ano
+                                                    FROM ite i
+                                                        ,REF r
+                                                        ,marcas_produtos mp
+                                                        ,(SELECT DISTINCT ped.ped_nmro
+                                                                         ,EXTRACT(YEAR FROM ped.ped_emba) ano
+                                                                         ,ped.ped_emba
+                                                            FROM ped
+                                                                ,embarque_pedidos e
+                                                           WHERE ped.ped_especie_pedido = 'A' -- pedido de lotes de Amostra
+                                                             AND ped.ped_stat = 'F' -- pedido faturado
+                                                             AND e.embarque_real = 'S' -- realmente foi embarcado
+                                                             AND (ped.ped_emba BETWEEN ADD_MONTHS(TRUNC($P{p_periodo}, 'MM'), -12) AND ADD_MONTHS(LAST_DAY($P{p_periodo_final}), -12)) -- periodo de faturamento
+                                                             AND e.ped_nmro_novo = ped.ped_nmro --
+
+                                                          ) qry
+                                                   WHERE 1 = 1
+                                                     AND r.lin_cdgo = i.lin_cdgo
+                                                     AND r.ref_cdgo = i.ref_cdgo
+                                                     AND mp.codigo_marca = r.codigo_marca
+                                                     AND i.ped_nmro = qry.ped_nmro
+                                                     AND qry.ano = (EXTRACT(YEAR FROM $P{p_periodo}) - 1)
+                                                   GROUP BY r.codigo_marca
+                                                           ,mp.descricao_marca
+                                                           ,qry.ano
+                                                           ,i.lin_cdgo
+                                                           ,i.ref_cdgo
+                                                           ,i.cab_cdgo
+                                                           ,i.cor_cdgo
+                                                  HAVING SUM(i.ite_qtde) > 10 --
+                                                  ) qry1
+                                           GROUP BY qry1.codigo_marca
+                                                   ,qry1.descricao_marca
+                                          UNION
+                                          SELECT qry2.codigo_marca
+                                                ,qry2.descricao_marca
+                                                ,COUNT(DISTINCT qry2.produto) lotes_atual
+                                                ,NULL lotes_anterior
+                                                ,NULL lotes_anterior_dois
+                                                ,SUM(qry2.ite_qtde) qtd_pes_atual
+                                                ,NULL qtd_pes_anterior
+                                                ,NULL qtd_pes_anterior_dois
+                                            FROM (SELECT r.codigo_marca
+                                                        ,mp.descricao_marca
+                                                        ,i.lin_cdgo || i.ref_cdgo || i.cab_cdgo || i.cor_cdgo produto
+                                                        ,SUM(i.ite_qtde) ite_qtde
+                                                        ,qry.ano
+                                                    FROM ite i
+                                                        ,REF r
+                                                        ,marcas_produtos mp
+                                                        ,(SELECT DISTINCT ped.ped_nmro
+                                                                         ,EXTRACT(YEAR FROM ped.ped_emba) ano
+                                                            FROM ped
+                                                                ,embarque_pedidos e
+                                                           WHERE ped.ped_especie_pedido = 'A' -- pedido de lotes de Amostra
+                                                             AND ped.ped_stat = 'F' -- pedido faturado
+                                                             AND e.embarque_real = 'S' -- realmente foi embarcado
+                                                             AND (ped.ped_emba BETWEEN TRUNC($P{p_periodo}, 'MM') AND LAST_DAY($P{p_periodo_final})) -- periodo de faturamento
+                                                             AND e.ped_nmro_novo = ped.ped_nmro --
+                                                          ) qry
+                                                   WHERE 1 = 1
+                                                     AND r.lin_cdgo = i.lin_cdgo
+                                                     AND r.ref_cdgo = i.ref_cdgo
+                                                     AND mp.codigo_marca = r.codigo_marca
+                                                     AND i.ped_nmro = qry.ped_nmro
+                                                     AND qry.ano = (EXTRACT(YEAR FROM $P{p_periodo}))
+                                                   GROUP BY r.codigo_marca
+                                                           ,mp.descricao_marca
+                                                           ,qry.ano
+                                                           ,i.lin_cdgo
+                                                           ,i.ref_cdgo
+                                                           ,i.cab_cdgo
+                                                           ,i.cor_cdgo
+                                                  HAVING SUM(i.ite_qtde) > 10 --
+                                                  ) qry2 --
+                                           GROUP BY qry2.codigo_marca
+                                                   ,qry2.descricao_marca --
+                                          ) q1
+                                   GROUP BY q1.codigo_marca
+                                           ,q1.descricao_marca --
+                                  ) q2 --
+                          ) q3 --
+                  ) q4 --
+          ) q5
+  UNION
+  SELECT q5.*
+    FROM (SELECT 'POR_ANO'
+                ,q4.*
+                ,ROUND(q4.total_amostra_mes_atual / q4.total_amostra_mes_anterior - 1, 2) * 100 perc_total_dif_pares
+                ,ROUND(q4.total_lote_mes_atual / q4.total_lote_mes_anterior - 1, 2) * 100 perc_total_dif_lotes
+                ,
+                 --
+                 ROUND(q4.total_amostra_mes_atual / q4.total_amostra_mes_anterior_2 - 1, 2) * 100 perc_total_dif_pares_2
+                ,ROUND(q4.total_lote_mes_atual / q4.total_lote_mes_anterior_2 - 1, 2) * 100 perc_total_dif_lotes_2
+            FROM (SELECT q3.*
+                        ,SUM(pares_amostra_anterior_dois) OVER(PARTITION BY 'TOTAL') total_amostra_mes_anterior_2
+                        ,SUM(pares_amostra_anterior) OVER(PARTITION BY 'TOTAL') total_amostra_mes_anterior
+                        ,SUM(pares_amostra_atual) OVER(PARTITION BY 'TOTAL') total_amostra_mes_atual
+                        ,SUM(lotes_anterior_dois) OVER(PARTITION BY 'TOTAL') total_lote_mes_anterior_2
+                        ,SUM(lotes_anterior) OVER(PARTITION BY 'TOTAL') total_lote_mes_anterior
+                        ,SUM(lotes_atual) OVER(PARTITION BY 'TOTAL') total_lote_mes_atual
+                    FROM (SELECT q2.*
+                                ,CASE
+                                   WHEN pares_amostra_anterior <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((pares_amostra_atual / pares_amostra_anterior - 1) * 100, 2)
+                                 END perc_dif_pares
+                                ,CASE
+                                   WHEN lotes_anterior <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((lotes_atual / lotes_anterior - 1) * 100, 2)
+                                 END perc_dif_lotes
+                                ,
+                                 --
+                                 CASE
+                                   WHEN pares_amostra_anterior_dois <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((pares_amostra_atual / pares_amostra_anterior_dois - 1) * 100, 2)
+                                 END perc_dif_pares_2
+                                ,CASE
+                                   WHEN lotes_anterior_dois <= 0 THEN
+                                    0
+                                   ELSE
+                                    ROUND((lotes_atual / lotes_anterior_dois - 1) * 100, 2)
+                                 END perc_dif_lotes_2
+                            FROM (SELECT q1.codigo_marca
+                                        ,q1.descricao_marca
+                                        ,SUM(NVL(q1.qtd_pes_anterior_dois, 0)) pares_amostra_anterior_dois
+                                        ,SUM(NVL(q1.qtd_pes_anterior, 0)) pares_amostra_anterior
+                                        ,SUM(NVL(q1.qtd_pes_atual, 0)) pares_amostra_atual
+                                        ,SUM(NVL(q1.lotes_anterior_dois, 0)) lotes_anterior_dois
+                                        ,SUM(NVL(q1.lotes_anterior, 0)) lotes_anterior
+                                        ,SUM(NVL(q1.lotes_atual, 0)) lotes_atual
+                                    FROM (SELECT qry6.codigo_marca
+                                                ,qry6.descricao_marca
+                                                ,NULL lotes_atual
+                                                ,NULL lotes_anterior
+                                                ,COUNT(DISTINCT qry6.produto) lotes_anterior_dois
+                                                ,NULL qtd_pes_atual
+                                                ,NULL qtd_pes_anterior
+                                                ,SUM(qry6.ite_qtde) qtd_pes_anterior_dois
+                                            FROM (SELECT r.codigo_marca
+                                                        ,mp.descricao_marca
+                                                        ,i.lin_cdgo || i.ref_cdgo || i.cab_cdgo || i.cor_cdgo produto
+                                                        ,SUM(i.ite_qtde) ite_qtde
+                                                        ,qry.ano
+                                                    FROM ite i
+                                                        ,REF r
+                                                        ,marcas_produtos mp
+                                                        ,(SELECT DISTINCT ped.ped_nmro
+                                                                         ,EXTRACT(YEAR FROM ped.ped_emba) ano
+                                                            FROM ped
+                                                                ,embarque_pedidos e
+                                                           WHERE ped.ped_especie_pedido = 'A' -- pedido de lotes de Amostra
+                                                             AND ped.ped_stat = 'F' -- pedido faturado
+                                                             AND e.embarque_real = 'S' -- realmente foi embarcado
+                                                             AND (ped.ped_emba BETWEEN ADD_MONTHS(TRUNC($P{p_periodo}, 'YEAR'), -24) AND ADD_MONTHS(LAST_DAY($P{p_periodo_final}), -24)) -- periodo de faturamento
+                                                             AND e.ped_nmro_novo = ped.ped_nmro --
+                                                          ) qry
+                                                   WHERE 1 = 1
+                                                     AND r.lin_cdgo = i.lin_cdgo
+                                                     AND r.ref_cdgo = i.ref_cdgo
+                                                     AND mp.codigo_marca = r.codigo_marca
+                                                     AND i.ped_nmro = qry.ped_nmro
+                                                     AND qry.ano = (EXTRACT(YEAR FROM $P{p_periodo}) - 2)
+                                                   GROUP BY r.codigo_marca
+                                                           ,mp.descricao_marca
+                                                           ,qry.ano
+                                                           ,i.lin_cdgo
+                                                           ,i.ref_cdgo
+                                                           ,i.cab_cdgo
+                                                           ,i.cor_cdgo
+                                                  HAVING SUM(i.ite_qtde) > 10 --
+                                                  ) qry6
+                                           GROUP BY qry6.codigo_marca
+                                                   ,qry6.descricao_marca
+                                          UNION
+                                          SELECT qry3.codigo_marca
+                                                ,qry3.descricao_marca
+                                                ,NULL lotes_atual
+                                                ,COUNT(DISTINCT qry3.produto) lotes_anterior
+                                                ,NULL lotes_anterior_dois
+                                                ,NULL qtd_pes_atual
+                                                ,SUM(qry3.ite_qtde) qtd_pes_anterior
+                                                ,NULL qtd_pes_anterior_dois
+                                            FROM (SELECT r.codigo_marca
+                                                        ,mp.descricao_marca
+                                                        ,i.lin_cdgo || i.ref_cdgo || i.cab_cdgo || i.cor_cdgo produto
+                                                        ,SUM(i.ite_qtde) ite_qtde
+                                                        ,qry.ano
+                                                    FROM ite i
+                                                        ,REF r
+                                                        ,marcas_produtos mp
+                                                        ,(SELECT DISTINCT ped.ped_nmro
+                                                                         ,EXTRACT(YEAR FROM ped.ped_emba) ano
+                                                            FROM ped
+                                                                ,embarque_pedidos e
+                                                           WHERE ped.ped_especie_pedido = 'A' -- pedido de lotes de Amostra
+                                                             AND ped.ped_stat = 'F' -- pedido faturado
+                                                             AND e.embarque_real = 'S' -- realmente foi embarcado
+                                                             AND (ped.ped_emba BETWEEN ADD_MONTHS(TRUNC($P{p_periodo}, 'YEAR'), -12) AND ADD_MONTHS(LAST_DAY($P{p_periodo_final}), -12)) -- periodo de faturamento
+                                                             AND e.ped_nmro_novo = ped.ped_nmro --
+                                                          ) qry
+                                                   WHERE 1 = 1
+                                                     AND r.lin_cdgo = i.lin_cdgo
+                                                     AND r.ref_cdgo = i.ref_cdgo
+                                                     AND mp.codigo_marca = r.codigo_marca
+                                                     AND i.ped_nmro = qry.ped_nmro
+                                                     AND qry.ano = (EXTRACT(YEAR FROM $P{p_periodo}) - 1)
+                                                   GROUP BY r.codigo_marca
+                                                           ,mp.descricao_marca
+                                                           ,qry.ano
+                                                           ,i.lin_cdgo
+                                                           ,i.ref_cdgo
+                                                           ,i.cab_cdgo
+                                                           ,i.cor_cdgo
+                                                  HAVING SUM(i.ite_qtde) > 10 --
+                                                  ) qry3
+                                           GROUP BY qry3.codigo_marca
+                                                   ,qry3.descricao_marca
+                                          UNION
+                                          SELECT qry4.codigo_marca
+                                                ,qry4.descricao_marca
+                                                ,COUNT(DISTINCT qry4.produto) lotes_anterior
+                                                ,NULL lotes_anterior_dois
+                                                ,NULL
+                                                ,SUM(qry4.ite_qtde) qtd_pes_anterior
+                                                ,NULL
+                                                ,NULL qtd_pes_anterior_dois
+                                            FROM (SELECT r.codigo_marca
+                                                        ,mp.descricao_marca
+                                                        ,i.lin_cdgo || i.ref_cdgo || i.cab_cdgo || i.cor_cdgo produto
+                                                        ,SUM(i.ite_qtde) ite_qtde
+                                                    FROM ite i
+                                                        ,REF r
+                                                        ,marcas_produtos mp
+                                                        ,(SELECT DISTINCT ped.ped_nmro
+                                                                         ,EXTRACT(YEAR FROM ped.ped_emba) ano
+                                                            FROM ped
+                                                                ,embarque_pedidos e
+                                                           WHERE ped.ped_especie_pedido = 'A' -- pedido de lotes de Amostra
+                                                             AND ped.ped_stat = 'F' -- pedido faturado
+                                                             AND e.embarque_real = 'S' -- realmente foi embarcado
+                                                             AND (ped.ped_emba BETWEEN TRUNC($P{p_periodo}, 'YEAR') AND LAST_DAY($P{p_periodo_final})) -- periodo de faturamento
+                                                             AND e.ped_nmro_novo = ped.ped_nmro --
+                                                          ) qry
+                                                   WHERE 1 = 1
+                                                     AND r.lin_cdgo = i.lin_cdgo
+                                                     AND r.ref_cdgo = i.ref_cdgo
+                                                     AND mp.codigo_marca = r.codigo_marca
+                                                     AND i.ped_nmro = qry.ped_nmro
+                                                     AND qry.ano = (EXTRACT(YEAR FROM $P{p_periodo}))
+                                                   GROUP BY r.codigo_marca
+                                                           ,mp.descricao_marca
+                                                           ,qry.ano
+                                                           ,i.lin_cdgo
+                                                           ,i.ref_cdgo
+                                                           ,i.cab_cdgo
+                                                           ,i.cor_cdgo
+                                                  HAVING SUM(i.ite_qtde) > 10 --
+                                                  ) qry4 --
+                                           GROUP BY qry4.codigo_marca
+                                                   ,qry4.descricao_marca --
+                                          ) q1
+                                   GROUP BY q1.codigo_marca
+                                           ,q1.descricao_marca --
+                                  ) q2 --
+                          ) q3 --
+                  ) q4 --
+          ) q5 --
+  )
+SELECT coluna_1
+      ,periodo_desc
+      ,periodo
+      ,codigo_marca
+      ,descricao_marca
+      ,valor
+      ,ordem
+      ,ordem_periodo
+  FROM ( SELECT 'PARES AMOSTRA ANTERIOR' coluna_1
+              ,'' || (EXTRACT(YEAR FROM TO_DATE($P{p_periodo})) - 1) periodo_desc
+              ,DECODE(qg.periodo, 'POR_ANO', 'Pares/Ano', 'POR_MES', 'Pares/Mês') periodo
+              ,qg.codigo_marca
+              ,qg.descricao_marca
+              ,TO_CHAR(qg.pares_amostra_anterior, '9G999G999') valor
+              ,DECODE(qg.periodo, 'POR_ANO', 70, 'POR_MES', 10) ordem
+              ,DECODE(qg.periodo, 'POR_ANO', 2, 'POR_MES', 1) ordem_periodo
+          FROM qry_geral qg
+        UNION
+        SELECT 'PARES AMOSTRA ATUAL'
+              ,'' || EXTRACT(YEAR FROM TO_DATE($P{p_periodo}))
+              ,DECODE(qg.periodo, 'POR_ANO', 'Pares/Ano', 'POR_MES', 'Pares/Mês')
+              ,qg.codigo_marca
+              ,qg.descricao_marca
+              ,TO_CHAR(qg.pares_amostra_atual, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 80, 'POR_MES', 20)
+              ,DECODE(qg.periodo, 'POR_ANO', 2, 'POR_MES', 1) ordem_periodo
+          FROM qry_geral qg
+        UNION
+        SELECT 'PERCENTUAL DIFERENCA PARES'
+              ,'% 23x22'
+              ,DECODE(qg.periodo, 'POR_ANO', 'Pares/Ano', 'POR_MES', 'Pares/Mês')
+              ,qg.codigo_marca
+              ,qg.descricao_marca
+              ,TO_CHAR(qg.perc_dif_pares, '999990') || '%'
+              ,DECODE(qg.periodo, 'POR_ANO', 90, 'POR_MES', 30)
+              ,DECODE(qg.periodo, 'POR_ANO', 2, 'POR_MES', 1) ordem_periodo
+          FROM qry_geral qg
+        UNION
+        SELECT 'LOTES ANTERIOR'
+              ,'' || (EXTRACT(YEAR FROM TO_DATE($P{p_periodo})) - 1)
+              ,DECODE(qg.periodo, 'POR_ANO', 'Lotes/Ano', 'POR_MES', 'Lotes/Mês')
+              ,qg.codigo_marca
+              ,qg.descricao_marca
+              ,TO_CHAR(qg.lotes_anterior, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 100, 'POR_MES', 40)
+              ,DECODE(qg.periodo, 'POR_ANO', 4, 'POR_MES', 3)
+          FROM qry_geral qg
+        UNION
+        SELECT 'LOTES ATUAL'
+              ,'' || EXTRACT(YEAR FROM TO_DATE($P{p_periodo}))
+              ,DECODE(qg.periodo, 'POR_ANO', 'Lotes/Ano', 'POR_MES', 'Lotes/Mês')
+              ,qg.codigo_marca
+              ,qg.descricao_marca
+              ,TO_CHAR(qg.lotes_atual, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 110, 'POR_MES', 50)
+              ,DECODE(qg.periodo, 'POR_ANO', 4, 'POR_MES', 3)
+          FROM qry_geral qg
+        UNION
+        SELECT 'PERCENTUAL DIFERENCA LOTES'
+              ,'% 23x22'
+              ,DECODE(qg.periodo, 'POR_ANO', 'Lotes/Ano', 'POR_MES', 'Lotes/Mês')
+              ,qg.codigo_marca
+              ,qg.descricao_marca
+              ,TO_CHAR(qg.perc_dif_lotes, '999990') || '%'
+              ,DECODE(qg.periodo, 'POR_ANO', 120, 'POR_MES', 60)
+              ,DECODE(qg.periodo, 'POR_ANO', 4, 'POR_MES', 3)
+          FROM qry_geral qg
+
+        UNION
+
+        --//--------------------------------
+
+        SELECT 'PARES AMOSTRA ANTERIOR'
+              ,'' || (EXTRACT(YEAR FROM TO_DATE($P{p_periodo})) - 1)
+              ,DECODE(qg.periodo, 'POR_ANO', 'Pares/Ano', 'POR_MES', 'Pares/Mês')
+              ,99 codigo_marca
+              ,'TOTAL'
+              ,TO_CHAR(qg.total_amostra_mes_anterior, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 70, 'POR_MES', 10)
+              ,DECODE(qg.periodo, 'POR_ANO', 2, 'POR_MES', 1)
+          FROM qry_geral qg
+        UNION
+        SELECT 'PARES AMOSTRA ATUAL'
+              ,'' || EXTRACT(YEAR FROM TO_DATE($P{p_periodo}))
+              ,DECODE(qg.periodo, 'POR_ANO', 'Pares/Ano', 'POR_MES', 'Pares/Mês')
+              ,99
+              ,'TOTAL'
+              ,TO_CHAR(qg.total_amostra_mes_atual, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 80, 'POR_MES', 20)
+              ,DECODE(qg.periodo, 'POR_ANO', 2, 'POR_MES', 1)
+          FROM qry_geral qg
+        UNION
+        SELECT 'PERCENTUAL DIFERENCA PARES'
+              ,'% 23x22'
+              ,DECODE(qg.periodo, 'POR_ANO', 'Pares/Ano', 'POR_MES', 'Pares/Mês')
+              ,99
+              ,'TOTAL'
+              ,TO_CHAR(qg.perc_total_dif_pares, '999990') || '%'
+              ,DECODE(qg.periodo, 'POR_ANO', 90, 'POR_MES', 30)
+              ,DECODE(qg.periodo, 'POR_ANO', 2, 'POR_MES', 1)
+          FROM qry_geral qg
+        UNION
+        SELECT 'LOTES ANTERIOR'
+              ,'' || (EXTRACT(YEAR FROM TO_DATE($P{p_periodo})) - 1)
+              ,DECODE(qg.periodo, 'POR_ANO', 'Lotes/Ano', 'POR_MES', 'Lotes/Mês')
+              ,99
+              ,'TOTAL'
+              ,TO_CHAR(qg.total_lote_mes_anterior, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 100, 'POR_MES', 40)
+              ,DECODE(qg.periodo, 'POR_ANO', 4, 'POR_MES', 3)
+          FROM qry_geral qg
+        UNION
+        SELECT 'LOTES ATUAL'
+              ,'' || EXTRACT(YEAR FROM TO_DATE($P{p_periodo}))
+              ,DECODE(qg.periodo, 'POR_ANO', 'Lotes/Ano', 'POR_MES', 'Lotes/Mês')
+              ,99
+              ,'TOTAL'
+              ,TO_CHAR(qg.total_lote_mes_atual, '9G999G999')
+              ,DECODE(qg.periodo, 'POR_ANO', 110, 'POR_MES', 50)
+              ,DECODE(qg.periodo, 'POR_ANO', 4, 'POR_MES', 3)
+          FROM qry_geral qg
+        UNION
+        SELECT 'PERCENTUAL DIFERENCA LOTES'
+              ,'% 23x22'
+              ,DECODE(qg.periodo, 'POR_ANO', 'Lotes/Ano', 'POR_MES', 'Lotes/Mês')
+              ,99
+              ,'TOTAL'
+              ,TO_CHAR(qg.perc_total_dif_lotes, '999990') || '%'
+              ,DECODE(qg.periodo, 'POR_ANO', 120, 'POR_MES', 60)
+              ,DECODE(qg.periodo, 'POR_ANO', 4, 'POR_MES', 3)
+          FROM qry_geral qg
+
+        )
+ ORDER BY ordem_periodo
+         ,ordem
+         ,periodo ASC
+         ,codigo_marca]]>
+	</queryString>
+	<field name="COLUNA_1" class="java.lang.String"/>
+	<field name="PERIODO_DESC" class="java.lang.String"/>
+	<field name="PERIODO" class="java.lang.String"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="VALOR" class="java.lang.String"/>
+	<field name="ORDEM" class="java.math.BigDecimal"/>
+	<field name="ORDEM_PERIODO" class="java.math.BigDecimal"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="d131ee96-175f-440f-8385-53dec0d3a13d" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="f9734bdc-9c7c-4e25-af27-b3889660edf0" x="0" y="0" width="842" height="35" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="be6f3d68-48ca-437b-80e6-6682d570d86a" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="477">
+			<staticText>
+				<reportElement uuid="d02226ec-ff98-40bf-805f-000a10cda1f4" mode="Transparent" x="0" y="0" width="842" height="24" forecolor="#44546A"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMBARQUES DE AMOSTRAS]]></text>
+			</staticText>
+			<crosstab>
+				<reportElement uuid="e996027f-a28e-45e8-8045-cbaae26676dc" x="2" y="44" width="840" height="111"/>
+				<rowGroup name="CODIGO_MARCA" width="65">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{CODIGO_MARCA}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="f33e4ae4-1d55-4883-9137-2a3e8ff2dea3" style="Crosstab Data Text" x="0" y="0" width="64" height="39">
+									<printWhenExpression><![CDATA[$V{CODIGO_MARCA} == 99]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle" markup="none">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL]]></text>
+							</staticText>
+							<image vAlign="Middle" onErrorType="Blank">
+								<reportElement uuid="ade39698-ae05-47d6-8f37-3f042de58173" style="Crosstab Data Text" x="0" y="0" width="64" height="39"/>
+								<imageExpression><![CDATA[$V{IMAGE_PATH}]]></imageExpression>
+							</image>
+							<textField>
+								<reportElement uuid="84b893f0-abec-4931-beb9-011354c5611b" style="Crosstab Data Text" x="0" y="39" width="0" height="0"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{CODIGO_MARCA}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="ORDEM_PERIODO" height="30" headerPosition="Stretch">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{ORDEM_PERIODO}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#8DB4E2" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="6f9ca27b-2efb-4ae0-9b92-9c8bcb66dd69" style="Crosstab Data Text" x="0" y="0" width="64" height="0"/>
+								<textElement>
+									<font size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_PERIODO}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="0f572058-77d8-465d-93b8-c5ccc87a0560" style="Crosstab Data Text" x="0" y="0" width="64" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{periodo}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="ORDEM" height="30" headerPosition="Stretch">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{ORDEM}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#BFBFBF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="37b60ef6-b69c-4f90-93c7-68778ff81dfc" style="Crosstab Data Text" x="0" y="0" width="39" height="0"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{ORDEM}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="91695d2d-1489-40ce-9988-aafb15f28456" style="Crosstab Data Text" x="0" y="0" width="64" height="30"/>
+								<textElement verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{PERIODO_DESC}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="VALORMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{VALOR}]]></measureExpression>
+				</measure>
+				<measure name="periodo" class="java.lang.String">
+					<measureExpression><![CDATA[$F{PERIODO}]]></measureExpression>
+				</measure>
+				<measure name="PERIODO_DESC" class="java.lang.String">
+					<measureExpression><![CDATA[$F{PERIODO_DESC}]]></measureExpression>
+				</measure>
+				<measure name="IMAGE_PATH" class="java.lang.String">
+					<measureExpression><![CDATA[$P{P_LOGO_S3}+$F{CODIGO_MARCA}+".jpg"]]></measureExpression>
+				</measure>
+				<crosstabCell width="64" height="39">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<rectangle>
+							<reportElement uuid="9b081f8d-3c30-4363-8ebd-453a539c427f" style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="64" height="39" forecolor="#000000" backcolor="#CCCCCC">
+								<printWhenExpression><![CDATA[$V{ORDEM} == 30 || $V{ORDEM} == 60 || $V{ORDEM} == 90 || $V{ORDEM} == 120 ||
+$V{ORDEM} == 29 || $V{ORDEM} == 59 || $V{ORDEM} == 89 || $V{ORDEM} == 119]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.5"/>
+							</graphicElement>
+						</rectangle>
+						<rectangle>
+							<reportElement uuid="dfbab1f9-b236-46ec-87c5-e2f6aae1b52a" style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="64" height="39" forecolor="#000000" backcolor="#FFFF66">
+								<printWhenExpression><![CDATA[$V{CODIGO_MARCA} == 99]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.5"/>
+							</graphicElement>
+						</rectangle>
+						<textField>
+							<reportElement uuid="ad5d0de8-ba94-4f4b-b5be-0bec89bd5eac" style="Crosstab Data Text" x="0" y="0" width="64" height="39">
+								<printWhenExpression><![CDATA[$V{CODIGO_MARCA} == 99]]></printWhenExpression>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font size="12" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="ae2930ba-434d-4fe8-8f47-8f0e84cfd7cb" style="Crosstab Data Text" x="0" y="0" width="64" height="39">
+								<printWhenExpression><![CDATA[$V{CODIGO_MARCA} != 99]]></printWhenExpression>
+							</reportElement>
+							<textElement verticalAlignment="Middle">
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="CODIGO_MARCA">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="d3f7e9e5-cffd-427c-b17c-0cbe5b02cac8" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="ORDEM_PERIODO">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="75ceef7f-ffca-46ad-9ae5-2e792bb25e55" style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="CODIGO_MARCA" columnTotalGroup="ORDEM_PERIODO">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="40580524-461f-4f1c-af49-0d5d64022423" style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="ORDEM">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="e637fa88-fa4e-4b60-9fc0-79b0ed3c62cf" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="CODIGO_MARCA" columnTotalGroup="ORDEM">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="32b93158-7abb-4cc9-8bd5-f19c658e12bb" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<staticText>
+				<reportElement uuid="d4cab108-e73f-4dee-aa2f-0811820186c6" x="0" y="0" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[IND0250_A6]]></text>
+			</staticText>
+		</band>
+	</summary>
+	<noData>
+		<band/>
+	</noData>
+</jasperReport>

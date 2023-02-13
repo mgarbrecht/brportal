@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A3-2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b6abe85f-108a-405d-8a2a-fb0d6a8ff43b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_grupo_pai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_grupo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from tmp_ind0250_a3_1
+where codigo_marca = $P{p_codigo_marca}
+and grupo_pai = $P{p_grupo_pai}
+and grupo = NVL($P{p_grupo}, grupo)
+and grupo_pai IS NOT NULL
+order by grupo,to_date(categoria, 'MM/YYY'),serie,decode(grupo, 'Baixa', 1, 'Media', 2, 3)
+,grupo]]>
+	</queryString>
+	<field name="ANO" class="java.math.BigDecimal"/>
+	<field name="PERIODO" class="java.sql.Timestamp"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="GRUPO_PAI" class="java.lang.String"/>
+	<field name="GRUPO" class="java.lang.String"/>
+	<field name="SERIE" class="java.lang.String"/>
+	<field name="CATEGORIA" class="java.lang.String"/>
+	<field name="PERCENTUAL" class="java.math.BigDecimal"/>
+	<group name="marca">
+		<groupExpression><![CDATA[$F{DESCRICAO_MARCA}]]></groupExpression>
+		<groupFooter>
+			<band height="158">
+				<barChart>
+					<chart>
+						<reportElement uuid="76109414-e6a3-4efe-915d-c7a0e6b877b7" x="278" y="14" width="286" height="144"/>
+						<box>
+							<pen lineWidth="0.75"/>
+							<topPen lineWidth="0.75"/>
+							<leftPen lineWidth="0.75"/>
+							<bottomPen lineWidth="0.75"/>
+							<rightPen lineWidth="0.75"/>
+						</box>
+						<chartTitle position="Top"/>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<categoryDataset>
+						<categorySeries>
+							<seriesExpression><![CDATA[$F{SERIE}]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{CATEGORIA}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{PERCENTUAL}]]></valueExpression>
+						</categorySeries>
+					</categoryDataset>
+					<barPlot isShowLabels="true">
+						<plot>
+							<seriesColor seriesOrder="0" color="#FF0000"/>
+							<seriesColor seriesOrder="1" color="#0000FF"/>
+						</plot>
+						<itemLabel>
+							<font size="12"/>
+						</itemLabel>
+						<categoryAxisFormat>
+							<axisFormat/>
+						</categoryAxisFormat>
+						<valueAxisFormat>
+							<axisFormat tickLabelMask="##0'%'"/>
+						</valueAxisFormat>
+					</barPlot>
+				</barChart>
+				<textField>
+					<reportElement uuid="6670ee94-5cae-48b5-be84-38aad8151bf4" x="278" y="1" width="286" height="13"/>
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{GRUPO_PAI} + " - " + $F{GRUPO}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+</jasperReport>

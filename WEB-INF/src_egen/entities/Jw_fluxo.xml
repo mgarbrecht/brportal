@@ -1,0 +1,232 @@
+<class>com.egen.develop.integration.model.VObject</class>
+<lastUsedTemplate>e-gen_jdbcutil_standard_entity_mapping</lastUsedTemplate>
+<componentType>com.egen.webide.integration.components.StandardJavaview</componentType>
+<name>Jw_fluxo</name>
+<columns>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>quantidade_meses</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>-105</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>quantidade_meses</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Integer</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>descricao_quantidade_meses</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>60</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>descricao_quantidade_meses</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.String</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>60</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>clientes</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>clientes</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Integer</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+</columns>
+<properties>
+<properties_item>
+<$key>schema</$key>
+<$value></$value>
+</properties_item>
+<properties_item>
+<$key>db_type</$key>
+<$value>javaview</$value>
+</properties_item>
+<properties_item>
+<$key>query</$key>
+<$value>SELECT /*+ all_rows */
+        quantidade_meses
+       ,quantidade_meses ||' '|| case when quantidade_meses = 1 then 'Mês' else 'Meses' end descricao_quantidade_meses
+       ,COUNT(DISTINCT cli_Cdgo) clientes
+   FROM (SELECT 
+          cli_cdgo
+         ,COUNT(DISTINCT mes_ano) quantidade_meses
+           FROM (SELECT cli.cli_cdgo
+                       ,to_char(data_dig, 'mm/yyyy') mes_ano
+                   FROM resumo_ped            res
+                       ,cli
+                       ,rep
+                       ,cliente_representante clr
+                       ,representante_marca   rm
+                  WHERE res.data_dig >= to_date('01/01/2020', 'dd/MM/yyyy')
+                    AND res.data_dig < to_date('30/03/2020', 'dd/MM/yyyy') + 1
+                    AND cli.cli_cdgo = res.cli_cdgo
+                    AND rep.rep_cdgo = res.rep_cdgo
+                    AND res.esc_seqn = clr.codigo_sequencial
+                    AND rm.marca_produto = res.codigo_marca
+                    AND clr.codigo_representante = rep.rep_cdgo
+                    AND cli.cli_cdgo = clr.codigo_cliente
+                    AND rm.codigo_representante = rep.rep_cdgo
+                    AND res.codigo_regional = NVL(NULL, res.codigo_regional)
+                    AND cli.cli_situ = NVL('A', cli.cli_situ)
+                    AND cli.seg_cdgo NOT IN (9, 153)
+                    AND rep.rep_situ = NVL('A', rep.rep_situ)
+                    AND clr.situacao = NVL('A', clr.situacao)
+                    AND rm.situacao = NVL('A', rm.situacao)
+                 UNION ALL
+                 SELECT cli.cli_cdgo
+                       ,to_char(data_dig, 'mm/yyyy') mes_ano
+                   FROM resumo_pedidos        res
+                       ,cli
+                       ,rep
+                       ,cliente_representante clr
+                       ,representante_marca   rm
+                  WHERE res.data_dig >= to_date('01/10/2019', 'dd/MM/yyyy')
+                    AND res.data_dig < to_date('30/03/2020', 'dd/MM/yyyy') + 1
+                    AND cli.cli_cdgo = res.cli_cdgo
+                    AND rep.rep_cdgo = res.rep_cdgo
+                    AND res.esc_seqn = clr.codigo_sequencial
+                    AND rm.marca_produto = res.codigo_marca
+                    AND clr.codigo_representante = rep.rep_cdgo
+                    AND cli.cli_cdgo = clr.codigo_cliente
+                    AND rm.codigo_representante = rep.rep_cdgo
+                    AND res.codigo_regional = NVL(NULL, res.codigo_regional)
+                    AND cli.cli_situ = NVL('A', cli.cli_situ)
+                    AND cli.seg_cdgo NOT IN (9, 153)
+                    AND rep.rep_situ = NVL('A', rep.rep_situ)
+                    AND clr.situacao = NVL('A', clr.situacao)
+                    AND rm.situacao = NVL('A', rm.situacao))
+          GROUP BY cli_cdgo)
+  GROUP BY quantidade_meses
+  ORDER BY quantidade_meses
+ </$value>
+</properties_item>
+<properties_item>
+<$key>metadata</$key>
+<$value></$value>
+</properties_item>
+</properties>

@@ -1,0 +1,196 @@
+<class>com.egen.develop.integration.model.VObject</class>
+<lastUsedTemplate>e-gen_jdbcutil_standard_entity_mapping</lastUsedTemplate>
+<componentType>com.egen.webide.integration.components.StandardJavaview</componentType>
+<name>Jw_ficha_cliente_vendas_mes</name>
+<columns>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>marca</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>30</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>marca</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.String</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>30</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>pares</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>pares</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>int</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>valor</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>valor</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value>##,##0.00</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+</columns>
+<properties>
+<properties_item>
+<$key>schema</$key>
+<$value></$value>
+</properties_item>
+<properties_item>
+<$key>db_type</$key>
+<$value>javaview</$value>
+</properties_item>
+<properties_item>
+<$key>query</$key>
+<$value>SELECT mar.descricao_marca marca
+       ,SUM(ite.ite_qtde) pares
+       ,ROUND(SUM(fct_valor_pedido(ped.ped_nmro)), 2) valor
+   FROM ped ped
+       ,ite ite
+       ,marcas_produtos mar
+       ,rep rep
+  WHERE ped.ped_dadg >= TRUNC(SYSDATE, 'MM')
+    AND ped.ped_dadg < TO_DATE(TRUNC(ADD_MONTHS(SYSDATE, 1), 'MM'))
+    AND NVL(ped.ped_nmro, NULL) = ite.ped_nmro
+    AND NVL(ped.ped_stat, NULL) <> 'C'
+    AND NVL(ped.ped_especie_pedido, NULL) IN ('F', 'N', 'M', 'P', 'X', 'R', 'C')
+    AND NVL(ite.codigo_marca, NULL) = mar.codigo_marca
+    AND NVL(ped.rep_cdgo, NULL) = NVL(NULL, ped.rep_cdgo)
+    AND NVL(ped.rep_cdgo, NULL) = rep.rep_cdgo
+    AND ped.cli_cdgo = 70
+    and ped.esc_seqn = 2
+    AND NVL(rep.codigo_gerente, NULL) = NVL(NULL, rep.codigo_gerente)
+  GROUP BY mar.descricao_marca
+ </$value>
+</properties_item>
+<properties_item>
+<$key>metadata</$key>
+<$value></$value>
+</properties_item>
+</properties>

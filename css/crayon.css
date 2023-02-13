@@ -1,0 +1,180 @@
+body {	font-family: Verdana, Arial, sans-serif;
+        font-size:10px;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-bottom:0px;
+        background-color:#FDF0DD;
+     }
+table {	width: 100%;
+	margin-top:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-bottom:0px;
+	border-collapse:collapse;
+     }
+td { font-size: 11px; 
+   }
+a { color:#874221; 
+    text-decoration:none;
+  }
+select { font-size:11px;
+       }
+submit { background-color:#EBCCA4;color:#874221;cursor:pointer;border-style:groove;
+       }
+.fixo { font-family: courier; 
+}	
+.tableHeader { border-color:#FDF0DD;
+               border-top-style:solid;
+               border-top-width:0;
+               border-bottom-style:solid;
+               border-bottom-width:1;
+               background-color:#EBCCA4;
+               padding-top:5;
+               text-align:center;
+               font-size:15px;
+               font-weight:bold;
+             }
+.columHeader {border-color:#FDF0DD;
+              background-color:#FFDEB2;
+              border-bottom-style:solid;
+              border-bottom-width:1;
+              font-size:12px;
+              font-weight:bold;
+      	     }
+.rowBlank { background-color:white;
+          }
+.rowColor { background-color:#FFF7EB;
+          }
+.columTotal { background-color:#EBCCA4;
+              font-weight: bold; 
+            }
+.observacao { border-color:black;
+              border-top-style:solid;
+              border-top-width:2;
+              border-bottom-style:solid;
+              border-bottom-width:1;
+              padding-top:5;
+              font-size:11px;
+            }
+.formLabel { width:100;
+             text-align: right;
+             vertical-align: bottom; 
+	   }
+.formField { text-align: left; 
+	     vertical-align: bottom;
+	   }
+input {
+	font-size: 100%;
+      	font-family: Verdana, Arial, sans-serif;
+        cursor: hand; 
+      }
+.botao  {  font-family: Verdana, Arial; 
+           font-size: xx-small; 
+           font-weight: bold; 
+           color:white; 
+           background-color: #808080; 
+           background-repeat: repeat;
+           background-attachment: scroll; 
+           cursor: hand;
+           background-position: 0% 50%;
+}
+.menu  { font-family: Verdana, Arial; 
+         font-size: 11; 
+         font-weight: bold; 
+         font-style:oblique;
+         color:#874221; 
+         cursor: hand;
+}
+
+table#tabmenu {
+margin-bottom: 0px;
+}
+
+td.tab, td.selectedtab, td.tabspacer, td#contentscell {
+border: 1px solid black;
+cursor: hand;
+nowrap: false;
+}
+
+td.tabspacer {
+border-width: 0 0 0px;
+}
+
+td.tab {
+background: #efddc6;
+cursor: pointer;
+font-size:13px;
+font-weight: bold;
+width: 15%;
+padding: 0px;
+border-width: 1px 1px 1px 1px;
+}
+
+td.selectedtab {
+border-bottom: 0 solid #eac89f;
+}
+
+td.selectedtab, td#contentscell {
+background: #FDF0DD;
+font-size:13px;
+font-weight: bold;
+width: 15%;
+padding: 0px;
+border-width: 1px 1px 1px 1px;
+}
+
+.contentscell {
+background: #FDF0DD;
+padding: 10px;
+border: 1px solid black;
+}
+
+td#contentscell {
+border-width: 0px 1px 1px;
+padding: 5px;
+}
+
+div.contents {
+display: none;
+}
+
+div.selectedcontents {
+display: block;
+}
+
+.myhidden {
+visibility: hidden;
+display: none;
+}
+.separator {
+background-color:#afc4d9;
+text-align: center;
+font-family: Arial;
+font-size:12px;
+font-weight:bold;
+}
+
+.separatorTable {
+border: solid 2;
+}
+.navigatorButtonTable {
+text-align:center;
+}
+.navigatorTable {
+text-align:center;
+margin-top:10px;
+margin-bottom:10px;
+}
+.navigatorTd {
+text-align:center;
+}
+.footerTd {
+text-align:right;
+}
+.div10 {
+text-align:right;
+}
+.itemTable {
+margin-top:10px;
+}

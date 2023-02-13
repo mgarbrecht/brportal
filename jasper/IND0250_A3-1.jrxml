@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A3" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b6abe85f-108a-405d-8a2a-fb0d6a8ff43b">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[select distinct codigo_marca, grupo_pai, decode(grupo_pai, 'SANDALIA', grupo) grupo from tmp_ind0250_a3_1
+where grupo_pai is not null
+order by grupo_pai, decode(grupo, 'Baixa', 1, 'Media', 2, 3)
+,grupo]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="GRUPO_PAI" class="java.lang.String"/>
+	<field name="GRUPO" class="java.lang.String"/>
+	<group name="G_quebra" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{GRUPO_PAI}+$F{GRUPO}]]></groupExpression>
+	</group>
+	<detail>
+		<band height="59">
+			<subreport>
+				<reportElement uuid="348ba339-62dd-4bc4-a90b-4cf77ac23ac2" x="0" y="0" width="200" height="39"/>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_grupo">
+					<subreportParameterExpression><![CDATA[$F{GRUPO}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$F{CODIGO_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_grupo_pai">
+					<subreportParameterExpression><![CDATA[$F{GRUPO_PAI}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A3-11.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="31">
+			<break>
+				<reportElement uuid="f2c894f6-c735-4347-a82f-2dd667c2343c" x="0" y="6" width="295" height="1"/>
+			</break>
+		</band>
+	</summary>
+</jasperReport>

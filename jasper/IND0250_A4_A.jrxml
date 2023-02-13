@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A4_A" language="groovy" columnCount="3" printOrder="Horizontal" pageWidth="410" pageHeight="86" orientation="Landscape" columnWidth="136" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0b51cc1f-d540-41f9-8835-5ed2ac4aa8cd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA["01/05/2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_grupo_fabril" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT qr.*
+      ,pck_marcas_produtos.get_nome(qr.codigo_marca) nome_marca
+      ,fct_retorna_fit_imagem(qr.lin_cdgo, qr.ref_cdgo) fit_imagem
+      ,COUNT(*) OVER(PARTITION BY qr.lin_cdgo) qtde_modelos_linha
+      ,COUNT(*) OVER(PARTITION BY qr.descricao_grupo_fabril) qtde_modelos_grupo_fabril
+      ,COUNT(DISTINCT qr.lin_cdgo) OVER(PARTITION BY qr.descricao_grupo_fabril) qtde_linhas_grupo_fabril
+      ,COUNT(*) OVER() qtde_modelos_total
+      ,COUNT(DISTINCT qr.lin_cdgo) OVER() qtde_modelos_linhas_total
+  FROM (SELECT qry.*
+              ,gpf.descricao_grupo descricao_grupo_fabril
+          FROM (SELECT DISTINCT fti.codigo_marca
+                               ,fti.lin_cdgo
+                               ,fti.ref_cdgo
+                  FROM ficha_tec_instrutiva fti
+                 WHERE fti.data_embarque BETWEEN TRUNC($P{p_periodo}, 'MM') AND LAST_DAY($P{p_periodo})
+                   AND fti.status NOT IN ('C', 'B', 'D')
+                   AND fti.codigo_marca = $P{p_codigo_marca}
+                   AND fti.tipo_ficha = 'A'
+                   AND fti.lin_cdgo IS NOT NULL
+                   AND fti.ref_cdgo IS NOT NULL) qry
+              ,REF
+              ,grupo_posicao_fabrica gpf
+         WHERE ref.lin_cdgo = qry.lin_cdgo
+           AND ref.ref_cdgo = qry.ref_cdgo
+           AND gpf.codigo_grupo = ref.ref_grupo_posicao_fab) qr
+where qr.descricao_grupo_fabril = $P{p_grupo_fabril}]]>
+	</queryString>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="LIN_CDGO" class="java.math.BigDecimal"/>
+	<field name="REF_CDGO" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_GRUPO_FABRIL" class="java.lang.String"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="FIT_IMAGEM" class="java.lang.String"/>
+	<field name="QTDE_MODELOS_LINHA" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="QTDE_LINHAS_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_TOTAL" class="java.math.BigDecimal"/>
+	<field name="QTDE_MODELOS_LINHAS_TOTAL" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="86">
+			<frame>
+				<reportElement uuid="319175eb-1d6f-4fda-9d26-31b6b375f958" x="1" y="1" width="134" height="85"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<image>
+					<reportElement uuid="969d5b2c-1a8e-465f-a7bf-941fdfefe9d6" x="0" y="0" width="102" height="85"/>
+					<imageExpression><![CDATA["I:/Imagens/" + $F{FIT_IMAGEM}]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement uuid="17c84c6c-481f-46fe-815f-8d418dae38a3" x="54" y="0" width="80" height="35"/>
+					<textElement textAlignment="Right">
+						<font isBold="false"/>
+						<paragraph rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA["LINHA " + $F{LIN_CDGO} + "\n" + $F{QTDE_MODELOS_LINHA} + " MODELOS(s)"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+</jasperReport>

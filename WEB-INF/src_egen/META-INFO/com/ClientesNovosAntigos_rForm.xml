@@ -1,0 +1,5237 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>19/10/2009</generation_day>
+<module>com</module>
+<file_name>ClientesNovosAntigos_r</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>08/05/2009 07:10:28</creationDate>
+<lastModifyDate>19/10/2009 09:43:37</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_novos_antigos_normal</name>
+<title>Clientes sem quebra</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_clientes_novos_antigos_normal</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_clientes_novos_antigos_normal = (java.util.Vector)session.getAttribute("res_Jw_clientes_novos_antigos_normal");
+  %>
+
+  <form  name="bl_report_Jw_clientes_novos_antigos_normal" id="bl_report_Jw_clientes_novos_antigos_normal" class="baseForm" method="post" >
+
+
+    <%
+    if (res_Jw_clientes_novos_antigos_normal!=null && res_Jw_clientes_novos_antigos_normal.size()>0) {
+      %>
+<table border=1 width="100%">
+              <tr align="center" width="100%">
+                <td align="left">
+                  <font color="" size=2>
+                    <font color="">
+                      <b>
+                        Marca:
+                      </b>
+                    </font>
+                    <font color="#C40000" size=1>
+                      <b>
+                        <%= session.getAttribute("parametro1")==null?"Todas":session.getAttribute("parametro1") %>
+                      </b>
+                    </font>
+                    <font color="">
+                      <br>
+                      <b>
+                        Regional:
+                      </b>
+                    </font>
+                    <font color="#C40000" size=1>
+                      <b>
+                        <%= session.getAttribute("parametro2")==null?"Todas":session.getAttribute("parametro2") %>
+                      </b>
+                    </font>
+                    <font color="">
+                      <br>
+                      <b>
+                        Representante:
+                      </b>
+                    </font>
+                    <font color="#C40000" size=1>
+                      <b>
+                        <%= session.getAttribute("parametro3")==null?"Todos":session.getAttribute("parametro3") %>
+                      </b>
+                    </font>
+                  </td>
+                </tr>
+              </table>
+      <table id="TRbl_report_Jw_clientes_novos_antigos_normal"  class="reportTable"   style="width:99%; "  border="1" >
+        <%
+        java.lang.String status4 =  null;
+        int cli_cdgo2 =  0;
+        java.lang.String cli_nome2 =  null;
+        int pares3 =  0;
+        double valor3 =  0;
+        String _b0_control = "__";
+        int count_cli_cdgo2_0 = 0;
+        int count_cli_cdgo2_1 = 0;
+        int sum_pares3_0 = 0;
+        int sum_pares3_1 = 0;
+        double sum_valor3_0 = 0;
+        double sum_valor3_1 = 0;
+        int i_bl_report_Jw_clientes_novos_antigos_normal = 0;
+        while (i_bl_report_Jw_clientes_novos_antigos_normal<res_Jw_clientes_novos_antigos_normal.size()) {
+          portalbr.dbobj.view.Jw_clientes_novos_antigos_normal t_jw_clientes_novos_antigos_normal = (portalbr.dbobj.view.Jw_clientes_novos_antigos_normal)res_Jw_clientes_novos_antigos_normal.elementAt(i_bl_report_Jw_clientes_novos_antigos_normal);
+          status4 = t_jw_clientes_novos_antigos_normal.getStatus()==null?"":t_jw_clientes_novos_antigos_normal.getStatus();
+          cli_cdgo2 = t_jw_clientes_novos_antigos_normal.getCli_cdgo();
+          cli_nome2 = t_jw_clientes_novos_antigos_normal.getCli_nome()==null?"":t_jw_clientes_novos_antigos_normal.getCli_nome();
+          pares3 = t_jw_clientes_novos_antigos_normal.getPares();
+          valor3 = t_jw_clientes_novos_antigos_normal.getValor();
+          count_cli_cdgo2_0++;
+          count_cli_cdgo2_1++;
+          sum_pares3_0 += pares3;
+          sum_pares3_1 += pares3;
+          sum_valor3_0 += valor3;
+          sum_valor3_1 += valor3;
+          String _b0_value = (status4==null?"":status4);
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="4">
+                <span class="columnTdHeader" style="text-align:left;" >
+                  <font color="black"><big>Clientes : <%= status4 %></big></font>
+                </span>
+              </td>
+            </tr>
+            <%
+            %>
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" colspan="2">
+                Cliente
+              </td>
+
+                <td class="columnTdHeader" style="text-align:right;" >
+                Qtde.
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Valor
+              </td>
+
+            </tr>
+
+            <%
+          }
+          String style_bl_report_Jw_clientes_novos_antigos_normal="";
+          if (!((i_bl_report_Jw_clientes_novos_antigos_normal%2)!=0)) {
+            style_bl_report_Jw_clientes_novos_antigos_normal="rowColor";
+          } else {
+            style_bl_report_Jw_clientes_novos_antigos_normal="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_clientes_novos_antigos_normal %>' id="TRbl_report_Jw_clientes_novos_antigos_normal<%=i_bl_report_Jw_clientes_novos_antigos_normal%>" >
+            <td class="reportColumn" style="text-align:left;" colspan="2" >
+              <%= cli_cdgo2 %> - <%= cli_nome2 %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= pares3 %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor3, "##,##0.00") %>
+            </td>
+
+          </tr>
+
+          <%
+          _b0_control = _b0_value;
+          i_bl_report_Jw_clientes_novos_antigos_normal++;
+          if (i_bl_report_Jw_clientes_novos_antigos_normal<res_Jw_clientes_novos_antigos_normal.size()) {
+            t_jw_clientes_novos_antigos_normal = (portalbr.dbobj.view.Jw_clientes_novos_antigos_normal)res_Jw_clientes_novos_antigos_normal.elementAt(i_bl_report_Jw_clientes_novos_antigos_normal);
+            status4 = t_jw_clientes_novos_antigos_normal.getStatus()==null?"":t_jw_clientes_novos_antigos_normal.getStatus();
+            cli_cdgo2 = t_jw_clientes_novos_antigos_normal.getCli_cdgo();
+            cli_nome2 = t_jw_clientes_novos_antigos_normal.getCli_nome()==null?"":t_jw_clientes_novos_antigos_normal.getCli_nome();
+            pares3 = t_jw_clientes_novos_antigos_normal.getPares();
+            valor3 = t_jw_clientes_novos_antigos_normal.getValor();
+            _b0_value = (status4==null?"":status4);
+          } else {
+            _b0_control = "__";
+          }
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td class="totalTdColumn"  style="text-align:right;" colspan="2" >
+                <b>Qtde. Clientes:</b>
+                <b><%= com.egen.util.text.FormatNumber.format(count_cli_cdgo2_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares3_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <b><%= com.egen.util.text.FormatNumber.format(sum_valor3_1, "##,##0.00") %></b>
+              </td>
+            </tr>
+
+            <%
+            count_cli_cdgo2_1 = 0;
+            sum_pares3_1 = 0;
+            sum_valor3_1 = 0;
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td class="totalTdColumn"  style="text-align:right;" colspan="2" >
+            <b>Qtde. Clientes:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(count_cli_cdgo2_0, "##,##0") %></b>
+          </td>
+     
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares3_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(sum_valor3_0, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>status4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_normal</block_name>
+<role_item></role_item>
+<database_column>status</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>status4</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_normal.getStatus()==null?"":t_jw_clientes_novos_antigos_normal.getStatus()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_cdgo2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_normal</block_name>
+<role_item></role_item>
+<database_column>cli_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cli_cdgo2</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_normal.getCli_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>count</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Qtde. Clientes:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>count</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Qtde. Clientes:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_nome2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_normal</block_name>
+<role_item></role_item>
+<database_column>cli_nome</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cli_nome2</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_normal.getCli_nome()==null?"":t_jw_clientes_novos_antigos_normal.getCli_nome()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_normal</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Qtde.</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_normal.getPares()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_normal</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_normal.getValor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_novos_antigos</name>
+<title>Clientes Novos/Antigos</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_clientes_novos_antigos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report>
+
+
+<%
+{
+  %>
+  <%
+  java.util.Vector res_Jw_clientes_novos_antigos = (java.util.Vector)session.getAttribute("res_Jw_clientes_novos_antigos");
+  %>
+  <form  name="bl_report_Jw_clientes_novos_antigos" id="bl_report_Jw_clientes_novos_antigos" class="baseForm" method="post" >
+    <%
+    if (res_Jw_clientes_novos_antigos!=null && res_Jw_clientes_novos_antigos.size()>0) {
+      %>
+<table border=1 width="100%">
+              <tr align="center" width="100%">
+                <td align="left">
+                  <font color="" size=2>
+                    <font color="">
+                      <b>
+                        Marca:
+                      </b>
+                    </font>
+                    <font color="#C40000" size=1>
+                      <b>
+                        <%= session.getAttribute("parametro1")==null?"Todas":session.getAttribute("parametro1") %>
+                      </b>
+                    </font>
+                    <font color="">
+                      <br>
+                      <b>
+                        Regional:
+                      </b>
+                    </font>
+                    <font color="#C40000" size=1>
+                      <b>
+                        <%= session.getAttribute("parametro2")==null?"Todas":session.getAttribute("parametro2") %>
+                      </b>
+                    </font>
+                    <font color="">
+                      <br>
+                      <b>
+                        Representante:
+                      </b>
+                    </font>
+                    <font color="#C40000" size=1>
+                      <b>
+                        <%= session.getAttribute("parametro3")==null?"Todos":session.getAttribute("parametro3") %>
+                      </b>
+                    </font>
+                  </td>
+                </tr>
+              </table>
+        <%
+        int codigo_regional =  0;
+        java.lang.String nome_regional =  null;
+        java.lang.String cliente_antigo =  null;
+        int cli_cdgo =  0;
+        java.lang.String cli_nome =  null;
+        int qtde =  0;
+        double valor_total =  0;
+        String _b0_control = "__";
+        String _b1_control = "__";
+        int count_cli_cdgo_0 = 0;
+        int count_cli_cdgo_1 = 0;
+        int count_cli_cdgo_2 = 0;
+        int sum_qtde_0 = 0;
+        int sum_qtde_1 = 0;
+        int sum_qtde_2 = 0;
+        double sum_valor_total_0 = 0;
+        double sum_valor_total_1 = 0;
+        double sum_valor_total_2 = 0;
+        int i_bl_report_Jw_clientes_novos_antigos = 0;
+        while (i_bl_report_Jw_clientes_novos_antigos<res_Jw_clientes_novos_antigos.size()) {
+          portalbr.dbobj.view.Jw_clientes_novos_antigos t_jw_clientes_novos_antigos = (portalbr.dbobj.view.Jw_clientes_novos_antigos)res_Jw_clientes_novos_antigos.elementAt(i_bl_report_Jw_clientes_novos_antigos);
+          codigo_regional = t_jw_clientes_novos_antigos.getCodigo_regional();
+          nome_regional = t_jw_clientes_novos_antigos.getNome_regional()==null?"":t_jw_clientes_novos_antigos.getNome_regional();
+          cliente_antigo = t_jw_clientes_novos_antigos.getStatus()==null?"":t_jw_clientes_novos_antigos.getStatus();
+          cli_cdgo = t_jw_clientes_novos_antigos.getCli_cdgo();
+          cli_nome = t_jw_clientes_novos_antigos.getCli_nome()==null?"":t_jw_clientes_novos_antigos.getCli_nome();
+          qtde = t_jw_clientes_novos_antigos.getQtde();
+          valor_total = t_jw_clientes_novos_antigos.getValor_total();
+          count_cli_cdgo_0++;
+          count_cli_cdgo_1++;
+          count_cli_cdgo_2++;
+          sum_qtde_0 += qtde;
+          sum_qtde_1 += qtde;
+          sum_qtde_2 += qtde;
+          sum_valor_total_0 += valor_total;
+          sum_valor_total_1 += valor_total;
+          sum_valor_total_2 += valor_total;
+          String _b0_value = com.egen.util.text.FormatNumber.format(codigo_regional);
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+      <table id="TRbl_report_Jw_clientes_novos_antigos"  class="reportTable"   style="width:99%; "  border="1" >
+            <tr class="reportHeader3">
+              <td colspan="3">
+                <span class="columnTdHeader" style="text-align:right;" >
+                  <big>Regional :</big>
+                </span>
+                <span class="columnTdHeader" style="text-align:right;" >
+                  <big><%= codigo_regional %> - <%= nome_regional %></big>
+                </span>
+              </td>
+            </tr>
+            <%
+          }
+          String _b1_value = com.egen.util.text.FormatNumber.format(codigo_regional) + "_" + (cliente_antigo==null?"":cliente_antigo);
+          if (_b1_control != null && !_b1_control.equals(_b1_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="3">
+                <span class="columnTdHeader" style="text-align:left;" >
+                  <big><font color="black">Clientes : </font></big>
+                </span>
+                <span class="columnTdHeader" style="text-align:left;" >
+                  <big><font color="black"><%= cliente_antigo %></font></big>
+                </span>
+              </td>
+            </tr>
+            <%
+            %>
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" >
+                Cliente
+              </td>
+              <td class="columnTdHeader" style="text-align:right;" >
+                Qtde.
+              </td>
+              <td class="columnTdHeader" style="text-align:right;" >
+                Valor
+              </td>
+            </tr>
+            <%
+          }
+          String style_bl_report_Jw_clientes_novos_antigos="";
+          if (!((i_bl_report_Jw_clientes_novos_antigos%2)!=0)) {
+            style_bl_report_Jw_clientes_novos_antigos="rowColor";
+          } else {
+            style_bl_report_Jw_clientes_novos_antigos="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_clientes_novos_antigos %>' id="TRbl_report_Jw_clientes_novos_antigos<%=i_bl_report_Jw_clientes_novos_antigos%>" >
+            <td class="reportColumn" style="text-align:left;" >
+              <%= cli_cdgo %> - <%= cli_nome %>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(qtde, "##,##0") %>
+            </td>
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor_total, "##,##0.00") %>
+            </td>
+          </tr>
+          <%
+          _b0_control = _b0_value;
+          _b1_control = _b1_value;
+          i_bl_report_Jw_clientes_novos_antigos++;
+          if (i_bl_report_Jw_clientes_novos_antigos<res_Jw_clientes_novos_antigos.size()) {
+            t_jw_clientes_novos_antigos = (portalbr.dbobj.view.Jw_clientes_novos_antigos)res_Jw_clientes_novos_antigos.elementAt(i_bl_report_Jw_clientes_novos_antigos);
+            codigo_regional = t_jw_clientes_novos_antigos.getCodigo_regional();
+            nome_regional = t_jw_clientes_novos_antigos.getNome_regional()==null?"":t_jw_clientes_novos_antigos.getNome_regional();
+            cliente_antigo = t_jw_clientes_novos_antigos.getStatus()==null?"":t_jw_clientes_novos_antigos.getStatus();
+            cli_cdgo = t_jw_clientes_novos_antigos.getCli_cdgo();
+            cli_nome = t_jw_clientes_novos_antigos.getCli_nome()==null?"":t_jw_clientes_novos_antigos.getCli_nome();
+            qtde = t_jw_clientes_novos_antigos.getQtde();
+            valor_total = t_jw_clientes_novos_antigos.getValor_total();
+            _b0_value = com.egen.util.text.FormatNumber.format(codigo_regional);
+            _b1_value = com.egen.util.text.FormatNumber.format(codigo_regional) + "_" + (cliente_antigo==null?"":cliente_antigo);
+          } else {
+            _b0_control = "__";
+            _b1_control = "__";
+          }
+          if (_b1_control != null && !_b1_control.equals(_b1_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Qtde. Clientes:</b>
+                <%= com.egen.util.text.FormatNumber.format(count_cli_cdgo_1, "##,##0") %>
+              </td>
+         
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <%= com.egen.util.text.FormatNumber.format(sum_qtde_1, "##,##0.00") %>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <%= com.egen.util.text.FormatNumber.format(sum_valor_total_1, "##,##0.00") %>
+              </td>
+            </tr>
+
+            <%
+            count_cli_cdgo_1 = 0;
+            sum_qtde_1 = 0;
+            sum_valor_total_1 = 0;
+          }
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Qtde. Clientes Regional:</b>
+                <%= com.egen.util.text.FormatNumber.format(count_cli_cdgo_2, "##,##0") %>
+              </td>
+    
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total Regional:</b>
+                <%= com.egen.util.text.FormatNumber.format(sum_qtde_2, "##,##0.00") %>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total Regional:</b>
+                <%= com.egen.util.text.FormatNumber.format(sum_valor_total_2, "##,##0.00") %>
+              </td>
+            </tr>
+
+            <%
+            count_cli_cdgo_2 = 0;
+            sum_qtde_2 = 0;
+            sum_valor_total_2 = 0;
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Qtde. Clientes Geral:</b>
+            <%= com.egen.util.text.FormatNumber.format(count_cli_cdgo_0, "##,##0") %>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total Geral:</b>
+            <%= com.egen.util.text.FormatNumber.format(sum_qtde_0, "##,##0.00") %>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total Geral:</b>
+            <%= com.egen.util.text.FormatNumber.format(sum_valor_total_0, "##,##0.00") %>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>codigo_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_regional</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getCodigo_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nome_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>nome_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>nome_regional</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getNome_regional()==null?"":t_jw_clientes_novos_antigos.getNome_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cliente_antigo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>cliente_antigo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cliente_antigo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getCliente_antigo()==null?"":t_jw_clientes_novos_antigos.getCliente_antigo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>cli_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cli_cdgo</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getCli_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>count</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Qtde. Clientes Geral:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>count</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Qtde. Clientes:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>count</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label>Qtde. Clientes Regional:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cli_nome</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>cli_nome</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cli_nome</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getCli_nome()==null?"":t_jw_clientes_novos_antigos.getCli_nome()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>qtde</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>qtde</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Qtde.</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getQtde()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total Geral:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label>Total Regional:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor_total</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos</block_name>
+<role_item></role_item>
+<database_column>valor_total</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>2</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos.getValor_total()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total Geral:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>2</report_break>
+<style></style>
+<label>Total Regional:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_novos_antigos_total_geral</name>
+<title>Total Geral</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_clientes_novos_antigos_total_geral</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report>
+<%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_clientes_novos_antigos_total_geral = (java.util.Vector)session.getAttribute("res_Jw_clientes_novos_antigos_total_geral");
+  %>
+
+  <form  name="bl_report_Jw_clientes_novos_antigos_total_geral" id="bl_report_Jw_clientes_novos_antigos_total_geral" class="baseForm" method="post" >
+    <%
+    if (res_Jw_clientes_novos_antigos_total_geral!=null && res_Jw_clientes_novos_antigos_total_geral.size()>0) {
+      %>
+
+      <table id="TRbl_report_Jw_clientes_novos_antigos_total_geral"  class="reportTable"   style="width:60%; "  align="center" border="2" >
+        <%
+        java.lang.String status =  null;
+        int qtde1 =  0;
+        int pares =  0;
+        double valor =  0;
+        int sum_qtde1_0 = 0;
+        int sum_pares_0 = 0;
+        double sum_valor_0 = 0;
+        %>
+
+        <tr class="reportHeader3">
+          <td class="columnTdHeader" style="text-align:left;" colspan="4">
+            <big>Resumo Geral</big>
+          </td>
+        </tr>
+        <tr class="reportTr">
+          <td class="columnTdHeader" style="text-align:left;" >
+            Clientes
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Qtde.
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Pares
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Valor
+          </td>
+
+        </tr>
+
+        <%
+        int i_bl_report_Jw_clientes_novos_antigos_total_geral = 0;
+        while (i_bl_report_Jw_clientes_novos_antigos_total_geral<res_Jw_clientes_novos_antigos_total_geral.size()) {
+          portalbr.dbobj.view.Jw_clientes_novos_antigos_total_geral t_jw_clientes_novos_antigos_total_geral = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_geral)res_Jw_clientes_novos_antigos_total_geral.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_geral);
+          status = t_jw_clientes_novos_antigos_total_geral.getStatus()==null?"":t_jw_clientes_novos_antigos_total_geral.getStatus();
+          qtde1 = t_jw_clientes_novos_antigos_total_geral.getQtde();
+          pares = t_jw_clientes_novos_antigos_total_geral.getPares();
+          valor = t_jw_clientes_novos_antigos_total_geral.getValor();
+          sum_qtde1_0 += qtde1;
+          sum_pares_0 += pares;
+          sum_valor_0 += valor;
+          String style_bl_report_Jw_clientes_novos_antigos_total_geral="";
+          if (!((i_bl_report_Jw_clientes_novos_antigos_total_geral%2)!=0)) {
+            style_bl_report_Jw_clientes_novos_antigos_total_geral="rowColor";
+          } else {
+            style_bl_report_Jw_clientes_novos_antigos_total_geral="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_clientes_novos_antigos_total_geral %>' id="TRbl_report_Jw_clientes_novos_antigos_total_geral<%=i_bl_report_Jw_clientes_novos_antigos_total_geral%>" >
+            <td class="reportColumn" style="text-align:left;" >
+              <%= status %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(qtde1, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor, "##,##0.00") %>
+            </td>
+
+          </tr>
+
+          <%
+          i_bl_report_Jw_clientes_novos_antigos_total_geral++;
+          if (i_bl_report_Jw_clientes_novos_antigos_total_geral<res_Jw_clientes_novos_antigos_total_geral.size()) {
+            t_jw_clientes_novos_antigos_total_geral = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_geral)res_Jw_clientes_novos_antigos_total_geral.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_geral);
+            status = t_jw_clientes_novos_antigos_total_geral.getStatus()==null?"":t_jw_clientes_novos_antigos_total_geral.getStatus();
+            qtde1 = t_jw_clientes_novos_antigos_total_geral.getQtde();
+            pares = t_jw_clientes_novos_antigos_total_geral.getPares();
+            valor = t_jw_clientes_novos_antigos_total_geral.getValor();
+          } else {
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td>
+             
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(sum_qtde1_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_valor_0, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+      <br><br>
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>status</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_geral</block_name>
+<role_item></role_item>
+<database_column>status</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>status</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_geral.getStatus()==null?"":t_jw_clientes_novos_antigos_total_geral.getStatus()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>qtde1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_geral</block_name>
+<role_item></role_item>
+<database_column>qtde</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>qtde1</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_geral.getQtde()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_geral</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>pares</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_geral.getPares()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_geral</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>valor</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_geral.getValor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_novos_antigos_total_marca</name>
+<title>Total Marca</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_clientes_novos_antigos_total_marca</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_clientes_novos_antigos_total_marca = (java.util.Vector)session.getAttribute("res_Jw_clientes_novos_antigos_total_marca");
+  %>
+
+  <form  name="bl_report_Jw_clientes_novos_antigos_total_marca" id="bl_report_Jw_clientes_novos_antigos_total_marca" class="baseForm" method="post" >
+
+
+    <%
+    if (res_Jw_clientes_novos_antigos_total_marca!=null && res_Jw_clientes_novos_antigos_total_marca.size()>0) {
+      %>
+
+      <table id="TRbl_report_Jw_clientes_novos_antigos_total_marca"  class="reportTable"   style="width:60%; "  border="2" >
+      <tr class="reportHeader3">
+         <td colspan="4">
+            <span class="columnTdHeader" style="text-align:left;" >
+               <big>Resumo p/ Marca</big>
+             </span>
+         </td>
+       </tr>
+        <%
+        int codigo_marca =  0;
+        java.lang.String descricao_marca =  null;
+        java.lang.String status1 =  null;
+        int qtde2 =  0;
+        int pares1 =  0;
+        double valor1 =  0;
+        String _b0_control = "__";
+        int sum_qtde2_0 = 0;
+        int sum_qtde2_1 = 0;
+        int sum_pares1_0 = 0;
+        int sum_pares1_1 = 0;
+        double sum_valor1_0 = 0;
+        double sum_valor1_1 = 0;
+        int i_bl_report_Jw_clientes_novos_antigos_total_marca = 0;
+        while (i_bl_report_Jw_clientes_novos_antigos_total_marca<res_Jw_clientes_novos_antigos_total_marca.size()) {
+          portalbr.dbobj.view.Jw_clientes_novos_antigos_total_marca t_jw_clientes_novos_antigos_total_marca = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_marca)res_Jw_clientes_novos_antigos_total_marca.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_marca);
+          codigo_marca = t_jw_clientes_novos_antigos_total_marca.getCodigo_marca();
+          descricao_marca = t_jw_clientes_novos_antigos_total_marca.getDescricao_marca()==null?"":t_jw_clientes_novos_antigos_total_marca.getDescricao_marca();
+          status1 = t_jw_clientes_novos_antigos_total_marca.getStatus()==null?"":t_jw_clientes_novos_antigos_total_marca.getStatus();
+          qtde2 = t_jw_clientes_novos_antigos_total_marca.getQtde();
+          pares1 = t_jw_clientes_novos_antigos_total_marca.getPares();
+          valor1 = t_jw_clientes_novos_antigos_total_marca.getValor();
+          sum_qtde2_0 += qtde2;
+          sum_qtde2_1 += qtde2;
+          sum_pares1_0 += pares1;
+          sum_pares1_1 += pares1;
+          sum_valor1_0 += valor1;
+          sum_valor1_1 += valor1;
+          String _b0_value = com.egen.util.text.FormatNumber.format(codigo_marca);
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="4">
+                <span class="columnTdHeader" style="text-align:right;" >
+                  <font color="black">Marca : <%= codigo_marca %> - <%= descricao_marca %></font>
+                </span>
+              </td>
+            </tr>
+            <%
+            %>
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" >
+                Clientes
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Qtde.
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Pares
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Valor
+              </td>
+
+            </tr>
+
+            <%
+          }
+          String style_bl_report_Jw_clientes_novos_antigos_total_marca="";
+          if (!((i_bl_report_Jw_clientes_novos_antigos_total_marca%2)!=0)) {
+            style_bl_report_Jw_clientes_novos_antigos_total_marca="rowColor";
+          } else {
+            style_bl_report_Jw_clientes_novos_antigos_total_marca="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_clientes_novos_antigos_total_marca %>' id="TRbl_report_Jw_clientes_novos_antigos_total_marca<%=i_bl_report_Jw_clientes_novos_antigos_total_marca%>" >
+            <td class="reportColumn" style="text-align:left;" >
+              <%= status1 %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(qtde2, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares1, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor1, "##,##0.00") %>
+            </td>
+
+          </tr>
+
+          <%
+          _b0_control = _b0_value;
+          i_bl_report_Jw_clientes_novos_antigos_total_marca++;
+          if (i_bl_report_Jw_clientes_novos_antigos_total_marca<res_Jw_clientes_novos_antigos_total_marca.size()) {
+            t_jw_clientes_novos_antigos_total_marca = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_marca)res_Jw_clientes_novos_antigos_total_marca.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_marca);
+            codigo_marca = t_jw_clientes_novos_antigos_total_marca.getCodigo_marca();
+            descricao_marca = t_jw_clientes_novos_antigos_total_marca.getDescricao_marca()==null?"":t_jw_clientes_novos_antigos_total_marca.getDescricao_marca();
+            status1 = t_jw_clientes_novos_antigos_total_marca.getStatus()==null?"":t_jw_clientes_novos_antigos_total_marca.getStatus();
+            qtde2 = t_jw_clientes_novos_antigos_total_marca.getQtde();
+            pares1 = t_jw_clientes_novos_antigos_total_marca.getPares();
+            valor1 = t_jw_clientes_novos_antigos_total_marca.getValor();
+            _b0_value = com.egen.util.text.FormatNumber.format(codigo_marca);
+          } else {
+            _b0_control = "__";
+          }
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td>
+                 
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <b><%= com.egen.util.text.FormatNumber.format(sum_qtde2_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares1_1, "##,##0") %></b>
+
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_valor1_1, "##,##0.00") %></b>
+              </td>
+            </tr>
+
+            <%
+            sum_qtde2_1 = 0;
+            sum_pares1_1 = 0;
+            sum_valor1_1 = 0;
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td>
+             
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total Geral:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(sum_qtde2_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares1_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+           <b><%= com.egen.util.text.FormatNumber.format(sum_valor1_0, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+      <br><br>
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_marca</block_name>
+<role_item></role_item>
+<database_column>codigo_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_marca</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_marca.getCodigo_marca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_marca</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_marca</block_name>
+<role_item></role_item>
+<database_column>descricao_marca</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>descricao_marca</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_marca.getDescricao_marca()==null?"":t_jw_clientes_novos_antigos_total_marca.getDescricao_marca()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>status1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_marca</block_name>
+<role_item></role_item>
+<database_column>status</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>status1</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_marca.getStatus()==null?"":t_jw_clientes_novos_antigos_total_marca.getStatus()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>qtde2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_marca</block_name>
+<role_item></role_item>
+<database_column>qtde</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>qtde2</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_marca.getQtde()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total Geral:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_marca</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>pares1</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_marca.getPares()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_marca</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>valor1</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_marca.getValor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_novos_antigos_total_regional</name>
+<title>Total Regional</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_clientes_novos_antigos_total_regional</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_clientes_novos_antigos_total_regional = (java.util.Vector)session.getAttribute("res_Jw_clientes_novos_antigos_total_regional");
+  %>
+
+  <form  name="bl_report_Jw_clientes_novos_antigos_total_regional" id="bl_report_Jw_clientes_novos_antigos_total_regional" class="baseForm" method="post" >
+
+    <%
+    if (res_Jw_clientes_novos_antigos_total_regional!=null && res_Jw_clientes_novos_antigos_total_regional.size()>0) {
+      %>
+
+      <table id="TRbl_report_Jw_clientes_novos_antigos_total_regional"  class="reportTable"   style="width:60%; "  border="2" >
+      <tr class="reportHeader3">
+         <td colspan="4">
+            <big>Resumo p/ Regional</big>
+         </td>
+      </tr>
+        <%
+        int codigo_regional1 =  0;
+        java.lang.String nome_regional1 =  null;
+        java.lang.String status2 =  null;
+        int qtde3 =  0;
+        int pares2 =  0;
+        double valor2 =  0;
+        String _b0_control = "__";
+        int sum_qtde3_0 = 0;
+        int sum_qtde3_1 = 0;
+        int sum_pares2_0 = 0;
+        int sum_pares2_1 = 0;
+        double sum_valor2_0 = 0;
+        double sum_valor2_1 = 0;
+        int i_bl_report_Jw_clientes_novos_antigos_total_regional = 0;
+        while (i_bl_report_Jw_clientes_novos_antigos_total_regional<res_Jw_clientes_novos_antigos_total_regional.size()) {
+          portalbr.dbobj.view.Jw_clientes_novos_antigos_total_regional t_jw_clientes_novos_antigos_total_regional = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_regional)res_Jw_clientes_novos_antigos_total_regional.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_regional);
+          codigo_regional1 = t_jw_clientes_novos_antigos_total_regional.getCodigo_regional();
+          nome_regional1 = t_jw_clientes_novos_antigos_total_regional.getNome_regional()==null?"":t_jw_clientes_novos_antigos_total_regional.getNome_regional();
+          status2 = t_jw_clientes_novos_antigos_total_regional.getStatus()==null?"":t_jw_clientes_novos_antigos_total_regional.getStatus();
+          qtde3 = t_jw_clientes_novos_antigos_total_regional.getQtde();
+          pares2 = t_jw_clientes_novos_antigos_total_regional.getPares();
+          valor2 = t_jw_clientes_novos_antigos_total_regional.getValor();
+          sum_qtde3_0 += qtde3;
+          sum_qtde3_1 += qtde3;
+          sum_pares2_0 += pares2;
+          sum_pares2_1 += pares2;
+          sum_valor2_0 += valor2;
+          sum_valor2_1 += valor2;
+          String _b0_value = com.egen.util.text.FormatNumber.format(codigo_regional1);
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="4">
+                <span class="columnTdHeader" style="text-align:right;" >
+                  <font color="black">Regional : <%= codigo_regional1 %> - <%= nome_regional1 %></font>
+                </span>
+               
+              </td>
+            </tr>
+            <%
+            %>
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" >
+                Clientes
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Qtde.
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Pares
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Valor
+              </td>
+
+            </tr>
+
+            <%
+          }
+          String style_bl_report_Jw_clientes_novos_antigos_total_regional="";
+          if (!((i_bl_report_Jw_clientes_novos_antigos_total_regional%2)!=0)) {
+            style_bl_report_Jw_clientes_novos_antigos_total_regional="rowColor";
+          } else {
+            style_bl_report_Jw_clientes_novos_antigos_total_regional="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_clientes_novos_antigos_total_regional %>' id="TRbl_report_Jw_clientes_novos_antigos_total_regional<%=i_bl_report_Jw_clientes_novos_antigos_total_regional%>" >
+            <td class="reportColumn" style="text-align:left;" >
+              <%= status2 %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(qtde3, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares2, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor2, "##,##0.00") %>
+            </td>
+
+          </tr>
+
+          <%
+          _b0_control = _b0_value;
+          i_bl_report_Jw_clientes_novos_antigos_total_regional++;
+          if (i_bl_report_Jw_clientes_novos_antigos_total_regional<res_Jw_clientes_novos_antigos_total_regional.size()) {
+            t_jw_clientes_novos_antigos_total_regional = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_regional)res_Jw_clientes_novos_antigos_total_regional.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_regional);
+            codigo_regional1 = t_jw_clientes_novos_antigos_total_regional.getCodigo_regional();
+            nome_regional1 = t_jw_clientes_novos_antigos_total_regional.getNome_regional()==null?"":t_jw_clientes_novos_antigos_total_regional.getNome_regional();
+            status2 = t_jw_clientes_novos_antigos_total_regional.getStatus()==null?"":t_jw_clientes_novos_antigos_total_regional.getStatus();
+            qtde3 = t_jw_clientes_novos_antigos_total_regional.getQtde();
+            pares2 = t_jw_clientes_novos_antigos_total_regional.getPares();
+            valor2 = t_jw_clientes_novos_antigos_total_regional.getValor();
+            _b0_value = com.egen.util.text.FormatNumber.format(codigo_regional1);
+          } else {
+            _b0_control = "__";
+          }
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td>
+                 
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <b><%= com.egen.util.text.FormatNumber.format(sum_qtde3_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares2_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_valor2_1, "##,##0.00") %></b>
+              </td>
+            </tr>
+
+            <%
+            sum_qtde3_1 = 0;
+            sum_pares2_1 = 0;
+            sum_valor2_1 = 0;
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td>
+             
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total Geral:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(sum_qtde3_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares2_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_valor2_0, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+      <br><br>
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_regional1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_regional</block_name>
+<role_item></role_item>
+<database_column>codigo_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_regional1</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_regional.getCodigo_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nome_regional1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_regional</block_name>
+<role_item></role_item>
+<database_column>nome_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>nome_regional1</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_regional.getNome_regional()==null?"":t_jw_clientes_novos_antigos_total_regional.getNome_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>status2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_regional</block_name>
+<role_item></role_item>
+<database_column>status</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>status2</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_regional.getStatus()==null?"":t_jw_clientes_novos_antigos_total_regional.getStatus()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>qtde3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_regional</block_name>
+<role_item></role_item>
+<database_column>qtde</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>qtde3</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_regional.getQtde()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total Geral:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_regional</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>pares2</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_regional.getPares()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_regional</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>valor2</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_regional.getValor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_clientes_novos_antigos_total_representante</name>
+<title>Total Representante</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_clientes_novos_antigos_total_representante</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>logo</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_clientes_novos_antigos_total_representante = (java.util.Vector)session.getAttribute("res_Jw_clientes_novos_antigos_total_representante");
+  %>
+
+  <form  name="bl_report_Jw_clientes_novos_antigos_total_representante" id="bl_report_Jw_clientes_novos_antigos_total_representante" class="baseForm" method="post" >
+    <%
+    if (res_Jw_clientes_novos_antigos_total_representante!=null && res_Jw_clientes_novos_antigos_total_representante.size()>0) {
+      %>
+
+      <table id="TRbl_report_Jw_clientes_novos_antigos_total_representante"  class="reportTable"   style="width:99%; "  border="1" >
+      <tr class="reportHeader3">
+         <td colspan="4">
+            <big>Resumo p/ Representante</big>
+         </td>
+      </tr>
+        <%
+        java.lang.String rep_cdgo =  null;
+        java.lang.String rep_rzao =  null;
+        java.lang.String status3 =  null;
+        int qtde4 =  0;
+        int pares4 =  0;
+        double valor4 =  0;
+        String _b0_control = "__";
+        int sum_qtde4_0 = 0;
+        int sum_qtde4_1 = 0;
+        int sum_pares4_0 = 0;
+        int sum_pares4_1 = 0;
+        double sum_valor4_0 = 0;
+        double sum_valor4_1 = 0;
+        int i_bl_report_Jw_clientes_novos_antigos_total_representante = 0;
+        while (i_bl_report_Jw_clientes_novos_antigos_total_representante<res_Jw_clientes_novos_antigos_total_representante.size()) {
+          portalbr.dbobj.view.Jw_clientes_novos_antigos_total_representante t_jw_clientes_novos_antigos_total_representante = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_representante)res_Jw_clientes_novos_antigos_total_representante.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_representante);
+          rep_cdgo = t_jw_clientes_novos_antigos_total_representante.getRep_cdgo()==null?"":t_jw_clientes_novos_antigos_total_representante.getRep_cdgo();
+          rep_rzao = t_jw_clientes_novos_antigos_total_representante.getRep_rzao()==null?"":t_jw_clientes_novos_antigos_total_representante.getRep_rzao();
+          status3 = t_jw_clientes_novos_antigos_total_representante.getStatus()==null?"":t_jw_clientes_novos_antigos_total_representante.getStatus();
+          qtde4 = t_jw_clientes_novos_antigos_total_representante.getQtde();
+          pares4 = t_jw_clientes_novos_antigos_total_representante.getPares();
+          valor4 = t_jw_clientes_novos_antigos_total_representante.getValor();
+          sum_qtde4_0 += qtde4;
+          sum_qtde4_1 += qtde4;
+          sum_pares4_0 += pares4;
+          sum_pares4_1 += pares4;
+          sum_valor4_0 += valor4;
+          sum_valor4_1 += valor4;
+          String _b0_value = (rep_cdgo==null?"":rep_cdgo);
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+            <tr class="reportHeader2">
+              <td colspan="4">
+                <span class="columnTdHeader" style="text-align:left;" >
+                  <font color ="black">Representante : <%= rep_cdgo %> - <%= rep_rzao %></font>
+                </span>
+              </td>
+            </tr>
+            <%
+            %>
+
+            <tr class="reportTr">
+              <td class="columnTdHeader" style="text-align:left;" >
+                Clientes
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Qtde.
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Pares
+              </td>
+
+              <td class="columnTdHeader" style="text-align:right;" >
+                Valor
+              </td>
+
+            </tr>
+
+            <%
+          }
+          String style_bl_report_Jw_clientes_novos_antigos_total_representante="";
+          if (!((i_bl_report_Jw_clientes_novos_antigos_total_representante%2)!=0)) {
+            style_bl_report_Jw_clientes_novos_antigos_total_representante="rowColor";
+          } else {
+            style_bl_report_Jw_clientes_novos_antigos_total_representante="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_clientes_novos_antigos_total_representante %>' id="TRbl_report_Jw_clientes_novos_antigos_total_representante<%=i_bl_report_Jw_clientes_novos_antigos_total_representante%>" >
+            <td class="reportColumn" style="text-align:left;" >
+              <%= status3 %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(qtde4, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(pares4, "##,##0") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor4, "##,##0.00") %>
+            </td>
+
+          </tr>
+
+          <%
+          _b0_control = _b0_value;
+          i_bl_report_Jw_clientes_novos_antigos_total_representante++;
+          if (i_bl_report_Jw_clientes_novos_antigos_total_representante<res_Jw_clientes_novos_antigos_total_representante.size()) {
+            t_jw_clientes_novos_antigos_total_representante = (portalbr.dbobj.view.Jw_clientes_novos_antigos_total_representante)res_Jw_clientes_novos_antigos_total_representante.elementAt(i_bl_report_Jw_clientes_novos_antigos_total_representante);
+            rep_cdgo = t_jw_clientes_novos_antigos_total_representante.getRep_cdgo()==null?"":t_jw_clientes_novos_antigos_total_representante.getRep_cdgo();
+            rep_rzao = t_jw_clientes_novos_antigos_total_representante.getRep_rzao()==null?"":t_jw_clientes_novos_antigos_total_representante.getRep_rzao();
+            status3 = t_jw_clientes_novos_antigos_total_representante.getStatus()==null?"":t_jw_clientes_novos_antigos_total_representante.getStatus();
+            qtde4 = t_jw_clientes_novos_antigos_total_representante.getQtde();
+            pares4 = t_jw_clientes_novos_antigos_total_representante.getPares();
+            valor4 = t_jw_clientes_novos_antigos_total_representante.getValor();
+            _b0_value = (rep_cdgo==null?"":rep_cdgo);
+          } else {
+            _b0_control = "__";
+          }
+          if (_b0_control != null && !_b0_control.equals(_b0_value)) {
+            %>
+
+            <tr class="totalColumn">
+              <td>
+                 
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b>Total:</b>
+                <b><%= com.egen.util.text.FormatNumber.format(sum_qtde4_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_pares4_1, "##,##0") %></b>
+              </td>
+              <td class="totalTdColumn"  style="text-align:right;" >
+                <b><%= com.egen.util.text.FormatNumber.format(sum_valor4_1, "##,##0.00") %></b>
+
+              </td>
+            </tr>
+
+            <%
+            sum_qtde4_1 = 0;
+            sum_pares4_1 = 0;
+            sum_valor4_1 = 0;
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td>
+             
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>Total Geral:</b>
+            <b><%= com.egen.util.text.FormatNumber.format(sum_qtde4_0, "##,##0") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_pares4_0, "##,##0.00") %></b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b><%= com.egen.util.text.FormatNumber.format(sum_valor4_0, "##,##0.00") %></b>
+          </td>
+        </tr>
+
+        <%
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep_cdgo</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_representante</block_name>
+<role_item></role_item>
+<database_column>rep_cdgo</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>rep_cdgo</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>true</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_representante.getRep_cdgo()==null?"":t_jw_clientes_novos_antigos_total_representante.getRep_cdgo()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>rep_rzao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_representante</block_name>
+<role_item></role_item>
+<database_column>rep_rzao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>rep_rzao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_representante.getRep_rzao()==null?"":t_jw_clientes_novos_antigos_total_representante.getRep_rzao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>status3</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_representante</block_name>
+<role_item></role_item>
+<database_column>status</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>status3</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_representante.getStatus()==null?"":t_jw_clientes_novos_antigos_total_representante.getStatus()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>qtde4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_representante</block_name>
+<role_item></role_item>
+<database_column>qtde</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>qtde4</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_representante.getQtde()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total Geral:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label>Total:</label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_representante</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>pares4</label>
+<type>int</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_representante.getPares()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor4</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_clientes_novos_antigos_total_representante</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>valor4</label>
+<type>double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>1</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_clientes_novos_antigos_total_representante.getValor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat></totalformat>
+<report_break>1</report_break>
+<style></style>
+<label></label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form</name>
+<title>clientes novos antigos</title>
+<i18n></i18n>
+<database></database>
+<db_object></db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/ClientesNovosAntigos_rForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>back_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.back</value>
+<accesskey>a</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>true</isCustomized>
+<codeItem><% if(!(request.getParameter("excel")+"").equals("true")){ %>
+<html:submit accesskey="a" styleClass="baseButton" property="back_action"><bean:message bundle="ApplicationResources" key="jsp.back"/></html:submit>
+<% } %>
+</codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template>blank_button_action</template>
+<action_code></action_code>
+<property>back_action</property>
+<forward>/com/ClientesNovosAntigosForm.jsp</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>ClientesNovosAntigos_rActionForm</name>
+<type>portalbr.com.ClientesNovosAntigos_rActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/ClientesNovosAntigos_rForm</path>
+<type>portalbr.com.ClientesNovosAntigos_rAction</type>
+<name>ClientesNovosAntigos_rActionForm</name>
+<attribute></attribute>
+<input>/com/ClientesNovosAntigos_rForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/ClientesNovosAntigos_rForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Consulta de Clientes Novos/Antigos/Reativados</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body></body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header_excel.jsp</include>
+<freeSource></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A4" language="groovy" columnCount="2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="416" columnSpacing="10" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="0b51cc1f-d540-41f9-8835-5ed2ac4aa8cd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["../imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA["01/05/2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Fontes\\brportal_novo\\web\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT qry.*
+      ,SUM(qry.qtd_modelos_grupo_fabril) OVER(PARTITION BY qry.data_embarque, qry.codigo_marca) qtd_modelo_embarque
+      ,DECODE(qry.data_embarque
+             ,TRUNC($P{p_periodo}, 'MM')
+                                   ,'PRIMEIRO EMBARQUE DO MÊS ATUAL'
+             ,LAST_DAY($P{p_periodo})
+                                   ,'SEGUNDO EMBARQUE DO MÊS ATUAL'
+             ,TRUNC(ADD_MONTHS($P{p_periodo}, 1), 'MM')
+                                   ,'PRIMEIRO EMBARQUE DO PRÓXIMO MÊS'
+             ,LAST_DAY(ADD_MONTHS($P{p_periodo}, 1))
+                                   ,'SEGUNDO EMBARQUE DO PRÓXIMO MÊS'
+             ,qry.data_embarque) data_embarque_format
+  FROM (SELECT qry.*
+              ,(SELECT COUNT(DISTINCT t.lin_cdgo) qtd_lin_grupo_fabril
+                  FROM tmp_ind0250_a4 t
+                 WHERE t.data_embarque = qry.data_embarque
+                   AND t.descricao_grupo_fabril = qry.descricao_grupo_fabril
+                   AND t.codigo_marca = qry.codigo_marca) qtd_lin_grupo_fabril
+              ,(SELECT SUM(q.qtd_modelos_grupo_fabril) qtd_modelos_grupo_fabril
+                  FROM (SELECT SUM(DISTINCT t.qtd_modelos_grupo_fabril) qtd_modelos_grupo_fabril
+                          FROM (SELECT t.lin_cdgo
+                                      ,t.ref_cdgo
+                                      ,COUNT(DISTINCT t.ref_cdgo) OVER(PARTITION BY t.codigo_marca, t.descricao_grupo_fabril, t.lin_cdgo) qtd_modelos_grupo_fabril
+                                  FROM tmp_ind0250_a4 t
+                                 WHERE t.data_embarque = qry.data_embarque
+                                   AND t.descricao_grupo_fabril = qry.descricao_grupo_fabril
+                                   AND t.codigo_marca = qry.codigo_marca) t
+                         GROUP BY t.lin_cdgo) q) qtd_modelos_grupo_fabril
+              ,(SELECT COUNT(DISTINCT t.lin_cdgo) qtd_lin_embarque
+                  FROM tmp_ind0250_a4 t
+                 WHERE t.data_embarque = qry.data_embarque
+                   AND t.codigo_marca = qry.codigo_marca) qtd_lin_embarque
+          FROM (SELECT DISTINCT tmp.data_embarque
+                               ,tmp.codigo_marca
+                               ,tmp.nome_marca
+                               ,tmp.descricao_grupo_fabril
+                  FROM tmp_ind0250_a4 tmp
+                 WHERE tmp.codigo_marca = $P{p_codigo_marca}
+                 ORDER BY tmp.data_embarque
+                         ,tmp.descricao_grupo_fabril) qry
+         ORDER BY qry.data_embarque
+                 ,qry.descricao_grupo_fabril) qry
+
+ ORDER BY qry.data_embarque
+         ,qry.descricao_grupo_fabril]]>
+	</queryString>
+	<field name="DATA_EMBARQUE" class="java.sql.Timestamp"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="DESCRICAO_GRUPO_FABRIL" class="java.lang.String"/>
+	<field name="QTD_LIN_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="QTD_MODELOS_GRUPO_FABRIL" class="java.math.BigDecimal"/>
+	<field name="QTD_LIN_EMBARQUE" class="java.math.BigDecimal"/>
+	<field name="QTD_MODELO_EMBARQUE" class="java.math.BigDecimal"/>
+	<field name="DATA_EMBARQUE_FORMAT" class="java.lang.String"/>
+	<group name="G_DATA_EMBARQUE" isStartNewColumn="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{DATA_EMBARQUE}]]></groupExpression>
+		<groupHeader>
+			<band height="35">
+				<textField pattern="">
+					<reportElement uuid="cebcbd60-9482-4019-9806-59df7ab1ad8b" x="2" y="14" width="409" height="20" isPrintWhenDetailOverflows="true" forecolor="#000000"/>
+					<textElement>
+						<font size="15" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DATA_EMBARQUE_FORMAT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="f907c59e-ea95-4b28-a2ac-5f8e8b9c2e5d" x="0" y="0" width="80" height="15"/>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[IND0250_A4]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="40">
+				<textField>
+					<reportElement uuid="c786eacf-517c-480e-a027-fcaa378fa818" x="2" y="0" width="409" height="40" forecolor="#FF0033"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["TOTAL PARA O "+ $F{DATA_EMBARQUE_FORMAT} + "\n" + $F{QTD_MODELO_EMBARQUE} + " Modelos / " + $F{QTD_LIN_EMBARQUE} + " Linhas"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="G_grupo" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{DESCRICAO_GRUPO_FABRIL}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement uuid="4a34a949-27d3-4800-80f2-070b659915ac" mode="Opaque" x="2" y="10" width="409" height="20" isPrintWhenDetailOverflows="true" backcolor="#CCCCCC"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+						<paragraph lineSpacing="1_1_2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DESCRICAO_GRUPO_FABRIL} + " : " + $F{QTD_MODELOS_GRUPO_FABRIL} + " Modelos / " + $F{QTD_LIN_GRUPO_FABRIL} + " Linhas"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<pageHeader>
+		<band height="93">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="ff8905ce-dcce-4363-a2b2-e24214539982" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="144042d6-56cf-4c55-8921-3b3363eb9e9c" x="0" y="37" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME_MARCA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="5630e9c7-73a0-492e-99f8-da6be8192efb" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8d150cf4-21ae-4a34-b2bd-1bc8d5fa9bf2" x="0" y="9" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band height="43">
+			<subreport>
+				<reportElement uuid="f4f0619b-331a-4804-9ede-46ed026b86e9" positionType="Float" isPrintRepeatedValues="false" x="2" y="0" width="409" height="43" isPrintWhenDetailOverflows="true"/>
+				<subreportParameter name="p_data_embarque">
+					<subreportParameterExpression><![CDATA[$F{DATA_EMBARQUE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo">
+					<subreportParameterExpression><![CDATA[$P{p_periodo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_grupo_fabril">
+					<subreportParameterExpression><![CDATA[$F{DESCRICAO_GRUPO_FABRIL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$F{CODIGO_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A4-1.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band/>
+	</summary>
+	<noData>
+		<band/>
+	</noData>
+</jasperReport>

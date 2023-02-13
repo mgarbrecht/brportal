@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A8" language="groovy" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="d0f9cf52-d742-4d8e-8cc3-58286d2efad3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="p_periodo" class="java.util.Date"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<parameter name="P_LOGO_S3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["https://s3.sa-east-1.amazonaws.com/medias.calcadosbeirario.com.br/marcas/logos_grandes/"+$P{p_codigo_marca}+".jpg"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT q.order_row
+      ,q.gp_row_1
+      ,q.marca
+      ,q.nome_marca
+      ,q.gp_row_2
+      ,CASE
+         WHEN EXTRACT(MONTH FROM $P{p_periodo_final}) = 12 THEN
+          CASE
+            WHEN q.gp_col_1 = to_char(EXTRACT(YEAR FROM $P{p_periodo_final})) OR
+                 q.gp_col_1 = to_char(EXTRACT(YEAR FROM $P{p_periodo_final}) - 1) OR
+                 q.gp_col_1 = to_char(EXTRACT(YEAR FROM $P{p_periodo_final}) + 1) THEN
+             q.gp_col_1-1
+            ELSE
+             q.gp_col_1
+          END
+         ELSE
+          q.gp_col_1
+       END gp_col_1
+      ,q.detail
+      ,EXTRACT(YEAR FROM $P{p_periodo_final}) ano_periodo_final
+FROM (
+WITH q_dados_mix AS
+ (SELECT rcm.lin_cdgo
+        ,rcm.ref_cdgo
+        ,rcm.cab_cdgo
+        ,rcm.cor_cdgo
+        ,r.codigo_marca
+        ,rcm.data_posicao
+        ,l.ind_aberto_fechado
+        ,CASE
+           WHEN (l.ind_aberto_fechado IN ('A', 'D', 'N')) THEN
+            'ABERTO'
+           WHEN (l.ind_aberto_fechado IN ('B', 'O')) THEN
+            'BOTAS'
+           WHEN (l.ind_aberto_fechado IN ('E', 'R', 'H')) THEN
+            'INJETADOS'
+           WHEN (l.ind_aberto_fechado IN ('C', 'G')) THEN
+            'FEMININO'
+           WHEN (l.ind_aberto_fechado IN ('T', 'J') AND r.codigo_marca = 20) THEN
+            'MASCULINO'
+           WHEN (l.ind_aberto_fechado IN ('X', 'Q')) THEN
+            'BOLSA'
+           ELSE
+            'FECHADO'
+         END ind_aberto_fechado_descr
+        ,DECODE(r.ref_grupo_posicao_fab, 6, 'ACESSÓRIOS', 7, 'ACESSÓRIOS', 17, 'ACESSÓRIOS', 26, 'MEIAS', 'CALÇADOS') tipo_prod
+    FROM ref_cor_mix rcm
+        ,REF         r
+        ,lin         l
+   WHERE ( --
+          (rcm.data_posicao = LAST_DAY(TO_DATE($P{p_periodo_final})) + 1) OR --
+          (rcm.data_posicao = TRUNC(ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), 0), 'MM')) OR --
+          (rcm.data_posicao = ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), -12) + 1) --
+         )
+     AND r.codigo_marca = $P{p_codigo_marca}
+     AND rcm.lin_cdgo = r.lin_cdgo
+     AND rcm.ref_cdgo = r.ref_cdgo
+     AND rcm.lin_cdgo = l.lin_cdgo --
+  ),
+qry_geral_calcados AS
+ (SELECT DISTINCT qry.ano_posicao
+                 ,qry.codigo_marca
+                 ,qry.ind_aberto_fechado_descr
+                 ,qry.tlm
+                 ,qry.tli
+                 ,(ROUND((qry.tli / NVL(LAG(qry.tli, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tli)), 2) - 1) * 100 per_ind_af
+                 ,qry.tm
+                 ,(ROUND((qry.tm / NVL(LAG(qry.tm, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tm)), 2) - 1) * 100 perc_mod
+                 ,qry.tc
+                 ,(ROUND((qry.tc / NVL(LAG(qry.tc, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tc)), 2) - 1) * 100 perc_comb
+                 ,qry.tl
+                 ,(ROUND((qry.tl / NVL(LAG(qry.tl, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tl)), 2) - 1) * 100 perc_linha_marca
+                 ,(ROUND((qry.tc / NVL(LAG(qry.tc, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tc)), 2) - 1) * 100 perc_comb_marca
+                 ,qry.tipo_prod
+                  --
+                 ,mon_ant.total_comb_mes_ant
+    FROM (SELECT EXTRACT(YEAR FROM q_dados_mix.data_posicao) ano_posicao
+                ,q_dados_mix.codigo_marca
+                ,q_dados_mix.ind_aberto_fechado_descr
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tlm
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca, q_dados_mix.ind_aberto_fechado_descr) tli
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tm
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo || '.' || q_dados_mix.cab_cdgo || '.' || q_dados_mix.cor_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tc
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tl
+                ,q_dados_mix.tipo_prod
+            FROM q_dados_mix
+           WHERE q_dados_mix.data_posicao = LAST_DAY(TO_DATE($P{p_periodo_final})) + 1
+             AND q_dados_mix.tipo_prod = 'CALÇADOS'
+          UNION
+          SELECT EXTRACT(YEAR FROM q_dados_mix.data_posicao) ano_posicao
+                ,q_dados_mix.codigo_marca
+                ,q_dados_mix.ind_aberto_fechado_descr
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca, q_dados_mix.ind_aberto_fechado_descr)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo || '.' || q_dados_mix.cab_cdgo || '.' || q_dados_mix.cor_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,q_dados_mix.tipo_prod
+            FROM q_dados_mix
+           WHERE q_dados_mix.data_posicao = ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), -12) + 1
+             AND q_dados_mix.tipo_prod = 'CALÇADOS' --
+          ) qry
+        ,(SELECT DISTINCT EXTRACT(YEAR FROM q_dados_mix.data_posicao) ano_posicao
+                         ,q_dados_mix.codigo_marca
+                         ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo || '.' || q_dados_mix.cab_cdgo || '.' || q_dados_mix.cor_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) total_comb_mes_ant
+            FROM q_dados_mix
+           WHERE q_dados_mix.data_posicao = TRUNC(ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), 0), 'MM')
+             AND q_dados_mix.tipo_prod = 'CALÇADOS' --
+          ) mon_ant
+   WHERE qry.codigo_marca = mon_ant.codigo_marca --
+  ),
+qry_geral_acessorios AS
+ (SELECT DISTINCT qry.ano_posicao
+                 ,qry.codigo_marca
+                 ,qry.ind_aberto_fechado_descr
+                 ,qry.tlm
+                 ,qry.tli
+                 ,(ROUND((qry.tli / NVL(LAG(qry.tli, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tli)), 2) - 1) * 100 per_ind_af
+                 ,qry.tm
+                 ,(ROUND((qry.tm / NVL(LAG(qry.tm, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tm)), 2) - 1) * 100 perc_mod
+                 ,qry.tc
+                 ,(ROUND((qry.tc / NVL(LAG(qry.tc, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tc)), 2) - 1) * 100 perc_comb
+                 ,qry.tl
+                 ,(ROUND((qry.tl / NVL(LAG(qry.tl, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tl)), 2) - 1) * 100 perc_linha_marca
+                 ,(ROUND((qry.tc / NVL(LAG(qry.tc, 1) OVER(PARTITION BY qry.ind_aberto_fechado_descr ORDER BY qry.ind_aberto_fechado_descr ASC, qry.codigo_marca ASC, qry.ano_posicao ASC), qry.tc)), 2) - 1) * 100 perc_comb_marca
+                 ,qry.tipo_prod
+                  --
+                 ,mon_ant.total_comb_mes_ant
+    FROM (SELECT EXTRACT(YEAR FROM q_dados_mix.data_posicao) ano_posicao
+                ,q_dados_mix.codigo_marca
+                ,q_dados_mix.ind_aberto_fechado_descr
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tlm
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca, q_dados_mix.ind_aberto_fechado_descr) tli
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tm
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo || '.' || q_dados_mix.cab_cdgo || '.' || q_dados_mix.cor_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tc
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) tl
+                ,q_dados_mix.tipo_prod
+            FROM q_dados_mix
+           WHERE q_dados_mix.data_posicao = LAST_DAY(TO_DATE($P{p_periodo_final})) + 1
+             AND q_dados_mix.tipo_prod = 'ACESSÓRIOS'
+          UNION
+          SELECT EXTRACT(YEAR FROM q_dados_mix.data_posicao) ano_posicao
+                ,q_dados_mix.codigo_marca
+                ,q_dados_mix.ind_aberto_fechado_descr
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca, q_dados_mix.ind_aberto_fechado_descr)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo || '.' || q_dados_mix.cab_cdgo || '.' || q_dados_mix.cor_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,COUNT(DISTINCT q_dados_mix.lin_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca)
+                ,q_dados_mix.tipo_prod
+            FROM q_dados_mix
+           WHERE q_dados_mix.data_posicao = ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), -12) + 1
+             AND q_dados_mix.tipo_prod = 'ACESSÓRIOS' --
+          ) qry
+        ,(SELECT DISTINCT EXTRACT(YEAR FROM q_dados_mix.data_posicao) ano_posicao
+                         ,q_dados_mix.codigo_marca
+                         ,COUNT(DISTINCT q_dados_mix.lin_cdgo || '.' || q_dados_mix.ref_cdgo || '.' || q_dados_mix.cab_cdgo || '.' || q_dados_mix.cor_cdgo) OVER(PARTITION BY q_dados_mix.data_posicao, q_dados_mix.codigo_marca) total_comb_mes_ant
+            FROM q_dados_mix
+           WHERE q_dados_mix.data_posicao = TRUNC(ADD_MONTHS(LAST_DAY(TO_DATE($P{p_periodo_final})), 0), 'MM')
+             AND q_dados_mix.tipo_prod = 'ACESSÓRIOS' --
+          ) mon_ant
+   WHERE qry.codigo_marca = mon_ant.codigo_marca(+) --
+  )
+--//--
+,
+qry_geral AS
+ (SELECT *
+    FROM qry_geral_calcados
+  UNION
+  SELECT *
+    FROM qry_geral_acessorios --
+  )
+--//--
+SELECT 1 order_row
+      ,qg.ano_posicao gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Linhas' gp_row_1
+      ,INITCAP(qg.ind_aberto_fechado_descr) gp_row_2
+      ,TO_CHAR(qg.tli) detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                           FROM qry_geral a)
+   AND qg.tipo_prod = 'CALÇADOS'
+UNION
+SELECT 1 order_row
+      ,qg.ano_posicao
+      ,qg.codigo_marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+      ,'Mix de Linhas'
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'Y' || 'Total ' || INITCAP(qg.tipo_prod), 'Z' || 'Total ' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tlm)
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a)
+UNION
+SELECT 1 order_row
+      ,qg.ano_posicao ano
+      ,qg.codigo_marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+      ,'Mix de Linhas'
+      ,INITCAP(qg.ind_aberto_fechado_descr)
+      ,TO_CHAR(qg.tli) detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MIN(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'CALÇADOS'
+UNION
+SELECT 1 order_row -- Este aqui
+      ,qg.ano_posicao
+      ,qg.codigo_marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+      ,'Mix de Linhas'
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'Y' || 'Total ' || INITCAP(qg.tipo_prod), 'Z' || 'Total ' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tlm)
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MIN(a.ano_posicao)
+                     FROM qry_geral a)
+UNION
+SELECT 1 order_row
+      ,9999
+      ,qg.codigo_marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+      ,'Mix de Linhas'
+      ,INITCAP(qg.ind_aberto_fechado_descr)
+      ,TO_CHAR(qg.per_ind_af, '9990D09') || '%'
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'CALÇADOS'
+UNION
+SELECT 1 order_row
+      ,9999
+      ,qg.codigo_marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+      ,'Mix de Linhas'
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'Y' || 'Total ' || INITCAP(qg.tipo_prod), 'Z' || 'Total ' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.perc_linha_marca, '9990D09') || '%'
+  FROM qry_geral qg
+ WHERE qg.perc_linha_marca IS NOT NULL AND
+ qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a)
+--/--
+UNION
+--/--
+SELECT 3 order_row
+      ,qg.ano_posicao gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Combinações ' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tc, '9G999') detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'CALÇADOS'
+UNION
+SELECT 3 order_row
+      ,qg.ano_posicao gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Combinações ' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tc, '9G999') detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MIN(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'CALÇADOS'
+UNION
+SELECT 3 order_row
+      ,9999 gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Combinações ' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.perc_comb_marca, '9990D09') || '%' detail
+  FROM qry_geral qg
+ WHERE qg.perc_comb_marca IS NOT NULL AND
+ qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'CALÇADOS'
+UNION
+SELECT 3 order_row
+      ,qg.ano_posicao gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Combinações ' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tc, '9G999') detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'ACESSÓRIOS'
+UNION
+SELECT 3 order_row
+      ,qg.ano_posicao gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Combinações ' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tc, '9G999') detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MIN(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'ACESSÓRIOS'
+UNION
+SELECT 3 order_row
+      ,9999 gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Combinações ' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.perc_comb_marca, '9990D09') || '%' detail
+  FROM qry_geral qg
+ WHERE qg.perc_comb_marca IS NOT NULL AND
+ qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a) AND
+ qg.tipo_prod = 'ACESSÓRIOS'
+--/--
+UNION
+--/--
+SELECT 2 order_row
+      ,qg.ano_posicao gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Modelos' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tm) detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a)
+UNION
+SELECT 2 order_row
+      ,qg.ano_posicao
+      ,qg.codigo_marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca)
+      ,'Mix de Modelos'
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.tm)
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MIN(a.ano_posicao)
+                     FROM qry_geral a)
+UNION
+SELECT 2 order_row
+      ,9999 gp_col_1
+      ,qg.codigo_marca marca
+      ,pck_marcas_produtos.get_nome(qg.codigo_marca) nome_marca
+      ,'Mix de Modelos' gp_row_1
+      ,DECODE(qg.tipo_prod, 'CALÇADOS', 'A' || INITCAP(qg.tipo_prod), 'Z' || INITCAP(qg.tipo_prod)) gp_row_2
+      ,TO_CHAR(qg.perc_mod, '9990D09') || '%' detail
+  FROM qry_geral qg
+ WHERE qg.ano_posicao = (SELECT MAX(a.ano_posicao)
+                     FROM qry_geral a)
+)q]]>
+	</queryString>
+	<field name="ORDER_ROW" class="java.math.BigDecimal"/>
+	<field name="GP_ROW_1" class="java.lang.String"/>
+	<field name="MARCA" class="java.math.BigDecimal"/>
+	<field name="NOME_MARCA" class="java.lang.String"/>
+	<field name="GP_ROW_2" class="java.lang.String"/>
+	<field name="GP_COL_1" class="java.math.BigDecimal"/>
+	<field name="DETAIL" class="java.lang.String"/>
+	<field name="ANO_PERIODO_FINAL" class="java.math.BigDecimal"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="d131ee96-175f-440f-8385-53dec0d3a13d" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="be6f3d68-48ca-437b-80e6-6682d570d86a" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f9734bdc-9c7c-4e25-af27-b3889660edf0" x="0" y="0" width="842" height="35" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="388b3438-7c2f-464b-bd11-60ad38f5989d" x="0" y="37" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOME_MARCA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="417">
+			<rectangle radius="0">
+				<reportElement uuid="cbc3d11a-8ddd-4aec-93ba-fc84fed44cff" mode="Opaque" x="80" y="38" width="280" height="53"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement uuid="40024c86-d1fc-4e8f-97bb-a175574af63b" x="2" y="0" width="840" height="28" forecolor="#44546A"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MIX " + $F{NOME_MARCA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3a09ee73-bd8a-45e2-ab30-6692a3d306f5" x="0" y="0" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[IND0250_A8]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="ef29bc04-9db3-49b2-9877-2b81f2db83fc" x="82" y="40" width="276" height="48">
+					<printWhenExpression><![CDATA[$P{p_codigo_marca} != "1"]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA["http://s3.sa-east-1.amazonaws.com/medias.calcadosbeirario.com.br/marcas/logos_grandes/"+$P{p_codigo_marca}+".jpg"]]></imageExpression>
+			</image>
+			<crosstab ignoreWidth="false">
+				<reportElement uuid="645de28b-57a9-420a-99a8-0ce622d67bc3" x="80" y="38" width="670" height="364"/>
+				<rowGroup name="order_row" width="132">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{ORDER_ROW}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#CCCCCC" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="16a2bd25-682c-4d18-95ec-805f5a857043" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="132" height="32" isPrintWhenDetailOverflows="true"/>
+								<textElement verticalAlignment="Middle" markup="html">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{gp_row_1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="gp_row_2" width="148">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{GP_ROW_2}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<rectangle>
+								<reportElement uuid="08003dbb-5828-410e-8f06-e20921c90c17" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="148" height="32" backcolor="#CCCCCC">
+									<printWhenExpression><![CDATA[$V{gp_row_2}.contains( "YTotal") || $V{gp_row_2}.contains( "ZTotal")]]></printWhenExpression>
+								</reportElement>
+								<graphicElement>
+									<pen lineWidth="0.25"/>
+								</graphicElement>
+							</rectangle>
+							<textField>
+								<reportElement uuid="c52f354e-57f3-4d64-b6ec-a3bb70b2ec98" style="Crosstab Data Text" mode="Transparent" x="0" y="8" width="0" height="0"/>
+								<textElement>
+									<font size="6" isPdfEmbedded="false"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{order_row}]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="a44ccdc5-5c12-4ab4-b6b0-31b81a2b5a41" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="1" width="148" height="31" isPrintWhenDetailOverflows="true">
+									<printWhenExpression><![CDATA[!($V{gp_row_2}.contains( "Calçados") || $V{gp_row_2}.contains( "Acessórios"))]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle" markup="html">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{gp_row_2}]]></textFieldExpression>
+							</textField>
+							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+								<reportElement uuid="cfc2e514-9397-4b06-b561-8307de8fe67a" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="1" width="148" height="31" isPrintWhenDetailOverflows="true">
+									<printWhenExpression><![CDATA[$V{gp_row_2}.contains( "Calçados") || $V{gp_row_2}.contains( "Acessórios")]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle" markup="html">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{gp_row_2}.substring( 1 )]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="ano" height="0">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ANO_PERIODO_FINAL}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement uuid="3160db88-caf7-4670-a1d2-43f1a4eb4ddd" style="Crosstab Data Text" x="0" y="0" width="130" height="0"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$V{ano}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="gp_col_1" height="53">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{GP_COL_1}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#B6D6E5" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="4ba758da-c41d-435e-90b9-c87c7a2e2ca1" style="Crosstab Data Text" x="0" y="0" width="130" height="52">
+									<printWhenExpression><![CDATA[$V{gp_col_1} == "9999" &&
+$V{gp_col_1} != "9998" &&
+$V{ano} == "2021"]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[% 21 x 20]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="3deaee91-2965-4226-a80e-fca8c8910de3" style="Crosstab Data Text" x="0" y="0" width="130" height="52">
+									<printWhenExpression><![CDATA[$V{gp_col_1} == "9999" &&
+$V{gp_col_1} != "9998" &&
+$V{ano} == "2022"]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[% 22 x 21]]></text>
+							</staticText>
+							<staticText>
+								<reportElement uuid="cba23689-d365-47e8-a1b3-818bca99686f" style="Crosstab Data Text" x="0" y="0" width="130" height="52">
+									<printWhenExpression><![CDATA[$V{gp_col_1} == "9999" &&
+$V{gp_col_1} != "9998" &&
+$V{ano} == "2023"]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[% 23 x 22]]></text>
+							</staticText>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="e75c0b62-66e8-47b7-aac3-bb6c132f1c85" style="Crosstab Data Text" x="0" y="0" width="130" height="52">
+									<printWhenExpression><![CDATA[($V{gp_col_1} != "9999" && $V{gp_col_1} != "9998")]]></printWhenExpression>
+								</reportElement>
+								<textElement verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{gp_col_1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="detailMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{DETAIL}]]></measureExpression>
+				</measure>
+				<measure name="gp_row_1" class="java.lang.String">
+					<measureExpression><![CDATA[$F{GP_ROW_1}]]></measureExpression>
+				</measure>
+				<crosstabCell width="130" height="32">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<rectangle>
+							<reportElement uuid="9076dd52-6285-4675-853f-8d863cc57916" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="130" height="32" backcolor="#CCCCCC">
+								<printWhenExpression><![CDATA[$V{gp_row_2}.contains( "YTotal Calçados") || $V{gp_row_2}.contains( "ZTotal Acessórios")]]></printWhenExpression>
+							</reportElement>
+							<graphicElement>
+								<pen lineWidth="0.5"/>
+							</graphicElement>
+						</rectangle>
+						<rectangle>
+							<reportElement uuid="87522c51-b3ac-4802-bb9b-7c0524937b88" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="0" width="130" height="32" backcolor="#B6D6E5">
+								<printWhenExpression><![CDATA[$V{gp_col_1} == "9"]]></printWhenExpression>
+							</reportElement>
+						</rectangle>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="4df4851a-2bd8-4a79-accb-5e590ec0bf6f" style="Crosstab Data Text" stretchType="RelativeToBandHeight" x="0" y="1" width="130" height="31"/>
+							<textElement verticalAlignment="Middle">
+								<font size="14" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{detailMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="order_row">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="dfcd45dc-87fc-4109-926f-0b64ad548ab7" style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{detailMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="gp_col_1">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="2bd01cda-183a-4ebd-816e-2ff6ba37a6b7" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{detailMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="order_row" columnTotalGroup="gp_col_1">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="b6bac5ce-d330-4935-9d2b-0b148c9e3273" style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{detailMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="gp_row_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="447686ff-0622-4aec-af21-3d361a1ff9d4" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{detailMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="gp_row_2" columnTotalGroup="gp_col_1">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="1244d9cc-4871-4463-ac86-d9a9e818a43d" style="Crosstab Data Text" x="0" y="0" width="50" height="25"/>
+							<textElement/>
+							<textFieldExpression><![CDATA[$V{detailMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="ano">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="order_row" columnTotalGroup="ano">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="gp_row_2" columnTotalGroup="ano">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+			<image hAlign="Center" vAlign="Middle" onErrorType="Blank">
+				<reportElement uuid="c8e4b946-f277-42e7-9f76-148101115517" x="82" y="40" width="276" height="48">
+					<printWhenExpression><![CDATA[$P{p_codigo_marca} == "1"]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA["http://s3.sa-east-1.amazonaws.com/bancoimagens.com.br/marcas_logos/1-viz.png"]]></imageExpression>
+			</image>
+		</band>
+	</summary>
+	<noData>
+		<band/>
+	</noData>
+</jasperReport>

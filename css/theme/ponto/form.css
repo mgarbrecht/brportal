@@ -1,0 +1,177 @@
+div.form
+	{
+	font-size:1em;
+	}
+
+div.form div.group,div.form div.group-body,div.form div.line{_height:1%;min-height:1%;}
+div.form div.group:after,div.form div.group-body:after,div.form div.line:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+	
+div.form div.group
+	{
+	margin:0 10px 18px 0;
+	}
+
+div.form div.group div.group-body
+	{
+	background:#F8F7F3 url(img/group-bg.jpg) repeat-x 0 100%;
+	margin-left:17px;
+	border-top:1px solid #CCCCCC;
+	}
+
+div.form div.group-closed div.group-body
+	{
+	display:none;
+	}
+	
+div.form div.group-closed h3
+	{
+	background-position:0 -33px;
+	}
+
+div.form h3
+	{
+	background:transparent url(img/group-trigger.gif) no-repeat 0 6px;
+	margin:5px 0 3px 0;
+	font-size:1.1em;
+	font-weight:bold;
+	padding-left:17px;
+	font-family:Trebuchet MS, Arial, Serif;
+	cursor:pointer;
+	}
+div.form h4
+	{
+	margin:0 0 10px 0;
+	text-transform:uppercase;
+	color:#003399;
+	font-size:0.9em;
+	font-weight:normal;
+	}
+div.form div.line
+	{
+	padding:0 0 5px 20px;
+	margin:8px 0;
+	*margin:13px 0;
+	clear:both;
+	}
+div.form div.group
+	{
+	clear:both;
+	}
+	
+div.form div.control
+	{
+	float:left;
+	margin:0 10px 5px 0;
+	}	
+div.form div.control label
+	{
+	display:block;
+	line-height:1.3em;
+	color:#333333;
+	font-size:0.9em;
+	min-height:16px;
+	}
+div.form div.required label	
+	{
+	background-image:url(img/control-required.gif);
+	background-repeat:no-repeat;
+	background-position:0 5px;
+	padding-left:10px;
+	}
+
+div.form div.control span.error
+	{
+	color:red;
+	clear:both;
+	float:left;
+	margin-top:0px;
+	margin-bottom:-21px;
+	background:transparent url(img/icons/messages-icons.gif) no-repeat -1985px 0;
+	min-height:18px;
+	padding-left:15px;
+	font-size:0.8em;
+	}
+
+div.form div.control-error input
+	{
+	border-color:red;
+	}	
+	
+div.form div.control div.select label
+	{
+	background:none;
+	padding:0;
+	display:inline;
+	}	
+div.form div.control div.select input
+	{
+	position:relative;
+	top:3px;
+	*top:1px;
+	right:-2px;
+	}
+
+div.form div.control-search input
+	{
+	float:left;
+	}
+div.form div.control-search a.icon
+	{
+	float:left;
+	color:black;
+	padding:0 0 0 25px;
+	margin:-7px 10px 0 2px;
+	height:30px;
+	background-position:-5px 0;
+	background-repeat:no-repeat;
+	width:0;
+	overflow:hidden;
+	}
+	
+div.form div.control a.search
+	{
+	background-image:url(img/icons/icon-24x24-search.gif);
+	}	
+	
+div.form label a.help
+	{
+	color:#333;
+	background:transparent url(img/icons/message-help-icon.gif) no-repeat 100% 2px;
+	padding-right:12px;
+	}
+div.form label a.help span.message-help
+	{
+	background:white;
+	display:none;
+	float:left;
+	border:1px solid #CCC;
+	border-right:2px solid #999999;
+	border-bottom:2px solid #999999;
+	position:absolute;
+	padding:5px;
+	min-height:40px;
+	min-width:170px;
+	margin:3px 0 0 1px;
+	*margin-top:16px;
+	opacity:0.9;
+	filter:alpha(opacity=90);
+	}
+div.form label a.help span.message-help h4
+	{
+	text-transform:none;
+	font-size:1.1em;
+	font-weight:bold;
+	padding:0;
+	margin:0 0 1px 0;
+	color:#333;
+	}
+	
+div.form label a.help:hover
+	{
+	color:black;
+	}
+div.form label a.help:hover span.message-help
+	{
+	display:block;
+	}
+

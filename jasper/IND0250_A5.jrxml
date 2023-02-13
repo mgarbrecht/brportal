@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A5" language="groovy" columnCount="2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="421" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2a3b0bc8-32df-46a2-99d9-3c2d34772711">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<parameter name="p_top" class="java.lang.String">
+		<defaultValueExpression><![CDATA[5]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_periodo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM (SELECT t.desc_marca
+              ,NULL material
+              ,0 ordenacao
+              ,CASE
+                 WHEN t.desc_marca = 'BEIRA RIO' THEN
+                  20
+                 WHEN t.desc_marca = 'VIZZANO' THEN
+                  10
+                 WHEN t.desc_marca = 'MOLECA' THEN
+                  30
+                 WHEN t.desc_marca = 'MOLEKINHA' THEN
+                  40
+                 WHEN t.desc_marca = 'MOLEKINHO' THEN
+                  60
+                 WHEN t.desc_marca = 'MODARE' THEN
+                  50
+                 WHEN t.desc_marca = 'ACTVITTA' THEN
+                  70
+                 WHEN t.desc_marca = 'BR SPORT' THEN
+                  80
+               END ordem
+          FROM tmp_ind0250_a5 t
+        UNION
+        SELECT t.desc_marca
+              ,t.desc_material
+              ,t.ordenacao
+              ,CASE
+                 WHEN t.desc_marca = 'BEIRA RIO' THEN
+                  20
+                 WHEN t.desc_marca = 'VIZZANO' THEN
+                  10
+                 WHEN t.desc_marca = 'MOLECA' THEN
+                  30
+                 WHEN t.desc_marca = 'MOLEKINHA' THEN
+                  40
+                 WHEN t.desc_marca = 'MOLEKINHO' THEN
+                  60
+                 WHEN t.desc_marca = 'MODARE' THEN
+                  50
+                 WHEN t.desc_marca = 'ACTVITTA' THEN
+                  70
+                 WHEN t.desc_marca = 'BR SPORT' THEN
+                  80
+               END ordem
+          FROM tmp_ind0250_a5 t --
+        ) q
+    WHERE q.ordenacao <= $P{p_top}
+ ORDER BY q.ordem
+         ,q.ordenacao ASC]]>
+	</queryString>
+	<field name="DESC_MARCA" class="java.lang.String"/>
+	<field name="MATERIAL" class="java.lang.String"/>
+	<field name="ORDENACAO" class="java.math.BigDecimal"/>
+	<field name="ORDEM" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band height="93" splitType="Stretch">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="ca2ba85c-0ddf-4a1e-a2a2-321fe887b5d5" x="0" y="0" width="842" height="93" isPrintWhenDetailOverflows="true"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="7fb535dd-e409-4004-97dc-a29f0630ac7c" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cf872143-c551-4ce9-8c02-e10842f0c8a5" x="0" y="37" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESC_MARCA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="107029e3-840a-4ae6-90dd-ed8d05c6a129" x="0" y="9" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23">
+			<staticText>
+				<reportElement uuid="40557a9d-6bac-4cad-83a6-d7c3eda50d3c" isPrintRepeatedValues="false" x="0" y="0" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[IND0250_A5]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4159285e-9409-4500-9f81-106e26a8c3c2" isPrintRepeatedValues="false" x="0" y="0" width="842" height="23" forecolor="#44546A"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOP "+ $P{p_top} +" MATERIAIS "+$F{DESC_MARCA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<subreport>
+				<reportElement uuid="f18889f9-1907-4d5e-9849-fee894d3040b" positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="187" height="36">
+					<printWhenExpression><![CDATA[$P{p_top} == "5"]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="p_material">
+					<subreportParameterExpression><![CDATA[$F{MATERIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_top">
+					<subreportParameterExpression><![CDATA[$P{p_top}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_desc_marca">
+					<subreportParameterExpression><![CDATA[$F{DESC_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$P{p_codigo_marca}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A9_B.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement uuid="788f5c2d-fecf-4cf1-a38d-c7aacfb86009" positionType="Float" isPrintRepeatedValues="false" x="0" y="0" width="187" height="36">
+					<printWhenExpression><![CDATA[$P{p_top} == "3"]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="p_material">
+					<subreportParameterExpression><![CDATA[$F{MATERIAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_periodo_final">
+					<subreportParameterExpression><![CDATA[$P{p_periodo_final}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_top">
+					<subreportParameterExpression><![CDATA[$P{p_top}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_desc_marca">
+					<subreportParameterExpression><![CDATA[$F{DESC_MARCA}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="IMAGE_FOLDER">
+					<subreportParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="p_codigo_marca">
+					<subreportParameterExpression><![CDATA[$P{p_codigo_marca}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["IND0250_A9.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band/>
+	</summary>
+	<noData>
+		<band/>
+	</noData>
+</jasperReport>

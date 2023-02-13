@@ -1,0 +1,86 @@
+package portalbr.lov;
+
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import org.apache.struts.action.*;
+import com.egen.util.jdbc.*;
+import com.egen.util.text.*;
+import portalbr.dbobj.table.*;
+import portalbr.dbobj.view.*;
+import portalbr.dbobj.procedure.*;
+
+/**
+ * Creation Date 04/05/2010 14:33:17
+ * Last Modify Date 04/05/2010 14:37:18
+ */
+
+public class LvUsuariosLojaAction extends com.egen.util.struts.AbstractAction {
+
+  public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+    HttpSession session = request.getSession(true);
+    ActionForward actionForward = null;
+    com.egen.util.jdbc.JdbcUtil j = null;
+    try {
+      j = new com.egen.util.jdbc.JdbcUtil();
+      LvUsuariosLojaActionForm f = (LvUsuariosLojaActionForm) form;
+      try {
+        select_action(j, mapping, form, request, response);
+      }
+      finally {
+      }
+      actionForward = mapping.findForward("same");
+    } catch (Exception e) {
+      ActionErrors errors = new ActionErrors();
+      errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Usuarios_loja_vw", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+      request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+      session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+      actionForward = mapping.findForward("same");
+    } finally {
+      if (j != null) {
+        j.close();
+      }
+    }
+    return actionForward;
+  }
+  private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    HttpSession session = request.getSession(true);
+    LvUsuariosLojaActionForm f = (LvUsuariosLojaActionForm) form;
+    Usuarios_loja_vw table = new Usuarios_loja_vw();
+    String[][] select = null;
+    String[] order = null;
+    String[] groupby = null;
+    String[] having = null;
+    Object[][] where = { {"cracha","like", f.getCracha()}, {"upper(nome)","like", f.getNome().toUpperCase()} };
+    Vector res_Usuarios_loja_vw = j.select(table, select, where, groupby, having, order);
+    session.setAttribute("res_Usuarios_loja_vw",res_Usuarios_loja_vw);
+    if (res_Usuarios_loja_vw == null || res_Usuarios_loja_vw.size() == 0) {
+      ActionErrors errors = (ActionErrors) request.getAttribute(org.apache.struts.Globals.ERROR_KEY);
+      if (errors == null) {
+        errors = new ActionErrors();
+      }
+      errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Usuarios_loja_vw", new ActionMessage("warn.norowsselected",""));
+      request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    }
+  }
+
+  public ActionForward perform_resetfull_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+    HttpSession session = request.getSession(true);
+    ActionForward actionForward = null;
+    try {
+      LvUsuariosLojaActionForm f = (LvUsuariosLojaActionForm) form;
+      session.removeAttribute("res_Usuarios_loja_vw");
+      form.reset(mapping, request);
+      session.setAttribute(mapping.getName(), form);
+      actionForward = mapping.findForward("same");
+    } catch (Exception e) {
+      ActionErrors errors = new ActionErrors();
+      errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Usuarios_loja_vw", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+      request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+      session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+      actionForward = mapping.findForward("same");
+    }
+    return actionForward;
+  }
+
+}

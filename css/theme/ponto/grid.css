@@ -1,0 +1,115 @@
+div.grid
+	{
+	margin:-1px 0 0 0;
+	display:block;
+	}
+
+div.grid table
+	{
+	background-color:White;
+	color:#333333;
+	width:100%;
+	border:1px solid #D3CDB6;
+	}
+
+/* Header */
+div.grid th
+	{
+	background:#EAE7DC;
+	text-align:left;
+	padding:3px 5px 5px 6px;
+	vertical-align:middle;
+	border:1px solid #D3CDB6;
+	font-size:0.9em;
+	}
+div.grid th,
+div.grid th a
+	{
+	font-weight:normal;
+	font-weight:bold;
+	color:#333333;
+	}
+
+div.grid th:hover,
+div.grid th.hover
+	{
+	border-bottom-color:#F9A321!important;
+	}
+
+/* Alternate */
+div.grid tr.even,
+div.grid td.even
+	{
+	background-color:#F2F4F6!important;
+	}
+	
+/* Order */
+div.grid th.order
+	{
+	border-bottom:1px solid #FF9900;
+	background-color:#DEDAC9;
+	background-repeat:no-repeat;
+	background-position:right 10px;
+	}
+div.grid th.order-up
+	{
+	background-image:url(img/grid-orderup-arrow.gif);
+	}
+div.grid th.order-down
+	{
+	background-image:url(img/grid-orderdown-arrow.gif);
+	}
+
+/* Cells */
+div.grid td
+	{
+	text-align:left;
+	padding:4px;
+	vertical-align:top;
+	border-top:1px solid white;
+	cursor:default;
+	line-height:1.5em;
+	font-size:0.9em;
+	}
+
+/* Grid Pager */
+div.grid-footer div.pager
+	{
+	padding:0;
+	background-color:#F8F7F3;
+	border-top:0;
+	float:right;
+	}
+
+div.grid-footer div.pager a
+	{
+	padding:1px 4px 1px 4px;
+	border-top:1px solid #E7E3D8;
+	border-left:1px solid #E7E3D8;
+	border-bottom:1px solid #BFB791;
+	border-right:1px solid #BFB791;
+	font-size:1.2em;
+	color:#666;
+	height:15px;
+	margin-left:3px;
+	float:left;
+	}
+div.grid-footer div.pager a:hover
+	{
+	border-color:#666;
+	color:Black;
+	}
+
+/* Grid Footer */
+div.grid-footer
+	{
+	min-height:20px;
+	margin:0;
+	display:block;
+	padding:5px;
+	background-color:#F8F7F3;
+	border:1px solid #D3CDB6;
+	border-top:0;
+	font-size:0.75em;
+	color:#777;
+	}

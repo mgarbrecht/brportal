@@ -1,0 +1,1594 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>13/03/2012</generation_day>
+<module>com</module>
+<file_name>KanBanClientesNovos</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>99%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>22/09/2011 12:22:11</creationDate>
+<lastModifyDate>13/03/2012 14:26:49</lastModifyDate>
+<userGenerate>brio</userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_kanban_clientes_novos</name>
+<title>verde</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_kanban_clientes_novos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"situacao","=","VERDE"}</where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size>30%</block_size>
+<block_position>Start</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+String regional = "";
+acesso.Sessao sessao = new acesso.Sessao(session);
+if(sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")){
+  regional = sessao.getChave();
+}
+%>
+
+
+
+<%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_kanban_clientes_novos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_kanban_clientes_novos t_jw_kanban_clientes_novos = new portalbr.dbobj.view.Jw_kanban_clientes_novos();
+    String[][] select = {{"cnpj",null},{"codigo_regional",null},{"sigla_regional",null},{"situacao",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"situacao","=","VERDE"},{"codigo_regional","=",regional}};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order =  null;
+    res_Jw_kanban_clientes_novos = j.select(t_jw_kanban_clientes_novos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Jw_kanban_clientes_novos" id="bl_report_Jw_kanban_clientes_novos" class="baseForm" method="post" >
+  <table class="positionTable"  width="100%"  >
+    <tr class="positionTr">
+      <td class="positionTd">
+        <%
+        if (res_Jw_kanban_clientes_novos!=null && res_Jw_kanban_clientes_novos.size()>0) {
+          %>
+
+          <table id="TRbl_report_Jw_kanban_clientes_novos"  style="background-color:green"  width="100%"  >
+            <%
+            java.lang.String cnpj =  null;
+            java.lang.Integer codigo_regional =  null;
+            java.lang.String sigla_regional =  null;
+            java.lang.String situacao =  null;
+            %>
+
+            <tr>
+             <td style="text-align:center">
+                <b>Total de Clientes: <%= res_Jw_kanban_clientes_novos.size() %> </b>
+             </td>
+
+
+<!--
+<td style="text-align:center">
+<center>
+
+		<div style="background-image: url(../img/sticky.png); height: 90px; width: 200px; border: 0px solid black; ">
+		<div style="font-family: Comic Sans MS;font-weight:bold;height: 80px; width: 190px; border: 0px solid black; margin-left:10px; margin-right:10px; margin-top:10px; ">
+			<br>CNPJ: 12345678901234
+			<br>Regional: 1
+		</div>
+	</div>
+</center>
+</td>
+-->
+
+            </tr>
+
+            <%
+            int i_bl_report_Jw_kanban_clientes_novos = 0;
+            while (i_bl_report_Jw_kanban_clientes_novos<res_Jw_kanban_clientes_novos.size()) {
+              portalbr.dbobj.view.Jw_kanban_clientes_novos t_jw_kanban_clientes_novos = (portalbr.dbobj.view.Jw_kanban_clientes_novos)res_Jw_kanban_clientes_novos.elementAt(i_bl_report_Jw_kanban_clientes_novos);
+              cnpj = t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj();
+              codigo_regional = t_jw_kanban_clientes_novos.getCodigo_regional();
+              sigla_regional = t_jw_kanban_clientes_novos.getSigla_regional()==null?"":t_jw_kanban_clientes_novos.getSigla_regional();
+              situacao = t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao();
+              String style_bl_report_Jw_kanban_clientes_novos="";
+              if (!((i_bl_report_Jw_kanban_clientes_novos%2)!=0)) {
+                style_bl_report_Jw_kanban_clientes_novos="rowColor";
+              } else {
+                style_bl_report_Jw_kanban_clientes_novos="rowBlank";
+              }
+              %>
+
+              <tr >
+
+<td style="text-align:center">
+<center>
+		<div style="background-image: url(../img/sticky.png); height: 90px; width: 200px; border: 0px solid black; ">
+		<div style="font-family: Comic Sans MS;height: 80px; width: 190px; border: 0px solid black; margin-left:10px; margin-right:10px; margin-top:10px; ">
+                        <big>
+			<br>CNPJ: <%= cnpj %>
+			<br>Regional: <%= sigla_regional %>
+                        </big>
+		</div>
+	</div>
+</center>
+</td>
+
+
+              </tr>
+
+              <%
+              i_bl_report_Jw_kanban_clientes_novos++;
+              if (i_bl_report_Jw_kanban_clientes_novos<res_Jw_kanban_clientes_novos.size()) {
+                t_jw_kanban_clientes_novos = (portalbr.dbobj.view.Jw_kanban_clientes_novos)res_Jw_kanban_clientes_novos.elementAt(i_bl_report_Jw_kanban_clientes_novos);
+                cnpj = t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj();
+                codigo_regional = t_jw_kanban_clientes_novos.getCodigo_regional();
+                sigla_regional = t_jw_kanban_clientes_novos.getSigla_regional()==null?"":t_jw_kanban_clientes_novos.getSigla_regional();
+                situacao = t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao();
+              } else {
+              }
+            }
+            %>
+
+          </table>
+
+          <%
+        }
+        %>
+
+      </form>
+      <%
+    }
+    %>
+
+<script type="text/JavaScript">
+<!--
+function timedRefresh(timeoutPeriod) {
+//	setTimeout("top.location= '../com/MovimentacoesDiaForm.jsp';",timeoutPeriod);
+
+}
+//   -->
+</script></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cnpj</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos</block_name>
+<role_item></role_item>
+<database_column>cnpj</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cnpj</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos</block_name>
+<role_item></role_item>
+<database_column>codigo_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_regional</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getCodigo_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_regional</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos</block_name>
+<role_item></role_item>
+<database_column>descricao_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>descricao_regional</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getDescricao_regional()==null?"":t_jw_kanban_clientes_novos.getDescricao_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>situacao</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos</block_name>
+<role_item></role_item>
+<database_column>situacao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>situacao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_kanban_clientes_novos_1</name>
+<title>amarelo</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_kanban_clientes_novos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"situacao","=","AMARELO"}</where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size>100%</block_size>
+<block_position>Right</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_kanban_clientes_novos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_kanban_clientes_novos t_jw_kanban_clientes_novos = new portalbr.dbobj.view.Jw_kanban_clientes_novos();
+    String[][] select = {{"cnpj",null},{"codigo_regional",null},{"sigla_regional",null},{"situacao",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"situacao","=","AMARELO"},{"codigo_regional","=",regional}};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order =  null;
+    res_Jw_kanban_clientes_novos = j.select(t_jw_kanban_clientes_novos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Jw_kanban_clientes_novos_1" id="bl_report_Jw_kanban_clientes_novos_1" class="baseForm" method="post" >
+</td>
+<td class="positionTd">
+  <%
+  if (res_Jw_kanban_clientes_novos!=null && res_Jw_kanban_clientes_novos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Jw_kanban_clientes_novos_1"  style="background-color:yellow"  width="100%"  >
+      <%
+      java.lang.String cnpj1 =  null;
+      java.lang.Integer codigo_regional1 =  null;
+      java.lang.String sigla_regional1 =  null;
+      java.lang.String situacao1 =  null;
+      %>
+
+      <tr>
+             <td style="text-align:center">
+                <b>Total de Clientes: <%= res_Jw_kanban_clientes_novos.size() %> </b>
+             </td>
+
+<!--
+<td style="text-align:center">
+<center>
+		<div style="background-image: url(../img/sticky.png); height: 90px; width: 200px; border: 0px solid black; ">
+		<div style="font-family: Comic Sans MS;height: 80px; width: 190px; border: 0px solid black; margin-left:10px; margin-right:10px; margin-top:10px; ">
+			<br>CNPJ: <%= cnpj1 %>
+			<br>Regional: <%= sigla_regional1 %>
+		</div>
+	</div>
+</center>
+</td>
+-->
+
+      </tr>
+
+      <%
+      int i_bl_report_Jw_kanban_clientes_novos_1 = 0;
+      while (i_bl_report_Jw_kanban_clientes_novos_1<res_Jw_kanban_clientes_novos.size()) {
+        portalbr.dbobj.view.Jw_kanban_clientes_novos t_jw_kanban_clientes_novos = (portalbr.dbobj.view.Jw_kanban_clientes_novos)res_Jw_kanban_clientes_novos.elementAt(i_bl_report_Jw_kanban_clientes_novos_1);
+        cnpj1 = t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj();
+        codigo_regional1 = t_jw_kanban_clientes_novos.getCodigo_regional();
+        sigla_regional1 = t_jw_kanban_clientes_novos.getSigla_regional()==null?"":t_jw_kanban_clientes_novos.getSigla_regional();
+        situacao1 = t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao();
+        String style_bl_report_Jw_kanban_clientes_novos_1="";
+        if (!((i_bl_report_Jw_kanban_clientes_novos_1%2)!=0)) {
+          style_bl_report_Jw_kanban_clientes_novos_1="rowColor";
+        } else {
+          style_bl_report_Jw_kanban_clientes_novos_1="rowBlank";
+        }
+        %>
+
+        <tr  >
+  
+<td style="text-align:center">
+<center>
+		<div style="background-image: url(../img/sticky.png); height: 90px; width: 200px; border: 0px solid black; ">
+		<div style="font-family: Comic Sans MS;height: 80px; width: 190px; border: 0px solid black; margin-left:10px; margin-right:10px; margin-top:10px; ">
+                        <big>
+			<br>CNPJ: <%= cnpj1 %>
+			<br>Regional: <%= sigla_regional1 %>
+                        </big>
+		</div>
+	</div>
+</center>
+</td>
+
+        </tr>
+
+        <%
+        i_bl_report_Jw_kanban_clientes_novos_1++;
+        if (i_bl_report_Jw_kanban_clientes_novos_1<res_Jw_kanban_clientes_novos.size()) {
+          t_jw_kanban_clientes_novos = (portalbr.dbobj.view.Jw_kanban_clientes_novos)res_Jw_kanban_clientes_novos.elementAt(i_bl_report_Jw_kanban_clientes_novos_1);
+          cnpj1 = t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj();
+          codigo_regional1 = t_jw_kanban_clientes_novos.getCodigo_regional();
+          sigla_regional1 = t_jw_kanban_clientes_novos.getSigla_regional()==null?"":t_jw_kanban_clientes_novos.getSigla_regional();
+          situacao1 = t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</form>
+<%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cnpj1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_1</block_name>
+<role_item></role_item>
+<database_column>cnpj</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cnpj</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_regional1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_1</block_name>
+<role_item></role_item>
+<database_column>codigo_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_regional</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getCodigo_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_regional1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_1</block_name>
+<role_item></role_item>
+<database_column>descricao_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>descricao_regional</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getDescricao_regional()==null?"":t_jw_kanban_clientes_novos.getDescricao_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>situacao1</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_1</block_name>
+<role_item></role_item>
+<database_column>situacao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>situacao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_kanban_clientes_novos_2</name>
+<title>vermelho</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_kanban_clientes_novos</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause>{"situacao","=","VERMELHO"}</where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size>100%</block_size>
+<block_position>End</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>0</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_kanban_clientes_novos = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    portalbr.dbobj.view.Jw_kanban_clientes_novos t_jw_kanban_clientes_novos = new portalbr.dbobj.view.Jw_kanban_clientes_novos();
+    String[][] select = {{"cnpj",null},{"codigo_regional",null},{"sigla_regional",null},{"situacao",null},};
+    Object[][] where = null;
+    where = new Object[][]{{"situacao","=","VERMELHO"},{"codigo_regional","=",regional}};
+    String[] groupby =  null;
+    String[] having =  null;
+    String[] order =  null;
+    res_Jw_kanban_clientes_novos = j.select(t_jw_kanban_clientes_novos,select,where,groupby,having,order);
+  } catch (Exception e){
+    session.setAttribute("exception",com.egen.util.system.Error.getDescription(e));
+    %>
+    <jsp:forward page="/system/ErrorPage.jsp"/>
+    <%
+  } finally {
+  if(j!=null){j.close();}
+}
+%>
+
+<form  name="bl_report_Jw_kanban_clientes_novos_2" id="bl_report_Jw_kanban_clientes_novos_2" class="baseForm" method="post" >
+</td>
+<td class="positionTd">
+  <%
+  if (res_Jw_kanban_clientes_novos!=null && res_Jw_kanban_clientes_novos.size()>0) {
+    %>
+
+    <table id="TRbl_report_Jw_kanban_clientes_novos_2"  style="background-color:red"  width="100%" >
+      <%
+      java.lang.String cnpj2 =  null;
+      java.lang.Integer codigo_regional2 =  null;
+      java.lang.String sigla_regional2 =  null;
+      java.lang.String situacao2 =  null;
+      %>
+
+      <tr >
+             <td style="text-align:center">
+                <b>Total de Clientes: <%= res_Jw_kanban_clientes_novos.size() %> </b>
+             </td>
+
+<!--
+<td style="text-align:center">
+<center>
+		<div style="background-image: url(../img/sticky.png); height: 90px; width: 200px; border: 0px solid black; ">
+		<div style="font-family: Comic Sans MS;height: 80px; width: 190px; border: 0px solid black; margin-left:10px; margin-right:10px; margin-top:10px; ">
+			<br>CNPJ: <%= cnpj2 %>
+			<br>Regional: <%= sigla_regional2 %>
+		</div>
+	</div>
+</center>
+</td>
+-->
+
+      </tr>
+
+      <%
+      int i_bl_report_Jw_kanban_clientes_novos_2 = 0;
+      while (i_bl_report_Jw_kanban_clientes_novos_2<res_Jw_kanban_clientes_novos.size()) {
+        portalbr.dbobj.view.Jw_kanban_clientes_novos t_jw_kanban_clientes_novos = (portalbr.dbobj.view.Jw_kanban_clientes_novos)res_Jw_kanban_clientes_novos.elementAt(i_bl_report_Jw_kanban_clientes_novos_2);
+        cnpj2 = t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj();
+        codigo_regional2 = t_jw_kanban_clientes_novos.getCodigo_regional();
+        sigla_regional2 = t_jw_kanban_clientes_novos.getSigla_regional()==null?"":t_jw_kanban_clientes_novos.getSigla_regional();
+        situacao2 = t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao();
+        String style_bl_report_Jw_kanban_clientes_novos_2="";
+        if (!((i_bl_report_Jw_kanban_clientes_novos_2%2)!=0)) {
+          style_bl_report_Jw_kanban_clientes_novos_2="rowColor";
+        } else {
+          style_bl_report_Jw_kanban_clientes_novos_2="rowBlank";
+        }
+        %>
+
+        <tr  >
+
+<td style="text-align:center">
+<center>
+		<div style="background-image: url(../img/sticky.png); height: 90px; width: 200px; border: 0px solid black; ">
+		<div style="font-family: Comic Sans MS;height: 80px; width: 190px; border: 0px solid black; margin-left:10px; margin-right:10px; margin-top:10px; ">
+                        <big>
+			<br>CNPJ: <%= cnpj2 %>
+			<br>Regional: <%= sigla_regional2 %>
+                        </big>
+		</div>
+	</div>
+</center>
+</td>
+
+        </tr>
+
+        <%
+        i_bl_report_Jw_kanban_clientes_novos_2++;
+        if (i_bl_report_Jw_kanban_clientes_novos_2<res_Jw_kanban_clientes_novos.size()) {
+          t_jw_kanban_clientes_novos = (portalbr.dbobj.view.Jw_kanban_clientes_novos)res_Jw_kanban_clientes_novos.elementAt(i_bl_report_Jw_kanban_clientes_novos_2);
+          cnpj2 = t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj();
+          codigo_regional2 = t_jw_kanban_clientes_novos.getCodigo_regional();
+          sigla_regional2 = t_jw_kanban_clientes_novos.getSigla_regional()==null?"":t_jw_kanban_clientes_novos.getSigla_regional();
+          situacao2 = t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao();
+        } else {
+        }
+      }
+      %>
+
+    </table>
+
+    <%
+  }
+  %>
+
+</td>
+
+</tr>
+
+</table>
+
+</form>
+<%
+}
+%>
+
+</report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>cnpj2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_2</block_name>
+<role_item></role_item>
+<database_column>cnpj</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>cnpj</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getCnpj()==null?"":t_jw_kanban_clientes_novos.getCnpj()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>codigo_regional2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_2</block_name>
+<role_item></role_item>
+<database_column>codigo_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>codigo_regional</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getCodigo_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>descricao_regional2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_2</block_name>
+<role_item></role_item>
+<database_column>descricao_regional</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>descricao_regional</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getDescricao_regional()==null?"":t_jw_kanban_clientes_novos.getDescricao_regional()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>situacao2</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_kanban_clientes_novos_2</block_name>
+<role_item></role_item>
+<database_column>situacao</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>situacao</label>
+<type>java.lang.String</type>
+<columnWidth></columnWidth>
+<align>left</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_kanban_clientes_novos.getSituacao()==null?"":t_jw_kanban_clientes_novos.getSituacao()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans></formBeans>
+<actions></actions>
+</strutsConfig>
+<page>
+<class>com.egen.develop.generator.EditPage</class>
+<info></info>
+<language></language>
+<contentType></contentType>
+<extends_>acesso.web.HttpJspSessao</extends_>
+<import_></import_>
+<errorPage></errorPage>
+<include></include>
+<buffer></buffer>
+<session>true</session>
+<autoFlush>true</autoFlush>
+<isThreadSafe>true</isThreadSafe>
+<isErrorPage>false</isErrorPage>
+<cache>true</cache>
+<show_buffer>false</show_buffer>
+<show_header>false</show_header>
+<isELIgnored>false</isELIgnored>
+<trimWhiteSpace>false</trimWhiteSpace>
+<enter_effects>normal</enter_effects>
+<role></role>
+<roleinclude>false</roleinclude>
+<http_equiv></http_equiv>
+<content></content>
+<name></name>
+<url></url>
+<moremeta></moremeta>
+<addHeaderCode><head><title>Acompanhamento da prospecção de novos clientes.</title></addHeaderCode>
+<editPageSetProperty>
+</editPageSetProperty>
+</editPageSetProperty>
+</page>
+<time></time>
+<body>
+<class>com.egen.develop.generator.Body</class>
+<id></id>
+<class_></class_>
+<style></style>
+<title></title>
+<dir></dir>
+<lang></lang>
+<onload>JavaScript:timedRefresh(15000);</onload>
+<onunload></onunload>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<bodySetProperty>
+</bodySetProperty>
+</bodySetProperty>
+</body>
+<header>
+<class>com.egen.develop.generator.Header</class>
+<id></id>
+<class_></class_>
+<style></style>
+<include>../system/header.jsp</include>
+<freeSource><%
+if(!user.isSuperUsuario() && !user.isAutorizado(195)){
+   response.sendRedirect("../system/Error.jsp");
+}
+%></freeSource>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmouseup></onmouseup>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseout></onmouseout>
+<left></left>
+<top></top>
+<z_index></z_index>
+<message_header>user_message</message_header>
+<message_header_user></message_header_user>
+<border></border>
+<frame></frame>
+<title>no_message</title>
+<headerSetProperty>
+</headerSetProperty>
+</headerSetProperty>
+</header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

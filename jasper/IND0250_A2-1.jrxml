@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A2-1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="edcc90f0-7cf4-43a7-b62b-a3e2e9c70e43">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" mode="Transparent" forecolor="#330033" backcolor="#B6D6E5" fill="Solid" isBlankWhenNull="true" isBold="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{AnoMeasure}!= "%" && $V{AnoMeasure}!= "Acumulado"  && !$V{IND_ABERTO_FECHADO_DESCRMeasure}.equals("Valor (R\$)") && !$V{IND_ABERTO_FECHADO_DESCRMeasure}.equals("Marca")]]></conditionExpression>
+			<style mode="Transparent" forecolor="#000000" backcolor="#FFFFFF" fill="Solid" isBlankWhenNull="false" isBold="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{AnoMeasure}.equals("%") &&  !$V{IND_ABERTO_FECHADO_DESCRMeasure}.equals("Valor (R\$)")]]></conditionExpression>
+			<style mode="Transparent" forecolor="#000000" backcolor="#B6D6E5" isBlankWhenNull="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{AnoMeasure}=="Acumulado" && !$V{IND_ABERTO_FECHADO_DESCRMeasure}.equals("Valor (R\$)")]]></conditionExpression>
+			<style mode="Transparent" forecolor="#000000" backcolor="#B6D6E5" isBlankWhenNull="false"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{IND_ABERTO_FECHADO_DESCRMeasure}.equals("Valor (R\$)")]]></conditionExpression>
+			<style mode="Transparent" forecolor="#000000" backcolor="#B6D6E5" isBlankWhenNull="false"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="New Dataset 1" uuid="9bd794be-c01b-4f65-a16d-a21c5a4ed348">
+		<parameter name="p_periodo" class="java.util.Date">
+			<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+		</parameter>
+		<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+			<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+		</parameter>
+		<parameter name="p_completo" class="java.lang.Integer"/>
+		<parameter name="p_periodo_final" class="java.util.Date"/>
+		<queryString>
+			<![CDATA[SELECT 'ACESSÓRIOS' acessorios
+      ,NVL(q_geral.mes_conquistando, 5) mes_conquistando
+      ,NVL(q_geral.ano, q_all.ano) ano
+      ,NVL(q_geral.codigo_marca, $P{p_codigo_marca}) codigo_marca
+      ,NVL(q_geral.descricao_marca, pck_marcas_produtos.get_nome($P{p_codigo_marca})) descricao_marca
+      ,NVL(q_geral.unn_descr, 'ND') unn_descr
+      ,NVL(q_geral.ind_aberto_fechado_descr, q_all.descricao) ind_aberto_fechado_descr
+      ,NVL(q_geral.completo, $P{p_completo}) completo
+      ,NVL(q_geral.valor,q_all.valor) valor
+      ,NVL(q_geral.ordem_1, q_all.ordem) ordem_1
+      ,NVL(q_geral.ordem_2, q_all.ordem2) ordem_2
+  FROM (SELECT extract(month from $P{p_periodo_final}) mes_conquistando
+              ,tia.ano
+              ,tia.codigo_marca
+              ,tia.descricao_marca
+              ,tia.unn_descr
+              ,tia.ind_aberto_fechado_descr
+              ,tia.completo
+              ,tia.valor
+              ,tia.ordem_1
+              ,tia.ordem_2
+          FROM tmp_ind0250_a2 tia
+         WHERE tia.codigo_marca = $P{p_codigo_marca}
+           AND completo = $P{p_completo}
+           AND tia.ordem_1 NOT IN (99907, 99908, 99904, 99997, 99998, 99994)
+           AND tia.ordem_2 NOT IN (10, 20, 70)
+           AND tia.ind_aberto_fechado_descr <> 'BOTA INJETADA'
+           AND tia.ind_aberto_fechado_descr IN ('BOLSA', 'CARTEIRA', 'MARCA(UN)', 'Valor (R$)', 'OUTRO') --
+        ) q_geral
+      ,(SELECT q1.*
+              ,q2.*
+              ,' ' valor
+          FROM (SELECT TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) + 1 - LEVEL) ano
+                      ,TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) + 1 - LEVEL) ordem
+                  FROM dual
+                CONNECT BY LEVEL <= 2
+                UNION
+                SELECT '% ' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final})), '^20', '') || 'x' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL), '^20', '') ano
+                      ,TO_CHAR(DECODE(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL, EXTRACT(YEAR FROM $P{p_periodo_final}) - 1, 99906, EXTRACT(YEAR FROM $P{p_periodo_final}) - 2, 99905)) ordem
+                  FROM dual
+                CONNECT BY LEVEL <= 1
+                UNION
+                SELECT 'Ac ' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final})), '^20', '') || 'x' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL), '^20', '') ano
+                      ,TO_CHAR(DECODE(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL, EXTRACT(YEAR FROM $P{p_periodo_final}) - 1, 99996, EXTRACT(YEAR FROM $P{p_periodo_final}) - 2, 99995)) ordem
+                  FROM dual
+                CONNECT BY LEVEL <= 1 --
+                ) q1
+              ,(SELECT 'Valor (R$)' descricao
+                      ,90 ordem2
+                  FROM dual
+                UNION
+                SELECT 'BOLSA'
+                      ,30 ordem2
+                  FROM dual
+                UNION
+                SELECT 'CARTEIRA'
+                      ,40 ordem2
+                  FROM dual
+                UNION
+                SELECT 'MARCA(UN)'
+                      ,80 ordem2
+                  FROM dual
+                --
+                ) q2 --
+        ) q_all
+ WHERE q_geral.ano(+) = q_all.ano
+   AND q_geral.ind_aberto_fechado_descr(+) = q_all.descricao
+   AND ((DECODE($P{p_codigo_marca}, 1, 'S', 'N') = 'S') OR (DECODE($P{p_codigo_marca}, 1, 'S', 'N') = 'N'
+   AND NVL(q_geral.ordem_2, q_all.ordem2) != 40))
+   AND q_all.ordem IN (99906, 99996, 2020, 2021, 2022, 2023)
+   AND q_all.ordem2 IN (80, 90)
+ ORDER BY ordem_1
+         ,ordem_2
+         ,ind_aberto_fechado_descr]]>
+		</queryString>
+		<field name="ACESSORIOS" class="java.lang.String"/>
+		<field name="MES_CONQUISTANDO" class="java.math.BigDecimal"/>
+		<field name="ANO" class="java.lang.String"/>
+		<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+		<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+		<field name="UNN_DESCR" class="java.lang.String"/>
+		<field name="IND_ABERTO_FECHADO_DESCR" class="java.lang.String"/>
+		<field name="COMPLETO" class="java.math.BigDecimal"/>
+		<field name="VALOR" class="java.lang.String"/>
+		<field name="ORDEM_1" class="java.math.BigDecimal"/>
+		<field name="ORDEM_2" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="New Dataset 2" uuid="fa1c406c-6595-4e04-a3db-bc65d4a107a3">
+		<parameter name="p_periodo" class="java.util.Date">
+			<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+		</parameter>
+		<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+			<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+		</parameter>
+		<parameter name="p_completo" class="java.lang.Integer"/>
+		<parameter name="p_periodo_final" class="java.util.Date"/>
+		<queryString>
+			<![CDATA[SELECT 'VESTUÁRIO' vestimentas
+      ,NVL(q_geral.mes_conquistando, 8) mes_conquistando
+      ,NVL(q_geral.ano, q_all.ano) ano
+      ,NVL(q_geral.codigo_marca, $P{p_codigo_marca}) codigo_marca
+      ,NVL(q_geral.descricao_marca, pck_marcas_produtos.get_nome($P{p_codigo_marca})) descricao_marca
+      ,NVL(q_geral.ind_aberto_fechado_descr, q_all.descricao) ind_aberto_fechado_descr
+      ,NVL(q_geral.completo, $P{p_completo}) completo
+      ,NVL(q_geral.valor,q_all.valor) valor
+      ,NVL(q_geral.ordem_1, q_all.ordem) ordem_1
+      ,NVL(q_geral.ordem_2, q_all.ordem2) ordem_2
+  FROM (SELECT extract(month from $P{p_periodo_final}) mes_conquistando
+              ,tia.ano
+              ,tia.codigo_marca
+              ,tia.descricao_marca
+              ,tia.ind_aberto_fechado_descr
+              ,tia.completo
+              ,tia.valor
+              ,tia.ordem_1
+              ,tia.ordem_2
+          FROM tmp_ind0250_a2 tia
+         WHERE tia.codigo_marca = $P{p_codigo_marca}
+           AND completo = $P{p_completo}
+           AND tia.ordem_1 NOT IN (99907, 99908, 99906, 99997, 99998, 99996)
+           AND tia.ordem_2 NOT IN (10, 20, 70)
+           AND tia.ind_aberto_fechado_descr <> 'BOTA INJETADA'
+           AND tia.ind_aberto_fechado_descr IN ('VESTIMENTA', 'MARCA(QTD)', 'Valor (R$)') --
+        ) q_geral
+      ,(SELECT q1.*
+              ,q2.*
+              ,' ' valor
+          FROM (SELECT TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) + 1 - LEVEL) ano
+                      ,TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) + 1 - LEVEL) ordem
+                  FROM dual
+                CONNECT BY LEVEL <= 2
+                UNION
+                SELECT '% ' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final})), '^20', '') || 'x' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL), '^20', '') ano
+                      ,TO_CHAR(DECODE(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL, EXTRACT(YEAR FROM $P{p_periodo_final}) - 1, 99904, EXTRACT(YEAR FROM $P{p_periodo_final}) - 2, 99905)) ordem
+                  FROM dual
+                CONNECT BY LEVEL <= 1
+                UNION
+                SELECT 'Ac ' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final})), '^20', '') || 'x' || regexp_replace(TO_CHAR(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL), '^20', '') ano
+                      ,TO_CHAR(DECODE(EXTRACT(YEAR FROM $P{p_periodo_final}) - LEVEL, EXTRACT(YEAR FROM $P{p_periodo_final}) - 1, 99994, EXTRACT(YEAR FROM $P{p_periodo_final}) - 2, 99995)) ordem
+                  FROM dual
+                CONNECT BY LEVEL <= 1 --
+                ) q1
+              ,(SELECT 'Valor (R$)' descricao
+                      ,90 ordem2
+                  FROM dual
+                UNION
+                SELECT 'VESTIMENTA'
+                      ,55 ordem2
+                  FROM dual
+                UNION
+                SELECT 'MARCA(QTD)'
+                      ,85 ordem2
+                  FROM dual
+                --
+                ) q2 --
+        ) q_all
+ WHERE q_geral.ano(+) = q_all.ano
+   AND q_geral.ind_aberto_fechado_descr(+) = q_all.descricao
+   AND ((DECODE($P{p_codigo_marca}, 1, 'S', 'N') = 'S') OR (DECODE($P{p_codigo_marca}, 1, 'S', 'N') = 'N' AND NVL(q_geral.ordem_2, q_all.ordem2) != 40))
+   AND q_all.ordem IN (99904, 99994, 2020, 2021, 2022, 2023)
+   AND q_all.ordem2 IN (85, 90)
+ ORDER BY ordem_1
+         ,ordem_2
+         ,ind_aberto_fechado_descr]]>
+		</queryString>
+		<field name="VESTIMENTAS" class="java.lang.String"/>
+		<field name="MES_CONQUISTANDO" class="java.math.BigDecimal"/>
+		<field name="ANO" class="java.lang.String"/>
+		<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+		<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+		<field name="IND_ABERTO_FECHADO_DESCR" class="java.lang.String"/>
+		<field name="COMPLETO" class="java.math.BigDecimal"/>
+		<field name="VALOR" class="java.lang.String"/>
+		<field name="ORDEM_1" class="java.math.BigDecimal"/>
+		<field name="ORDEM_2" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="p_periodo" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMAGE_FOLDER" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["I:/interno/fontes/java/projetos/brportal/build/web/imagens/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="p_completo" class="java.lang.Integer"/>
+	<parameter name="p_periodo_final" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT 'CALÇADOS' calcados
+      ,q.ind_aberto_fechado_descr
+      ,q.mes_conquistando
+      ,q.ano
+      ,q.codigo_marca
+      ,q.descricao_marca
+      ,q.completo
+      ,q.valor
+      ,q.ordem_1
+      ,q.ordem_2
+      ,decode(q.unn_descr, 'INJECAO DIRETA', 'INJETADOS', q.unn_descr) unn_descr
+  FROM (SELECT $P{p_periodo} mes_conquistando
+              ,DECODE(tia.ano, 'Acum. 22x21', 'Ac 22x21', 'Acum. 22x20', 'Ac 22x20', tia.ano) ano
+              ,tia.codigo_marca
+              ,tia.descricao_marca
+              ,tia.ind_aberto_fechado_descr
+              ,tia.completo
+              ,tia.valor
+              ,tia.ordem_1
+              ,tia.ordem_2
+              ,tia.unn_descr
+         FROM tmp_ind0250_a2 tia
+        WHERE tia.codigo_marca = $P{p_codigo_marca}
+          AND completo = $P{p_completo}
+          AND tia.ordem_1 NOT IN (99905, 99906, 99904, 99995, 99996, 99994)
+          AND tia.ordem_2 NOT IN (30, 80, 85, 40)
+          AND tia.ind_aberto_fechado_descr NOT IN ('BOLSA', 'CARTEIRA', 'CINTOS', 'VESTIMENTA', 'OCULOS')
+          AND tia.unn_descr NOT IN ('BOLSAS', 'OCULOS')
+       )q
+ ORDER BY q.ordem_1
+         ,q.ordem_2
+         ,q.ind_aberto_fechado_descr]]>
+	</queryString>
+	<field name="CALCADOS" class="java.lang.String"/>
+	<field name="IND_ABERTO_FECHADO_DESCR" class="java.lang.String"/>
+	<field name="MES_CONQUISTANDO" class="java.sql.Timestamp"/>
+	<field name="ANO" class="java.lang.String"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="COMPLETO" class="java.math.BigDecimal"/>
+	<field name="VALOR" class="java.lang.String"/>
+	<field name="ORDEM_1" class="java.math.BigDecimal"/>
+	<field name="ORDEM_2" class="java.math.BigDecimal"/>
+	<field name="UNN_DESCR" class="java.lang.String"/>
+	<group name="DESCRICAO_MARCA">
+		<groupExpression><![CDATA[$F{DESCRICAO_MARCA}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image scaleImage="RealSize" hAlign="Center" onErrorType="Blank">
+				<reportElement uuid="c07bd1e7-bbc3-4e59-81ac-285192142a8c" x="0" y="0" width="842" height="93"/>
+				<imageExpression><![CDATA[$P{IMAGE_FOLDER} + "cabecalho_conquistando_produto.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="05c616a5-51f7-417e-a2cd-2bf25e1e22ae" x="0" y="37" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="22" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DESCRICAO_MARCA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5b348080-d8fd-46e6-b91f-a80d791d68d5" x="0" y="0" width="842" height="35" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CENTRO DE DESENVOLVIMENTO]]></text>
+			</staticText>
+			<textField pattern="MMM/yyyy">
+				<reportElement uuid="69ead892-8c20-4443-89fe-f91f548d4fdc" x="0" y="63" width="842" height="26" forecolor="#4597A0"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{p_periodo_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="26">
+			<staticText>
+				<reportElement uuid="19062a1b-0479-4359-a0ac-c87af5726a0d" mode="Transparent" x="0" y="0" width="842" height="26" forecolor="#44546A"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EVOLUÇÃO POR SEGMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5fba7aa1-33a8-498d-b5d0-fd65417a03ab" x="0" y="0" width="80" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[IND0250_A2-1]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="430" splitType="Prevent">
+			<crosstab>
+				<reportElement uuid="e05ffe36-eb8f-4d38-aea2-c2d0954a8773" positionType="Float" mode="Transparent" x="96" y="235" width="295" height="186" backcolor="#006666"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<crosstabParameter name="parameterMarca">
+					<parameterValueExpression><![CDATA[$F{DESCRICAO_MARCA}]]></parameterValueExpression>
+				</crosstabParameter>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="New Dataset 1" uuid="1249d7c6-44cb-4be6-a530-253b3770d38f">
+							<datasetParameter name="p_periodo">
+								<datasetParameterExpression><![CDATA[$P{p_periodo}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="p_periodo_final">
+								<datasetParameterExpression><![CDATA[$P{p_periodo_final}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="p_codigo_marca">
+								<datasetParameterExpression><![CDATA[$P{p_codigo_marca}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="p_completo">
+								<datasetParameterExpression><![CDATA[$P{p_completo}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="IMAGE_FOLDER">
+								<datasetParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<crosstabHeaderCell>
+					<cellContents>
+						<textField>
+							<reportElement uuid="9f192618-05b2-418a-a94e-301f24442c98" mode="Opaque" x="0" y="0" width="97" height="60" backcolor="#B6D6E5"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$P{parameterMarca}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="ORDEM_1" width="97" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ORDEM_1}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="8c81e918-394f-4114-92a8-c9edea8dbe0a" mode="Opaque" x="0" y="0" width="97" height="30" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{AnoMeasure}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="4cd2107e-f192-49e8-bf37-6b427431bc1d" mode="Opaque" x="0" y="30" width="0" height="0" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="acessorios" height="30" totalPosition="End" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ACESSORIOS}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="cdd3a616-cf6b-42ed-95e7-a6d23a50f2b7" mode="Opaque" x="0" y="0" width="99" height="30" backcolor="#CCCCCC"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{acessorios}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="ORDEM_2" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ORDEM_2}+$F{IND_ABERTO_FECHADO_DESCR}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="5089020b-45f6-469a-ab4d-a1cc49b1d06c" mode="Opaque" x="0" y="0" width="0" height="0" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_2}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="10940385-1f16-4ff3-94c4-4100ba4e9c50" mode="Opaque" x="0" y="0" width="99" height="30" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{IND_ABERTO_FECHADO_DESCRMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="VALORMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{VALOR}]]></measureExpression>
+				</measure>
+				<measure name="IND_ABERTO_FECHADO_DESCRMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{IND_ABERTO_FECHADO_DESCR}]]></measureExpression>
+				</measure>
+				<measure name="AnoMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{ANO}]]></measureExpression>
+				</measure>
+				<crosstabCell width="99" height="30">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<rectangle>
+							<reportElement uuid="6abf8e1e-8988-4951-8972-3747585c969c" x="0" y="0" width="99" height="30" backcolor="#B6D6E5">
+								<printWhenExpression><![CDATA[($V{AnoMeasure} == "%" || $V{AnoMeasure} == "Acumulado") ||
+($V{AnoMeasure} == "% 21x20" || $V{AnoMeasure} == "Ac 21x20") ||
+($V{AnoMeasure} == "% 21x19" || $V{AnoMeasure} == "Ac 21x19")]]></printWhenExpression>
+							</reportElement>
+						</rectangle>
+						<textField isBlankWhenNull="false">
+							<reportElement uuid="423eaf8b-fe2a-436f-8969-8f2e5ef91056" x="0" y="0" width="99" height="30">
+								<printWhenExpression><![CDATA[(($V{ORDEM_1} == "99905") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+(($V{ORDEM_1} == "99906") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+(($V{ORDEM_1} == "99995") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+(($V{ORDEM_1} == "99996") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+!($V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)'))]]></printWhenExpression>
+							</reportElement>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="99" height="0" rowTotalGroup="ORDEM_1">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="30" columnTotalGroup="ORDEM_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="0" rowTotalGroup="ORDEM_1" columnTotalGroup="ORDEM_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="acessorios">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="ORDEM_1" columnTotalGroup="acessorios">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+			<crosstab>
+				<reportElement uuid="9bb1f037-5937-402c-9d11-8490ed4e12ba" positionType="Float" mode="Transparent" x="449" y="235" width="295" height="186" backcolor="#006666"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<crosstabParameter name="parameterMarca">
+					<parameterValueExpression><![CDATA[$F{DESCRICAO_MARCA}]]></parameterValueExpression>
+				</crosstabParameter>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="New Dataset 2" uuid="84c5c2e9-fcda-468e-b257-db8b8d5fcd41">
+							<datasetParameter name="p_periodo">
+								<datasetParameterExpression><![CDATA[$P{p_periodo}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="p_periodo_final">
+								<datasetParameterExpression><![CDATA[$P{p_periodo_final}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="p_codigo_marca">
+								<datasetParameterExpression><![CDATA[$P{p_codigo_marca}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="p_completo">
+								<datasetParameterExpression><![CDATA[$P{p_completo}]]></datasetParameterExpression>
+							</datasetParameter>
+							<datasetParameter name="IMAGE_FOLDER">
+								<datasetParameterExpression><![CDATA[$P{IMAGE_FOLDER}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<crosstabHeaderCell>
+					<cellContents>
+						<textField>
+							<reportElement uuid="2dc6574a-7724-46b4-85f0-35e80824dcc5" mode="Opaque" x="0" y="0" width="97" height="60" backcolor="#B6D6E5"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$P{parameterMarca}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="ORDEM_1" width="97" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ORDEM_1}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="e72a69da-4c87-4583-8694-9d67526bcc09" mode="Opaque" x="0" y="0" width="97" height="30" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{AnoMeasure}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="e99dcfde-4628-4650-9471-56f3d6c13220" mode="Opaque" x="0" y="30" width="0" height="0" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="vestimentas" height="30" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{VESTIMENTAS}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement uuid="ecb03138-a390-4314-9d02-8e2c0b2c8500" mode="Opaque" x="0" y="0" width="99" height="30" backcolor="#CCCCCC"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{vestimentas}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="ORDEM_2" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ORDEM_2}+$F{IND_ABERTO_FECHADO_DESCR}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="53974dc7-4772-4eff-a48b-4d6f27b2ba0d" mode="Opaque" x="0" y="0" width="99" height="30" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{IND_ABERTO_FECHADO_DESCRMeasure}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="81fdc306-d4f9-4bd8-8223-ff2c16486795" mode="Opaque" x="0" y="30" width="65" height="0" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_2}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="VALORMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{VALOR}]]></measureExpression>
+				</measure>
+				<measure name="IND_ABERTO_FECHADO_DESCRMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{IND_ABERTO_FECHADO_DESCR}]]></measureExpression>
+				</measure>
+				<measure name="AnoMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{ANO}]]></measureExpression>
+				</measure>
+				<crosstabCell width="99" height="30">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<rectangle>
+							<reportElement uuid="4f217444-d321-4897-8338-cfc59efbbd68" x="0" y="0" width="99" height="30" backcolor="#B6D6E5">
+								<printWhenExpression><![CDATA[($V{AnoMeasure} == "%" || $V{AnoMeasure} == "Acumulado") ||
+($V{AnoMeasure} == "% 21x20" || $V{AnoMeasure} == "Ac 21x20") ||
+($V{AnoMeasure} == "% 21x19" || $V{AnoMeasure} == "Ac 21x19")]]></printWhenExpression>
+							</reportElement>
+						</rectangle>
+						<textField isBlankWhenNull="false">
+							<reportElement uuid="4cd1872a-00f8-4a3c-9006-1c87383a9b6d" x="0" y="0" width="99" height="30">
+								<printWhenExpression><![CDATA[(($V{ORDEM_1} == "99905") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+(($V{ORDEM_1} == "99904") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+(($V{ORDEM_1} == "99995") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+(($V{ORDEM_1} == "99994") && $V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)')) ||
+!($V{IND_ABERTO_FECHADO_DESCRMeasure}.equals('Valor (R$)'))]]></printWhenExpression>
+							</reportElement>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="99" height="0" rowTotalGroup="ORDEM_1">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="30" columnTotalGroup="ORDEM_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="0" rowTotalGroup="ORDEM_1" columnTotalGroup="ORDEM_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="vestimentas">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="ORDEM_1" columnTotalGroup="vestimentas">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+			<crosstab>
+				<reportElement uuid="247172d5-e7e7-41b8-aaf1-34c3fd1b51e6" mode="Transparent" x="13" y="8" width="818" height="217" backcolor="#006666"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<crosstabParameter name="parameterMarca">
+					<parameterValueExpression><![CDATA[$F{DESCRICAO_MARCA}]]></parameterValueExpression>
+				</crosstabParameter>
+				<crosstabHeaderCell>
+					<cellContents>
+						<textField>
+							<reportElement uuid="9be1e623-5da8-4d19-b048-8070c0783de1" mode="Opaque" x="0" y="0" width="97" height="90" backcolor="#B6D6E5"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$P{parameterMarca}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="ORDEM_1" width="97" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ORDEM_1}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#FFFFFF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="222b8fb9-0713-40de-81e8-37658ec668ed" mode="Opaque" x="0" y="0" width="0" height="0" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_1}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="caec666b-9010-4ecd-be23-e677209400af" mode="Opaque" x="0" y="0" width="97" height="30" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{AnoMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="calcados" height="30" totalPosition="End" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{CALCADOS}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement uuid="e3883ff6-d47d-4b73-99e8-f82a68a5dd2e" mode="Opaque" x="0" y="0" width="97" height="30" backcolor="#CCCCCC"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="18" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{calcados}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="unn_descr" height="30" totalPosition="Start" headerPosition="Stretch">
+					<bucket order="Descending" class="java.lang.String">
+						<bucketExpression><![CDATA[$F{UNN_DESCR}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#CCCCCC" mode="Opaque">
+							<textField>
+								<reportElement uuid="b3307829-8a7c-41bf-9dad-f96f9302e959" mode="Opaque" x="0" y="0" width="97" height="30" backcolor="#CCCCCC"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{unn_descr}.replace("GERAL", "TOTAIS")]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="ORDEM_2" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ORDEM_2}+$F{IND_ABERTO_FECHADO_DESCR}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="106f120d-b74c-415c-a434-ab3d2046fce2" mode="Opaque" x="0" y="0" width="0" height="0" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ORDEM_2}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement uuid="a0426e47-cf8f-4108-8e5d-82b5de012c09" mode="Opaque" x="0" y="0" width="97" height="30" backcolor="#B6D6E5"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{IND_ABERTO_FECHADO_DESCRMeasure}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="VALORMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{VALOR}]]></measureExpression>
+				</measure>
+				<measure name="IND_ABERTO_FECHADO_DESCRMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{IND_ABERTO_FECHADO_DESCR}]]></measureExpression>
+				</measure>
+				<measure name="AnoMeasure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{ANO}]]></measureExpression>
+				</measure>
+				<crosstabCell width="97" height="30">
+					<cellContents backcolor="#FFFFFF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5"/>
+							<topPen lineWidth="0.5"/>
+							<leftPen lineWidth="0.5"/>
+							<bottomPen lineWidth="0.5"/>
+							<rightPen lineWidth="0.5"/>
+						</box>
+						<rectangle>
+							<reportElement uuid="6c1d0b24-8d65-484e-a418-1e4eaa347bb6" x="0" y="0" width="97" height="30" backcolor="#B6D6E5">
+								<printWhenExpression><![CDATA[($V{AnoMeasure} == "%" || $V{AnoMeasure} == "Acumulado") ||
+($V{AnoMeasure} == "% 20x21" || $V{AnoMeasure} == "Ac 20x21") ||
+($V{AnoMeasure} == "% 21x20" || $V{AnoMeasure} == "Ac 21x20") ||
+($V{AnoMeasure} == "% 22x21" || $V{AnoMeasure} == "Ac 22x21") ||
+($V{AnoMeasure} == "% 21x19" || $V{AnoMeasure} == "Ac 21x19")]]></printWhenExpression>
+							</reportElement>
+						</rectangle>
+						<textField isBlankWhenNull="true">
+							<reportElement uuid="d26eb22c-5c42-4510-8f00-982fa8a07a47" positionType="Float" isPrintRepeatedValues="false" mode="Transparent" x="0" y="0" width="97" height="30" backcolor="#FFFFFF">
+								<printWhenExpression><![CDATA[(!($V{IND_ABERTO_FECHADO_DESCRMeasure}.equals( 'Valor (R$)' ) && !($V{AnoMeasure}.equals( '%' ) || $V{AnoMeasure}.equals( 'Acumulado' )))) ||
+(!($V{IND_ABERTO_FECHADO_DESCRMeasure}.equals( 'Valor (R$)' ) && !($V{AnoMeasure}.equals( '% 22x21' ) || $V{AnoMeasure}.equals( 'Ac 22x21' )))) ||
+(!($V{IND_ABERTO_FECHADO_DESCRMeasure}.equals( 'Valor (R$)' ) && !($V{AnoMeasure}.equals( '% 21x19' ) || $V{AnoMeasure}.equals( 'Ac 21x19' ))))]]></printWhenExpression>
+							</reportElement>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="14" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{VALORMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="97" height="0" rowTotalGroup="ORDEM_1">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="30" columnTotalGroup="ORDEM_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="0" rowTotalGroup="ORDEM_1" columnTotalGroup="ORDEM_2">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="0" height="30" columnTotalGroup="unn_descr">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell width="0" height="0" rowTotalGroup="ORDEM_1" columnTotalGroup="unn_descr">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell width="0" columnTotalGroup="calcados">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell width="0" rowTotalGroup="ORDEM_1" columnTotalGroup="calcados">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

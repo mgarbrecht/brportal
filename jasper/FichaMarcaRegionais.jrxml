@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaMarcaRegionais" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="P_MARCA" class="java.lang.String"/>
+	<parameter name="P_DATA_INICIAL" class="java.lang.String"/>
+	<parameter name="P_DATA_FINAL" class="java.lang.String"/>
+	<parameter name="P_TIPO_MERCADO" class="java.lang.String"/>
+	<parameter name="P_REGIONAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT /*+ all_rows */
+ codigo_regional
+,CASE
+   WHEN sigla_regional = 'RJ' THEN
+    'RJ '
+   ELSE
+    sigla_regional
+ END sigla_regional
+,soma_ped_pares_ano pares
+,soma_ped_vlr_ano valor
+,clientes_atendidos
+,CASE
+   WHEN soma_ped_vlr_prev_ano = 0 THEN
+    0
+   ELSE
+    ROUND(((soma_ped_pares_ano / DECODE(NVL(soma_ped_pares_ano_ant, 0), 0, 1, soma_ped_pares_ano_ant)) - 1) * 100, 2)
+ END dif_pares
+,CASE
+   WHEN soma_ped_vlr_prev_ano = 0 THEN
+    0
+   ELSE
+    ROUND(((soma_ped_vlr_ano / DECODE(NVL(soma_ped_vlr_ano_ant, 0), 0, 1, soma_ped_vlr_ano_ant)) - 1) * 100, 2)
+ END dif_valor
+,CASE
+   WHEN soma_ped_vlr_prev_ano = 0 THEN
+    0
+   ELSE
+    ROUND(((soma_cli_ano / DECODE(NVL(soma_cli_ano_ant, 0), 0, 1, soma_cli_ano_ant)) - 1) * 100, 2)
+ END dif_clientes
+,soma_ped_vlr_prev_ano valor_previsto
+,soma_ped_vlr_prev_ano - soma_ped_vlr_ano faltou
+,CASE
+   WHEN soma_ped_vlr_prev_ano = 0 THEN
+    0
+   ELSE
+    ROUND(((soma_ped_vlr_ano / DECODE(soma_ped_vlr_prev_ano, 0, 1, soma_ped_vlr_prev_ano)) * 100), 2)
+ END real_x_previsto
+,'ABERTO' tipo
+,ordem
+  FROM (SELECT codigo_regional
+              ,sigla_regional
+              ,SUM(soma_ped_pares_ano) soma_ped_pares_ano
+              ,SUM(soma_ped_vlr_ano) soma_ped_vlr_ano
+              ,SUM(soma_cli_ano) clientes_atendidos
+              ,SUM(soma_ped_pares_prev_ano_ant) soma_ped_pares_prev_ano_ant
+              ,SUM(soma_ped_vlr_prev_ano_ant) soma_ped_vlr_prev_ano_ant
+              ,SUM(soma_ped_pares_ano_ant) soma_ped_pares_ano_ant
+              ,SUM(soma_ped_vlr_ano_ant) soma_ped_vlr_ano_ant
+              ,SUM(soma_ped_pares_prev_ano) soma_ped_pares_prev_ano
+              ,SUM(soma_ped_vlr_prev_ano) soma_ped_vlr_prev_ano
+              ,SUM(soma_cli_ano_ant) soma_cli_ano_ant
+              ,SUM(soma_cli_ano) soma_cli_ano
+              ,ordem
+          FROM (SELECT reg.codigo_regional
+                      ,reg.sigla_regional
+                      ,SUM(0) soma_ped_pares_prev_ano_ant
+                      ,SUM(0) soma_ped_vlr_prev_ano_ant
+                      ,SUM(0) soma_ped_pares_ano_ant
+                      ,SUM(0) soma_ped_vlr_ano_ant
+                      ,SUM(0) soma_cli_ano_ant
+                      ,SUM(NVL(mda.entrada_prevista_pares, 0)) soma_ped_pares_prev_ano
+                      ,SUM(NVL(mda.entrada_prevista_valor, 0)) soma_ped_vlr_prev_ano
+                      ,SUM(NVL(mda.entped_pp_pares, 0)) + SUM(NVL(mda.entped_pg_pares, 0)) soma_ped_pares_ano
+                      ,SUM(NVL(mda.entped_pp_vlr, 0)) + SUM(NVL(mda.entped_pg_vlr, 0)) soma_ped_vlr_ano
+                      ,COUNT(DISTINCT mda.cli_cdgo) soma_cli_ano
+                      ,CASE
+                         WHEN reg.codigo_regional = 99 THEN
+                          2
+                         WHEN reg.codigo_regional = 15 THEN
+                          3
+                         ELSE
+                          1
+                       END ordem
+                  FROM tmp_mapa_automatico_poi_a mda
+                      ,regionais_vendas reg
+                      ,rep rep
+                      ,marcas_produtos mar
+                 WHERE mda.data BETWEEN TO_DATE($P{P_DATA_INICIAL}, 'dd/mm/yyyy') AND TO_DATE($P{P_DATA_FINAL}, 'dd/mm/yyyy')
+                   AND NVL(mar.codigo_marca, NULL) = $P{P_MARCA}
+                   AND rep.rep_tipo_mercado = NVL(DECODE($P{P_TIPO_MERCADO}, 'EX', 'ME', $P{P_TIPO_MERCADO}), rep.rep_tipo_mercado)
+                   AND ($P{P_REGIONAL} IS NULL OR rep.codigo_regional = $P{P_REGIONAL})
+									 AND reg.codigo_regional = rep.codigo_regional
+                   AND rep.rep_cdgo = TO_CHAR(mda.codigo_representante)
+                   AND mda.codigo_marca = mar.codigo_marca
+                   AND (NVL(mda.entrada_prevista_valor, 0) > 0 OR (NVL(mda.entped_pp_vlr, 0) + NVL(mda.entped_pg_vlr, 0) > 0))
+                 GROUP BY reg.codigo_regional
+                         ,reg.sigla_regional
+                UNION
+                SELECT reg.codigo_regional
+                      ,reg.sigla_regional
+                      ,SUM(NVL(mda.entrada_prevista_pares, 0)) soma_ped_pares_prev_ano_ant
+                      ,SUM(NVL(mda.entrada_prevista_valor, 0)) soma_ped_vlr_prev_ano_ant
+                      ,SUM(NVL(mda.entped_pp_pares, 0)) + SUM(NVL(mda.entped_pg_pares, 0)) soma_ped_pares_ano_ant
+                      ,SUM(NVL(mda.entped_pp_vlr, 0)) + SUM(NVL(mda.entped_pg_vlr, 0)) soma_ped_vlr_ano_ant
+                      ,COUNT(DISTINCT mda.cli_cdgo) soma_cli_ano_ant
+                      ,SUM(0) soma_ped_pares_prev_ano
+                      ,SUM(0) soma_ped_vlr_prev_ano
+                      ,SUM(0) soma_ped_pares_ano
+                      ,SUM(0) soma_ped_vlr_ano
+                      ,SUM(0) soma_cli_ano
+                      ,CASE
+                         WHEN reg.codigo_regional = 99 THEN
+                          2
+                         WHEN reg.codigo_regional = 15 THEN
+                          3
+                         ELSE
+                          1
+                       END ordem
+                  FROM tmp_mapa_automatico_poi_a mda
+                      ,regionais_vendas reg
+                      ,rep rep
+                      ,marcas_produtos mar
+                 WHERE mda.data BETWEEN ADD_MONTHS(TO_DATE($P{P_DATA_INICIAL}, 'dd/mm/yyyy'), -12) AND ADD_MONTHS(TO_DATE($P{P_DATA_FINAL}, 'dd/mm/yyyy'), -12)
+                   AND NVL(mda.codigo_marca, NULL) = $P{P_MARCA}
+                   AND rep.rep_tipo_mercado = NVL(DECODE($P{P_TIPO_MERCADO}, 'EX', 'ME', $P{P_TIPO_MERCADO}), rep.rep_tipo_mercado)
+                   AND ($P{P_REGIONAL} IS NULL OR rep.codigo_regional = $P{P_REGIONAL})
+                   AND reg.codigo_regional = rep.codigo_regional
+                   AND rep.rep_cdgo = TO_CHAR(mda.codigo_representante)
+                   AND mda.codigo_marca = mar.codigo_marca
+                   AND (NVL(mda.entrada_prevista_valor, 0) > 0 OR (NVL(mda.entped_pp_vlr, 0) + NVL(mda.entped_pg_vlr, 0) > 0))
+                 GROUP BY reg.codigo_regional
+                         ,reg.sigla_regional)
+         GROUP BY codigo_regional
+                 ,sigla_regional
+                 ,ordem
+         ORDER BY ordem
+                 ,sigla_regional)
+UNION
+SELECT codigo_regional
+      ,sigla_regional
+      ,soma_ped_pares_ano pares
+      ,soma_ped_vlr_ano valor
+      ,clientes_atendidos
+      ,ROUND(((soma_ped_pares_ano / DECODE(NVL(soma_ped_pares_ano_ant, 0), 0, 1, soma_ped_pares_ano_ant)) - 1) * 100, 2) dif_pares
+      ,ROUND(((soma_ped_vlr_ano / DECODE(NVL(soma_ped_vlr_ano_ant, 0), 0, 1, soma_ped_vlr_ano_ant)) - 1) * 100, 2) dif_valor
+      ,ROUND(((soma_cli_ano / DECODE(NVL(soma_cli_ano_ant, 0), 0, 1, soma_cli_ano_ant)) - 1) * 100, 2) dif_clientes
+      ,soma_ped_vlr_prev_ano valor_previsto
+      ,soma_ped_vlr_prev_ano - soma_ped_vlr_ano faltou
+      ,ROUND(((soma_ped_vlr_ano / DECODE(soma_ped_vlr_prev_ano, 0, 1, soma_ped_vlr_prev_ano)) * 100), 2) real_x_previsto
+      ,'TOTAL' tipo
+      ,ordem
+  FROM (SELECT NULL codigo_regional
+              ,'Total' sigla_regional
+              ,SUM(soma_ped_pares_ano) soma_ped_pares_ano
+              ,SUM(soma_ped_vlr_ano) soma_ped_vlr_ano
+              ,SUM(soma_cli_ano) clientes_atendidos
+              ,SUM(soma_ped_pares_prev_ano_ant) soma_ped_pares_prev_ano_ant
+              ,SUM(soma_ped_vlr_prev_ano_ant) soma_ped_vlr_prev_ano_ant
+              ,SUM(soma_ped_pares_ano_ant) soma_ped_pares_ano_ant
+              ,SUM(soma_ped_vlr_ano_ant) soma_ped_vlr_ano_ant
+              ,SUM(soma_ped_pares_prev_ano) soma_ped_pares_prev_ano
+              ,SUM(soma_ped_vlr_prev_ano) soma_ped_vlr_prev_ano
+              ,SUM(soma_cli_ano_ant) soma_cli_ano_ant
+              ,SUM(soma_cli_ano) soma_cli_ano
+              ,NULL ordem
+          FROM (SELECT SUM(0) soma_ped_pares_prev_ano_ant
+                      ,SUM(0) soma_ped_vlr_prev_ano_ant
+                      ,SUM(0) soma_ped_pares_ano_ant
+                      ,SUM(0) soma_ped_vlr_ano_ant
+                      ,SUM(0) soma_cli_ano_ant
+                      ,SUM(NVL(mda.entrada_prevista_pares, 0)) soma_ped_pares_prev_ano
+                      ,SUM(NVL(mda.entrada_prevista_valor, 0)) soma_ped_vlr_prev_ano
+                      ,SUM(NVL(mda.entped_pp_pares, 0)) + SUM(NVL(mda.entped_pg_pares, 0)) soma_ped_pares_ano
+                      ,SUM(NVL(mda.entped_pp_vlr, 0)) + SUM(NVL(mda.entped_pg_vlr, 0)) soma_ped_vlr_ano
+                      ,COUNT(DISTINCT mda.cli_cdgo) soma_cli_ano
+                  FROM tmp_mapa_automatico_poi_a mda
+                      ,regionais_vendas reg
+                      ,rep rep
+                      ,marcas_produtos mar
+                 WHERE mda.data BETWEEN TO_DATE($P{P_DATA_INICIAL}, 'dd/mm/yyyy') AND TO_DATE($P{P_DATA_FINAL}, 'dd/mm/yyyy')
+                   AND NVL(mar.codigo_marca, NULL) = $P{P_MARCA}
+                   AND rep.rep_tipo_mercado = NVL(DECODE($P{P_TIPO_MERCADO}, 'EX', 'ME', $P{P_TIPO_MERCADO}), rep.rep_tipo_mercado)
+                   AND ($P{P_REGIONAL} IS NULL OR rep.codigo_regional = $P{P_REGIONAL})
+                   AND rep.codigo_regional = reg.codigo_regional
+                   AND rep.rep_cdgo = TO_CHAR(mda.codigo_representante)
+                   AND mda.codigo_marca = mar.codigo_marca
+                   AND (NVL(mda.entrada_prevista_valor, 0) > 0 OR (NVL(mda.entped_pp_vlr, 0) + NVL(mda.entped_pg_vlr, 0) > 0))
+                UNION
+                SELECT SUM(NVL(mda.entrada_prevista_pares, 0)) soma_ped_pares_prev_ano_ant
+                      ,SUM(NVL(mda.entrada_prevista_valor, 0)) soma_ped_vlr_prev_ano_ant
+                      ,SUM(NVL(mda.entped_pp_pares, 0)) + SUM(NVL(mda.entped_pg_pares, 0)) soma_ped_pares_ano_ant
+                      ,SUM(NVL(mda.entped_pp_vlr, 0)) + SUM(NVL(mda.entped_pg_vlr, 0)) soma_ped_vlr_ano_ant
+                      ,COUNT(DISTINCT mda.cli_cdgo) soma_cli_ano_ant
+                      ,SUM(0) soma_ped_pares_prev_ano
+                      ,SUM(0) soma_ped_vlr_prev_ano
+                      ,SUM(0) soma_ped_pares_ano
+                      ,SUM(0) soma_ped_vlr_ano
+                      ,SUM(0) soma_cli_ano
+                  FROM tmp_mapa_automatico_poi_a mda
+                      ,regionais_vendas reg
+                      ,rep rep
+                      ,marcas_produtos mar
+                 WHERE mda.data BETWEEN ADD_MONTHS(TO_DATE($P{P_DATA_INICIAL}, 'dd/mm/yyyy'), -12) AND ADD_MONTHS(TO_DATE($P{P_DATA_FINAL}, 'dd/mm/yyyy'), -12)
+                   AND NVL(mda.codigo_marca, NULL) = $P{P_MARCA}
+                   AND rep.rep_tipo_mercado = NVL(DECODE($P{P_TIPO_MERCADO}, 'EX', 'ME', $P{P_TIPO_MERCADO}), rep.rep_tipo_mercado)
+                   AND ($P{P_REGIONAL} IS NULL OR rep.codigo_regional = $P{P_REGIONAL})
+                   AND reg.codigo_regional = rep.codigo_regional
+                   AND rep.rep_cdgo = TO_CHAR(mda.codigo_representante)
+                   AND mda.codigo_marca = mar.codigo_marca
+                   AND (NVL(mda.entrada_prevista_valor, 0) > 0 OR (NVL(mda.entped_pp_vlr, 0) + NVL(mda.entped_pg_vlr, 0) > 0))))
+ ORDER BY ordem
+         ,sigla_regional]]>
+	</queryString>
+	<field name="CODIGO_REGIONAL" class="java.math.BigDecimal"/>
+	<field name="SIGLA_REGIONAL" class="java.lang.String"/>
+	<field name="PARES" class="java.math.BigDecimal"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="CLIENTES_ATENDIDOS" class="java.math.BigDecimal"/>
+	<field name="DIF_PARES" class="java.math.BigDecimal"/>
+	<field name="DIF_VALOR" class="java.math.BigDecimal"/>
+	<field name="DIF_CLIENTES" class="java.math.BigDecimal"/>
+	<field name="VALOR_PREVISTO" class="java.math.BigDecimal"/>
+	<field name="FALTOU" class="java.math.BigDecimal"/>
+	<field name="REAL_X_PREVISTO" class="java.math.BigDecimal"/>
+	<field name="TIPO" class="java.lang.String"/>
+	<field name="ORDEM" class="java.math.BigDecimal"/>
+	<variable name="V_SUM_PARES" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{PARES}]]></variableExpression>
+	</variable>
+	<variable name="V_SUM_VALOR" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{VALOR}]]></variableExpression>
+	</variable>
+	<variable name="V_SUM_CLIENTES" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{CLIENTES_ATENDIDOS}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="27" y="12" width="58" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Pares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="206" y="12" width="44" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Pares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="250" y="12" width="55" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="85" y="12" width="70" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="305" y="12" width="44" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[C.Atend.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="349" y="12" width="70" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Previsto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="155" y="12" width="51" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[C. Atend.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="419" y="12" width="70" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Faltou]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="489" y="12" width="65" height="10" forecolor="#000000"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[% Real x Prev.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="0" width="143" height="22"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Variação %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="0" width="179" height="22"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="Detail" x="0" y="0" width="27" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SIGLA_REGIONAL}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement style="Detail" x="27" y="0" width="58" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="85" y="0" width="70" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="206" y="0" width="44" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIF_PARES}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="250" y="0" width="55" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIF_VALOR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="305" y="0" width="44" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DIF_CLIENTES}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="349" y="0" width="70" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR_PREVISTO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="489" y="0" width="65" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REAL_X_PREVISTO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0">
+				<reportElement style="Detail" x="155" y="0" width="51" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTES_ATENDIDOS}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00">
+				<reportElement style="Detail" x="419" y="0" width="70" height="12"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="SansSerif" size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FALTOU}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>

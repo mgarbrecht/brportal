@@ -1,0 +1,42 @@
+<public:component lightweight="true">
+<PUBLIC:ATTACH EVENT="ondocumentready" ONEVENT="create()" />
+<PUBLIC:ATTACH EVENT="onpropertychange" ONEVENT="change()" />
+<PUBLIC:ATTACH EVENT="ondetach" ONEVENT="remove()" />
+<script type="text/javascript">
+/**
+ * Windowless Elements
+ * Cria um iframe logo abaixo do body do componente, para esse div nao fique abaixo dos selects;
+ * @see http://dotnetjunkies.com/WebLog/jking/archive/2003/07/21/488.aspx
+ * @see http://support.microsoft.com/default.aspx?scid=http://support.microsoft.com:80/support/kb/articles/q177/3/78.asp&NoWebContent=1
+ * @param {Node} body Elemento em que será incluído o iframe
+ */
+function change(){
+	var i=element.windowLessIFrame;
+	if(i.style.visibility != element.currentStyle.visibility) i.style.visibility = element.currentStyle.visibility;
+	if(i.style.display != element.currentStyle.display) i.style.display = element.currentStyle.display;
+	if(i.offsetLeft != element.offsetLeft) i.style.left = element.offsetLeft + "px";
+	if(i.offsetTop != element.offsetTop) i.style.top = element.offsetTop + "px";
+	if(i.offsetHeight != element.offsetHeight) i.style.height = element.offsetHeight + "px";
+	if(i.offsetWidth != element.offsetWidth) i.style.width = element.offsetWidth + "px";
+} 
+function create(){
+	if(element.windowLessIFrame) return false;
+	var i = element.document.createElement("iframe");
+	i.src = "about:blank";
+	i.scrolling = "no";
+	i.frameBorder = "no";
+	i.hideFocus = true;
+	i.style.cssText = "position:absolute;z-index:0;filter:alpha(opacity=0);";
+	i.className = "popup-windowless";
+	element.parentElement.insertBefore(i,element);
+	element.windowLessIFrame = i;
+	change();
+}
+function remove(){
+	if(element.windowLessIFrame.parentNode && element.windowLessIFrame.parentNode.removeNode){
+		element.windowLessIFrame.parentNode.removeNode(element.windowLessIFrame);
+	}
+}
+
+</script>
+</public:component>

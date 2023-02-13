@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="IND0250_A3-2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b6abe85f-108a-405d-8a2a-fb0d6a8ff43b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="SqlSapatilhas" uuid="091a8043-0118-4532-a364-15187ff71de1">
+		<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT qry.ano
+      ,qry.periodo
+      ,qry.codigo_marca
+      ,qry.descricao_marca
+      ,qry.categoria_pai
+      ,qry.serie
+      ,qry.categoria
+      ,SUM(qry.percentual) percentual
+  FROM (SELECT t.ano
+              ,t.periodo
+              ,t.codigo_marca
+              ,t.descricao_marca
+              ,t.categoria_pai
+              ,t.serie
+              ,CASE
+                 WHEN t.categoria = 'INJETADO' THEN
+                  'INJETADO'
+                 ELSE
+                  'MANUFATURADO'
+               END categoria
+              ,t.percentual
+          FROM tmp_ind0250_a3 t
+         WHERE t.codigo_marca = $P{p_codigo_marca}
+           AND t.categoria_pai IS NOT NULL
+           AND t.codigo_marca NOT IN (17, 19, 20, 9)
+           AND t.categoria_pai = 'SAPATILHA'
+           AND t.codigo_marca = 16
+         ORDER BY t.serie
+                 ,DECODE(t.categoria, 'INJETADO', 1, 'MANUFATURADO', 2, 3)
+                 ,t.categoria) qry
+ GROUP BY qry.ano
+         ,qry.periodo
+         ,qry.codigo_marca
+         ,qry.descricao_marca
+         ,qry.categoria_pai
+         ,qry.serie
+         ,qry.categoria]]>
+		</queryString>
+		<field name="ANO" class="java.math.BigDecimal"/>
+		<field name="PERIODO" class="java.sql.Timestamp"/>
+		<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+		<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+		<field name="CATEGORIA_PAI" class="java.lang.String"/>
+		<field name="SERIE" class="java.lang.String"/>
+		<field name="CATEGORIA" class="java.lang.String"/>
+		<field name="PERCENTUAL" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="SqlEsportivos" uuid="933ebe80-45e7-48e0-89a5-c1ce4336e3ea">
+		<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT qry.ano
+      ,qry.periodo
+      ,qry.codigo_marca
+      ,qry.descricao_marca
+      ,qry.categoria_pai
+      ,qry.serie
+      ,qry.categoria
+      ,SUM(qry.percentual) percentual
+  FROM (SELECT t.ano
+              ,t.periodo
+              ,t.codigo_marca
+              ,t.descricao_marca
+              ,t.categoria_pai
+              ,t.serie
+              ,CASE
+                 WHEN t.categoria = 'INJETADO' THEN
+                  'INJETADO'
+                 ELSE
+                  'MANUFATURADO'
+               END categoria
+              ,t.percentual
+          FROM tmp_ind0250_a3 t
+         WHERE t.codigo_marca = $P{p_codigo_marca}
+           AND t.categoria_pai IS NOT NULL
+           AND t.codigo_marca NOT IN (17, 19, 20, 9)
+           AND t.categoria_pai = 'ESPORTIVO'
+           AND t.codigo_marca = 16
+         ORDER BY t.serie
+                 ,DECODE(t.categoria, 'INJETADO', 1, 'MANUFATURADO', 2, 3)
+                 ,t.categoria) qry
+ GROUP BY qry.ano
+         ,qry.periodo
+         ,qry.codigo_marca
+         ,qry.descricao_marca
+         ,qry.categoria_pai
+         ,qry.serie
+         ,qry.categoria]]>
+		</queryString>
+		<field name="ANO" class="java.math.BigDecimal"/>
+		<field name="PERIODO" class="java.sql.Timestamp"/>
+		<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+		<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+		<field name="CATEGORIA_PAI" class="java.lang.String"/>
+		<field name="SERIE" class="java.lang.String"/>
+		<field name="CATEGORIA" class="java.lang.String"/>
+		<field name="PERCENTUAL" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="p_codigo_marca" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT *
+  FROM tmp_ind0250_a3
+ WHERE codigo_marca = $P{p_codigo_marca}
+   AND categoria_pai IS NOT NULL
+   AND codigo_marca NOT IN (17, 19, 20, 9)
+   AND categoria_pai = 'SANDALIA'
+ ORDER BY serie
+         ,DECODE(categoria, 'Baixa', 1, 'Media', 2, 3)
+         ,categoria]]>
+	</queryString>
+	<field name="ANO" class="java.math.BigDecimal"/>
+	<field name="PERIODO" class="java.sql.Timestamp"/>
+	<field name="CODIGO_MARCA" class="java.math.BigDecimal"/>
+	<field name="DESCRICAO_MARCA" class="java.lang.String"/>
+	<field name="CATEGORIA_PAI" class="java.lang.String"/>
+	<field name="SERIE" class="java.lang.String"/>
+	<field name="CATEGORIA" class="java.lang.String"/>
+	<field name="PERCENTUAL" class="java.math.BigDecimal"/>
+	<group name="marca">
+		<groupExpression><![CDATA[$F{DESCRICAO_MARCA}]]></groupExpression>
+		<groupFooter>
+			<band height="168">
+				<elementGroup/>
+				<barChart>
+					<chart>
+						<reportElement uuid="ed04e37d-6fc5-4c3f-8533-e70b42755a4f" x="286" y="0" width="286" height="167"/>
+						<box>
+							<topPen lineWidth="0.75"/>
+							<leftPen lineWidth="0.75"/>
+							<bottomPen lineWidth="0.75"/>
+							<rightPen lineWidth="0.75"/>
+						</box>
+						<chartTitle position="Top">
+							<titleExpression><![CDATA[$F{CATEGORIA_PAI}]]></titleExpression>
+						</chartTitle>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<categoryDataset>
+						<categorySeries>
+							<seriesExpression><![CDATA[$F{SERIE}]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{CATEGORIA}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{PERCENTUAL}]]></valueExpression>
+						</categorySeries>
+					</categoryDataset>
+					<barPlot isShowLabels="true">
+						<plot>
+							<seriesColor seriesOrder="0" color="#5B9BD5"/>
+							<seriesColor seriesOrder="1" color="#ED7D31"/>
+						</plot>
+						<itemLabel>
+							<font size="12"/>
+						</itemLabel>
+						<categoryAxisFormat>
+							<axisFormat/>
+						</categoryAxisFormat>
+						<valueAxisFormat>
+							<axisFormat tickLabelMask="##0'%'"/>
+						</valueAxisFormat>
+					</barPlot>
+				</barChart>
+				<barChart>
+					<chart>
+						<reportElement uuid="8d595be5-e176-4c2b-9c33-66d797dd9f4c" x="0" y="0" width="286" height="167">
+							<printWhenExpression><![CDATA[$F{CODIGO_MARCA}==16]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<topPen lineWidth="0.75"/>
+							<leftPen lineWidth="0.75"/>
+							<bottomPen lineWidth="0.75"/>
+							<rightPen lineWidth="0.75"/>
+						</box>
+						<chartTitle position="Top">
+							<titleExpression><![CDATA["SAPATILHAS"]]></titleExpression>
+						</chartTitle>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<categoryDataset>
+						<dataset>
+							<datasetRun subDataset="SqlSapatilhas" uuid="cdffaf99-12b8-4a65-a0e1-fb6ceaf17538">
+								<datasetParameter name="p_codigo_marca">
+									<datasetParameterExpression><![CDATA[$P{p_codigo_marca}]]></datasetParameterExpression>
+								</datasetParameter>
+							</datasetRun>
+						</dataset>
+						<categorySeries>
+							<seriesExpression><![CDATA[$F{SERIE}]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{CATEGORIA}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{PERCENTUAL}]]></valueExpression>
+						</categorySeries>
+					</categoryDataset>
+					<barPlot isShowLabels="true">
+						<plot>
+							<seriesColor seriesOrder="0" color="#5B9BD5"/>
+							<seriesColor seriesOrder="1" color="#ED7D31"/>
+						</plot>
+						<itemLabel>
+							<font size="12"/>
+						</itemLabel>
+						<categoryAxisFormat>
+							<axisFormat/>
+						</categoryAxisFormat>
+						<valueAxisFormat>
+							<axisFormat tickLabelMask="##0'%'"/>
+						</valueAxisFormat>
+					</barPlot>
+				</barChart>
+				<barChart>
+					<chart>
+						<reportElement uuid="57061a59-2cc1-4e79-b667-077250bf20c8" x="572" y="0" width="270" height="167">
+							<printWhenExpression><![CDATA[$F{CODIGO_MARCA}==16]]></printWhenExpression>
+						</reportElement>
+						<box>
+							<topPen lineWidth="0.75"/>
+							<leftPen lineWidth="0.75"/>
+							<bottomPen lineWidth="0.75"/>
+							<rightPen lineWidth="0.75"/>
+						</box>
+						<chartTitle position="Top">
+							<titleExpression><![CDATA["ESPORTIVOS"]]></titleExpression>
+						</chartTitle>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<categoryDataset>
+						<dataset>
+							<datasetRun subDataset="SqlEsportivos" uuid="77fbea12-bfc8-406c-8d0d-ebf3d61111bf">
+								<datasetParameter name="p_codigo_marca">
+									<datasetParameterExpression><![CDATA[$P{p_codigo_marca}]]></datasetParameterExpression>
+								</datasetParameter>
+							</datasetRun>
+						</dataset>
+						<categorySeries>
+							<seriesExpression><![CDATA[$F{SERIE}]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{CATEGORIA}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{PERCENTUAL}]]></valueExpression>
+						</categorySeries>
+					</categoryDataset>
+					<barPlot isShowLabels="true" isShowTickMarks="true">
+						<plot>
+							<seriesColor seriesOrder="0" color="#5B9BD5"/>
+							<seriesColor seriesOrder="1" color="#ED7D31"/>
+						</plot>
+						<itemLabel/>
+						<categoryAxisFormat>
+							<axisFormat/>
+						</categoryAxisFormat>
+						<valueAxisFormat>
+							<axisFormat tickLabelMask="##0'%'"/>
+						</valueAxisFormat>
+					</barPlot>
+				</barChart>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+</jasperReport>

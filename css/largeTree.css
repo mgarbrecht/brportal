@@ -1,0 +1,78 @@
+.menuTd {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #666;
+	white-space: nowrap;
+}
+
+.largeUlBase {
+	display:block;
+	padding:5px 2px 1px 35px; 				/* posição inicial do menu Firefox */
+	margin:5px 1px 5px 0px; 				/* posição inicial do menu IE */
+}
+
+.largeLiBase {
+	list-style-image:url(../img/base.gif);
+}
+
+.largeFirstLevelUl {
+	display:block;
+	padding-left: 19px; 					/*nivel de identação do menu*/
+	margin:3px 1px 1px 0px; 				/*nivel de identação do menu apenas para o IE*/
+}
+
+.largeUl {
+	display:none;
+	padding-left: 19px; 					/*nivel de identação do menu*/
+	margin:3px 1px 1px 0px;					/*nivel de identação do menu apenas para o IE*/
+}
+
+.largeLiFolder {
+
+}
+
+.largeLiPage {
+	margin:1px 1px 1px 0px;	
+}
+
+.menuTd img {
+	border: 0px;
+	vertical-align: middle;
+	margin-right:-9px; 						/* distancia entre os extraLink */
+	margin-left:2px;
+}
+
+.menuTd a {
+	color: #333;
+	text-decoration: none;
+}
+.menuTd a, .menuTd a {
+	white-space: nowrap;
+	padding: 1px 1px 1px 0px;						/* distancia entre a imagem e o link */
+	margin-left: 0px;
+}
+.menuTd a:hover, .menuTd a:hover {
+	color: #000;
+	text-decoration: underline;
+	cursor:pointer;
+}
+
+.menuTd .clip {
+	overflow: hidden;
+}
+
+td {
+font-size: 11px; 
+}
+
+.menuBar {
+  background-color: #ece9d8;
+  border: 2px solid;
+  border-color: #f0f0f0 #909090 #909090 #f0f0f0;
+  text-align: left;
+  font-family: "MS Sans Serif", Arial, sans-serif;
+  font-size: 8pt;
+  font-style: normal;
+  font-weight: normal;
+  background:url("../img/menu.jpg") repeat top;
+}

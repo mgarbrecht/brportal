@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecialRanking_B" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="764d2aa1-6576-4f50-961a-131bc0cefa9a">
+	<property name="ireport.zoom" value="1.771561000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_DT_INICIAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_DT_FINAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_DT_ENTRADA_FINAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_QUERY" class="java.lang.String">
+		<defaultValueExpression><![CDATA[" AND 1 = 1 "]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_LIMITE_CLIENTE_RANKING" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT /*+ all_rows*/
+ qry.cliente_grupo
+,qry.nome
+,ROUND(qry.pares_realizado, 2) pares_realizado
+,ROUND(qry.valor_realizado, 2) valor_realizado
+,ROUND(qry.pares_realizado / (qry.pares_realizado_total / 100), 2) representatividade_pares
+,ROUND(qry.valor_realizado / (qry.valor_realizado_total / 100), 2) representatividade_valor
+  FROM (SELECT qry.cliente_grupo
+              ,qry.nome
+              ,qry.pares_realizado
+              ,qry.valor_realizado
+              ,qry.pares_realizado_total
+              ,qry.valor_realizado_total
+          FROM (SELECT qry.cliente_grupo
+                      ,qry.nome
+                      ,qry.pares_realizado
+                      ,qry.valor_realizado
+                      ,SUM(qry.pares_realizado) OVER() pares_realizado_total
+                      ,SUM(qry.valor_realizado) OVER() valor_realizado_total
+                  FROM (SELECT rce.cli_cdgo cliente_grupo
+                              ,pck_cliente.get_nome(rce.cli_cdgo) nome
+                              ,SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
+                              ,SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
+                          FROM brio.ref_combinacao_especial rce
+                         WHERE rce.rep_cdgo IS NOT NULL
+                           AND rce.cli_cdgo IS NOT NULL
+                           AND rce.situacao_solicitacao = 'A'
+                           AND rce.data_solicitacao >= TO_DATE($P{P_DT_INICIAL}, 'dd/mm/yyyy')
+                           AND rce.data_solicitacao < TO_DATE($P{P_DT_FINAL}, 'dd/mm/yyyy') + 1 $P!{P_QUERY}
+                         GROUP BY rce.cli_cdgo
+                        UNION ALL
+                        SELECT rce.gre_grupo cliente_grupo
+                              ,pck_grupo_economico.get_nome(rce.gre_grupo) nome
+                              ,SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
+                              ,SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
+                          FROM brio.ref_combinacao_especial rce
+                         WHERE rce.rep_cdgo IS NOT NULL
+                           AND rce.gre_grupo IS NOT NULL
+                           AND rce.cli_cdgo IS NULL
+                           AND rce.situacao_solicitacao = 'A'
+                           AND rce.data_solicitacao >= TO_DATE($P{P_DT_INICIAL}, 'dd/mm/yyyy')
+                           AND rce.data_solicitacao < TO_DATE($P{P_DT_FINAL}, 'dd/mm/yyyy') + 1 $P!{P_QUERY}
+                         GROUP BY rce.gre_grupo) qry
+                 GROUP BY qry.cliente_grupo
+                         ,qry.nome
+                         ,qry.pares_realizado
+                         ,qry.valor_realizado
+                 ORDER BY qry.pares_realizado DESC) qry
+         WHERE ROWNUM <= $P{P_LIMITE_CLIENTE_RANKING}) qry]]>
+	</queryString>
+	<field name="CLIENTE_GRUPO" class="java.math.BigDecimal"/>
+	<field name="NOME" class="java.lang.String"/>
+	<field name="PARES_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="VALOR_REALIZADO" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_PARES" class="java.math.BigDecimal"/>
+	<field name="REPRESENTATIVIDADE_VALOR" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c700fd05-e232-4bd5-931a-59df5c80b449" x="49" y="0" width="456" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ranking de Clientes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="f7485cce-1032-4518-8457-838e94fafe33" x="49" y="0" width="188" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5466965f-a824-4cc3-a367-9e4f74f81d1b" x="237" y="0" width="84" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="687828ad-b7c3-40d7-8401-fa5de3d4d9a0" x="321" y="0" width="50" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[% Pares]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1d137fee-4606-416e-80a3-f6ded75d0de9" x="371" y="0" width="84" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f58dda46-5f68-4789-85f8-cfb6802b5566" x="455" y="0" width="50" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[% Valor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField>
+				<reportElement uuid="08c65f28-1b08-4983-a331-d48df1f96ca2" x="49" y="0" width="188" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENTE_GRUPO} + " - " + $F{NOME}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="1af3b924-9156-4b74-83ae-fea1f46d0465" x="237" y="0" width="84" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PARES_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="6676e1b6-8878-41b2-ad54-6cc369a4d6cb" x="321" y="0" width="50" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE_PARES}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="e62e3b52-bd4b-412c-a882-688408aa9fbc" x="371" y="0" width="84" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALOR_REALIZADO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="8c0b4ff0-175a-4416-83dc-d51f7723f2fb" x="455" y="0" width="50" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REPRESENTATIVIDADE_VALOR}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

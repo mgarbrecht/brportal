@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<generator>
+<VERSION>v 2.8</VERSION>
+<generation_day>11/04/2013</generation_day>
+<module>com</module>
+<file_name>FichaCliente_dev</file_name>
+<app_type>Form</app_type>
+<css></css>
+<table_size>100%</table_size>
+<grid>30</grid>
+<message_footer>no_message</message_footer>
+<message_header>no_message</message_header>
+<actionFormTemplate>default_model</actionFormTemplate>
+<actionFormCode></actionFormCode>
+<actionTemplate>default_action</actionTemplate>
+<actionCode></actionCode>
+<jspTemplate>default_view</jspTemplate>
+<jspCode></jspCode>
+<help></help>
+<i18nHelp></i18nHelp>
+<show_help>false</show_help>
+<develHelp></develHelp>
+<multiclick>false</multiclick>
+<hidden_code>false</hidden_code>
+<disableDevelHelp>false</disableDevelHelp>
+<author></author>
+<version></version>
+<since></since>
+<template_file></template_file>
+<addImportAction></addImportAction>
+<addImportActionForm></addImportActionForm>
+<add_actionForm></add_actionForm>
+<creationDate>27/03/2013 08:58:11</creationDate>
+<lastModifyDate>11/04/2013 15:17:57</lastModifyDate>
+<userGenerate></userGenerate>
+<scope_storage>session</scope_storage>
+<generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
+<blocks>
+<blocks_item>
+<class>com.egen.develop.generator.report.BlockReport</class>
+<name>bl_report_Jw_ficha_cliente_devolucoes</name>
+<title>devolucoes</title>
+<i18n></i18n>
+<database>session</database>
+<db_object>Jw_ficha_cliente_devolucoes</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action></action>
+<enctype></enctype>
+<focus></focus>
+<method></method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<fl_column_header>M</fl_column_header>
+<record_page>0</record_page>
+<navigator_Style></navigator_Style>
+<navigator_Frame>5</navigator_Frame>
+<navigator_local></navigator_local>
+<border>1</border>
+<frame></frame>
+<line_color>default</line_color>
+<highlight_class></highlight_class>
+<click_class></click_class>
+<reportTemplate></reportTemplate>
+<report><%
+{
+  %>
+
+  <%
+  java.util.Vector res_Jw_ficha_cliente_devolucoes = (java.util.Vector)session.getAttribute("res_Jw_ficha_cliente_devolucoes_dev");
+  %>
+
+  <form  name="bl_report_Jw_ficha_cliente_devolucoes" id="bl_report_Jw_ficha_cliente_devolucoes" class="baseForm" method="post" >
+    <%
+    if (res_Jw_ficha_cliente_devolucoes!=null && res_Jw_ficha_cliente_devolucoes.size()>0) {
+      %>
+
+      <table id="TRbl_report_Jw_ficha_cliente_devolucoes"  class="reportTable"   style="width:100%; "  border="1" >
+        <%
+        int tamanho = 0;
+        java.lang.Integer ordem =  null;
+        java.sql.Timestamp data_cad =  null;
+        java.lang.Integer nfs_nmro =  null;
+        java.lang.Integer pares =  null;
+        java.lang.Double valor =  null;
+        int sum_pares_0 = 0;
+        double sum_valor_0 = 0;
+
+        if(res_Jw_ficha_cliente_devolucoes.size()>5){
+           tamanho = res_Jw_ficha_cliente_devolucoes.size();
+//           tamanho = 5;
+        } else {
+           tamanho = res_Jw_ficha_cliente_devolucoes.size();
+        }
+
+        %>
+
+        <tr class="reportTr">
+          <td class="columnTdHeader" style="text-align:center;" >
+            Data
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Nota Fiscal
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Pares
+          </td>
+
+          <td class="columnTdHeader" style="text-align:right;" >
+            Valor
+          </td>
+
+        </tr>
+
+        <%
+        int i_bl_report_Jw_ficha_cliente_devolucoes = 0;
+        while (i_bl_report_Jw_ficha_cliente_devolucoes<tamanho) {
+          portalbr.dbobj.view.Jw_ficha_cliente_devolucoes t_jw_ficha_cliente_devolucoes = (portalbr.dbobj.view.Jw_ficha_cliente_devolucoes)res_Jw_ficha_cliente_devolucoes.elementAt(i_bl_report_Jw_ficha_cliente_devolucoes);
+          ordem = t_jw_ficha_cliente_devolucoes.getOrdem();
+          data_cad = (java.sql.Timestamp)t_jw_ficha_cliente_devolucoes.getData_cad();
+          nfs_nmro = t_jw_ficha_cliente_devolucoes.getNfs_nmro();
+          pares = t_jw_ficha_cliente_devolucoes.getPares();
+          valor = t_jw_ficha_cliente_devolucoes.getValor();
+          sum_pares_0 += ((pares!=null)?pares.intValue():0);
+          sum_valor_0 += ((valor!=null)?valor.doubleValue():0);
+          String style_bl_report_Jw_ficha_cliente_devolucoes="";
+          if (!((i_bl_report_Jw_ficha_cliente_devolucoes%2)!=0)) {
+            style_bl_report_Jw_ficha_cliente_devolucoes="rowColor";
+          } else {
+            style_bl_report_Jw_ficha_cliente_devolucoes="rowBlank";
+          }
+          %>
+
+          <tr class='<%= style_bl_report_Jw_ficha_cliente_devolucoes %>' id="TRbl_report_Jw_ficha_cliente_devolucoes<%=i_bl_report_Jw_ficha_cliente_devolucoes%>" >
+            <td class="reportColumn" style="text-align:center;" >
+              <%= com.egen.util.text.FormatDate.format(data_cad, "dd/MM/yyyy") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((nfs_nmro!=null)?nfs_nmro.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= ((pares!=null)?pares.toString():"") %>
+            </td>
+
+            <td class="reportColumn" style="text-align:right;" >
+              <%= com.egen.util.text.FormatNumber.format(valor, "##,##0.00") %>
+            </td>
+
+          </tr>
+
+          <%
+          i_bl_report_Jw_ficha_cliente_devolucoes++;
+          if (i_bl_report_Jw_ficha_cliente_devolucoes<tamanho) {
+            t_jw_ficha_cliente_devolucoes = (portalbr.dbobj.view.Jw_ficha_cliente_devolucoes)res_Jw_ficha_cliente_devolucoes.elementAt(i_bl_report_Jw_ficha_cliente_devolucoes);
+            ordem = t_jw_ficha_cliente_devolucoes.getOrdem();
+            data_cad = (java.sql.Timestamp)t_jw_ficha_cliente_devolucoes.getData_cad();
+            nfs_nmro = t_jw_ficha_cliente_devolucoes.getNfs_nmro();
+            pares = t_jw_ficha_cliente_devolucoes.getPares();
+            valor = t_jw_ficha_cliente_devolucoes.getValor();
+          } else {
+          }
+        }
+        %>
+
+        <tr class="totalColumn">
+          <td>
+             
+          </td>
+          <td>
+             
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>
+            Total:
+            <%= com.egen.util.text.FormatNumber.format(sum_pares_0, "##,##0") %>
+            </b>
+          </td>
+          <td class="totalTdColumn"  style="text-align:right;" >
+            <b>
+            Total:
+            <%= com.egen.util.text.FormatNumber.format(sum_valor_0, "##,##0.00") %>
+            </b>
+          </td>
+        </tr>
+
+
+<!--
+        <tr class="totalColumn">
+          <td colspan="4"  style="text-align:right;">
+             Mostrando <%= tamanho %> de <%= res_Jw_ficha_cliente_devolucoes.size() %> notas
+          </td>
+        </tr>
+-->
+
+
+        <%
+        %>
+
+      </table>
+
+      <%
+    }
+    %>
+
+  </form>
+  <%
+}
+%></report>
+<datasetCodeCustomized>false</datasetCodeCustomized>
+<datasetCode></datasetCode>
+<columns>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>ordem</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column>ordem</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>ordem</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>false</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_ficha_cliente_devolucoes.getOrdem()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>data_cad</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column>data_cad</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>dd/MM/yyyy</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Data</label>
+<type>java.sql.Timestamp</type>
+<columnWidth></columnWidth>
+<align>center</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>(java.sql.Timestamp)t_jw_ficha_cliente_devolucoes.getData_cad()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>nfs_nmro</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column>nfs_nmro</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Nota Fiscal</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_ficha_cliente_devolucoes.getNfs_nmro()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>pares</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column>pares</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Pares</label>
+<type>java.lang.Integer</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_ficha_cliente_devolucoes.getPares()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total: </label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.generator.report.Column</class>
+<name>valor</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_report_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column>valor</database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n></i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format>##,##0.00</format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left></left>
+<top></top>
+<z_index></z_index>
+<label>Valor</label>
+<type>java.lang.Double</type>
+<columnWidth></columnWidth>
+<align>right</align>
+<layout>side</layout>
+<report_break>0</report_break>
+<is_break>false</is_break>
+<visible>true</visible>
+<base_table>true</base_table>
+<column_order></column_order>
+<formula>t_jw_ficha_cliente_devolucoes.getValor()</formula>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<style></style>
+<styleClass></styleClass>
+<columnRelation></columnRelation>
+<totals>
+<totals_item>
+<class>com.egen.develop.generator.report.ReportTotal</class>
+<type>sum</type>
+<totalformat>##,##0.00</totalformat>
+<report_break>0</report_break>
+<style></style>
+<label>Total: </label>
+<i18n></i18n>
+<column_fg_color></column_fg_color>
+<column_bg_color></column_bg_color>
+<column_font></column_font>
+<font_size></font_size>
+<font_bold></font_bold>
+<font_italic></font_italic>
+<styleClass></styleClass>
+<title></title>
+<titleKey></titleKey>
+<totalDisplayCustomized>false</totalDisplayCustomized>
+<i18nTitleKey></i18nTitleKey>
+<totalDisplay></totalDisplay>
+<totalCalculationCustomized>false</totalCalculationCustomized>
+<totalCalculation></totalCalculation>
+<reportTotalSetProperty>
+</reportTotalSetProperty>
+</reportTotalSetProperty>
+</totals_item>
+</totals>
+<hidden>false</hidden>
+<header_bg_color></header_bg_color>
+<header_fg_color></header_fg_color>
+<header_font></header_font>
+<header_font_size></header_font_size>
+<header_style></header_style>
+<header_styleClass></header_styleClass>
+<header_title></header_title>
+<header_titleKey></header_titleKey>
+<header_i18nTitleKey></header_i18nTitleKey>
+<header_font_bold></header_font_bold>
+<header_font_italic></header_font_italic>
+<header_size></header_size>
+<round_value></round_value>
+<columnHeaderCodeCustomized>false</columnHeaderCodeCustomized>
+<columnHeaderCode></columnHeaderCode>
+<columnDisplayCodeCustomized>false</columnDisplayCodeCustomized>
+<columnDisplayCode></columnDisplayCode>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<onmouseover></onmouseover>
+<onmouseup></onmouseup>
+<columnSetProperty>
+</columnSetProperty>
+</columnSetProperty>
+</columns_item>
+</columns>
+<reportset></reportset>
+</blocks_item>
+<blocks_item>
+<class>com.egen.develop.generator.form.BlockForm</class>
+<name>bl_form_Jw_ficha_cliente_devolucoes</name>
+<title>devolucao</title>
+<i18n></i18n>
+<database>pool</database>
+<db_object>Jw_ficha_cliente_devolucoes</db_object>
+<script_block></script_block>
+<script_template></script_template>
+<obs></obs>
+<maxRows>0</maxRows>
+<resultSetName></resultSetName>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by></order_by>
+<group_by></group_by>
+<having></having>
+<styleClass></styleClass>
+<style></style>
+<relations></relations>
+<tabs></tabs>
+<receive_parameter>false</receive_parameter>
+<showparameter>false</showparameter>
+<message_type>no</message_type>
+<message_text></message_text>
+<banner_type>no_banner</banner_type>
+<role></role>
+<roleinclude>false</roleinclude>
+<i18n_obs></i18n_obs>
+<tab_pos>tab0</tab_pos>
+<block_size></block_size>
+<block_position>Standart</block_position>
+<displayError></displayError>
+<form>
+<class>com.egen.develop.generator.form.Form</class>
+<action>com/FichaCliente_devForm.do</action>
+<enctype></enctype>
+<focus></focus>
+<method>POST</method>
+<onreset></onreset>
+<onsubmit></onsubmit>
+<scope></scope>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<target></target>
+<type></type>
+<disabled>false</disabled><readonly>false</readonly><open_form>false</open_form>
+<close_form>false</close_form>
+</form>
+<blockSetProperty>
+</blockSetProperty>
+</blockSetProperty>
+<gridProperties></gridProperties>
+<navigatorProperties></navigatorProperties>
+<buttons>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>200</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    FichaCliente_devActionForm f = (FichaCliente_devActionForm) form;
+    select_action(j, mapping, form, request, response);
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_ficha_cliente_devolucoes", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}
+private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  FichaCliente_devActionForm f = (FichaCliente_devActionForm) form;
+   Jw_ficha_cliente_devolucoes table = new Jw_ficha_cliente_devolucoes();
+    acesso.Sessao sessao = new acesso.Sessao(session);
+    boolean temRestricao = false;
+
+    StringBuilder parametros = new StringBuilder();
+    if((sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")) ||
+       (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL")) ||
+	   (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO")) ||
+       (sessao.getTipoEntidadeNegocio().equals("ANALISTA REGIONAL"))){
+       temRestricao= true;
+    }
+    if(temRestricao){
+       parametros.append("  AND EXISTS (SELECT 1 ");
+       parametros.append("                FROM rep r ");
+       parametros.append("                   , cliente_representante cr ");
+       parametros.append("                   , analistas_regionais a ");
+       parametros.append("               WHERE rep_situ = 'A' ");
+       parametros.append("                 AND cr.situacao = 'A' ");
+       parametros.append("                 AND a.codigo_regional = r.codigo_regional ");
+       parametros.append("                 AND r.rep_cdgo = cr.codigo_representante ");
+       if(sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")){
+          parametros.append("              AND r.codigo_regional = " + sessao.getChave());
+          parametros.append("              AND r.rep_cdgo = d.rep_cdgo ");
+       }
+       if((sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL")) || (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO"))){
+          parametros.append("              AND r.rep_cdgo = '"+sessao.getChave()+"' ");
+          parametros.append("              AND r.rep_cdgo = d.rep_cdgo ");
+       }
+       if(sessao.getTipoEntidadeNegocio().equals("ANALISTA REGIONAL")){
+          parametros.append("              AND a.codigo_gerente = '"+sessao.getChave()+"' ");
+          parametros.append("              AND r.rep_cdgo = d.rep_cdgo ");
+       }
+       parametros.append("                 AND cr.codigo_cliente = ns.cli_cdgo ");
+       parametros.append("                 AND cr.codigo_sequencial = ns.esc_seqn) ");
+    }
+
+    StringBuilder sb = new StringBuilder();
+    sb.append(" SELECT ROWNUM ordem ");
+    sb.append("       ,data_cad ");
+    sb.append("       ,nfs_nmro ");
+    sb.append("       ,pares ");
+    sb.append("       ,valor ");
+    sb.append("   FROM (SELECT dm.data_cad ");
+    sb.append("               ,ns.nfs_nmro ");
+    sb.append("               ,SUM(idv.total_pares) pares ");
+    sb.append("               ,SUM(idv.valor_total) valor ");
+    sb.append("           FROM devolucoes_mercadorias dm ");
+    sb.append("               ,itens_devolucoes idv ");
+    sb.append("               ,nf_item ni ");
+    sb.append("               ,nf_saida ns ");
+    sb.append("          WHERE dm.data_cad >= trunc(SYSDATE,'yyyy') ");
+    sb.append("            AND dm.data_cad <= TRUNC(add_months(SYSDATE,12),'yyyy')-1 ");
+    sb.append("            AND ns.emp_empresa = ni.emp_empresa ");
+    sb.append("            AND ns.fil_filial = ni.fil_filial ");
+    sb.append("            AND ns.nfs_nmro = ni.nfs_nmro ");
+    sb.append("            AND ns.nfs_serie = ni.nfs_serie ");
+    sb.append("            AND ni.emp_empresa = dm.nfs_emp_empresa ");
+    sb.append("            AND ni.fil_filial = dm.nfs_fil_filial ");
+    sb.append(parametros.toString());
+
+
+    if(session.getAttribute("cli_cdgo")!=null){
+       sb.append("           and nvl(ns.cli_cdgo,NULL) = " + (String)session.getAttribute("cli_cdgo"));
+       sb.append("           and nvl(ns.esc_seqn,NULL) = " + (String)session.getAttribute("esc_seqn"));
+    } else {
+       sb.append("          AND EXISTS (SELECT 1 ");
+       sb.append("                        FROM grupo_economico gre  ");
+       sb.append("                       WHERE gre.gre_grupo = " + (String)session.getAttribute("gre_grupo"));
+       sb.append("                         AND NVL(gre.status, NULL) = 'A' "); 
+       sb.append("                         AND gre.cli_cdgo = ns.cli_cdgo ) ");
+   }
+
+    sb.append("            AND ni.nfs_nmro = dm.nfs_numero ");
+    sb.append("            AND ni.nfs_serie = dm.nfs_serie ");
+    sb.append("            AND ni.nfi_seqitem = idv.nfi_seqitem ");
+    sb.append("            AND dm.codigo = idv.devmerc_codigo ");
+    sb.append("            AND ((dm.motdev_codigo <> 85) AND (dm.motdev_codigo <> 54 AND dm.sitdev_codigo <> 2)) ");
+    sb.append("            AND NOT EXISTS (SELECT * ");
+    sb.append("                               FROM nf_refat_dev nrd ");
+    sb.append("                              WHERE nrd.emp_empresa = dm.nfs_emp_empresa ");
+    sb.append("                                AND nrd.fil_filial = dm.nfs_fil_filial ");
+    sb.append("                                AND nrd.nfs_nmro = dm.nfs_numero ");
+    sb.append("                                AND nrd.nfs_serie = dm.nfs_serie ");
+    sb.append("                                AND CASE WHEN nrd.tipo_refaturamento = pck_nf_refat_dev.get_refaturamento AND nrd.cli_cdgo <> dm.cli_cdgo THEN 0 ELSE 1 END = 1 ");
+    sb.append("                                AND nrd.estagio <> pck_nf_refat_dev.get_estagio_cancelado) ");
+    sb.append("            AND NOT EXISTS (SELECT * ");
+    sb.append("                   FROM ite ite ");
+    sb.append("                       ,ped ped ");
+    sb.append("                  WHERE ite.emp_empresa_refat = dm.nfs_emp_empresa ");
+    sb.append("                    AND ite.fil_filial_refat = dm.nfs_fil_filial ");
+    sb.append("                    AND ite.nfs_nmro_refat = dm.nfs_numero ");
+    sb.append("                    AND ite.nfs_serie_refat = dm.nfs_serie ");
+    sb.append("                    AND ite.ped_nmro = ped.ped_nmro ");
+    sb.append("                    AND CASE WHEN ped.cli_cdgo <> dm.cli_cdgo THEN 0 ELSE 1 END = 1 ");
+    sb.append("                    AND ped.ped_stat <> 'C' ) ");
+    sb.append("          GROUP BY dm.data_cad ");
+    sb.append("                  ,ns.nfs_nmro ");
+    sb.append("          ORDER BY dm.data_cad DESC) ");
+
+
+    Vector res_Jw_ficha_cliente_devolucoes = j.select(table, sb.toString(), null);
+    session.setAttribute("res_Jw_ficha_cliente_devolucoes_dev",res_Jw_ficha_cliente_devolucoes);
+    session.setAttribute(mapping.getName(), form);
+}</action_code>
+<property>select_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Submit</class>
+<name>select1_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>260</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.select</value>
+<accesskey>p</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick></onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass>myhidden</styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code>public ActionForward perform_select1_action(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
+  HttpSession session = request.getSession(true);
+  ActionForward actionForward = null;
+  com.egen.util.jdbc.JdbcUtil j = null;
+  try {
+    j = new com.egen.util.jdbc.JdbcUtil();
+    FichaCliente_devActionForm f = (FichaCliente_devActionForm) form;
+    select1_action(j, mapping, form, request, response);
+    actionForward = mapping.findForward("same");
+  } catch (Exception e) {
+    ActionErrors errors = new ActionErrors();
+    errors.add("ActionErrors.GLOBAL_ERROR_bl_form_Jw_ficha_cliente_devolucoes", new ActionMessage("error.action.exception",com.egen.util.system.Error.getMessage(e)));
+    request.setAttribute(org.apache.struts.Globals.ERROR_KEY, errors);
+    session.setAttribute("exception", com.egen.util.system.Error.getDescription(e));
+    actionForward = mapping.findForward("same");
+  } finally {
+    if (j != null) {
+      j.close();
+    }
+  }
+  return actionForward;
+}
+private void select1_action(JdbcUtil j, ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+  HttpSession session = request.getSession(true);
+  FichaCliente_devActionForm f = (FichaCliente_devActionForm) form;
+   Jw_ficha_cliente_devolucoes table = new Jw_ficha_cliente_devolucoes();
+    acesso.Sessao sessao = new acesso.Sessao(session);
+    boolean temRestricao = false;
+
+    StringBuilder parametros = new StringBuilder();
+    if((sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")) ||
+       (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL")) ||
+	   (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO")) ||
+       (sessao.getTipoEntidadeNegocio().equals("ANALISTA REGIONAL"))){
+       temRestricao= true;
+    }
+    if(temRestricao){
+       parametros.append("  AND EXISTS (SELECT 1 ");
+       parametros.append("                FROM rep r ");
+       parametros.append("                   , cliente_representante cr ");
+       parametros.append("                   , analistas_regionais a ");
+       parametros.append("               WHERE rep_situ = 'A' ");
+       parametros.append("                 AND cr.situacao = 'A' ");
+       parametros.append("                 AND a.codigo_regional = r.codigo_regional ");
+       parametros.append("                 AND r.rep_cdgo = cr.codigo_representante ");
+       if(sessao.getTipoEntidadeNegocio().equals("REGIONAL DE VENDA")){
+          parametros.append("              AND r.codigo_regional = " + sessao.getChave());
+          parametros.append("              AND r.rep_cdgo = d.rep_cdgo ");
+       }
+       if((sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE COMERCIAL")) || (sessao.getTipoEntidadeNegocio().equals("REPRESENTANTE EXPORTACAO"))){
+          parametros.append("              AND r.rep_cdgo = '"+sessao.getChave()+"' ");
+          parametros.append("              AND r.rep_cdgo = d.rep_cdgo ");
+       }
+       if(sessao.getTipoEntidadeNegocio().equals("ANALISTA REGIONAL")){
+          parametros.append("              AND a.codigo_gerente = '"+sessao.getChave()+"' ");
+          parametros.append("              AND r.rep_cdgo = d.rep_cdgo ");
+       }
+       parametros.append("                 AND cr.codigo_cliente = ns.cli_cdgo ");
+       parametros.append("                 AND cr.codigo_sequencial = ns.esc_seqn) ");
+    }
+
+    StringBuilder sb = new StringBuilder();
+    sb.append(" SELECT ROWNUM ordem ");
+    sb.append("       ,data_cad ");
+    sb.append("       ,nfs_nmro ");
+    sb.append("       ,pares ");
+    sb.append("       ,valor ");
+    sb.append("   FROM (SELECT dm.data_cad ");
+    sb.append("               ,ns.nfs_nmro ");
+    sb.append("               ,SUM(idv.total_pares) pares ");
+    sb.append("               ,SUM(idv.valor_total) valor ");
+    sb.append("           FROM devolucoes_mercadorias dm ");
+    sb.append("               ,itens_devolucoes idv ");
+    sb.append("               ,nf_item ni ");
+    sb.append("               ,nf_saida ns ");
+    sb.append("          WHERE dm.data_cad >= trunc(add_months(SYSDATE,'-12'),'yyyy') ");
+    sb.append("            AND dm.data_cad <= TRUNC(SYSDATE,'yyyy')-1 ");
+    sb.append("            AND ns.emp_empresa = ni.emp_empresa ");
+    sb.append("            AND ns.fil_filial = ni.fil_filial ");
+    sb.append("            AND ns.nfs_nmro = ni.nfs_nmro ");
+    sb.append("            AND ns.nfs_serie = ni.nfs_serie ");
+    sb.append("            AND ni.emp_empresa = dm.nfs_emp_empresa ");
+    sb.append("            AND ni.fil_filial = dm.nfs_fil_filial ");
+    sb.append(parametros.toString());
+
+
+    if(session.getAttribute("cli_cdgo")!=null){
+       sb.append("           and nvl(ns.cli_cdgo,NULL) = " + (String)session.getAttribute("cli_cdgo"));
+       sb.append("           and nvl(ns.esc_seqn,NULL) = " + (String)session.getAttribute("esc_seqn"));
+    } else {
+       sb.append("          AND EXISTS (SELECT 1 ");
+       sb.append("                        FROM grupo_economico gre  ");
+       sb.append("                       WHERE gre.gre_grupo = " + (String)session.getAttribute("gre_grupo"));
+       sb.append("                         AND NVL(gre.status, NULL) = 'A' "); 
+       sb.append("                         AND gre.cli_cdgo = ns.cli_cdgo ) ");
+   }
+
+    sb.append("            AND ni.nfs_nmro = dm.nfs_numero ");
+    sb.append("            AND ni.nfs_serie = dm.nfs_serie ");
+    sb.append("            AND ni.nfi_seqitem = idv.nfi_seqitem ");
+    sb.append("            AND dm.codigo = idv.devmerc_codigo ");
+    sb.append("            AND ((dm.motdev_codigo <> 85) AND (dm.motdev_codigo <> 54 AND dm.sitdev_codigo <> 2)) ");
+    sb.append("            AND NOT EXISTS (SELECT * ");
+    sb.append("                               FROM nf_refat_dev nrd ");
+    sb.append("                              WHERE nrd.emp_empresa = dm.nfs_emp_empresa ");
+    sb.append("                                AND nrd.fil_filial = dm.nfs_fil_filial ");
+    sb.append("                                AND nrd.nfs_nmro = dm.nfs_numero ");
+    sb.append("                                AND nrd.nfs_serie = dm.nfs_serie ");
+    sb.append("                                AND CASE WHEN nrd.tipo_refaturamento = pck_nf_refat_dev.get_refaturamento AND nrd.cli_cdgo <> dm.cli_cdgo THEN 0 ELSE 1 END = 1 ");
+    sb.append("                                AND nrd.estagio <> pck_nf_refat_dev.get_estagio_cancelado) ");
+    sb.append("            AND NOT EXISTS (SELECT * ");
+    sb.append("                   FROM ite ite ");
+    sb.append("                       ,ped ped ");
+    sb.append("                  WHERE ite.emp_empresa_refat = dm.nfs_emp_empresa ");
+    sb.append("                    AND ite.fil_filial_refat = dm.nfs_fil_filial ");
+    sb.append("                    AND ite.nfs_nmro_refat = dm.nfs_numero ");
+    sb.append("                    AND ite.nfs_serie_refat = dm.nfs_serie ");
+    sb.append("                    AND ite.ped_nmro = ped.ped_nmro ");
+    sb.append("                    AND CASE WHEN ped.cli_cdgo <> dm.cli_cdgo THEN 0 ELSE 1 END = 1 ");
+    sb.append("                    AND ped.ped_stat <> 'C' ) ");
+    sb.append("          GROUP BY dm.data_cad ");
+    sb.append("                  ,ns.nfs_nmro ");
+    sb.append("          ORDER BY dm.data_cad DESC) ");
+
+    Vector res_Jw_ficha_cliente_devolucoes = j.select(table, sb.toString(), null);
+    session.setAttribute("res_Jw_ficha_cliente_devolucoes_dev",res_Jw_ficha_cliente_devolucoes);
+    session.setAttribute(mapping.getName(), form);
+}</action_code>
+<property>select1_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+<buttons_item>
+<class>com.egen.develop.generator.form.Button</class>
+<name>close_action</name>
+<help></help>
+<i18nHelp></i18nHelp>
+<develHelp></develHelp>
+<block_name>bl_form_Jw_ficha_cliente_devolucoes</block_name>
+<role_item></role_item>
+<database_column></database_column>
+<roleinclude>false</roleinclude>
+<open_form>false</open_form>
+<close_form>false</close_form>
+<i18n>ApplicationResources</i18n>
+<show_help>false</show_help>
+<show_help_label>false</show_help_label>
+<tabs></tabs>
+<format></format>
+<title></title>
+<titleKey></titleKey>
+<i18nTitleKey></i18nTitleKey>
+<left>320</left>
+<top>100</top>
+<z_index></z_index>
+<value>jsp.close</value>
+<accesskey>f</accesskey>
+<disabled>false</disabled>
+<onblur></onblur>
+<onchange></onchange>
+<onclick>javascript:window.close();</onclick>
+<ondblclick></ondblclick>
+<onfocus></onfocus>
+<onkeydown></onkeydown>
+<onkeypress></onkeypress>
+<onkeyup></onkeyup>
+<onmousedown></onmousedown>
+<onmousemove></onmousemove>
+<style></style>
+<styleClass></styleClass>
+<styleId></styleId>
+<tabindex></tabindex>
+<bean_validate>false</bean_validate>
+<src></src>
+<isCustomized>false</isCustomized>
+<codeItem></codeItem>
+<buttonPosition></buttonPosition>
+<select_clause></select_clause>
+<where_clause></where_clause>
+<order_by_clause></order_by_clause>
+<group_by_clause></group_by_clause>
+<having_clause></having_clause>
+<button_db_object></button_db_object>
+<triggers></triggers>
+<template></template>
+<action_code></action_code>
+<property>close_action</property>
+<forward>same</forward>
+<forward_error>same</forward_error>
+<baseButtonSetProperty>
+</baseButtonSetProperty>
+</baseButtonSetProperty>
+</buttons_item>
+</buttons>
+<formTemplate>default_form_block</formTemplate>
+<form_code></form_code>
+<number_column></number_column>
+</blocks_item>
+</blocks>
+<strutsConfig>
+<class>com.egen.develop.generator.struts.StrutsConfig</class>
+<strutsConfigFileName>struts-config.xml</strutsConfigFileName>
+<formBeans>
+<formBeans_item>
+<class>com.egen.develop.struts.FormBean</class>
+<className></className>
+<dynamic>false</dynamic>
+<name>FichaCliente_devActionForm</name>
+<type>portalbr.com.FichaCliente_devActionForm</type>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<formProperties></formProperties>
+<setProperties></setProperties>
+</formBeans_item>
+</formBeans>
+<actions>
+<actions_item>
+<class>com.egen.develop.struts.Action</class>
+<path>/com/FichaCliente_devForm</path>
+<type>portalbr.com.FichaCliente_devAction</type>
+<name>FichaCliente_devActionForm</name>
+<attribute></attribute>
+<input>/com/FichaCliente_devForm.jsp</input>
+<className></className>
+<forward></forward>
+<include></include>
+<validate>true</validate>
+<scope></scope>
+<parameter></parameter>
+<prefix></prefix>
+<roles></roles>
+<suffix></suffix>
+<unknown></unknown>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<forwards>
+<forwards_item>
+<class>com.egen.develop.struts.Forward</class>
+<className></className>
+<contextRelative></contextRelative>
+<name>same</name>
+<path>/com/FichaCliente_devForm.jsp</path>
+<description></description>
+<display_name></display_name>
+<icon></icon>
+<setProperties></setProperties>
+</forwards_item>
+</forwards>
+<strutsExceptions></strutsExceptions>
+<setProperties></setProperties>
+</actions_item>
+</actions>
+</strutsConfig>
+<page></page>
+<time></time>
+<body></body>
+<header></header>
+<footer></footer>
+<tabs_gen></tabs_gen>
+<files></files>
+<pluggableValidators></pluggableValidators>
+<hasModelAjax>false</hasModelAjax>
+<hasActionAjax>false</hasActionAjax>
+<generatorSetProperty>
+</generatorSetProperty>
+</generatorSetProperty>
+</generator>

@@ -1,0 +1,503 @@
+<class>com.egen.develop.integration.model.VObject</class>
+<lastUsedTemplate>e-gen_jdbcutil_standard_entity_mapping</lastUsedTemplate>
+<componentType>com.egen.webide.integration.components.StandardJavaview</componentType>
+<name>Jw_abastecimento_materiais</name>
+<columns>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>fornecedor_codigo</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>Fornecedor_codigo</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Long</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>fen_seq</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>Fen_seq</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Integer</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>codigo</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Long</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>descricao</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>100</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>descricao</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.String</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>200</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>unm_codigo</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>3</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>unm_codigo</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.String</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>3</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>cor_cdgo</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>cor_cdgo</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Integer</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>cor_desc</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>120</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>cor_desc</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.String</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>120</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+<columns_item>
+<class>com.egen.develop.integration.model.VObjectColumn</class>
+<discard>false</discard>
+<columnName>saldo</columnName>
+<columnProperties>
+<columnProperties_item>
+<$key>not_null</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>help</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>case_restriction</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>validate_type</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>length</$key>
+<$value>22</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>i18n</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>html_type</$key>
+<$value>text</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>label</$key>
+<$value>saldo</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>format</$key>
+<$value></$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>type</$key>
+<$value>java.lang.Double</$value>
+</columnProperties_item>
+<columnProperties_item>
+<$key>size</$key>
+<$value>22</$value>
+</columnProperties_item>
+</columnProperties>
+</columns_item>
+</columns>
+<properties>
+<properties_item>
+<$key>schema</$key>
+<$value></$value>
+</properties_item>
+<properties_item>
+<$key>db_type</$key>
+<$value>javaview</$value>
+</properties_item>
+<properties_item>
+<$key>query</$key>
+<$value>SELECT fornecedor_codigo
+      ,fen_seq
+      ,codigo
+      ,descricao
+      ,unm_codigo
+      ,cor_cdgo
+      ,cor_desc
+      ,NVL(SUM(saldo), 0) + saldo_estoque_17_19_1_1 + saldo_estoque_17_19_17_1 saldo
+  FROM (SELECT tpr.for_codigo fornecedor_codigo
+              ,tpr.fen_seq
+              ,i.codigo
+              ,i.descricao
+              ,i.unm_codigo
+              ,s.cor_cdgo
+              ,c.cor_desc
+              ,s.sdo_req saldo
+              ,fct_saldo_reposicao(s.fil_filial, i.codigo, s.cor_cdgo, s.tai_codigo, 1) repos
+              ,fct_saldo_estoque_atual('01', '17', '01', i.codigo, s.cor_cdgo, s.tai_codigo, 19, 1, 1) saldo_estoque_17_19_1_1
+              ,fct_saldo_estoque_atual('01', '17', '01', i.codigo, s.cor_cdgo, s.tai_codigo, 19, 17, 1) saldo_estoque_17_19_17_1
+          FROM req_sdo_abastecimento s
+              ,filial f
+              ,cor c
+              ,dom_item_estoque i
+              ,dom_tabela_preco tpr
+              ,for_endere fe
+              ,dom_item_fornecedor ifo
+              ,est.dom_grupo_material_x_poi dgmp
+         WHERE s.emp_empresa = '01'
+           AND dgmp.gpo_cdgo_poi = NVL(i.gpo_codigo, NULL)
+           AND s.ies_codigo = i.codigo
+           AND s.cor_cdgo = c.cor_cdgo
+           AND s.emp_empresa = f.emp_empresa
+           AND s.fil_filial = f.fil_filial
+           AND tpr.ies_codigo = s.ies_codigo
+           AND tpr.cor_cdgo = s.cor_cdgo
+           AND tpr.tai_codigo = s.tai_codigo
+           AND tpr.emp_empresa = s.emp_empresa
+           AND tpr.fil_filial = s.fil_filial
+           AND tpr.unn_codigo = f.unn_codigo
+           AND NVL(tpr.data_liberacao_diretor, NULL) >= TRUNC(SYSDATE)
+           AND NVL(tpr.status, NULL) = 'A'
+           AND tpr.for_codigo = 343
+           AND tpr.data_geracao = (SELECT MAX(tab.data_geracao)
+                                     FROM dom_tabela_preco tab
+                                    WHERE tab.ies_codigo = tpr.ies_codigo
+                                      AND tab.cor_cdgo = tpr.cor_cdgo
+                                      AND tab.tai_codigo = tpr.tai_codigo
+                                      AND tab.emp_empresa = tpr.emp_empresa
+                                      AND tab.fil_filial = tpr.fil_filial
+                                      AND tab.status = 'A')
+           AND ifo.for_codigo = tpr.for_codigo
+           AND ifo.fen_seq = tpr.fen_seq
+           AND ifo.ies_codigo = tpr.ies_codigo
+           AND ifo.cor_cdgo = tpr.cor_cdgo
+           AND ifo.tai_codigo = tpr.tai_codigo
+           AND ifo.emp_empresa = NVL(tpr.emp_empresa, NULL)
+           AND ifo.fil_filial = NVL(tpr.fil_filial, NULL)
+           AND ifo.unn_codigo = NVL(tpr.unn_codigo, NULL)
+           AND fe.for_codigo = ifo.for_codigo
+           AND fe.fen_seq = ifo.fen_seq
+           AND fe.fen_ativo = 'S')
+ GROUP BY fornecedor_codigo
+         ,fen_seq
+         ,codigo
+         ,descricao
+         ,unm_codigo
+         ,cor_cdgo
+         ,cor_desc
+         ,saldo_estoque_17_19_1_1
+         ,saldo_estoque_17_19_17_1
+HAVING SUM(saldo) < 0
+</$value>
+</properties_item>
+<properties_item>
+<$key>metadata</$key>
+<$value></$value>
+</properties_item>
+</properties>
