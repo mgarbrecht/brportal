@@ -12,7 +12,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 10/04/2007 12:28:57
- * Last Modify Date 30/07/2021 10:53:17
+ * Last Modify Date 15/02/2023 11:32:30
  */
 
 public class ConsultaRomaneiosEmbarqueEDIAction extends com.egen.util.struts.AbstractAction {
@@ -55,7 +55,7 @@ public class ConsultaRomaneiosEmbarqueEDIAction extends com.egen.util.struts.Abs
     sb.append("      , re.fil_filial ");
     sb.append("      , re.numero ");
     sb.append("      , re.data_emissao ");
-    sb.append("      , re.dthr_alteracao data_finalizacao ");
+    sb.append("      , re.data_finalizacao ");
     sb.append("      , re.tra_cdgo ");
     sb.append("      , t.tra_nome ");
     sb.append("      , re.fil_filial || ' - ' || f.fil_razsoc filial ");
