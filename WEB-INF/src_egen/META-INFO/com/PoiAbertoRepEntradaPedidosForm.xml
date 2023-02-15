@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generator>
 <VERSION>v 2.8</VERSION>
-<generation_day>02/02/2023</generation_day>
+<generation_day>14/02/2023</generation_day>
 <module>com</module>
 <file_name>PoiAbertoRepEntradaPedidos</file_name>
 <app_type>Form</app_type>
@@ -31,7 +31,7 @@
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <creationDate>13/03/2006 15:41:20</creationDate>
-<lastModifyDate>02/02/2023 15:18:36</lastModifyDate>
+<lastModifyDate>14/02/2023 15:09:21</lastModifyDate>
 <userGenerate>admin</userGenerate>
 <scope_storage>session</scope_storage>
 <generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
@@ -3348,12 +3348,12 @@ private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
         filtroPrevistoOutros = " AND pck_uni_negocio.get_nome(t.unn_codigo) = 'MEIAS' ";
         filtroPrevistoCalcados = " AND 1=2 ";
      } else if(f.getSegmento().equals("V")) {
-        filtroSegmento = " AND pck_referencia.get_grupo_posicao_fab(i.lin_cdgo, i.ref_cdgo) in (19,31,32,33) ";
+        filtroSegmento = " AND pck_referencia.get_grupo_posicao_fab(i.lin_cdgo, i.ref_cdgo) in (18,19,31,32,33) ";
         filtroPrevistoOutros = " AND pck_uni_negocio.get_nome(t.unn_codigo) = 'VESTUARIO' ";
         filtroPrevistoCalcados = " AND 1=2 ";
      } else if(f.getSegmento().equals("C")) {
         filtroPrevistoOutros = " AND 1=2 ";
-        filtroSegmento = " AND pck_referencia.get_grupo_posicao_fab(i.lin_cdgo, i.ref_cdgo) not in (7,17,19,30,26,29,31,32,33) ";
+        filtroSegmento = " AND pck_referencia.get_grupo_posicao_fab(i.lin_cdgo, i.ref_cdgo) not in (7,17,18,19,30,26,29,31,32,33) ";
      }
   }
 
@@ -3477,7 +3477,7 @@ query.append("                            ,0 preco_previsto   ");
 query.append("                            ,0 reais_previsto   ");
 query.append("                            ,0 pares_previsto   ");
 if(abrirSegmento) {
-   query.append("                            ,case when ref_grupo_posicao_fab in (7,17) then 'BOLSAS' when ref_grupo_posicao_fab in (26,29) then 'MEIAS' when ref_grupo_posicao_fab  in (30) then 'OCULOS' when ref_grupo_posicao_fab in (19,31,32,33) then 'VESTUARIO' else 'CALCADOS' end ref_grupo_posicao_fab_descricao ");
+   query.append("                            ,case when ref_grupo_posicao_fab in (7,17) then 'BOLSAS' when ref_grupo_posicao_fab in (26,29) then 'MEIAS' when ref_grupo_posicao_fab  in (30) then 'OCULOS' when ref_grupo_posicao_fab in (18,19,31,32,33) then 'VESTUARIO' else 'CALCADOS' end ref_grupo_posicao_fab_descricao ");
 } else {
    query.append("                            ,'GERAL' ref_grupo_posicao_fab_descricao ");
 }
@@ -3520,7 +3520,7 @@ query.append("                            ,0 preco_previsto   ");
 query.append("                            ,0 reais_previsto   ");
 query.append("                            ,0 pares_previsto   ");
 if(abrirSegmento) {
-   query.append("                            ,case when ref_grupo_posicao_fab in (7,17) then 'BOLSAS' when ref_grupo_posicao_fab in (26,29) then 'MEIAS' when ref_grupo_posicao_fab  in (30) then 'OCULOS' when ref_grupo_posicao_fab in (19,31,32,33) then 'VESTUARIO' else 'CALCADOS' end ref_grupo_posicao_fab_descricao ");
+   query.append("                            ,case when ref_grupo_posicao_fab in (7,17) then 'BOLSAS' when ref_grupo_posicao_fab in (26,29) then 'MEIAS' when ref_grupo_posicao_fab  in (30) then 'OCULOS' when ref_grupo_posicao_fab in (18,19,31,32,33) then 'VESTUARIO' else 'CALCADOS' end ref_grupo_posicao_fab_descricao ");
 } else {
    query.append("                            ,'GERAL' ref_grupo_posicao_fab_descricao ");
 } 
@@ -3563,7 +3563,7 @@ query.append("                              ,0 preco_previsto ");
 query.append("                              ,0 reais_previsto ");
 query.append("                              ,0 pares_previsto ");
 if(abrirSegmento) {
-   query.append("                           ,case when ref_grupo_posicao_fab in (7,17) then 'BOLSAS' when ref_grupo_posicao_fab in (26,29) then 'MEIAS' when ref_grupo_posicao_fab  in (30) then 'OCULOS' when ref_grupo_posicao_fab in (19,31,32,33) then 'VESTUARIO' else 'CALCADOS' end ref_grupo_posicao_fab_descricao ");
+   query.append("                           ,case when ref_grupo_posicao_fab in (7,17) then 'BOLSAS' when ref_grupo_posicao_fab in (26,29) then 'MEIAS' when ref_grupo_posicao_fab  in (30) then 'OCULOS' when ref_grupo_posicao_fab in (18,19,31,32,33) then 'VESTUARIO' else 'CALCADOS' end ref_grupo_posicao_fab_descricao ");
 } else {
 query.append("                              ,'GERAL' ref_grupo_posicao_fab_descricao ");
 }

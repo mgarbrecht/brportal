@@ -8,7 +8,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 13/03/2006 15:42:45
- * Last Modify Date 06/02/2023 14:12:54
+ * Last Modify Date 06/02/2023 14:21:16
  */
 
 public class PoiAbertoRepEntradaPedidos_rActionForm extends org.apache.struts.action.ActionForm
@@ -28,139 +28,139 @@ public class PoiAbertoRepEntradaPedidos_rActionForm extends org.apache.struts.ac
   public PoiAbertoRepEntradaPedidos_rActionForm() {
   }
   /**
-    * ANO: Método Gets para este campo
+    * ANO: Method to get the field value.
     */
   public String getAno() {
     return ano;
   }
   /**
-    * ANO: Método Sets pára este campo.
+    * ANO: Method to set the field value.
     */
   public void setAno(String PARAM) {
     ano = PARAM;
   }
   /**
-    * MES: Método Gets para este campo
+    * MES: Method to get the field value.
     */
   public String getMes() {
     return mes;
   }
   /**
-    * MES: Método Sets pára este campo.
+    * MES: Method to set the field value.
     */
   public void setMes(String PARAM) {
     mes = PARAM;
   }
   /**
-    * REP_CDGO: Método Gets para este campo
+    * REP_CDGO: Method to get the field value.
     */
   public String getRep_cdgo() {
     return rep_cdgo;
   }
   /**
-    * REP_CDGO: Método Sets pára este campo.
+    * REP_CDGO: Method to set the field value.
     */
   public void setRep_cdgo(String PARAM) {
     rep_cdgo = PARAM;
   }
   /**
-    * CODIGO_REGIONAL: Método Gets para este campo
+    * CODIGO_REGIONAL: Method to get the field value.
     */
   public String getCodigo_regional() {
     return codigo_regional;
   }
   /**
-    * CODIGO_REGIONAL: Método Sets pára este campo.
+    * CODIGO_REGIONAL: Method to set the field value.
     */
   public void setCodigo_regional(String PARAM) {
     codigo_regional = PARAM;
   }
   /**
-    * REP_RZAO: Método Gets para este campo
+    * REP_RZAO: Method to get the field value.
     */
   public String getRep_rzao() {
     return rep_rzao;
   }
   /**
-    * REP_RZAO: Método Sets pára este campo.
+    * REP_RZAO: Method to set the field value.
     */
   public void setRep_rzao(String PARAM) {
     rep_rzao = PARAM;
   }
   /**
-    * FLAG: Método Gets para este campo
+    * FLAG: Method to get the field value.
     */
   public String getFlag() {
     return flag;
   }
   /**
-    * FLAG: Método Sets pára este campo.
+    * FLAG: Method to set the field value.
     */
   public void setFlag(String PARAM) {
     flag = PARAM;
   }
   /**
-    * TIPO: Método Gets para este campo
+    * TIPO: Method to get the field value.
     */
   public String getTipo() {
     return tipo;
   }
   /**
-    * TIPO: Método Sets pára este campo.
+    * TIPO: Method to set the field value.
     */
   public void setTipo(String PARAM) {
     tipo = PARAM;
   }
   /**
-    * SITUACAO_GERENTE: Método Gets para este campo
+    * SITUACAO_GERENTE: Method to get the field value.
     */
   public String getSituacao_gerente() {
     return situacao_gerente;
   }
   /**
-    * SITUACAO_GERENTE: Método Sets pára este campo.
+    * SITUACAO_GERENTE: Method to set the field value.
     */
   public void setSituacao_gerente(String PARAM) {
     situacao_gerente = PARAM;
   }
   /**
-    * ANO_FINAL: Método Gets para este campo
+    * ANO_FINAL: Method to get the field value.
     */
   public String getAno_final() {
     return ano_final;
   }
   /**
-    * ANO_FINAL: Método Sets pára este campo.
+    * ANO_FINAL: Method to set the field value.
     */
   public void setAno_final(String PARAM) {
     ano_final = PARAM;
   }
   /**
-    * MES_FINAL: Método Gets para este campo
+    * MES_FINAL: Method to get the field value.
     */
   public String getMes_final() {
     return mes_final;
   }
   /**
-    * MES_FINAL: Método Sets pára este campo.
+    * MES_FINAL: Method to set the field value.
     */
   public void setMes_final(String PARAM) {
     mes_final = PARAM;
   }
   /**
-    * CODIGO_MARCA: Método Gets para este campo
+    * CODIGO_MARCA: Method to get the field value.
     */
   public String getCodigo_marca() {
     return codigo_marca;
   }
   /**
-    * CODIGO_MARCA: Método Sets pára este campo.
+    * CODIGO_MARCA: Method to set the field value.
     */
   public void setCodigo_marca(String PARAM) {
     codigo_marca = PARAM;
   }
   /**
-    * Limpar todos os campos.
+    * Reset all fields.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     ano = null;
@@ -176,7 +176,7 @@ public class PoiAbertoRepEntradaPedidos_rActionForm extends org.apache.struts.ac
     codigo_marca = null;
   }
   /**
-    * Validação dos campos, retornando um ActionErrors.
+    * Validate fields and return errors.
     */
   public ActionErrors validate(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     javax.servlet.http.HttpSession session = request.getSession(true);
