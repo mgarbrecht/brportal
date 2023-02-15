@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generator>
 <VERSION>v 2.8</VERSION>
-<generation_day>30/07/2021</generation_day>
+<generation_day>15/02/2023</generation_day>
 <module>com</module>
 <file_name>ConsultaRomaneiosEmbarqueEDI</file_name>
 <app_type>Form</app_type>
@@ -31,7 +31,7 @@
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <creationDate>10/04/2007 12:28:57</creationDate>
-<lastModifyDate>30/07/2021 10:53:17</lastModifyDate>
+<lastModifyDate>15/02/2023 11:32:30</lastModifyDate>
 <userGenerate>admin</userGenerate>
 <scope_storage>session</scope_storage>
 <generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
@@ -1682,7 +1682,7 @@ private void select_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
   sb.append("      , re.fil_filial ");
   sb.append("      , re.numero ");
   sb.append("      , re.data_emissao ");
-  sb.append("      , re.dthr_alteracao data_finalizacao ");
+  sb.append("      , re.data_finalizacao ");
   sb.append("      , re.tra_cdgo ");
   sb.append("      , t.tra_nome ");
   sb.append("      , re.fil_filial || ' - ' || f.fil_razsoc filial ");
