@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generator>
 <VERSION>v 2.8</VERSION>
-<generation_day>05/12/2022</generation_day>
+<generation_day>16/02/2023</generation_day>
 <module>com</module>
 <file_name>SolicitacaoCombinacaoEspecial_r</file_name>
 <app_type>Form</app_type>
@@ -557,7 +557,6 @@ private void update_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
   SolicitacaoCombinacaoEspecial_rActionForm f = _ge_grid_array[0];    
   String situacao = (String) session.getAttribute("situacao");
   acesso.Usuario usuario = (acesso.Usuario)session.getAttribute("User");
-  System.out.println("session.getAttribute_situacao_: " + session.getAttribute("situacao"));
   if (f != null){
     boolean adicionou = false;
     util.consultas.Query queryUtil = new util.consultas.Query();		
@@ -1497,7 +1496,7 @@ private void update_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <creationDate>03/02/2012 15:14:29</creationDate>
-<lastModifyDate>05/12/2022 16:19:03</lastModifyDate>
+<lastModifyDate>16/02/2023 15:03:16</lastModifyDate>
 <userGenerate>admin</userGenerate>
 <scope_storage>session</scope_storage>
 <generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
@@ -4111,7 +4110,6 @@ private void update_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
     }
     finally {
     }
-       System.out.println("update_Action3");
     Jw_ref_combinacao_especial table = new Jw_ref_combinacao_especial();
     Vector res_Jw_ref_combinacao_especial = j.select(table, (String) session.getAttribute("where"), null);   
     session.setAttribute("res_Jw_ref_combinacao_especial",res_Jw_ref_combinacao_especial);

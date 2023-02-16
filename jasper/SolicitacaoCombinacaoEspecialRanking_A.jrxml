@@ -50,6 +50,8 @@
                               ,SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
                               ,SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
                           FROM brio.ref_combinacao_especial rce
+                             , regionais_vendas rv
+                             , rep r
                          WHERE rce.rep_cdgo IS NOT NULL
                            AND rce.situacao_solicitacao = 'A'
                            AND rce.data_solicitacao >= TO_DATE($P{P_DT_INICIAL}, 'dd/mm/yyyy')

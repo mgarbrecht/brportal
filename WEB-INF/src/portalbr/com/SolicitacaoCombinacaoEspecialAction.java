@@ -160,6 +160,8 @@ public class SolicitacaoCombinacaoEspecialAction extends com.egen.util.struts.Ab
     sb.append("       , cg_ref_codes                 crc ");
     sb.append("       , cg_ref_codes                 cgrc ");
     sb.append("       , brio.ref_combinacao_especial_img rcei ");
+    sb.append("       , rep                          r ");
+    sb.append("       , regionais_vendas             rv ");
     sb.append("  WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL' ");
     sb.append("    AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial ");
     sb.append("    AND nvl(rce.tipo_solicitacao_comb_especial,null) <> 11 ");
@@ -182,6 +184,17 @@ public class SolicitacaoCombinacaoEspecialAction extends com.egen.util.struts.Ab
       sb.append("                                                    AND c.cli_tipo_mercado = '"+f.getTipo_mercado() + "' ");
       sb.append("                                                    AND g.gre_grupo = rce.gre_grupo ");
       sb.append("                                                    AND rownum = 1)) ");
+    }
+
+    sb.append(" AND r.rep_cdgo(+) = rce.rep_cdgo ");
+    sb.append(" AND rv.codigo_regional(+) = r.codigo_regional ");
+
+    if (!f.getTipo_mercado().equalsIgnoreCase("T")) {
+      if (f.getTipo_mercado().equalsIgnoreCase("MI")) {
+        sb.append(" AND rv.tipo_mercado = '").append(f.getTipo_mercado()).append("' ");
+      } else {
+        sb.append(" AND rv.tipo_mercado = 'ME' ");
+      }
     }
 
     if (f.getMaterial() != "") {
@@ -474,6 +487,18 @@ public class SolicitacaoCombinacaoEspecialAction extends com.egen.util.struts.Ab
         sb.append("                                                    AND g.gre_grupo = rce.gre_grupo ");
         sb.append("                                                    AND rownum = 1)) ");
       }
+
+      sb.append(" AND r.rep_cdgo(+) = rce.rep_cdgo ");
+      sb.append(" AND rv.codigo_regional(+) = r.codigo_regional ");
+
+      if (!f.getTipo_mercado().equalsIgnoreCase("T")) {
+        if (f.getTipo_mercado().equalsIgnoreCase("MI")) {
+          sb.append(" AND rv.tipo_mercado = '").append(f.getTipo_mercado()).append("' ");
+        } else {
+          sb.append(" AND rv.tipo_mercado = 'ME' ");
+        }
+      }
+
       g.setParametro("P_QUERY", sb.toString());
 
       g.gerar();
@@ -570,6 +595,17 @@ public class SolicitacaoCombinacaoEspecialAction extends com.egen.util.struts.Ab
         sb.append("                                                    AND c.cli_tipo_mercado = '"+f.getTipo_mercado() + "' ");
         sb.append("                                                    AND g.gre_grupo = rce.gre_grupo ");
         sb.append("                                                    AND rownum = 1)) ");
+      }
+
+      sb.append(" AND r.rep_cdgo(+) = rce.rep_cdgo ");
+      sb.append(" AND rv.codigo_regional(+) = r.codigo_regional ");
+
+      if (!f.getTipo_mercado().equalsIgnoreCase("T")) {
+        if (f.getTipo_mercado().equalsIgnoreCase("MI")) {
+          sb.append(" AND rv.tipo_mercado = '").append(f.getTipo_mercado()).append("' ");
+        } else {
+          sb.append(" AND rv.tipo_mercado = 'ME' ");
+        }
       }
       sbAnt.append(sb.toString());
       if (f.getData_solicitacao() != "") {
@@ -708,8 +744,18 @@ public class SolicitacaoCombinacaoEspecialAction extends com.egen.util.struts.Ab
         sb.append("                                                    AND g.gre_grupo = rce.gre_grupo ");
         sb.append("                                                    AND rownum = 1)) ");
       }
-      g.setParametro("P_QUERY", sb.toString());
 
+      sb.append(" AND r.rep_cdgo(+) = rce.rep_cdgo ");
+      sb.append(" AND rv.codigo_regional(+) = r.codigo_regional ");
+
+      if (!f.getTipo_mercado().equalsIgnoreCase("T")) {
+        if (f.getTipo_mercado().equalsIgnoreCase("MI")) {
+          sb.append(" AND rv.tipo_mercado = '").append(f.getTipo_mercado()).append("' ");
+        } else {
+          sb.append(" AND rv.tipo_mercado = 'ME' ");
+        }
+      }
+      g.setParametro("P_QUERY", sb.toString());
       g.gerar();
       //--------------------------------------------------------------------------
 

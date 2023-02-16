@@ -33,6 +33,8 @@
                   FROM brio.ref_combinacao_especial rce
                       ,cg_ref_codes cgr
                       ,cg_ref_codes crc
+                      ,regionais_vendas rv
+                      ,rep r
                  WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
                    AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial
                    AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'
@@ -51,6 +53,8 @@
                   FROM brio.ref_combinacao_especial rce
                       ,cg_ref_codes cgr
                       ,cg_ref_codes crc
+                      ,regionais_vendas rv
+                      ,rep r
                  WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
                    AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial
                    AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'

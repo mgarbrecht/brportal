@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecialVendidos" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3946c2d0-12a0-4a64-9871-69ba5a5dfc0c">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="431"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -299,6 +299,8 @@ THEN
   FROM brio.ref_combinacao_especial rce
       ,cg_ref_codes cgr
       ,cg_ref_codes crc
+      ,regionais_vendas rv
+      ,rep r
  WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
    AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial
    AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'

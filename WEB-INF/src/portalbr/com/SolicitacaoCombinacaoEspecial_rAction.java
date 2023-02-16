@@ -108,7 +108,6 @@ public class SolicitacaoCombinacaoEspecial_rAction extends com.egen.util.struts.
     SolicitacaoCombinacaoEspecial_rActionForm f = _ge_grid_array[0];
     String situacao = (String) session.getAttribute("situacao");
     acesso.Usuario usuario = (acesso.Usuario) session.getAttribute("User");
-    System.out.println("session.getAttribute_situacao_: " + session.getAttribute("situacao"));
     if (f != null) {
       boolean adicionou = false;
       util.consultas.Query queryUtil = new util.consultas.Query();

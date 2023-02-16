@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecialResMarca" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecialResMarca" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba261ee2-fb0c-4779-a1ae-2fb89c71cd00">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="58"/>
@@ -116,6 +116,8 @@
   FROM brio.ref_combinacao_especial rce
       ,cg_ref_codes cgr
       ,cg_ref_codes crc
+      ,regionais_vendas rv
+      ,rep r
  WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
    AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial
    AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'
@@ -141,66 +143,66 @@
 	<pageHeader>
 		<band height="39" splitType="Stretch">
 			<staticText>
-				<reportElement x="1" y="24" width="801" height="14"/>
+				<reportElement uuid="cd5c1330-511c-4171-860d-575fa453b0b5" x="1" y="24" width="801" height="14"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Solicitação de combinações especiais - Resumo por Marca]]></text>
 			</staticText>
 			<textField evaluationTime="Report">
-				<reportElement style="Column header" x="762" y="26" width="40" height="12" forecolor="#000000"/>
+				<reportElement uuid="247f4e6e-417c-4235-9754-cbc89a28d898" style="Column header" x="762" y="26" width="40" height="12" forecolor="#000000"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Column header" x="682" y="27" width="80" height="12" forecolor="#000000"/>
+				<reportElement uuid="18a0f9f4-dfd8-48fa-8cc5-269fd039974f" style="Column header" x="682" y="27" width="80" height="12" forecolor="#000000"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement style="Column header" x="727" y="13" width="75" height="12" forecolor="#000000"/>
+				<reportElement uuid="5eed64e7-105f-4ff3-bbcf-9808cd7568eb" style="Column header" x="727" y="13" width="75" height="12" forecolor="#000000"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="38" width="802" height="1"/>
+				<reportElement uuid="9018184d-ece6-4bb5-a031-8fd1de89fca9" x="0" y="38" width="802" height="1"/>
 			</line>
 			<staticText>
-				<reportElement x="686" y="13" width="34" height="12"/>
+				<reportElement uuid="06010cf4-2c3e-4b6d-9b04-cd5452e77698" x="686" y="13" width="34" height="12"/>
 				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Data:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="65" y="14" width="67" height="10"/>
+				<reportElement uuid="34720313-0741-46bf-8a34-cf91e52c8892" x="65" y="14" width="67" height="10"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{P_DT_INICIAL}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="24" width="65" height="10"/>
+				<reportElement uuid="95d9fc07-c767-4390-a5ca-8fcb2925bd28" x="0" y="24" width="65" height="10"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Data Final:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="14" width="65" height="10"/>
+				<reportElement uuid="37c6bb32-b25f-4e25-acb9-a0202b1dbfd3" x="0" y="14" width="65" height="10"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<text><![CDATA[Data Inicial:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="65" y="24" width="67" height="10"/>
+				<reportElement uuid="e2ba9321-320a-4117-a2b9-2d196d629235" x="65" y="24" width="67" height="10"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
@@ -217,7 +219,7 @@
 	<summary>
 		<band height="169" splitType="Stretch">
 			<crosstab>
-				<reportElement x="30" y="12" width="736" height="62"/>
+				<reportElement uuid="30ab1a27-8ddd-4e84-961a-7df3548fa788" x="30" y="12" width="736" height="62"/>
 				<rowGroup name="DESCRICAO_TIPO_SOLICITACAO" width="167" totalPosition="End">
 					<bucket class="java.lang.String">
 						<bucketExpression><![CDATA[$F{DESCRICAO_TIPO_SOLICITACAO}]]></bucketExpression>
@@ -228,7 +230,7 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="167" height="19"/>
+								<reportElement uuid="deed005a-592c-4e4a-8792-c215ef64d982" style="Crosstab Data Text" x="0" y="0" width="167" height="19"/>
 								<textElement verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -242,7 +244,7 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<staticText>
-								<reportElement x="0" y="0" width="167" height="22"/>
+								<reportElement uuid="0eb228ab-9754-4627-b8c6-48a407f81605" x="0" y="0" width="167" height="22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -261,7 +263,7 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="65" height="18"/>
+								<reportElement uuid="78f69bc0-cbef-43fc-8702-5f25e5505261" style="Crosstab Data Text" x="0" y="0" width="65" height="18"/>
 								<textElement verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -275,7 +277,7 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<staticText>
-								<reportElement x="0" y="0" width="75" height="18"/>
+								<reportElement uuid="9809e1c8-8493-43a6-994a-9301d32c4c8e" x="0" y="0" width="75" height="18"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font isBold="true"/>
 								</textElement>
@@ -293,7 +295,7 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="65" height="19"/>
+							<reportElement uuid="310b6935-108e-48ff-be33-f0d5f7a62e1b" style="Crosstab Data Text" x="0" y="0" width="65" height="19"/>
 							<textElement verticalAlignment="Middle"/>
 							<textFieldExpression><![CDATA[$V{COUNT(RCE.ID_SOLICITACAO)Measure}]]></textFieldExpression>
 						</textField>
@@ -305,7 +307,7 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="65" height="22"/>
+							<reportElement uuid="dbe31c16-4641-4bc0-96b0-c0f5b384c2aa" style="Crosstab Data Text" x="0" y="0" width="65" height="22"/>
 							<textElement verticalAlignment="Middle">
 								<font isBold="true"/>
 							</textElement>
@@ -319,7 +321,7 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="75" height="19"/>
+							<reportElement uuid="572aba0c-330e-4f84-ba28-573118f535b1" style="Crosstab Data Text" x="0" y="0" width="75" height="19"/>
 							<textElement verticalAlignment="Middle">
 								<font isBold="true"/>
 							</textElement>
@@ -333,7 +335,7 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="75" height="22"/>
+							<reportElement uuid="9154587e-2afd-49b8-a7f4-66e5564eae89" style="Crosstab Data Text" x="0" y="0" width="75" height="22"/>
 							<textElement verticalAlignment="Middle">
 								<font isBold="true"/>
 							</textElement>
@@ -343,7 +345,7 @@
 				</crosstabCell>
 			</crosstab>
 			<subreport>
-				<reportElement positionType="Float" x="15" y="85" width="170" height="70"/>
+				<reportElement uuid="b409d90f-aba7-4ee2-8272-47c1db95fce1" positionType="Float" x="15" y="85" width="170" height="70"/>
 				<subreportParameter name="P_QUERY">
 					<subreportParameterExpression><![CDATA[$P{P_QUERY}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -351,7 +353,7 @@
 				<subreportExpression><![CDATA["SolicitacaoCombinacaoEspecialResMarca_A.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement positionType="Float" x="185" y="85" width="139" height="70"/>
+				<reportElement uuid="cab630d8-e540-4140-a537-24c61ec53b91" positionType="Float" x="185" y="85" width="139" height="70"/>
 				<subreportParameter name="P_QUERY_ANT">
 					<subreportParameterExpression><![CDATA[$P{P_QUERY_ANT}]]></subreportParameterExpression>
 				</subreportParameter>

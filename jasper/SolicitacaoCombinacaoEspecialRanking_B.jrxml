@@ -37,10 +37,12 @@
                       ,SUM(qry.pares_realizado) OVER() pares_realizado_total
                       ,SUM(qry.valor_realizado) OVER() valor_realizado_total
                   FROM (SELECT rce.cli_cdgo cliente_grupo
-                              ,pck_cliente.get_nome(rce.cli_cdgo) nome
-                              ,SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
-                              ,SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
+                             , pck_cliente.get_nome(rce.cli_cdgo) nome
+                             , SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
+                             , SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
                           FROM brio.ref_combinacao_especial rce
+                             , regionais_vendas rv
+                             , rep r
                          WHERE rce.rep_cdgo IS NOT NULL
                            AND rce.cli_cdgo IS NOT NULL
                            AND rce.situacao_solicitacao = 'A'
@@ -53,6 +55,8 @@
                               ,SUM(NVL(rce.pares_alteracao, 0)) pares_realizado
                               ,SUM(NVL(rce.preco_liguido, 0) * NVL(rce.pares_alteracao, 0)) valor_realizado
                           FROM brio.ref_combinacao_especial rce
+                             , regionais_vendas rv
+                             , rep r
                          WHERE rce.rep_cdgo IS NOT NULL
                            AND rce.gre_grupo IS NOT NULL
                            AND rce.cli_cdgo IS NULL

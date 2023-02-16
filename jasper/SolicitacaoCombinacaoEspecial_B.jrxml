@@ -10,11 +10,15 @@
 		<![CDATA[SELECT INITCAP(tipo_solicitacao) tipo_solicitacao
       ,ROUND((SUM(solicitacoes) / NULLIF((SELECT COUNT(DISTINCT rce.id_solicitacao)/100
           FROM brio.ref_combinacao_especial rce
+             , regionais_vendas rv
+             , rep r
          WHERE 1 = 1 $P!{P_QUERY}),0)
          ),2) perc_solicitacoes
       ,ROUND((SUM(pares) /
      NULLIF((SELECT SUM(rce.pares_alteracao)/100
           FROM brio.ref_combinacao_especial rce
+             , regionais_vendas rv
+             , rep r
          WHERE 1 = 1 $P!{P_QUERY}),0)
          ),2) perc_pares
   FROM (SELECT cgr.rv_meaning tipo_solicitacao
@@ -22,6 +26,8 @@
               ,NVL(SUM(rce.pares_alteracao), 0) pares
           FROM brio.ref_combinacao_especial rce
               ,cg_ref_codes cgr
+              ,regionais_vendas rv
+              ,rep r
          WHERE cgr.rv_domain = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
            AND cgr.rv_low_value = rce.tipo_solicitacao_comb_especial $P!{P_QUERY}
          GROUP BY cgr.rv_meaning)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoCombinacaoEspecial" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6d6ab61d-a061-403d-b2fe-b44dc24d2eb7">
-	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="850"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -104,6 +104,8 @@
       ,SUM(pares) pares
       ,(SELECT SUM(pares_alteracao)
           FROM brio.ref_combinacao_especial rce
+             , regionais_vendas rv
+             , rep r
          WHERE 1 = 1 $P!{P_QUERY_TOTALIZADOR}) total_pares
   FROM (SELECT cgr.rv_meaning tipo_solicitacao
               ,crc.rv_meaning subtipo
@@ -112,6 +114,8 @@
           FROM brio.ref_combinacao_especial rce
               ,cg_ref_codes cgr
               ,cg_ref_codes crc
+              ,regionais_vendas rv
+              ,rep r
          WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
            AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'
            AND crc.rv_high_value(+) = cgr.rv_low_value
@@ -213,7 +217,9 @@
   FROM brio.ref_combinacao_especial rce
       ,cg_ref_codes cgr
       ,cg_ref_codes crc
-			,cg_ref_codes cgc
+      ,cg_ref_codes cgc
+      ,regionais_vendas rv
+      ,rep r
  WHERE cgr.rv_domain(+) = 'TIPO_SOLICITACAO_COMB_ESPECIAL'
    AND cgr.rv_low_value(+) = rce.tipo_solicitacao_comb_especial
    AND crc.rv_domain(+) = 'SUBTIPO_SOLICITACAO_COMB_ESPEC'
@@ -414,7 +420,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement uuid="4ad00135-c48a-4350-abcd-d3f60d4b520f" style="Column header" x="3" y="0" width="23" height="15" forecolor="#000000"/>
+				<reportElement uuid="4ad00135-c48a-4350-abcd-d3f60d4b520f" style="Column header" x="3" y="0" width="39" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -428,7 +434,7 @@
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2bf8869d-cc7c-4891-ae1d-84bda6324357" style="Column header" mode="Transparent" x="27" y="0" width="38" height="15" forecolor="#000000" backcolor="#999900"/>
+				<reportElement uuid="2bf8869d-cc7c-4891-ae1d-84bda6324357" style="Column header" mode="Transparent" x="47" y="0" width="68" height="15" forecolor="#000000" backcolor="#999900"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -442,7 +448,7 @@
 				<text><![CDATA[Data]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="48d633d6-578b-4ed4-adc0-449e341da062" style="Column header" mode="Transparent" x="66" y="0" width="35" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="48d633d6-578b-4ed4-adc0-449e341da062" style="Column header" mode="Transparent" x="121" y="0" width="53" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -456,7 +462,7 @@
 				<text><![CDATA[Marca]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e04f1d82-6db3-4738-9c9a-3d367dd130f0" style="Column header" x="175" y="0" width="25" height="15" forecolor="#000000"/>
+				<reportElement uuid="e04f1d82-6db3-4738-9c9a-3d367dd130f0" style="Column header" x="273" y="0" width="25" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -470,7 +476,7 @@
 				<text><![CDATA[Linha]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="19b30c91-1640-419b-bd4b-7cab75b6db4c" style="Column header" x="285" y="0" width="83" height="15" forecolor="#000000"/>
+				<reportElement uuid="19b30c91-1640-419b-bd4b-7cab75b6db4c" style="Column header" x="388" y="0" width="142" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -484,20 +490,6 @@
 				<text><![CDATA[Cliente/Grupo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="c10e4626-b099-4c1a-86a7-f2439c63726f" style="Column header" x="369" y="0" width="30" height="23" forecolor="#000000"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="0.0"/>
-				</box>
-				<textElement textAlignment="Right">
-					<font fontName="SansSerif" size="8"/>
-				</textElement>
-				<text><![CDATA[Pares Solic.]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="ba2111a9-54a8-4bfe-a47a-40b5331bff79" style="Column header" x="710" y="0" width="90" height="15" forecolor="#000000"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="8"/>
@@ -505,7 +497,7 @@
 				<text><![CDATA[Imagem]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="0ac03ee0-73a0-40b2-a9de-c2c43e25760a" style="Column header" x="201" y="0" width="25" height="15" forecolor="#000000"/>
+				<reportElement uuid="0ac03ee0-73a0-40b2-a9de-c2c43e25760a" style="Column header" x="300" y="0" width="25" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -519,7 +511,7 @@
 				<text><![CDATA[Ref.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="315e6c23-54d3-4dde-afbf-740b9d4a398a" style="Column header" x="400" y="0" width="43" height="15" forecolor="#000000"/>
+				<reportElement uuid="315e6c23-54d3-4dde-afbf-740b9d4a398a" style="Column header" x="534" y="0" width="90" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -533,21 +525,7 @@
 				<text><![CDATA[Situação]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="673f63f1-8a2a-40e4-8b23-aafbd17f7c64" style="Column header" x="534" y="0" width="21" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Right">
-					<font fontName="SansSerif" size="8"/>
-				</textElement>
-				<text><![CDATA[LL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="b0179b6c-4324-43d4-98e4-a03d79731632" style="Column header" x="556" y="0" width="80" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="8"/>
-				</textElement>
-				<text><![CDATA[Tipo de Solicitação]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="f1f136eb-c653-42fc-82d1-6148f3cb8bee" style="Column header" mode="Transparent" x="138" y="0" width="36" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="f1f136eb-c653-42fc-82d1-6148f3cb8bee" style="Column header" mode="Transparent" x="227" y="0" width="40" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -561,21 +539,7 @@
 				<text><![CDATA[Material]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="156dd14a-0c5f-4a11-b445-4ef0f33a0a96" style="Column header" mode="Transparent" x="444" y="0" width="53" height="15" forecolor="#000000" backcolor="#999900"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="0.0"/>
-					<leftPen lineWidth="0.0"/>
-					<bottomPen lineWidth="0.0"/>
-					<rightPen lineWidth="0.0"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="8"/>
-				</textElement>
-				<text><![CDATA[Data Aprov.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="60e372f9-e184-454d-8915-218c38b00122" style="Column header" x="227" y="0" width="25" height="15" forecolor="#000000"/>
+				<reportElement uuid="60e372f9-e184-454d-8915-218c38b00122" style="Column header" x="326" y="0" width="25" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -589,7 +553,7 @@
 				<text><![CDATA[Cab.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="32304385-ffbe-4a2a-8161-4b0338278a8c" style="Column header" x="253" y="0" width="30" height="15" forecolor="#000000"/>
+				<reportElement uuid="32304385-ffbe-4a2a-8161-4b0338278a8c" style="Column header" x="352" y="0" width="30" height="15" forecolor="#000000"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -603,25 +567,18 @@
 				<text><![CDATA[Cor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="71e8fdf5-42c8-48c6-adf2-636a549ded3b" style="Column header" x="637" y="0" width="69" height="15" forecolor="#000000"/>
+				<reportElement uuid="71e8fdf5-42c8-48c6-adf2-636a549ded3b" style="Column header" x="627" y="0" width="79" height="15" forecolor="#000000"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Subtipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="1e112c61-c5d2-44c7-a763-747ac4c21b75" style="Column header" x="102" y="0" width="35" height="15" forecolor="#000000"/>
+				<reportElement uuid="1e112c61-c5d2-44c7-a763-747ac4c21b75" style="Column header" x="178" y="0" width="45" height="15" forecolor="#000000"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Regional]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="85f22176-a2e0-4e89-bb4f-5deb6292cf47" style="Column header" x="498" y="0" width="35" height="23" forecolor="#000000"/>
-				<textElement textAlignment="Right">
-					<font fontName="SansSerif" size="8"/>
-				</textElement>
-				<text><![CDATA[Preço Líquido]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -637,7 +594,7 @@
 					<rightPen lineWidth="0.0" lineColor="#CCCCCC"/>
 				</box>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="b7633d0b-3e31-4393-9725-f9b5a7425fe7" style="Detail" x="3" y="0" width="23" height="12"/>
+					<reportElement uuid="b7633d0b-3e31-4393-9725-f9b5a7425fe7" style="Detail" x="3" y="0" width="39" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -651,7 +608,7 @@
 					<textFieldExpression><![CDATA[$F{ID_SOLICITACAO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" pattern="dd/MM/yy HH:mm" isBlankWhenNull="true">
-					<reportElement uuid="4e1dd6ed-9ef2-4b48-a946-ab4d271893b2" style="Detail" x="27" y="0" width="38" height="12"/>
+					<reportElement uuid="4e1dd6ed-9ef2-4b48-a946-ab4d271893b2" style="Detail" x="47" y="0" width="68" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -665,7 +622,7 @@
 					<textFieldExpression><![CDATA[$F{DATA_SOLICITACAO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="43832e6a-98c7-43bf-9f8c-b6a8d99ce642" style="Detail" x="66" y="0" width="35" height="12"/>
+					<reportElement uuid="43832e6a-98c7-43bf-9f8c-b6a8d99ce642" style="Detail" x="121" y="0" width="53" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -679,7 +636,7 @@
 					<textFieldExpression><![CDATA[$F{NOME_MARCA}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="26b1c7f4-9198-475b-9403-9e90e782d72f" style="Detail" x="175" y="0" width="25" height="12"/>
+					<reportElement uuid="26b1c7f4-9198-475b-9403-9e90e782d72f" style="Detail" x="273" y="0" width="25" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -693,7 +650,7 @@
 					<textFieldExpression><![CDATA[$F{LIN_CDGO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="0f36efd4-05f9-4a52-b640-60dc4bad5bd8" style="Detail" x="201" y="0" width="25" height="12"/>
+					<reportElement uuid="0f36efd4-05f9-4a52-b640-60dc4bad5bd8" style="Detail" x="300" y="0" width="25" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -707,7 +664,7 @@
 					<textFieldExpression><![CDATA[$F{REF_CDGO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="4655be66-ec88-4daf-a2cc-1406a6b0d4ce" style="Detail" x="285" y="0" width="83" height="12"/>
+					<reportElement uuid="4655be66-ec88-4daf-a2cc-1406a6b0d4ce" style="Detail" x="388" y="0" width="142" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -721,35 +678,7 @@
 					<textFieldExpression><![CDATA[$F{CLIENTE_GRUPO_ECONOMICO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="b124a51f-9ee3-4277-94b9-f1ca686dce7f" style="Detail" x="369" y="0" width="30" height="12"/>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Right">
-						<font fontName="SansSerif" size="7"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{PARES_ALTERACAO}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="bdb861f7-509d-4095-9216-26ae7fac5d83" style="Detail" x="498" y="0" width="35" height="12"/>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Right">
-						<font fontName="SansSerif" size="7"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{PRECO_LIGUIDO}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="f2ae5a5e-7b00-4ef1-ba65-d8a6bc794281" style="Detail" x="400" y="0" width="43" height="12"/>
+					<reportElement uuid="f2ae5a5e-7b00-4ef1-ba65-d8a6bc794281" style="Detail" x="534" y="0" width="90" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -762,34 +691,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{SITUACAO_SOLICITACAO_DESC}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="fb24a48a-840c-4389-b462-8622efc75032" style="Detail" x="534" y="0" width="21" height="12"/>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Right">
-						<font fontName="SansSerif" size="7"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{LL_ALTERACAO_SOLICITADA}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="5249c02c-5b04-470f-9ce7-163665981f53" style="Detail" x="556" y="0" width="80" height="12"/>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Center">
-						<font fontName="SansSerif" size="7"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{DESCRICAO_TIPO_SOLICITACAO}]]></textFieldExpression>
-				</textField>
 				<image scaleImage="FillFrame" hAlign="Center" onErrorType="Icon" evaluationTime="Auto">
 					<reportElement uuid="77afe6e8-63c3-425c-8682-a1030d3c13c8" x="710" y="2" width="90" height="50">
 						<printWhenExpression><![CDATA[!$F{IMAGEM_PRODUTO}.equals( null )]]></printWhenExpression>
@@ -797,7 +698,7 @@
 					<imageExpression><![CDATA['/home/loja_brportal/solicitacao_especial/' + $F{IMAGEM_PRODUTO}]]></imageExpression>
 				</image>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="3fe7ae69-6715-46d8-ae6f-17e870342349" style="Detail" x="138" y="0" width="36" height="12"/>
+					<reportElement uuid="3fe7ae69-6715-46d8-ae6f-17e870342349" style="Detail" x="227" y="0" width="40" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -810,22 +711,8 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{MATERIAL}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true" pattern="dd/MM/yy HH:mm" isBlankWhenNull="true">
-					<reportElement uuid="5bae9b22-2ddb-4ee9-9979-bdaaec6e4296" style="Detail" x="444" y="0" width="53" height="12"/>
-					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="0.0"/>
-						<leftPen lineWidth="0.0"/>
-						<bottomPen lineWidth="0.0"/>
-						<rightPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Center">
-						<font fontName="SansSerif" size="7"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{DATA_APROVACAO}]]></textFieldExpression>
-				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="970c3349-13d7-46ac-959f-08782937848a" style="Detail" x="227" y="0" width="25" height="12"/>
+					<reportElement uuid="970c3349-13d7-46ac-959f-08782937848a" style="Detail" x="326" y="0" width="25" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -839,7 +726,7 @@
 					<textFieldExpression><![CDATA[$F{CAB_CDGO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="9f9dbca8-bd2a-407e-9942-d318e8b2fccb" style="Detail" x="253" y="0" width="31" height="12"/>
+					<reportElement uuid="9f9dbca8-bd2a-407e-9942-d318e8b2fccb" style="Detail" x="352" y="0" width="31" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -853,7 +740,7 @@
 					<textFieldExpression><![CDATA[$F{COR_CDGO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="150b359f-922f-4c7d-98a7-4a0bb12a09dc" style="Detail" x="637" y="0" width="69" height="12"/>
+					<reportElement uuid="150b359f-922f-4c7d-98a7-4a0bb12a09dc" style="Detail" x="627" y="0" width="79" height="12"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="0.0"/>
@@ -867,7 +754,7 @@
 					<textFieldExpression><![CDATA[$F{DESC_SUBTIPO_COMB_ESPEC}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement uuid="de4ad61e-35b4-4289-afc8-8339da1842ce" style="Detail" x="102" y="0" width="35" height="12"/>
+					<reportElement uuid="de4ad61e-35b4-4289-afc8-8339da1842ce" style="Detail" x="178" y="0" width="45" height="12"/>
 					<textElement textAlignment="Center">
 						<font fontName="SansSerif" size="7"/>
 					</textElement>
