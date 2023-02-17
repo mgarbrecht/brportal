@@ -101,7 +101,7 @@ public class SolicitacaoCombinacaoEspecial {
 			}
 
 			if (processar) {
-;.descricaoSituacao 
+
 				if (idSolicitacao != null) {
 					listaIds = idSolicitacao;
 				} else {
