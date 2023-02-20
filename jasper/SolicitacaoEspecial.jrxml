@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SolicitacaoEspecial" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5cd39e67-81bf-41e1-a469-8273384340a8">
-	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="110"/>
+	<property name="ireport.y" value="802"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -28,6 +28,9 @@
 	</subDataset>
 	<parameter name="P_ID_SOLICITACAO" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="P_TIPO_IMAGEM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT rce.id_solicitacao
@@ -78,7 +81,8 @@
  situacao_solicitacao_desc
       ,rce.data_aceite
       ,rce.usuario_aceite
-      ,'' || (select imagem from brio.ref_combinacao_especial_img where id_solicitacao = rce.id_solicitacao)  imagem_produto
+      ,rce.id_solicitacao ||'.gif' imagem_produto_manipulada
+      ,'' || (select imagem from brio.ref_combinacao_especial_img where id_solicitacao = rce.id_solicitacao) imagem_produto
       ,rce.rep_cdgo
       ,pck_representante.get_razao_social(rce.rep_cdgo) rep_rzao
 ,rce.valor_fabricacao ctf
@@ -158,6 +162,7 @@
 	<field name="SITUACAO_SOLICITACAO_DESC" class="java.lang.String"/>
 	<field name="DATA_ACEITE" class="java.sql.Timestamp"/>
 	<field name="USUARIO_ACEITE" class="java.lang.String"/>
+	<field name="IMAGEM_PRODUTO_MANIPULADA" class="java.lang.String"/>
 	<field name="IMAGEM_PRODUTO" class="java.lang.String"/>
 	<field name="REP_CDGO" class="java.lang.String"/>
 	<field name="REP_RZAO" class="java.lang.String"/>
@@ -884,7 +889,7 @@
 				<text><![CDATA[Material e Cor (Cabedal 10):]]></text>
 			</staticText>
 		</band>
-		<band height="195">
+		<band height="249">
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="89775957-2c92-42e5-8882-ad473465b38a" style="Detail" positionType="Float" x="146" y="5" width="170" height="13"/>
 				<textElement>
@@ -949,7 +954,7 @@
 				<text><![CDATA[Depto. Comercial:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="bd71a15e-4c76-477f-9469-e4870c55c272" positionType="Float" x="4" y="67" width="52" height="20"/>
+				<reportElement uuid="bd71a15e-4c76-477f-9469-e4870c55c272" positionType="Float" x="4" y="67" width="52" height="18"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
@@ -983,11 +988,18 @@
 				</textElement>
 				<text><![CDATA[Desenv. Produto:]]></text>
 			</staticText>
-			<image onErrorType="Blank">
-				<reportElement uuid="4ea7a938-43fc-4394-9694-6cb0c7492d8f" positionType="Float" x="5" y="89" width="134" height="95">
-					<printWhenExpression><![CDATA[!$F{IMAGEM_PRODUTO}.toString().equals("null")]]></printWhenExpression>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement uuid="4ea7a938-43fc-4394-9694-6cb0c7492d8f" positionType="Float" x="5" y="84" width="292" height="162">
+					<printWhenExpression><![CDATA[$P{P_TIPO_IMAGEM}.equals("M")]]></printWhenExpression>
 				</reportElement>
-				<imageExpression><![CDATA['/home/loja_brportal/solicitacao_especial/' + $F{IMAGEM_PRODUTO}]]></imageExpression>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<imageExpression><![CDATA['http://s3.sa-east-1.amazonaws.com/imagens.catalogobeirario.com.br/orcamentos/' + $F{IMAGEM_PRODUTO_MANIPULADA}]]></imageExpression>
 			</image>
 			<line>
 				<reportElement uuid="d15e1e67-a449-4e13-b5bf-d733c37107df" positionType="Float" x="0" y="3" width="554" height="1"/>
@@ -1023,6 +1035,12 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{PRECO_VENDOR}]]></textFieldExpression>
 			</textField>
+			<image onErrorType="Blank">
+				<reportElement uuid="2d5f63dd-9a7b-43e7-b398-5e2a8458e5f4" positionType="Float" x="5" y="85" width="241" height="161">
+					<printWhenExpression><![CDATA[$P{P_TIPO_IMAGEM}.equals("A")]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA['/home/loja_brportal/solicitacao_especial/' + $F{IMAGEM_PRODUTO}]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 	<pageFooter>

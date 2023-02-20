@@ -327,6 +327,7 @@ public class SolicitacaoCombinacaoEspecial_rAction extends com.egen.util.struts.
       util.file.GeraPDF g = new util.file.GeraPDF(request);
       g.setRelatorio("SolicitacaoEspecial.jasper");
       g.setParametro("P_ID_SOLICITACAO", p_lista_ids);
+      g.setParametro("P_TIPO_IMAGEM", "A");
       g.gerar();
       request.setAttribute("abre_automaticamente","N");
       //--------------------------------------------------------------------------

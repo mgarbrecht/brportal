@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generator>
 <VERSION>v 2.8</VERSION>
-<generation_day>16/02/2023</generation_day>
+<generation_day>20/02/2023</generation_day>
 <module>com</module>
 <file_name>SolicitacaoCombinacaoEspecial_r</file_name>
 <app_type>Form</app_type>
@@ -776,6 +776,7 @@ private void update_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
           util.file.GeraPDF g = new util.file.GeraPDF(request);
           g.setRelatorio("SolicitacaoEspecial.jasper");
           g.setParametro("P_ID_SOLICITACAO", p_lista_ids);
+          g.setParametro("P_TIPO_IMAGEM", "A");
           g.gerar();
           request.setAttribute("abre_automaticamente","N");
           //--------------------------------------------------------------------------
@@ -1496,7 +1497,7 @@ private void update_action(JdbcUtil j, ActionMapping mapping, ActionForm form, H
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <creationDate>03/02/2012 15:14:29</creationDate>
-<lastModifyDate>16/02/2023 15:03:16</lastModifyDate>
+<lastModifyDate>20/02/2023 11:29:14</lastModifyDate>
 <userGenerate>admin</userGenerate>
 <scope_storage>session</scope_storage>
 <generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>

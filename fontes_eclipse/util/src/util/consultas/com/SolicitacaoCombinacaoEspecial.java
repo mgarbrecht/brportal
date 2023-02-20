@@ -123,6 +123,7 @@ public class SolicitacaoCombinacaoEspecial {
 				util.file.GeraPDF g = new util.file.GeraPDF(req);
 				g.setRelatorio("SolicitacaoEspecial.jasper");
 				g.setParametro("P_ID_SOLICITACAO", listaIds);
+				g.setParametro("P_TIPO_IMAGEM", "M");
 				g.gerar();
 
 				montaListaImagens(listaIds);
