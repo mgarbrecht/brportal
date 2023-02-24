@@ -165,19 +165,24 @@ public class Login extends HttpServlet implements java.io.Serializable {
         } else {
 //----------------------------------------------------------------------------------            
         	pstm = j.getConn().prepareStatement(
-            	new StringBuilder(" SELECT usua_id ")
-            	          .append("      , situacao ")
-            	          .append("   FROM usuarios ")
-            	          .append("  WHERE usua_usuario = ? ").toString());
-            	        //  .append("  WHERE usua_usuario = ? ")
-            	        //  .append("    AND situacao = 'A' ").toString());
+            	new StringBuilder(" SELECT us.usua_id ")
+            	          .append("      , us.situacao ")
+            	          .append("      , nvl(en.enne_tien_id,0) enne_tien_id ")
+            	          .append("   FROM usuarios us ")
+            	          .append("      , entidades_negocio en ")
+            	          .append("  WHERE us.usua_usuario = ? ")
+        	              .append("    AND en.enne_id(+) = us.usua_enne_id ").toString());
+            	      //  .append("  WHERE usua_usuario = ? ")
+            	      //  .append("    AND situacao = 'A' ").toString());
             pstm.setString(1, user);
             rset = pstm.executeQuery();
             if(rset.next()) {
             	
             	if(rset.getString(2).equals("I")){
-                   showError(req, res, "Usu\341rio bloqueado.");
-                   return;
+            		if(rset.getInt(3) != 2194) {
+            			showError(req, res, "Usu\341rio bloqueado.");
+            			return;
+            		}
             	}
                 UsuarioAPI usuario = new UsuarioAPI(j.getConn(), rset.getInt(1));
                 if(usuario.isUsuarioInativar()) {

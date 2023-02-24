@@ -258,6 +258,38 @@ public class UsuarioAPI extends Usuario {
 						}
 					} catch (Exception e) {
 					}
+					//------
+					if(enti.getTipoEntidadeNegocio().getId() == 2194) {
+						try {
+						String situacao = query.select("SELECT cli_situ from cli where cli_cdgo = " + this.enne.getChave());
+						if(situacao.equals("I")) {
+							String enneId = query.select("SELECT enne_id FROM wbrio.entidades_negocio WHERE enne_chave = '"+this.enne.getChave()+"' AND enne_tien_id = 4");
+				             if(enneId.equals("")){
+				                acesso.EntidadeNegocioAPI entidade = new acesso.EntidadeNegocioAPI(this.conn);
+				                acesso.TipoEntidadeNegocioAPI tipoentidade = new acesso.TipoEntidadeNegocioAPI(this.conn, 4);
+				                entidade.setChave(this.enne.getChave());
+				                entidade.setTipoEntidadeNegocio(tipoentidade);
+				                entidade.insert();
+				                enneId = query.select("SELECT enne_id FROM wbrio.entidades_negocio WHERE enne_chave = '"+this.enne.getChave()+"' AND enne_tien_id = 4");
+				             }
+				             
+				             acesso.EntidadeNegocioAPI enne = new acesso.EntidadeNegocioAPI(this.conn);
+				             enne.select(Integer.parseInt(enneId));
+				             this.setEntidadeNegocio((acesso.EntidadeNegocio) enne);
+				             this.setSituacao("A");
+				             this.old = this;
+				             update();
+				             select(this.id);
+				             removerAutorizacoes();
+				             acesso.AcessoDocumentoInterfaceAPI adi = new acesso.AcessoDocumentoInterfaceAPI(this.conn);
+				             adi.geraAutorizacoesUsuario(this.getId());
+				             this.usuarioInativar = false; 
+						}
+						} catch (Exception e) {
+							e.printStackTrace(System.err);
+						}
+					}
+				
 				} else {
 					this.enne = null;
 				}
@@ -528,7 +560,38 @@ public class UsuarioAPI extends Usuario {
         	}
         }
     }
-    	 
+    
+    public void removerAutorizacoes() throws SQLException {
+    	PreparedStatement pstm = null;
+    	try {
+                pstm = conn.prepareStatement(
+                		new StringBuilder(" DELETE FROM acessos_documentos_interfaces ")
+                				  .append("  WHERE acdi_usua_id = ?").toString()); 
+                pstm.setInt(1, id);
+                pstm.executeUpdate();
+                pstm.close();
+                //---------------            
+                pstm = conn.prepareStatement(
+                		new StringBuilder(" DELETE FROM acessos_usuarios ")
+            		      	      .append("  WHERE acus_usua_id = ?").toString()); 
+                pstm.setInt(1, id);
+                pstm.executeUpdate();
+                pstm.close();
+                //---------------
+				pstm = conn.prepareStatement(
+						new StringBuilder(" DELETE FROM wbrio.acessos_troca_identidade ")
+								  .append(" WHERE atid_usua_id = ?").toString());
+				pstm.setInt(1, id);
+				pstm.executeUpdate();
+				pstm.close();
+				// ---------------
+           
+        } finally {
+        	if(pstm!=null){
+        		pstm.close();
+        	}
+        }
+    }    
     
     public boolean isNovoClienteMercadoInterno(String codigo) throws SQLException {
     	PreparedStatement pstm = null;

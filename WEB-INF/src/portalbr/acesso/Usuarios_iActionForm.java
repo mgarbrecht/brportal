@@ -36,109 +36,109 @@ public class Usuarios_iActionForm extends org.apache.struts.action.ActionForm
   public Usuarios_iActionForm() {
   }
   /**
-    * USUA_ID: Método Gets para este campo
+    * USUA_ID: Method to get the field value.
     */
   public String getUsua_id() {
     return usua_id;
   }
   /**
-    * USUA_ID: Método Sets pára este campo.
+    * USUA_ID: Method to set the field value.
     */
   public void setUsua_id(String PARAM) {
     usua_id = PARAM;
   }
   /**
-    * USUA_USUARIO: Método Gets para este campo
+    * USUA_USUARIO: Method to get the field value.
     */
   public String getUsua_usuario() {
     return usua_usuario;
   }
   /**
-    * USUA_USUARIO: Método Sets pára este campo.
+    * USUA_USUARIO: Method to set the field value.
     */
   public void setUsua_usuario(String PARAM) {
     usua_usuario = PARAM;
   }
   /**
-    * USUA_NOME: Método Gets para este campo
+    * USUA_NOME: Method to get the field value.
     */
   public String getUsua_nome() {
     return usua_nome;
   }
   /**
-    * USUA_NOME: Método Sets pára este campo.
+    * USUA_NOME: Method to set the field value.
     */
   public void setUsua_nome(String PARAM) {
     usua_nome = PARAM;
   }
   /**
-    * USUA_EMAIL: Método Gets para este campo
+    * USUA_EMAIL: Method to get the field value.
     */
   public String getUsua_email() {
     return usua_email;
   }
   /**
-    * USUA_EMAIL: Método Sets pára este campo.
+    * USUA_EMAIL: Method to set the field value.
     */
   public void setUsua_email(String PARAM) {
     usua_email = PARAM;
   }
   /**
-    * USUA_SENHA: Método Gets para este campo
+    * USUA_SENHA: Method to get the field value.
     */
   public String getUsua_senha() {
     return usua_senha;
   }
   /**
-    * USUA_SENHA: Método Sets pára este campo.
+    * USUA_SENHA: Method to set the field value.
     */
   public void setUsua_senha(String PARAM) {
     usua_senha = PARAM;
   }
   /**
-    * CONFIRMA_NOVA_SENHA: Método Gets para este campo
+    * CONFIRMA_NOVA_SENHA: Method to get the field value.
     */
   public String getConfirma_nova_senha() {
     return confirma_nova_senha;
   }
   /**
-    * CONFIRMA_NOVA_SENHA: Método Sets pára este campo.
+    * CONFIRMA_NOVA_SENHA: Method to set the field value.
     */
   public void setConfirma_nova_senha(String PARAM) {
     confirma_nova_senha = PARAM;
   }
   /**
-    * USUA_ENNE_ID: Método Gets para este campo
+    * USUA_ENNE_ID: Method to get the field value.
     */
   public String getUsua_enne_id() {
     return usua_enne_id;
   }
   /**
-    * USUA_ENNE_ID: Método Sets pára este campo.
+    * USUA_ENNE_ID: Method to set the field value.
     */
   public void setUsua_enne_id(String PARAM) {
     usua_enne_id = PARAM;
   }
   /**
-    * TIEN_TIPO: Método Gets para este campo
+    * TIEN_TIPO: Method to get the field value.
     */
   public String getTien_tipo() {
     return tien_tipo;
   }
   /**
-    * TIEN_TIPO: Método Sets pára este campo.
+    * TIEN_TIPO: Method to set the field value.
     */
   public void setTien_tipo(String PARAM) {
     tien_tipo = PARAM;
   }
   /**
-    * TIPO_ENTIDADE: Método Gets para este campo
+    * TIPO_ENTIDADE: Method to get the field value.
     */
   public String getTipo_entidade() {
     return tipo_entidade;
   }
   /**
-    * TIPO_ENTIDADE: Método Sets pára este campo.
+    * TIPO_ENTIDADE: Method to set the field value.
     */
   public void setTipo_entidade(String PARAM) {
     tipo_entidade = PARAM;
@@ -187,49 +187,49 @@ public class Usuarios_iActionForm extends org.apache.struts.action.ActionForm
     return tipo_entidadeLabelList;
   }
   /**
-    * CHAVE: Método Gets para este campo
+    * CHAVE: Method to get the field value.
     */
   public String getChave() {
     return chave;
   }
   /**
-    * CHAVE: Método Sets pára este campo.
+    * CHAVE: Method to set the field value.
     */
   public void setChave(String PARAM) {
     chave = PARAM;
   }
   /**
-    * USUA_DT_SENHA: Método Gets para este campo
+    * USUA_DT_SENHA: Method to get the field value.
     */
   public String getUsua_dt_senha() {
     return usua_dt_senha;
   }
   /**
-    * USUA_DT_SENHA: Método Sets pára este campo.
+    * USUA_DT_SENHA: Method to set the field value.
     */
   public void setUsua_dt_senha(String PARAM) {
     usua_dt_senha = PARAM;
   }
   /**
-    * DIAS_CONSULTA_RETROATIVA: Método Gets para este campo
+    * DIAS_CONSULTA_RETROATIVA: Method to get the field value.
     */
   public String getDias_consulta_retroativa() {
     return dias_consulta_retroativa;
   }
   /**
-    * DIAS_CONSULTA_RETROATIVA: Método Sets pára este campo.
+    * DIAS_CONSULTA_RETROATIVA: Method to set the field value.
     */
   public void setDias_consulta_retroativa(String PARAM) {
     dias_consulta_retroativa = PARAM;
   }
   /**
-    * USUA_EXPIRA_SENHA: Método Gets para este campo
+    * USUA_EXPIRA_SENHA: Method to get the field value.
     */
   public String getUsua_expira_senha() {
     return usua_expira_senha;
   }
   /**
-    * USUA_EXPIRA_SENHA: Método Sets pára este campo.
+    * USUA_EXPIRA_SENHA: Method to set the field value.
     */
   public void setUsua_expira_senha(String PARAM) {
     usua_expira_senha = PARAM;
@@ -251,13 +251,13 @@ public class Usuarios_iActionForm extends org.apache.struts.action.ActionForm
     return list;
   }
   /**
-    * USUA_SUPER: Método Gets para este campo
+    * USUA_SUPER: Method to get the field value.
     */
   public String getUsua_super() {
     return usua_super;
   }
   /**
-    * USUA_SUPER: Método Sets pára este campo.
+    * USUA_SUPER: Method to set the field value.
     */
   public void setUsua_super(String PARAM) {
     usua_super = PARAM;
@@ -279,13 +279,13 @@ public class Usuarios_iActionForm extends org.apache.struts.action.ActionForm
     return list;
   }
   /**
-    * GERAR_AUTORIZACAO: Método Gets para este campo
+    * GERAR_AUTORIZACAO: Method to get the field value.
     */
   public String getGerar_autorizacao() {
     return gerar_autorizacao;
   }
   /**
-    * GERAR_AUTORIZACAO: Método Sets pára este campo.
+    * GERAR_AUTORIZACAO: Method to set the field value.
     */
   public void setGerar_autorizacao(String PARAM) {
     gerar_autorizacao = PARAM;
@@ -307,55 +307,55 @@ public class Usuarios_iActionForm extends org.apache.struts.action.ActionForm
     return list;
   }
   /**
-    * COPIAR_ACESSOS: Método Gets para este campo
+    * COPIAR_ACESSOS: Method to get the field value.
     */
   public String getCopiar_acessos() {
     return copiar_acessos;
   }
   /**
-    * COPIAR_ACESSOS: Método Sets pára este campo.
+    * COPIAR_ACESSOS: Method to set the field value.
     */
   public void setCopiar_acessos(String PARAM) {
     copiar_acessos = PARAM;
   }
   /**
-    * USUA_PAI: Método Gets para este campo
+    * USUA_PAI: Method to get the field value.
     */
   public String getUsua_pai() {
     return usua_pai;
   }
   /**
-    * USUA_PAI: Método Sets pára este campo.
+    * USUA_PAI: Method to set the field value.
     */
   public void setUsua_pai(String PARAM) {
     usua_pai = PARAM;
   }
   /**
-    * USUA_PAI_NOME: Método Gets para este campo
+    * USUA_PAI_NOME: Method to get the field value.
     */
   public String getUsua_pai_nome() {
     return usua_pai_nome;
   }
   /**
-    * USUA_PAI_NOME: Método Sets pára este campo.
+    * USUA_PAI_NOME: Method to set the field value.
     */
   public void setUsua_pai_nome(String PARAM) {
     usua_pai_nome = PARAM;
   }
   /**
-    * USUA_PAI_ID: Método Gets para este campo
+    * USUA_PAI_ID: Method to get the field value.
     */
   public String getUsua_pai_id() {
     return usua_pai_id;
   }
   /**
-    * USUA_PAI_ID: Método Sets pára este campo.
+    * USUA_PAI_ID: Method to set the field value.
     */
   public void setUsua_pai_id(String PARAM) {
     usua_pai_id = PARAM;
   }
   /**
-    * Limpar todos os campos.
+    * Reset all fields.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     usua_id = null;
@@ -379,7 +379,7 @@ public class Usuarios_iActionForm extends org.apache.struts.action.ActionForm
     usua_pai_id = null;
   }
   /**
-    * Validação dos campos, retornando um ActionErrors.
+    * Validate fields and return errors.
     */
   public ActionErrors validate(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     javax.servlet.http.HttpSession session = request.getSession(true);

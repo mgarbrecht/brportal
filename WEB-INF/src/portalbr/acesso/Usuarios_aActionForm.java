@@ -37,133 +37,133 @@ public class Usuarios_aActionForm extends org.apache.struts.action.ActionForm
   public Usuarios_aActionForm() {
   }
   /**
-    * USUA_ID: Método Gets para este campo
+    * USUA_ID: Method to get the field value.
     */
   public String getUsua_id() {
     return usua_id;
   }
   /**
-    * USUA_ID: Método Sets pára este campo.
+    * USUA_ID: Method to set the field value.
     */
   public void setUsua_id(String PARAM) {
     usua_id = PARAM;
   }
   /**
-    * USUA_USUARIO: Método Gets para este campo
+    * USUA_USUARIO: Method to get the field value.
     */
   public String getUsua_usuario() {
     return usua_usuario;
   }
   /**
-    * USUA_USUARIO: Método Sets pára este campo.
+    * USUA_USUARIO: Method to set the field value.
     */
   public void setUsua_usuario(String PARAM) {
     usua_usuario = PARAM;
   }
   /**
-    * USUA_NOME: Método Gets para este campo
+    * USUA_NOME: Method to get the field value.
     */
   public String getUsua_nome() {
     return usua_nome;
   }
   /**
-    * USUA_NOME: Método Sets pára este campo.
+    * USUA_NOME: Method to set the field value.
     */
   public void setUsua_nome(String PARAM) {
     usua_nome = PARAM;
   }
   /**
-    * USUA_EMAIL: Método Gets para este campo
+    * USUA_EMAIL: Method to get the field value.
     */
   public String getUsua_email() {
     return usua_email;
   }
   /**
-    * USUA_EMAIL: Método Sets pára este campo.
+    * USUA_EMAIL: Method to set the field value.
     */
   public void setUsua_email(String PARAM) {
     usua_email = PARAM;
   }
   /**
-    * USUA_SENHA: Método Gets para este campo
+    * USUA_SENHA: Method to get the field value.
     */
   public String getUsua_senha() {
     return usua_senha;
   }
   /**
-    * USUA_SENHA: Método Sets pára este campo.
+    * USUA_SENHA: Method to set the field value.
     */
   public void setUsua_senha(String PARAM) {
     usua_senha = PARAM;
   }
   /**
-    * CONFIRMA_SENHA: Método Gets para este campo
+    * CONFIRMA_SENHA: Method to get the field value.
     */
   public String getConfirma_senha() {
     return confirma_senha;
   }
   /**
-    * CONFIRMA_SENHA: Método Sets pára este campo.
+    * CONFIRMA_SENHA: Method to set the field value.
     */
   public void setConfirma_senha(String PARAM) {
     confirma_senha = PARAM;
   }
   /**
-    * FORCA_SENHA_CHECK: Método Gets para este campo
+    * FORCA_SENHA_CHECK: Method to get the field value.
     */
   public String getForca_senha_check() {
     return forca_senha_check;
   }
   /**
-    * FORCA_SENHA_CHECK: Método Sets pára este campo.
+    * FORCA_SENHA_CHECK: Method to set the field value.
     */
   public void setForca_senha_check(String PARAM) {
     forca_senha_check = PARAM;
   }
   /**
-    * USUA_ENNE_ID: Método Gets para este campo
+    * USUA_ENNE_ID: Method to get the field value.
     */
   public String getUsua_enne_id() {
     return usua_enne_id;
   }
   /**
-    * USUA_ENNE_ID: Método Sets pára este campo.
+    * USUA_ENNE_ID: Method to set the field value.
     */
   public void setUsua_enne_id(String PARAM) {
     usua_enne_id = PARAM;
   }
   /**
-    * ENNE_DESCRICAO: Método Gets para este campo
+    * ENNE_DESCRICAO: Method to get the field value.
     */
   public String getEnne_descricao() {
     return enne_descricao;
   }
   /**
-    * ENNE_DESCRICAO: Método Sets pára este campo.
+    * ENNE_DESCRICAO: Method to set the field value.
     */
   public void setEnne_descricao(String PARAM) {
     enne_descricao = PARAM;
   }
   /**
-    * DIAS_CONSULTA_RETROATIVA: Método Gets para este campo
+    * DIAS_CONSULTA_RETROATIVA: Method to get the field value.
     */
   public String getDias_consulta_retroativa() {
     return dias_consulta_retroativa;
   }
   /**
-    * DIAS_CONSULTA_RETROATIVA: Método Sets pára este campo.
+    * DIAS_CONSULTA_RETROATIVA: Method to set the field value.
     */
   public void setDias_consulta_retroativa(String PARAM) {
     dias_consulta_retroativa = PARAM;
   }
   /**
-    * USUA_SUPER: Método Gets para este campo
+    * USUA_SUPER: Method to get the field value.
     */
   public String getUsua_super() {
     return usua_super;
   }
   /**
-    * USUA_SUPER: Método Sets pára este campo.
+    * USUA_SUPER: Method to set the field value.
     */
   public void setUsua_super(String PARAM) {
     usua_super = PARAM;
@@ -185,13 +185,13 @@ public class Usuarios_aActionForm extends org.apache.struts.action.ActionForm
     return list;
   }
   /**
-    * USUA_EXPIRA_SENHA: Método Gets para este campo
+    * USUA_EXPIRA_SENHA: Method to get the field value.
     */
   public String getUsua_expira_senha() {
     return usua_expira_senha;
   }
   /**
-    * USUA_EXPIRA_SENHA: Método Sets pára este campo.
+    * USUA_EXPIRA_SENHA: Method to set the field value.
     */
   public void setUsua_expira_senha(String PARAM) {
     usua_expira_senha = PARAM;
@@ -213,49 +213,49 @@ public class Usuarios_aActionForm extends org.apache.struts.action.ActionForm
     return list;
   }
   /**
-    * POS: Método Gets para este campo
+    * POS: Method to get the field value.
     */
   public String getPos() {
     return pos;
   }
   /**
-    * POS: Método Sets pára este campo.
+    * POS: Method to set the field value.
     */
   public void setPos(String PARAM) {
     pos = PARAM;
   }
   /**
-    * CHAMADOR: Método Gets para este campo
+    * CHAMADOR: Method to get the field value.
     */
   public String getChamador() {
     return chamador;
   }
   /**
-    * CHAMADOR: Método Sets pára este campo.
+    * CHAMADOR: Method to set the field value.
     */
   public void setChamador(String PARAM) {
     chamador = PARAM;
   }
   /**
-    * FORCA_SENHA: Método Gets para este campo
+    * FORCA_SENHA: Method to get the field value.
     */
   public String getForca_senha() {
     return forca_senha;
   }
   /**
-    * FORCA_SENHA: Método Sets pára este campo.
+    * FORCA_SENHA: Method to set the field value.
     */
   public void setForca_senha(String PARAM) {
     forca_senha = PARAM;
   }
   /**
-    * SITUACAO: Método Gets para este campo
+    * SITUACAO: Method to get the field value.
     */
   public String getSituacao() {
     return situacao;
   }
   /**
-    * SITUACAO: Método Sets pára este campo.
+    * SITUACAO: Method to set the field value.
     */
   public void setSituacao(String PARAM) {
     situacao = PARAM;
@@ -277,55 +277,55 @@ public class Usuarios_aActionForm extends org.apache.struts.action.ActionForm
     return list;
   }
   /**
-    * USUARIO_INCLUSAO: Método Gets para este campo
+    * USUARIO_INCLUSAO: Method to get the field value.
     */
   public String getUsuario_inclusao() {
     return usuario_inclusao;
   }
   /**
-    * USUARIO_INCLUSAO: Método Sets pára este campo.
+    * USUARIO_INCLUSAO: Method to set the field value.
     */
   public void setUsuario_inclusao(String PARAM) {
     usuario_inclusao = PARAM;
   }
   /**
-    * DTHR_INCLUSAO: Método Gets para este campo
+    * DTHR_INCLUSAO: Method to get the field value.
     */
   public String getDthr_inclusao() {
     return dthr_inclusao;
   }
   /**
-    * DTHR_INCLUSAO: Método Sets pára este campo.
+    * DTHR_INCLUSAO: Method to set the field value.
     */
   public void setDthr_inclusao(String PARAM) {
     dthr_inclusao = PARAM;
   }
   /**
-    * USUARIO_ALTERACAO: Método Gets para este campo
+    * USUARIO_ALTERACAO: Method to get the field value.
     */
   public String getUsuario_alteracao() {
     return usuario_alteracao;
   }
   /**
-    * USUARIO_ALTERACAO: Método Sets pára este campo.
+    * USUARIO_ALTERACAO: Method to set the field value.
     */
   public void setUsuario_alteracao(String PARAM) {
     usuario_alteracao = PARAM;
   }
   /**
-    * DTHR_ALTERACAO: Método Gets para este campo
+    * DTHR_ALTERACAO: Method to get the field value.
     */
   public String getDthr_alteracao() {
     return dthr_alteracao;
   }
   /**
-    * DTHR_ALTERACAO: Método Sets pára este campo.
+    * DTHR_ALTERACAO: Method to set the field value.
     */
   public void setDthr_alteracao(String PARAM) {
     dthr_alteracao = PARAM;
   }
   /**
-    * Limpar todos os campos.
+    * Reset all fields.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     usua_id = null;
@@ -350,7 +350,7 @@ public class Usuarios_aActionForm extends org.apache.struts.action.ActionForm
     dthr_alteracao = null;
   }
   /**
-    * Validação dos campos, retornando um ActionErrors.
+    * Validate fields and return errors.
     */
   public ActionErrors validate(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     javax.servlet.http.HttpSession session = request.getSession(true);

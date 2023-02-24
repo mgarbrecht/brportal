@@ -66,7 +66,7 @@ public class TreeMenuUsuarioBean implements java.io.Serializable {
         Locale.setDefault(locale);
     	String retorno = null;
     	try {
-    		if(tipoUsuario == 2194 && doinId == 12){
+    		if((tipoUsuario == 2194 || tipoUsuario == 4) && doinId == 12){
      		    //fonte vermelha
     			retorno = "<font color=red style=font-size:14px> " +java.util.ResourceBundle.getBundle("ItensMenuResources", locale).getString(((Integer)item.getId()).toString()) + " </font>";
     			

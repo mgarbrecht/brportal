@@ -91,17 +91,17 @@ public class TipoEntidadeNegocioAPI extends TipoEntidadeNegocio {
 			}
 			if (tabela.equals("")){
 				emsg.append("A tabela deve ser informada.\n");			
-			} else if (tipo.length() > 30) {
+			} else if (tabela.length() > 30) {
 				emsg.append("A tabela possui mais de 30 caracteres.\n");			
 			}			
 			if (camposDescr.equals("")) {
 				emsg.append("Nenhum campo para a descrição foi informado.\n");
-			} else if (tipo.length() > 255) {
+			} else if (camposDescr.length() > 255) {
 				emsg.append("Os campos para a descrição possuem mais de 255 caracteres.\n");			
 			}
 			if (camposChave.equals("")) {
 				emsg.append("Nenhum campo para a chave foi informado.\n");			
-			} else if (tipo.length() > 255) {
+			} else if (camposChave.length() > 255) {
 				emsg.append("Os campos para a chave possuem mais de 255 caracteres.\n");			
 			}
 			if (condicao != null && condicao.length() > 255) {
