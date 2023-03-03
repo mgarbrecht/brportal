@@ -433,6 +433,9 @@
                             <html:option styleClass="baseOption" value="20">
                               Grupos Actvitta
                             </html:option>
+                            <html:option styleClass="baseOption" value="18">
+                              Grupos Br Sport
+                            </html:option> 
                           </html:select>
 
                           <html:submit accesskey="p" styleClass="myhidden" style="background-color: #C40000; color: white;font-family:verdana;font-size:16px; border-color: black;font-weight: bold; height:40px; width: 160px" value="Grupo"  property="select9_action"/>
@@ -475,6 +478,9 @@
                             </html:option>
                             <html:option styleClass="baseOption" value="20">
                               Estilos Actvitta
+                            </html:option>
+                            <html:option styleClass="baseOption" value="18">
+                              Estilos Br Sport
                             </html:option>
                           </html:select>
 
@@ -520,6 +526,9 @@
                             <html:option styleClass="baseOption" value="20">
                               Unidade de Negócio Actvitta
                             </html:option>
+                            <html:option styleClass="baseOption" value="18">
+                              Unidade de Negócio Br Sport
+                            </html:option>
                           </html:select>
 
                           <html:submit accesskey="p" styleClass="myhidden" style="background-color: #C40000; color: white;font-family:verdana;font-size:16px; border-color: black;font-weight: bold; height:40px; width: 160px" value="Unidade" property="select_unidades_action"/>
@@ -563,6 +572,9 @@
                             </html:option>
                             <html:option styleClass="baseOption" value="20">
                               Tipo de Produto Actvitta
+                            </html:option>
+                            <html:option styleClass="baseOption" value="18">
+                              Tipo de Produto Br Sport
                             </html:option>
                           </html:select>
 
