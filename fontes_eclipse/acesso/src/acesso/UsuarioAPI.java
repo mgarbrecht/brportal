@@ -288,6 +288,34 @@ public class UsuarioAPI extends Usuario {
 						} catch (Exception e) {
 							e.printStackTrace(System.err);
 						}
+					} else if(enti.getTipoEntidadeNegocio().getId() == 4) {
+						try {
+							String situacao = query.select("SELECT cli_situ from cli where cli_cdgo = " + this.enne.getChave());
+							if(situacao.equals("A")) {
+								String enneId = query.select("SELECT enne_id FROM wbrio.entidades_negocio WHERE enne_chave = '"+this.enne.getChave()+"' AND enne_tien_id = 2194");
+					             if(enneId.equals("")){
+					                acesso.EntidadeNegocioAPI entidade = new acesso.EntidadeNegocioAPI(this.conn);
+					                acesso.TipoEntidadeNegocioAPI tipoentidade = new acesso.TipoEntidadeNegocioAPI(this.conn, 2194);
+					                entidade.setChave(this.enne.getChave());
+					                entidade.setTipoEntidadeNegocio(tipoentidade);
+					                entidade.insert();
+					                enneId = query.select("SELECT enne_id FROM wbrio.entidades_negocio WHERE enne_chave = '"+this.enne.getChave()+"' AND enne_tien_id = 2194");
+					             }
+					             acesso.EntidadeNegocioAPI enne = new acesso.EntidadeNegocioAPI(this.conn);
+					             enne.select(Integer.parseInt(enneId));
+					             this.setEntidadeNegocio((acesso.EntidadeNegocio) enne);
+					             this.setSituacao("A");
+					             this.old = this;
+					             update();
+					             select(this.id);
+					             removerAutorizacoes();
+					             acesso.AcessoDocumentoInterfaceAPI adi = new acesso.AcessoDocumentoInterfaceAPI(this.conn);
+					             adi.geraAutorizacoesUsuario(this.getId());
+					             this.usuarioInativar = false; 
+							}
+							} catch (Exception e) {
+								e.printStackTrace(System.err);
+							}
 					}
 				
 				} else {
