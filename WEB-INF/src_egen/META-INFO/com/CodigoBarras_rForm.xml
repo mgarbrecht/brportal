@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generator>
 <VERSION>v 2.8</VERSION>
-<generation_day>06/10/2022</generation_day>
+<generation_day>14/03/2023</generation_day>
 <module>com</module>
 <file_name>CodigoBarras_r</file_name>
 <app_type>Form</app_type>
@@ -31,7 +31,7 @@
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <creationDate>06/06/2016 16:08:02</creationDate>
-<lastModifyDate>06/10/2022 10:43:21</lastModifyDate>
+<lastModifyDate>14/03/2023 11:42:42</lastModifyDate>
 <userGenerate>wbrio</userGenerate>
 <scope_storage>session</scope_storage>
 <generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
@@ -3766,7 +3766,7 @@
 <style></style>
 <include>../system/header_excel.jsp</include>
 <freeSource><%
-if(!user.isSuperUsuario() && !user.isAutorizado(68)){
+if(!user.isSuperUsuario() && !user.isAutorizado(262)){
    response.sendRedirect("../system/Error.jsp");
 }
 %></freeSource>

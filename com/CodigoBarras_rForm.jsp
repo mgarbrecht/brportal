@@ -19,7 +19,7 @@
                 <td class="td10">
                   <%@ include file="../system/header_excel.jsp" %>
                   <%
-                  if(!user.isSuperUsuario() && !user.isAutorizado(68)){
+                  if(!user.isSuperUsuario() && !user.isAutorizado(262)){
                     response.sendRedirect("../system/Error.jsp");
                   }
                   %>

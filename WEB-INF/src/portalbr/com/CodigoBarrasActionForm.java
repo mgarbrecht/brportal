@@ -8,7 +8,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 06/06/2016 15:30:00
- * Last Modify Date 06/10/2022 10:41:34
+ * Last Modify Date 14/03/2023 11:27:46
  */
 
 public class CodigoBarrasActionForm extends org.apache.struts.action.ActionForm
