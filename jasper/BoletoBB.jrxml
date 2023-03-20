@@ -2,9 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BB_PD_NOVO" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="b9022c2f-6e23-496f-89fe-a26cfc079dce">
 	<property name="ireport.scriptlethandling" value="0"/>
 	<property name="ireport.encoding" value="UTF-8"/>
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="366"/>
+	<property name="ireport.y" value="140"/>
 	<import value="net.sf.jasperreports.engine.*"/>
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -153,6 +153,7 @@
 ,e.emp_endereco ||' '||e.emp_bairro||' '||e.emp_cidade||' '||e.est_unifed||' - '||e.emp_cep endereco_empresa_simples
 ,brconrec.fct_ctr_codigo_barra_bb(f.emp_empresa, f.fil_filial, f.tip_codigo, f.tit_codigo, f.cac_sequencia, f.tit_datemi, f.tit_numbco) codigo_barras
 ,brconrec.fct_ctr_gera_linha_digitavel(brconrec.fct_ctr_codigo_barra_bb(f.emp_empresa, f.fil_filial, f.tip_codigo, f.tit_codigo, f.cac_sequencia, f.tit_datemi, f.tit_numbco)) linha_digitavel
+     ,f.qrcode_emv
   FROM brconrec.v_duplicata f
      , empresa e
  WHERE NVL(prt_codigo, NULL) = '001'
@@ -194,6 +195,7 @@
 	<field name="ENDERECO_EMPRESA_SIMPLES" class="java.lang.String"/>
 	<field name="CODIGO_BARRAS" class="java.lang.String"/>
 	<field name="LINHA_DIGITAVEL" class="java.lang.String"/>
+	<field name="QRCODE_EMV" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -207,7 +209,7 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="546" splitType="Stretch">
+		<band height="580" splitType="Stretch">
 			<line>
 				<reportElement uuid="07f0a240-3086-4e5c-bb08-6f86e0d4e3cc" key="line-20" x="-1" y="242" width="524" height="1"/>
 				<graphicElement>
@@ -872,13 +874,13 @@
 				<textFieldExpression><![CDATA[$F{TIT_NUMBCO}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement uuid="3b96d253-cad8-42e6-887c-430cd05d6c52" key="line-50" x="-1" y="542" width="524" height="1"/>
+				<reportElement uuid="3b96d253-cad8-42e6-887c-430cd05d6c52" key="line-50" x="-1" y="577" width="524" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.0" lineStyle="Dashed"/>
 				</graphicElement>
 			</line>
 			<componentElement>
-				<reportElement uuid="5993b126-d4fc-4716-b32f-f35a8e350b6a" x="0" y="489" width="277" height="32"/>
+				<reportElement uuid="5993b126-d4fc-4716-b32f-f35a8e350b6a" x="0" y="502" width="277" height="32"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Int2of5" drawText="false" checksumRequired="false" barWidth="1" barHeight="43">
 					<jr:codeExpression><![CDATA[$F{CODIGO_BARRAS}]]></jr:codeExpression>
 				</jr:barbecue>
@@ -1479,7 +1481,7 @@
 				<reportElement uuid="9a137fa9-2c1e-49e9-84a7-c5baba5e88a3" x="0" y="113" width="3" height="14" forecolor="#FFE000" backcolor="#FFE000"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="d186edbf-ddd4-40a5-a736-ad7a00ed3759" key="staticText-31" x="1" y="532" width="212" height="8" forecolor="#000080"/>
+				<reportElement uuid="d186edbf-ddd4-40a5-a736-ad7a00ed3759" key="staticText-31" x="1" y="567" width="212" height="8" forecolor="#000080"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -1609,6 +1611,20 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ENDERECO_EMPRESA_SIMPLES}]]></textFieldExpression>
 			</textField>
+			<image scaleImage="RetainShape">
+				<reportElement uuid="d910ddc3-55f5-4beb-b8ec-81e29aef02ee" x="456" y="500" width="72" height="72"/>
+				<imageExpression><![CDATA[com.google.zxing.client.j2se.MatrixToImageWriter.toBufferedImage(
+new com.google.zxing.qrcode.QRCodeWriter().encode(
+$F{QRCODE_EMV},
+com.google.zxing.BarcodeFormat.QR_CODE, 300, 300
+,com.google.common.collect.ImmutableMap.of(com.google.zxing.EncodeHintType.MARGIN,0)))]]></imageExpression>
+			</image>
+			<image vAlign="Middle">
+				<reportElement uuid="75cef9b9-6e00-460a-985e-2ea029ed7482" x="346" y="500" width="98" height="72">
+					<printWhenExpression><![CDATA[$F{QRCODE_EMV} != null]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA["/opt/tomcat/webapps/brportal/img/pague_pix.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 	<columnFooter>
