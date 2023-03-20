@@ -1,7 +1,7 @@
 package portalbr.dbobj.table;
 
 /** DataBase Object from table WBRIO.Controle_clientes_especiais_vw
-  * @version 09/09/2022 13:23:54
+  * @version 20/03/2023 17:54:54
   */
 public class Controle_clientes_especiais_vw implements java.io.Serializable, com.egen.util.jdbc.Table {
   private java.lang.Integer ped_nmro;
@@ -116,6 +116,7 @@ public class Controle_clientes_especiais_vw implements java.io.Serializable, com
   private java.lang.String bloqueio_sku;
   private java.lang.String bloqueio_credito;
   private java.lang.String bloqueio_suframa;
+  private java.lang.String bloqueio_antecipacao;
 
   public Controle_clientes_especiais_vw() {
   }
@@ -1014,6 +1015,14 @@ public class Controle_clientes_especiais_vw implements java.io.Serializable, com
 
   public void setBloqueio_suframa(java.lang.String PARAM) {
     this.bloqueio_suframa = PARAM;
+  }
+
+  public java.lang.String getBloqueio_antecipacao() {
+    return bloqueio_antecipacao;
+  }
+
+  public void setBloqueio_antecipacao(java.lang.String PARAM) {
+    this.bloqueio_antecipacao = PARAM;
   }
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <generator>
 <VERSION>v 2.8</VERSION>
-<generation_day>19/09/2022</generation_day>
+<generation_day>20/03/2023</generation_day>
 <module>com</module>
 <file_name>ControleClientesEspeciais_m</file_name>
 <app_type>Form</app_type>
@@ -31,7 +31,7 @@
 <addImportActionForm></addImportActionForm>
 <add_actionForm></add_actionForm>
 <creationDate>25/05/2011 14:08:30</creationDate>
-<lastModifyDate>19/09/2022 12:05:47</lastModifyDate>
+<lastModifyDate>20/03/2023 18:04:13</lastModifyDate>
 <userGenerate>wbrio</userGenerate>
 <scope_storage>session</scope_storage>
 <generatorMasterTemplate>struts_1.2_master</generatorMasterTemplate>
@@ -12263,7 +12263,10 @@ private void marcar_desmarcar_gerar_requisicao_action(JdbcUtil j, ActionMapping 
       <td class="columnTdHeader" style="text-align: center; width: 1%">
           Bloq.<br/>Suframa
       </td>	  
-	  <td class="columnTdHeader" style="text-align: left; width: 200px">
+      <td class="columnTdHeader" style="text-align: center; width: 1%">
+          Antecipação<br/>Não Permitida
+      </td>	  
+      <td class="columnTdHeader" style="text-align: left; width: 200px">
           Regional
       </td>
       <td class="columnTdHeader" style="text-align: center; width: 1%">
@@ -12475,6 +12478,9 @@ private void marcar_desmarcar_gerar_requisicao_action(JdbcUtil j, ActionMapping 
       <td class="columnTdHeader" style="text-align: center; width: 1%">
           Bloq. Suframa
       </td>	  
+      <td class="columnTdHeader" style="text-align: center; width: 1%">
+          Antecipação Não Permitida
+      </td>	
 
 
 <% if(session.getAttribute("cb_regional")!=null) { %>
@@ -13219,6 +13225,10 @@ paresTotal += controle.getPrs();
 
         <td style="text-align: center; width=1%">
            <span class="<%= controle.getBloqueio_suframa() %>"/>
+        </td>
+
+        <td style="text-align: center; width=1%">
+           <span class="<%= controle.getBloqueio_antecipacao() %>"/>
         </td>
 
         <td class="reportColumn" style="text-align: left">
@@ -14148,8 +14158,11 @@ paresTotal += controle.getPrs();
          <%= controle.getBloqueio_sku().equals("red.gif")?"S":"N" %>
       </td>
       <td class="reportColumn" style="text-align: center; width: 1%">
-         <%= controle.getBloqueio_suframa().equals("red.gif")?"S":"N" %>
-      </td>	  
+         <%= controle.getBloqueio_suframa().equals("dotRed")?"S":"N" %>
+      </td>
+      <td class="reportColumn" style="text-align: center; width: 1%">
+         <%= controle.getBloqueio_antecipacao().equals("dotRed")?"S":"N" %>
+      </td>
 
 
 

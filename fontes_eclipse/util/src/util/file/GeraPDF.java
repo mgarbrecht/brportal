@@ -177,6 +177,7 @@ public class GeraPDF {
 			JasperRunManager.runReportToPdfFile(file_jasper, file_dest, parametrosJasper, jPDF.getConn());
 			arquivo = parametros.retornaParametro("diretorio_link_pdf") + nomeArquivo.toString();
 		} catch (Exception e ){
+			e.printStackTrace(System.err);
 		} finally {
 			  if (jPDF!=null){
 				  jPDF.close();
@@ -200,6 +201,7 @@ public class GeraPDF {
 			JasperRunManager.runReportToPdfFile(file_jasper, file_dest, parametrosJasper, conn);
 			arquivo = parametros.retornaParametro("diretorio_link_pdf") + nomeArquivo.toString();
 		} catch (Exception e) {
+			e.printStackTrace(System.err);
 		} finally {
 		}
 		return arquivo;

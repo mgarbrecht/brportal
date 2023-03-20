@@ -1,13 +1,14 @@
 package portalbr.dbobj.view;
 
 /** DataBase Object from table .Jw_lin_mix
-  * @version 19/10/2022 15:28:38
+  * @version 08/03/2023 15:17:38
   */
 public class Jw_lin_mix implements java.io.Serializable, com.egen.util.jdbc.View {
   private java.lang.Integer lin_cdgo;
   private java.lang.String lin_nome;
   private java.lang.String mix;
   private java.lang.String descricao_mix;
+  private java.lang.Integer ref_grupo_posicao_fab;
 
   public Jw_lin_mix() {
   }
@@ -42,6 +43,14 @@ public class Jw_lin_mix implements java.io.Serializable, com.egen.util.jdbc.View
 
   public void setDescricao_mix(java.lang.String PARAM) {
     this.descricao_mix = PARAM;
+  }
+
+  public java.lang.Integer getRef_grupo_posicao_fab() {
+    return ref_grupo_posicao_fab;
+  }
+
+  public void setRef_grupo_posicao_fab(java.lang.Integer PARAM) {
+    this.ref_grupo_posicao_fab = PARAM;
   }
 
 }

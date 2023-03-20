@@ -19,38 +19,38 @@ public class VerificacaoCaixasIndividuaisCorrugadosActionForm extends org.apache
   public VerificacaoCaixasIndividuaisCorrugadosActionForm() {
   }
   /**
-    * ROTULO: Método Gets para este campo
+    * ROTULO: Method to get the field value.
     */
   public String getRotulo() {
     return rotulo;
   }
   /**
-    * ROTULO: Método Sets pára este campo.
+    * ROTULO: Method to set the field value.
     */
   public void setRotulo(String PARAM) {
     rotulo = PARAM;
   }
   /**
-    * MENSAGEM: Método Gets para este campo
+    * MENSAGEM: Method to get the field value.
     */
   public String getMensagem() {
     return mensagem;
   }
   /**
-    * MENSAGEM: Método Sets pára este campo.
+    * MENSAGEM: Method to set the field value.
     */
   public void setMensagem(String PARAM) {
     mensagem = PARAM;
   }
   /**
-    * Limpar todos os campos.
+    * Reset all fields.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     rotulo = null;
     mensagem = null;
   }
   /**
-    * Validação dos campos, retornando um ActionErrors.
+    * Validate fields and return errors.
     */
   public ActionErrors validate(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     javax.servlet.http.HttpSession session = request.getSession(true);

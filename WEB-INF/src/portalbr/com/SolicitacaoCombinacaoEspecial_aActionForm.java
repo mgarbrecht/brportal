@@ -8,7 +8,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 03/02/2012 11:28:50
- * Last Modify Date 24/11/2022 11:49:12
+ * Last Modify Date 08/03/2023 14:52:29
  */
 
 import org.apache.struts.upload.FormFile;
@@ -80,53 +80,54 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
   public String item_desc;
   public String id_solicitacao_delete;
   public String data_aprovacao;
+  public String ref_grupo_posicao_fab;
   private boolean valida = false;
   public SolicitacaoCombinacaoEspecial_aActionForm() {
   }
   /**
-    * ID_SOLICITACAO: Method to get the field value.
+    * ID_SOLICITACAO: Método Gets para este campo
     */
   public String getId_solicitacao() {
     return id_solicitacao;
   }
   /**
-    * ID_SOLICITACAO: Method to set the field value.
+    * ID_SOLICITACAO: Método Sets pára este campo.
     */
   public void setId_solicitacao(String PARAM) {
     id_solicitacao = PARAM;
   }
   /**
-    * DATA_SOLICITACAO: Method to get the field value.
+    * DATA_SOLICITACAO: Método Gets para este campo
     */
   public String getData_solicitacao() {
     return data_solicitacao;
   }
   /**
-    * DATA_SOLICITACAO: Method to set the field value.
+    * DATA_SOLICITACAO: Método Sets pára este campo.
     */
   public void setData_solicitacao(String PARAM) {
     data_solicitacao = PARAM;
   }
   /**
-    * USUARIO_SOLICITACAO: Method to get the field value.
+    * USUARIO_SOLICITACAO: Método Gets para este campo
     */
   public String getUsuario_solicitacao() {
     return usuario_solicitacao;
   }
   /**
-    * USUARIO_SOLICITACAO: Method to set the field value.
+    * USUARIO_SOLICITACAO: Método Sets pára este campo.
     */
   public void setUsuario_solicitacao(String PARAM) {
     usuario_solicitacao = PARAM;
   }
   /**
-    * TIPO_SOLICITACAO: Method to get the field value.
+    * TIPO_SOLICITACAO: Método Gets para este campo
     */
   public String getTipo_solicitacao() {
     return tipo_solicitacao;
   }
   /**
-    * TIPO_SOLICITACAO: Method to set the field value.
+    * TIPO_SOLICITACAO: Método Sets pára este campo.
     */
   public void setTipo_solicitacao(String PARAM) {
     tipo_solicitacao = PARAM;
@@ -175,13 +176,13 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return tipo_solicitacaoLabelList;
   }
   /**
-    * SUBTIPO_SOLICITACAO_COMB_ESPEC: Method to get the field value.
+    * SUBTIPO_SOLICITACAO_COMB_ESPEC: Método Gets para este campo
     */
   public String getSubtipo_solicitacao_comb_espec() {
     return subtipo_solicitacao_comb_espec;
   }
   /**
-    * SUBTIPO_SOLICITACAO_COMB_ESPEC: Method to set the field value.
+    * SUBTIPO_SOLICITACAO_COMB_ESPEC: Método Sets pára este campo.
     */
   public void setSubtipo_solicitacao_comb_espec(String PARAM) {
     subtipo_solicitacao_comb_espec = PARAM;
@@ -228,13 +229,13 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return subtipo_solicitacao_comb_especLabelList;
   }
   /**
-    * CODIGO_MARCA: Method to get the field value.
+    * CODIGO_MARCA: Método Gets para este campo
     */
   public String getCodigo_marca() {
     return codigo_marca;
   }
   /**
-    * CODIGO_MARCA: Method to set the field value.
+    * CODIGO_MARCA: Método Sets pára este campo.
     */
   public void setCodigo_marca(String PARAM) {
     codigo_marca = PARAM;
@@ -283,13 +284,13 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return codigo_marcaLabelList;
   }
   /**
-    * MATERIAL: Method to get the field value.
+    * MATERIAL: Método Gets para este campo
     */
   public String getMaterial() {
     return material;
   }
   /**
-    * MATERIAL: Method to set the field value.
+    * MATERIAL: Método Sets pára este campo.
     */
   public void setMaterial(String PARAM) {
     material = PARAM;
@@ -313,19 +314,19 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * LIN_CDGO: Method to get the field value.
+    * LIN_CDGO: Método Gets para este campo
     */
   public String getLin_cdgo() {
     return lin_cdgo;
   }
   /**
-    * LIN_CDGO: Method to set the field value.
+    * LIN_CDGO: Método Sets pára este campo.
     */
   public void setLin_cdgo(String PARAM) {
     lin_cdgo = PARAM;
   }
   /**
-    * LIN_NOME: Method to get the field value.
+    * LIN_NOME: Método Gets para este campo
     */
   public String getLin_nome() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -333,7 +334,7 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
       if (lin_cdgo != null && lin_cdgo.length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_lin_mix db_object = new Jw_lin_mix();
-        String[][] select = { {"lin_nome",null}, {"descricao_mix",null} };
+        String[][] select = { {"lin_nome",null}, {"descricao_mix",null}, {"ref_grupo_posicao_fab",null} };
         Object[][] where = { {"lin_cdgo","=",com.egen.util.text.FormatNumber.toInteger(lin_cdgo)}, };
         String[] group = null;
         String[] having = null;
@@ -343,14 +344,17 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
           db_object = (Jw_lin_mix) results.elementAt(0);
           lin_nome = (db_object.getLin_nome() != null) ? db_object.getLin_nome() + "":"";
           linha_mix = ((db_object.getDescricao_mix() != null) ? db_object.getDescricao_mix() + "":"");
+          ref_grupo_posicao_fab = (db_object.getRef_grupo_posicao_fab() != null) ? db_object.getRef_grupo_posicao_fab() + "":"";
         } else {
           lin_nome = "";
           linha_mix = "";
+          ref_grupo_posicao_fab = "";
         }
       }
     } catch (Exception e) {
       lin_nome = "";
       linha_mix = "";
+      ref_grupo_posicao_fab = "";
     } finally {
       if (j != null) {
         j.close();
@@ -360,27 +364,30 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
   }
 
   public String[][] getLin_nome_Ajax(SolicitacaoCombinacaoEspecial_aActionForm PARAM) {
-    String[][] list = new String[2][2];
+    String[][] list = new String[3][2];
     com.egen.util.jdbc.JdbcUtil j = null;
     try {
       if (PARAM.getLin_cdgo() != null && PARAM.getLin_cdgo().length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_lin_mix db_object = new Jw_lin_mix();
-        Object[][] where = { {"lin_cdgo","like",PARAM.getLin_cdgo()}, };
+        Object[][] where = { {"lin_cdgo","=",com.egen.util.text.FormatNumber.toInteger(PARAM.getLin_cdgo())}, };
         String[] order = null;
         java.util.Vector results = j.select(db_object, where, order);
         if (results != null && results.size() > 0) {
           db_object = (Jw_lin_mix) results.elementAt(0);
           list[0] = new String[]{"lin_nome", (db_object.getLin_nome() != null) ? db_object.getLin_nome() + "":""};
           list[1] = new String[]{"linha_mix", ((db_object.getDescricao_mix() != null) ? db_object.getDescricao_mix() + "":"")};
+          list[2] = new String[]{"ref_grupo_posicao_fab", (db_object.getRef_grupo_posicao_fab() != null) ? db_object.getRef_grupo_posicao_fab() + "":""};
         } else {
           list[0] = new String[]{"lin_nome", ""};
           list[1] = new String[]{"linha_mix", ""};
+          list[2] = new String[]{"ref_grupo_posicao_fab", ""};
         }
       }
     } catch (Exception e) {
       list[0] = new String[]{"lin_nome", ""};
       list[1] = new String[]{"linha_mix", ""};
+      list[2] = new String[]{"ref_grupo_posicao_fab", ""};
     } finally {
       if (j != null) {
         j.close();
@@ -389,37 +396,37 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * LIN_NOME: Method to set the field value.
+    * LIN_NOME: Método Sets pára este campo.
     */
   public void setLin_nome(String PARAM) {
     lin_nome = PARAM;
   }
   /**
-    * LINHA_MIX: Method to get the field value.
+    * LINHA_MIX: Método Gets para este campo
     */
   public String getLinha_mix() {
     return linha_mix;
   }
   /**
-    * LINHA_MIX: Method to set the field value.
+    * LINHA_MIX: Método Sets pára este campo.
     */
   public void setLinha_mix(String PARAM) {
     linha_mix = PARAM;
   }
   /**
-    * REF_CDGO: Method to get the field value.
+    * REF_CDGO: Método Gets para este campo
     */
   public String getRef_cdgo() {
     return ref_cdgo;
   }
   /**
-    * REF_CDGO: Method to set the field value.
+    * REF_CDGO: Método Sets pára este campo.
     */
   public void setRef_cdgo(String PARAM) {
     ref_cdgo = PARAM;
   }
   /**
-    * REF_DESC: Method to get the field value.
+    * REF_DESC: Método Gets para este campo
     */
   public String getRef_desc() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -483,25 +490,25 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * REF_DESC: Method to set the field value.
+    * REF_DESC: Método Sets pára este campo.
     */
   public void setRef_desc(String PARAM) {
     ref_desc = PARAM;
   }
   /**
-    * CAB_CDGO: Method to get the field value.
+    * CAB_CDGO: Método Gets para este campo
     */
   public String getCab_cdgo() {
     return cab_cdgo;
   }
   /**
-    * CAB_CDGO: Method to set the field value.
+    * CAB_CDGO: Método Sets pára este campo.
     */
   public void setCab_cdgo(String PARAM) {
     cab_cdgo = PARAM;
   }
   /**
-    * CAB_DESC: Method to get the field value.
+    * CAB_DESC: Método Gets para este campo
     */
   public String getCab_desc() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -559,25 +566,25 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * CAB_DESC: Method to set the field value.
+    * CAB_DESC: Método Sets pára este campo.
     */
   public void setCab_desc(String PARAM) {
     cab_desc = PARAM;
   }
   /**
-    * COR_CDGO: Method to get the field value.
+    * COR_CDGO: Método Gets para este campo
     */
   public String getCor_cdgo() {
     return cor_cdgo;
   }
   /**
-    * COR_CDGO: Method to set the field value.
+    * COR_CDGO: Método Sets pára este campo.
     */
   public void setCor_cdgo(String PARAM) {
     cor_cdgo = PARAM;
   }
   /**
-    * COR_DESC: Method to get the field value.
+    * COR_DESC: Método Gets para este campo
     */
   public String getCor_desc() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -635,322 +642,322 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * COR_DESC: Method to set the field value.
+    * COR_DESC: Método Sets pára este campo.
     */
   public void setCor_desc(String PARAM) {
     cor_desc = PARAM;
   }
   /**
-    * DATA_ENTREGA_AMOSTRA: Method to get the field value.
+    * DATA_ENTREGA_AMOSTRA: Método Gets para este campo
     */
   public String getData_entrega_amostra() {
     return data_entrega_amostra;
   }
   /**
-    * DATA_ENTREGA_AMOSTRA: Method to set the field value.
+    * DATA_ENTREGA_AMOSTRA: Método Sets pára este campo.
     */
   public void setData_entrega_amostra(String PARAM) {
     data_entrega_amostra = PARAM;
   }
   /**
-    * OBSERVACAO: Method to get the field value.
+    * OBSERVACAO: Método Gets para este campo
     */
   public String getObservacao() {
     return observacao;
   }
   /**
-    * OBSERVACAO: Method to set the field value.
+    * OBSERVACAO: Método Sets pára este campo.
     */
   public void setObservacao(String PARAM) {
     observacao = PARAM;
   }
   /**
-    * MATERIAL_COR1: Method to get the field value.
+    * MATERIAL_COR1: Método Gets para este campo
     */
   public String getMaterial_cor1() {
     return material_cor1;
   }
   /**
-    * MATERIAL_COR1: Method to set the field value.
+    * MATERIAL_COR1: Método Sets pára este campo.
     */
   public void setMaterial_cor1(String PARAM) {
     material_cor1 = PARAM;
   }
   /**
-    * MATERIAL_COR2: Method to get the field value.
+    * MATERIAL_COR2: Método Gets para este campo
     */
   public String getMaterial_cor2() {
     return material_cor2;
   }
   /**
-    * MATERIAL_COR2: Method to set the field value.
+    * MATERIAL_COR2: Método Sets pára este campo.
     */
   public void setMaterial_cor2(String PARAM) {
     material_cor2 = PARAM;
   }
   /**
-    * MATERIAL_COR3: Method to get the field value.
+    * MATERIAL_COR3: Método Gets para este campo
     */
   public String getMaterial_cor3() {
     return material_cor3;
   }
   /**
-    * MATERIAL_COR3: Method to set the field value.
+    * MATERIAL_COR3: Método Sets pára este campo.
     */
   public void setMaterial_cor3(String PARAM) {
     material_cor3 = PARAM;
   }
   /**
-    * MATERIAL_COR4: Method to get the field value.
+    * MATERIAL_COR4: Método Gets para este campo
     */
   public String getMaterial_cor4() {
     return material_cor4;
   }
   /**
-    * MATERIAL_COR4: Method to set the field value.
+    * MATERIAL_COR4: Método Sets pára este campo.
     */
   public void setMaterial_cor4(String PARAM) {
     material_cor4 = PARAM;
   }
   /**
-    * MATERIAL_COR5: Method to get the field value.
+    * MATERIAL_COR5: Método Gets para este campo
     */
   public String getMaterial_cor5() {
     return material_cor5;
   }
   /**
-    * MATERIAL_COR5: Method to set the field value.
+    * MATERIAL_COR5: Método Sets pára este campo.
     */
   public void setMaterial_cor5(String PARAM) {
     material_cor5 = PARAM;
   }
   /**
-    * MATERIAL_COR6: Method to get the field value.
+    * MATERIAL_COR6: Método Gets para este campo
     */
   public String getMaterial_cor6() {
     return material_cor6;
   }
   /**
-    * MATERIAL_COR6: Method to set the field value.
+    * MATERIAL_COR6: Método Sets pára este campo.
     */
   public void setMaterial_cor6(String PARAM) {
     material_cor6 = PARAM;
   }
   /**
-    * MATERIAL_COR7: Method to get the field value.
+    * MATERIAL_COR7: Método Gets para este campo
     */
   public String getMaterial_cor7() {
     return material_cor7;
   }
   /**
-    * MATERIAL_COR7: Method to set the field value.
+    * MATERIAL_COR7: Método Sets pára este campo.
     */
   public void setMaterial_cor7(String PARAM) {
     material_cor7 = PARAM;
   }
   /**
-    * MATERIAL_COR8: Method to get the field value.
+    * MATERIAL_COR8: Método Gets para este campo
     */
   public String getMaterial_cor8() {
     return material_cor8;
   }
   /**
-    * MATERIAL_COR8: Method to set the field value.
+    * MATERIAL_COR8: Método Sets pára este campo.
     */
   public void setMaterial_cor8(String PARAM) {
     material_cor8 = PARAM;
   }
   /**
-    * MATERIAL_COR9: Method to get the field value.
+    * MATERIAL_COR9: Método Gets para este campo
     */
   public String getMaterial_cor9() {
     return material_cor9;
   }
   /**
-    * MATERIAL_COR9: Method to set the field value.
+    * MATERIAL_COR9: Método Sets pára este campo.
     */
   public void setMaterial_cor9(String PARAM) {
     material_cor9 = PARAM;
   }
   /**
-    * MATERIAL_COR10: Method to get the field value.
+    * MATERIAL_COR10: Método Gets para este campo
     */
   public String getMaterial_cor10() {
     return material_cor10;
   }
   /**
-    * MATERIAL_COR10: Method to set the field value.
+    * MATERIAL_COR10: Método Sets pára este campo.
     */
   public void setMaterial_cor10(String PARAM) {
     material_cor10 = PARAM;
   }
   /**
-    * BIQUEIRA_DEBRUM: Method to get the field value.
+    * BIQUEIRA_DEBRUM: Método Gets para este campo
     */
   public String getBiqueira_debrum() {
     return biqueira_debrum;
   }
   /**
-    * BIQUEIRA_DEBRUM: Method to set the field value.
+    * BIQUEIRA_DEBRUM: Método Sets pára este campo.
     */
   public void setBiqueira_debrum(String PARAM) {
     biqueira_debrum = PARAM;
   }
   /**
-    * CAPA_PALMILHA: Method to get the field value.
+    * CAPA_PALMILHA: Método Gets para este campo
     */
   public String getCapa_palmilha() {
     return capa_palmilha;
   }
   /**
-    * CAPA_PALMILHA: Method to set the field value.
+    * CAPA_PALMILHA: Método Sets pára este campo.
     */
   public void setCapa_palmilha(String PARAM) {
     capa_palmilha = PARAM;
   }
   /**
-    * TALONEIRA: Method to get the field value.
+    * TALONEIRA: Método Gets para este campo
     */
   public String getTaloneira() {
     return taloneira;
   }
   /**
-    * TALONEIRA: Method to set the field value.
+    * TALONEIRA: Método Sets pára este campo.
     */
   public void setTaloneira(String PARAM) {
     taloneira = PARAM;
   }
   /**
-    * ENFEITE: Method to get the field value.
+    * ENFEITE: Método Gets para este campo
     */
   public String getEnfeite() {
     return enfeite;
   }
   /**
-    * ENFEITE: Method to set the field value.
+    * ENFEITE: Método Sets pára este campo.
     */
   public void setEnfeite(String PARAM) {
     enfeite = PARAM;
   }
   /**
-    * METAIS: Method to get the field value.
+    * METAIS: Método Gets para este campo
     */
   public String getMetais() {
     return metais;
   }
   /**
-    * METAIS: Method to set the field value.
+    * METAIS: Método Sets pára este campo.
     */
   public void setMetais(String PARAM) {
     metais = PARAM;
   }
   /**
-    * CEPA: Method to get the field value.
+    * CEPA: Método Gets para este campo
     */
   public String getCepa() {
     return cepa;
   }
   /**
-    * CEPA: Method to set the field value.
+    * CEPA: Método Sets pára este campo.
     */
   public void setCepa(String PARAM) {
     cepa = PARAM;
   }
   /**
-    * SALTO: Method to get the field value.
+    * SALTO: Método Gets para este campo
     */
   public String getSalto() {
     return salto;
   }
   /**
-    * SALTO: Method to set the field value.
+    * SALTO: Método Sets pára este campo.
     */
   public void setSalto(String PARAM) {
     salto = PARAM;
   }
   /**
-    * SOLA: Method to get the field value.
+    * SOLA: Método Gets para este campo
     */
   public String getSola() {
     return sola;
   }
   /**
-    * SOLA: Method to set the field value.
+    * SOLA: Método Sets pára este campo.
     */
   public void setSola(String PARAM) {
     sola = PARAM;
   }
   /**
-    * CACHAREL: Method to get the field value.
+    * CACHAREL: Método Gets para este campo
     */
   public String getCacharel() {
     return cacharel;
   }
   /**
-    * CACHAREL: Method to set the field value.
+    * CACHAREL: Método Sets pára este campo.
     */
   public void setCacharel(String PARAM) {
     cacharel = PARAM;
   }
   /**
-    * FORRO: Method to get the field value.
+    * FORRO: Método Gets para este campo
     */
   public String getForro() {
     return forro;
   }
   /**
-    * FORRO: Method to set the field value.
+    * FORRO: Método Sets pára este campo.
     */
   public void setForro(String PARAM) {
     forro = PARAM;
   }
   /**
-    * ATACADOR: Method to get the field value.
+    * ATACADOR: Método Gets para este campo
     */
   public String getAtacador() {
     return atacador;
   }
   /**
-    * ATACADOR: Method to set the field value.
+    * ATACADOR: Método Sets pára este campo.
     */
   public void setAtacador(String PARAM) {
     atacador = PARAM;
   }
   /**
-    * CARIMBO_ETIQUETA: Method to get the field value.
+    * CARIMBO_ETIQUETA: Método Gets para este campo
     */
   public String getCarimbo_etiqueta() {
     return carimbo_etiqueta;
   }
   /**
-    * CARIMBO_ETIQUETA: Method to set the field value.
+    * CARIMBO_ETIQUETA: Método Sets pára este campo.
     */
   public void setCarimbo_etiqueta(String PARAM) {
     carimbo_etiqueta = PARAM;
   }
   /**
-    * CLI_CDGO: Method to get the field value.
+    * CLI_CDGO: Método Gets para este campo
     */
   public String getCli_cdgo() {
     return cli_cdgo;
   }
   /**
-    * CLI_CDGO: Method to set the field value.
+    * CLI_CDGO: Método Sets pára este campo.
     */
   public void setCli_cdgo(String PARAM) {
     cli_cdgo = PARAM;
   }
   /**
-    * CLI_RZAO: Method to get the field value.
+    * CLI_RZAO: Método Gets para este campo
     */
   public String getCli_rzao() {
     com.egen.util.jdbc.JdbcUtil j = null;
     try {
-      if (codigo_marca != null && codigo_marca.length() > 0 && cli_cdgo != null && cli_cdgo.length() > 0) {
+      if (cli_cdgo != null && cli_cdgo.length() > 0 && codigo_marca != null && codigo_marca.length() > 0 && ref_grupo_posicao_fab != null && ref_grupo_posicao_fab.length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_representante_cli_marca db_object = new Jw_representante_cli_marca();
-        String[][] select = { {"cli_rzao",null}, {"rep_cdgo",null}, {"rep_rzao",null} };
-        Object[][] where = { {"codigo_marca","=",com.egen.util.text.FormatNumber.toInt(codigo_marca)}, {"cli_cdgo","=",com.egen.util.text.FormatNumber.toInt(cli_cdgo)}, };
+        String[][] select = { {"cli_rzao",null}, {"rep_cdgo",null}, {"rep_rzao",null}, };
+        Object[][] where = { {"cli_cdgo","=",com.egen.util.text.FormatNumber.toInt(cli_cdgo)}, {"codigo_marca","=",com.egen.util.text.FormatNumber.toInt(codigo_marca)}, {"ref_grupo_posicao_fab","=",com.egen.util.text.FormatNumber.toInt(ref_grupo_posicao_fab)} };
         String[] group = null;
         String[] having = null;
         String[] order = null;
@@ -982,10 +989,10 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     String[][] list = new String[3][2];
     com.egen.util.jdbc.JdbcUtil j = null;
     try {
-      if (PARAM.getCodigo_marca() != null && PARAM.getCodigo_marca().length() > 0 && PARAM.getCli_cdgo() != null && PARAM.getCli_cdgo().length() > 0) {
+      if (PARAM.getCli_cdgo() != null && PARAM.getCli_cdgo().length() > 0 && PARAM.getCodigo_marca() != null && PARAM.getCodigo_marca().length() > 0 && PARAM.getRef_grupo_posicao_fab() != null && PARAM.getRef_grupo_posicao_fab().length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_representante_cli_marca db_object = new Jw_representante_cli_marca();
-        Object[][] where = { {"codigo_marca","like",PARAM.getCodigo_marca()}, {"cli_cdgo","like",PARAM.getCli_cdgo()}, };
+        Object[][] where = { {"cli_cdgo","=",com.egen.util.text.FormatNumber.toInt(PARAM.getCli_cdgo())}, {"codigo_marca","=",com.egen.util.text.FormatNumber.toInt(PARAM.getCodigo_marca())}, {"ref_grupo_posicao_fab","=",com.egen.util.text.FormatNumber.toInt(PARAM.getRef_grupo_posicao_fab())} };
         String[] order = null;
         java.util.Vector results = j.select(db_object, where, order);
         if (results != null && results.size() > 0) {
@@ -1011,25 +1018,25 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * CLI_RZAO: Method to set the field value.
+    * CLI_RZAO: Método Sets pára este campo.
     */
   public void setCli_rzao(String PARAM) {
     cli_rzao = PARAM;
   }
   /**
-    * REP_CDGO: Method to get the field value.
+    * REP_CDGO: Método Gets para este campo
     */
   public String getRep_cdgo() {
     return rep_cdgo;
   }
   /**
-    * REP_CDGO: Method to set the field value.
+    * REP_CDGO: Método Sets pára este campo.
     */
   public void setRep_cdgo(String PARAM) {
     rep_cdgo = PARAM;
   }
   /**
-    * REP_RZAO: Method to get the field value.
+    * REP_RZAO: Método Gets para este campo
     */
   public String getRep_rzao() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -1087,13 +1094,13 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * REP_RZAO: Method to set the field value.
+    * REP_RZAO: Método Sets pára este campo.
     */
   public void setRep_rzao(String PARAM) {
     rep_rzao = PARAM;
   }
   /**
-    * CODIGO_REGIONAL: Method to get the field value.
+    * CODIGO_REGIONAL: Método Gets para este campo
     */
   public String getCodigo_regional() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -1151,13 +1158,13 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * CODIGO_REGIONAL: Method to set the field value.
+    * CODIGO_REGIONAL: Método Sets pára este campo.
     */
   public void setCodigo_regional(String PARAM) {
     codigo_regional = PARAM;
   }
   /**
-    * NOME_REGIONAL: Method to get the field value.
+    * NOME_REGIONAL: Método Gets para este campo
     */
   public String getNome_regional() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -1215,25 +1222,25 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * NOME_REGIONAL: Method to set the field value.
+    * NOME_REGIONAL: Método Sets pára este campo.
     */
   public void setNome_regional(String PARAM) {
     nome_regional = PARAM;
   }
   /**
-    * GRE_GRUPO: Method to get the field value.
+    * GRE_GRUPO: Método Gets para este campo
     */
   public String getGre_grupo() {
     return gre_grupo;
   }
   /**
-    * GRE_GRUPO: Method to set the field value.
+    * GRE_GRUPO: Método Sets pára este campo.
     */
   public void setGre_grupo(String PARAM) {
     gre_grupo = PARAM;
   }
   /**
-    * GRE_DESCRICAO: Method to get the field value.
+    * GRE_DESCRICAO: Método Gets para este campo
     */
   public String getGre_descricao() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -1291,115 +1298,115 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return list;
   }
   /**
-    * GRE_DESCRICAO: Method to set the field value.
+    * GRE_DESCRICAO: Método Sets pára este campo.
     */
   public void setGre_descricao(String PARAM) {
     gre_descricao = PARAM;
   }
   /**
-    * PRS_NEGOCIACAO: Method to get the field value.
+    * PRS_NEGOCIACAO: Método Gets para este campo
     */
   public String getPrs_negociacao() {
     return prs_negociacao;
   }
   /**
-    * PRS_NEGOCIACAO: Method to set the field value.
+    * PRS_NEGOCIACAO: Método Sets pára este campo.
     */
   public void setPrs_negociacao(String PARAM) {
     prs_negociacao = PARAM;
   }
   /**
-    * PARES_LINHA: Method to get the field value.
+    * PARES_LINHA: Método Gets para este campo
     */
   public String getPares_linha() {
     return pares_linha;
   }
   /**
-    * PARES_LINHA: Method to set the field value.
+    * PARES_LINHA: Método Sets pára este campo.
     */
   public void setPares_linha(String PARAM) {
     pares_linha = PARAM;
   }
   /**
-    * PARES_ALTERACAO: Method to get the field value.
+    * PARES_ALTERACAO: Método Gets para este campo
     */
   public String getPares_alteracao() {
     return pares_alteracao;
   }
   /**
-    * PARES_ALTERACAO: Method to set the field value.
+    * PARES_ALTERACAO: Método Sets pára este campo.
     */
   public void setPares_alteracao(String PARAM) {
     pares_alteracao = PARAM;
   }
   /**
-    * PRECO_LIGUIDO: Method to get the field value.
+    * PRECO_LIGUIDO: Método Gets para este campo
     */
   public String getPreco_liguido() {
     return preco_liguido;
   }
   /**
-    * PRECO_LIGUIDO: Method to set the field value.
+    * PRECO_LIGUIDO: Método Sets pára este campo.
     */
   public void setPreco_liguido(String PARAM) {
     preco_liguido = PARAM;
   }
   /**
-    * LL_ALTERACAO_SOLICITADA: Method to get the field value.
+    * LL_ALTERACAO_SOLICITADA: Método Gets para este campo
     */
   public String getLl_alteracao_solicitada() {
     return ll_alteracao_solicitada;
   }
   /**
-    * LL_ALTERACAO_SOLICITADA: Method to set the field value.
+    * LL_ALTERACAO_SOLICITADA: Método Sets pára este campo.
     */
   public void setLl_alteracao_solicitada(String PARAM) {
     ll_alteracao_solicitada = PARAM;
   }
   /**
-    * VALOR_FABRICACAO: Method to get the field value.
+    * VALOR_FABRICACAO: Método Gets para este campo
     */
   public String getValor_fabricacao() {
     return valor_fabricacao;
   }
   /**
-    * VALOR_FABRICACAO: Method to set the field value.
+    * VALOR_FABRICACAO: Método Sets pára este campo.
     */
   public void setValor_fabricacao(String PARAM) {
     valor_fabricacao = PARAM;
   }
   /**
-    * PRECO_VENDOR: Method to get the field value.
+    * PRECO_VENDOR: Método Gets para este campo
     */
   public String getPreco_vendor() {
     return preco_vendor;
   }
   /**
-    * PRECO_VENDOR: Method to set the field value.
+    * PRECO_VENDOR: Método Sets pára este campo.
     */
   public void setPreco_vendor(String PARAM) {
     preco_vendor = PARAM;
   }
   /**
-    * ARQUIVO: Method to get the field value.
+    * ARQUIVO: Método Gets para este campo
     */
   public FormFile getArquivo() {
     return arquivo;
   }
   /**
-    * ARQUIVO: Method to set the field value.
+    * ARQUIVO: Método Sets pára este campo.
     */
   public void setArquivo(FormFile PARAM) {
     arquivo = PARAM;
   }
   /**
-    * SITUACAO_SOLICITACAO: Method to get the field value.
+    * SITUACAO_SOLICITACAO: Método Gets para este campo
     */
   public String getSituacao_solicitacao() {
     return situacao_solicitacao;
   }
   /**
-    * SITUACAO_SOLICITACAO: Method to set the field value.
+    * SITUACAO_SOLICITACAO: Método Sets pára este campo.
     */
   public void setSituacao_solicitacao(String PARAM) {
     situacao_solicitacao = PARAM;
@@ -1448,67 +1455,67 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return situacao_solicitacaoLabelList;
   }
   /**
-    * DATA_ACEITE: Method to get the field value.
+    * DATA_ACEITE: Método Gets para este campo
     */
   public String getData_aceite() {
     return data_aceite;
   }
   /**
-    * DATA_ACEITE: Method to set the field value.
+    * DATA_ACEITE: Método Sets pára este campo.
     */
   public void setData_aceite(String PARAM) {
     data_aceite = PARAM;
   }
   /**
-    * USUARIO_ACEITE: Method to get the field value.
+    * USUARIO_ACEITE: Método Gets para este campo
     */
   public String getUsuario_aceite() {
     return usuario_aceite;
   }
   /**
-    * USUARIO_ACEITE: Method to set the field value.
+    * USUARIO_ACEITE: Método Sets pára este campo.
     */
   public void setUsuario_aceite(String PARAM) {
     usuario_aceite = PARAM;
   }
   /**
-    * IMAGEM_PRODUTO: Method to get the field value.
+    * IMAGEM_PRODUTO: Método Gets para este campo
     */
   public String getImagem_produto() {
     return imagem_produto;
   }
   /**
-    * IMAGEM_PRODUTO: Method to set the field value.
+    * IMAGEM_PRODUTO: Método Sets pára este campo.
     */
   public void setImagem_produto(String PARAM) {
     imagem_produto = PARAM;
   }
   /**
-    * PEDIDO: Method to get the field value.
+    * PEDIDO: Método Gets para este campo
     */
   public String getPedido() {
     return pedido;
   }
   /**
-    * PEDIDO: Method to set the field value.
+    * PEDIDO: Método Sets pára este campo.
     */
   public void setPedido(String PARAM) {
     pedido = PARAM;
   }
   /**
-    * ITEM: Method to get the field value.
+    * ITEM: Método Gets para este campo
     */
   public String getItem() {
     return item;
   }
   /**
-    * ITEM: Method to set the field value.
+    * ITEM: Método Sets pára este campo.
     */
   public void setItem(String PARAM) {
     item = PARAM;
   }
   /**
-    * ITEM_DESC: Method to get the field value.
+    * ITEM_DESC: Método Gets para este campo
     */
   public String getItem_desc() {
     com.egen.util.jdbc.JdbcUtil j = null;
@@ -1539,37 +1546,49 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     return item_desc;
   }
   /**
-    * ITEM_DESC: Method to set the field value.
+    * ITEM_DESC: Método Sets pára este campo.
     */
   public void setItem_desc(String PARAM) {
     item_desc = PARAM;
   }
   /**
-    * ID_SOLICITACAO_DELETE: Method to get the field value.
+    * ID_SOLICITACAO_DELETE: Método Gets para este campo
     */
   public String getId_solicitacao_delete() {
     return id_solicitacao_delete;
   }
   /**
-    * ID_SOLICITACAO_DELETE: Method to set the field value.
+    * ID_SOLICITACAO_DELETE: Método Sets pára este campo.
     */
   public void setId_solicitacao_delete(String PARAM) {
     id_solicitacao_delete = PARAM;
   }
   /**
-    * DATA_APROVACAO: Method to get the field value.
+    * DATA_APROVACAO: Método Gets para este campo
     */
   public String getData_aprovacao() {
     return data_aprovacao;
   }
   /**
-    * DATA_APROVACAO: Method to set the field value.
+    * DATA_APROVACAO: Método Sets pára este campo.
     */
   public void setData_aprovacao(String PARAM) {
     data_aprovacao = PARAM;
   }
   /**
-    * Reset all fields.
+    * REF_GRUPO_POSICAO_FAB: Método Gets para este campo
+    */
+  public String getRef_grupo_posicao_fab() {
+    return ref_grupo_posicao_fab;
+  }
+  /**
+    * REF_GRUPO_POSICAO_FAB: Método Sets pára este campo.
+    */
+  public void setRef_grupo_posicao_fab(String PARAM) {
+    ref_grupo_posicao_fab = PARAM;
+  }
+  /**
+    * Limpar todos os campos.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     id_solicitacao = null;
@@ -1637,9 +1656,10 @@ public class SolicitacaoCombinacaoEspecial_aActionForm extends org.apache.struts
     item_desc = null;
     id_solicitacao_delete = null;
     data_aprovacao = null;
+    ref_grupo_posicao_fab = null;
   }
   /**
-    * Validate fields and return errors.
+    * Validação dos campos, retornando um ActionErrors.
     */
   public ActionErrors validate(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     javax.servlet.http.HttpSession session = request.getSession(true);

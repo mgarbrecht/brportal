@@ -410,6 +410,11 @@
                             <br/>
                             Suframa
                           </td>
+                          <td class="columnTdHeader" style="text-align: center; width: 1%">
+                            Antecipação
+                            <br/>
+                            Não Permitida
+                          </td>
                           <td class="columnTdHeader" style="text-align: left; width: 200px">
                             Regional
                           </td>
@@ -655,6 +660,9 @@
                           </td>
                           <td class="columnTdHeader" style="text-align: center; width: 1%">
                             Bloq. Suframa
+                          </td>
+                          <td class="columnTdHeader" style="text-align: center; width: 1%">
+                            Antecipação Não Permitida
                           </td>
 
 
@@ -1797,6 +1805,10 @@
 
                               <td style="text-align: center; width=1%">
                                 <span class="<%= controle.getBloqueio_suframa() %>"/>
+                              </td>
+
+                              <td style="text-align: center; width=1%">
+                                <span class="<%= controle.getBloqueio_antecipacao() %>"/>
                               </td>
 
                               <td class="reportColumn" style="text-align: left">
@@ -3252,7 +3264,10 @@
                                                     <%= controle.getBloqueio_sku().equals("red.gif")?"S":"N" %>
                                                   </td>
                                                   <td class="reportColumn" style="text-align: center; width: 1%">
-                                                    <%= controle.getBloqueio_suframa().equals("red.gif")?"S":"N" %>
+                                                    <%= controle.getBloqueio_suframa().equals("dotRed")?"S":"N" %>
+                                                  </td>
+                                                  <td class="reportColumn" style="text-align: center; width: 1%">
+                                                    <%= controle.getBloqueio_antecipacao().equals("dotRed")?"S":"N" %>
                                                   </td>
 
 

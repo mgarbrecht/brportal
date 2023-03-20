@@ -79,6 +79,7 @@
     hashMapLabel.set("f_duplicacao","");
     hashMapLabel.set("id_solicitacao_delete","");
     hashMapLabel.set("data_aprovacao","Data_aprovacao");
+    hashMapLabel.set("ref_grupo_posicao_fab","");
     var reportColumns = new Array();
   </script>
   <bean:message key="page.ajaxscript"/>
@@ -183,6 +184,7 @@
                     <html:errors property="pedido"/>
                     <html:errors property="item"/>
                     <html:errors property="item_desc"/>
+                    <html:errors property="ref_grupo_posicao_fab"/>
                     <html:errors property="ActionErrors.GLOBAL_ERROR_bl_form_Ref_combinacao_especial"/>
                   </td>
                 </tr>
@@ -802,7 +804,7 @@
                           </span>
                         </td>
                         <td class="formField">
-                          <html:text property="cli_cdgo" styleId="cli_cdgo" onblur="fillFields(0,new Array('codigo_marca','cli_cdgo'),'SolicitacaoCombinacaoEspecial_aActionForm.getCli_rzao_Ajax',new Array('rep_cdgo','rep_rzao','cli_rzao'));" styleClass="baseField" size="10" maxlength="22"/>
+                          <html:text property="cli_cdgo" styleId="cli_cdgo" onblur="fillFields(0,new Array('cli_cdgo','codigo_marca','ref_grupo_posicao_fab'),'SolicitacaoCombinacaoEspecial_aActionForm.getCli_rzao_Ajax',new Array('cli_rzao','rep_cdgo','rep_rzao'));" styleClass="baseField" size="10" maxlength="22"/>
                           <input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_cli_cdgo()"  >
                           <script type="text/javascript">
                             function lov_open_cli_cdgo() {
@@ -811,7 +813,7 @@
                           </script>
                           <span class="spamFormLabel">
                           </span>
-                          <html:text property="cli_rzao" styleId="cli_rzao" styleClass="disabled" tabindex="-1" readonly="true" size="55" maxlength="50"/>
+                          <html:text property="cli_rzao" styleId="cli_rzao" onblur="fillFields(0,new Array('cli_cdgo','codigo_marca','ref_grupo_posicao_fab'),'SolicitacaoCombinacaoEspecial_aActionForm.getCli_rzao_Ajax',new Array('cli_rzao','rep_cdgo','rep_rzao'));" styleClass="disabled" tabindex="-1" readonly="true" size="55" maxlength="50"/>
                         </td>
                       </tr>
 
@@ -1079,6 +1081,16 @@
                     %>
                     <html:hidden property="id_solicitacao_delete"/>
                     <html:hidden property="data_aprovacao"/>
+                    <tr class="itemTr">
+                      <td class="formLabel">
+                        <span class="spamFormLabel">
+                        </span>
+                      </td>
+                      <td class="formField">
+                        <html:text property="ref_grupo_posicao_fab" styleId="ref_grupo_posicao_fab" onblur="fillFields(0,new Array('cli_cdgo','codigo_marca','ref_grupo_posicao_fab'),'SolicitacaoCombinacaoEspecial_aActionForm.getCli_rzao_Ajax',new Array('cli_rzao','rep_cdgo','rep_rzao'));" style="visibility:hidden; height:0; line-height:0; max-height:0; max-width:0; min-height:0; min-width:0; width:0; z-index:-1000; text-align:start;" styleClass="baseField"/>
+                      </td>
+                    </tr>
+
                   </table>
 
                   <table class="buttonTable" style='width:99%;'>

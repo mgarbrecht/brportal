@@ -12,7 +12,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 25/05/2011 11:44:52
- * Last Modify Date 03/02/2023 14:29:02
+ * Last Modify Date 20/03/2023 17:52:36
  */
 
 public class ControleClientesEspeciaisAction extends com.egen.util.struts.AbstractAction {
@@ -781,6 +781,7 @@ public class ControleClientesEspeciaisAction extends com.egen.util.struts.Abstra
     sb.append("                     and evo.status = 'A' ");
     sb.append("                     and NVL(evo.vigencia_final, SYSDATE) >= SYSDATE) is null then 'dotGrey' ");
     sb.append("   else (case when qry.tra_cdgo_internar is not null then 'dotRed' else 'dotGreen' end) end bloqueio_suframa ");
+    sb.append("    , case when (select 1 from cli_respeita_tranca_fat_vw v where v.cli_cdgo = qry.cli_Cdgo) is null then 'dotRed' else 'dotGreen' end bloqueio_antecipacao ");
 
     sb.append(" FROM ( ");
 

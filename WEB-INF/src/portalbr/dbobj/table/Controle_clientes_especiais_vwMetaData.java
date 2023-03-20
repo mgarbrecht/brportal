@@ -1,7 +1,7 @@
 package portalbr.dbobj.table;
 
 /** DataBase Object from table WBRIO.Controle_clientes_especiais_vw
-  * @version 09/09/2022 13:23:54
+  * @version 20/03/2023 17:54:54
   */
 public class Controle_clientes_especiais_vwMetaData {
 
@@ -131,7 +131,8 @@ public class Controle_clientes_especiais_vwMetaData {
                             {"java.lang.String","bloqueio_cliente","20","true","text","bloqueio_cliente","","","true","","","",},
                             {"java.lang.String","bloqueio_sku","20","true","text","bloqueio_sku","","","true","","","",},
                             {"java.lang.String","bloqueio_credito","20","true","text","bloqueio_credito","","","true","","","",},
-                            {"java.lang.String","bloqueio_suframa","20","true","text","bloqueio_suframa","","","true","","","",}
+                            {"java.lang.String","bloqueio_suframa","20","true","text","bloqueio_suframa","","","true","","","",},
+                            {"java.lang.String","bloqueio_antecipacao","20","true","text","bloqueio_antecipacao","","","true","","","",}
                           };
     return metadata;
   }

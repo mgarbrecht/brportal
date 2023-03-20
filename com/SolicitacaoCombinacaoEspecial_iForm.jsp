@@ -76,6 +76,7 @@
     hashMapLabel.set("pedido","Pedido (opcional)");
     hashMapLabel.set("item","Item");
     hashMapLabel.set("item_desc","");
+    hashMapLabel.set("ref_grupo_posicao_fab","");
     var reportColumns = new Array();
   </script>
   <bean:message key="page.ajaxscript"/>
@@ -248,7 +249,7 @@
                     </span>
                   </td>
                   <td class="formField">
-                    <html:select property="codigo_marca" styleId="codigo_marca" styleClass="baseField" size="1">
+                    <html:select property="codigo_marca" styleId="codigo_marca" onblur="fillFields(0,new Array('cli_cdgo','codigo_marca','ref_grupo_posicao_fab'),'SolicitacaoCombinacaoEspecial_iActionForm.getTeste_Ajax',new Array('rep_cdgo'));" styleClass="baseField" size="1">
                       <html:options property="codigo_marcaList" labelProperty="codigo_marcaLabelList" styleClass="baseOptions"/>
                     </html:select>
                   </td>
@@ -785,7 +786,7 @@
                           </span>
                         </td>
                         <td class="formField">
-                          <html:text property="cli_cdgo" styleId="cli_cdgo" onblur="fillFields(0,new Array('codigo_marca','cli_cdgo'),'SolicitacaoCombinacaoEspecial_iActionForm.getCli_rzao_Ajax',new Array('rep_cdgo','rep_rzao','cli_rzao'));" styleClass="baseField" size="10" maxlength="22"/>
+                          <html:text property="cli_cdgo" styleId="cli_cdgo" onblur="fillFields(0,new Array('cli_cdgo','codigo_marca','ref_grupo_posicao_fab'),'SolicitacaoCombinacaoEspecial_iActionForm.getCli_rzao_Ajax',new Array('cli_rzao','rep_cdgo','rep_rzao'));" styleClass="baseField" size="10" maxlength="22"/>
                           <input type="button" class="lovButton" tabindex="-1" value="..."  onclick="javascript:lov_open_cli_cdgo()"  >
                           <script type="text/javascript">
                             function lov_open_cli_cdgo() {
@@ -794,7 +795,7 @@
                           </script>
                           <span class="spamFormLabel">
                           </span>
-                          <html:text property="cli_rzao" styleId="cli_rzao" onblur="fillFields(0,new Array('codigo_marca','cli_cdgo'),'SolicitacaoCombinacaoEspecial_iActionForm.getCli_rzao_Ajax',new Array('cli_rzao','rep_cdgo','rep_rzao'));" styleClass="disabled" tabindex="-1" readonly="true" size="55" maxlength="50"/>
+                          <html:text property="cli_rzao" styleId="cli_rzao" onblur="fillFields(0,new Array('cli_cdgo','codigo_marca','ref_grupo_posicao_fab'),'SolicitacaoCombinacaoEspecial_iActionForm.getCli_rzao_Ajax',new Array('cli_rzao','rep_cdgo','rep_rzao'));" styleClass="disabled" tabindex="-1" readonly="true" size="55" maxlength="50"/>
                         </td>
                       </tr>
 
@@ -1054,6 +1055,7 @@
                       </td>
                     </tr>
 
+                    <html:hidden property="ref_grupo_posicao_fab"/>
                   </table>
 
                   <table class="buttonTable" style='width:99%;'>

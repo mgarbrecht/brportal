@@ -1,7 +1,7 @@
 package portalbr.dbobj.view;
 
 /** DataBase Object from table .Jw_representante_cli_marca
-  * @version 25/08/2021 15:03:42
+  * @version 08/03/2023 13:18:15
   */
 public class Jw_representante_cli_marca implements java.io.Serializable, com.egen.util.jdbc.View {
   private int cli_cdgo;
@@ -9,6 +9,7 @@ public class Jw_representante_cli_marca implements java.io.Serializable, com.ege
   private int codigo_marca;
   private java.lang.String rep_cdgo;
   private java.lang.String rep_rzao;
+  private int ref_grupo_posicao_fab;
 
   public Jw_representante_cli_marca() {
   }
@@ -51,6 +52,14 @@ public class Jw_representante_cli_marca implements java.io.Serializable, com.ege
 
   public void setRep_rzao(java.lang.String PARAM) {
     this.rep_rzao = PARAM;
+  }
+
+  public int getRef_grupo_posicao_fab() {
+    return ref_grupo_posicao_fab;
+  }
+
+  public void setRef_grupo_posicao_fab(int PARAM) {
+    this.ref_grupo_posicao_fab = PARAM;
   }
 
 }

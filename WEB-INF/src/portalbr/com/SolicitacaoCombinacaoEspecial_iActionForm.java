@@ -8,7 +8,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 03/02/2012 11:28:50
- * Last Modify Date 07/11/2022 16:49:00
+ * Last Modify Date 08/03/2023 13:26:34
  */
 
 import org.apache.struts.upload.FormFile;
@@ -78,6 +78,7 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
   public String pedido;
   public String item;
   public String item_desc;
+  public String ref_grupo_posicao_fab;
   private boolean valida = false;
   public SolicitacaoCombinacaoEspecial_iActionForm() {
   }
@@ -329,7 +330,7 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
       if (lin_cdgo != null && lin_cdgo.length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_lin_mix db_object = new Jw_lin_mix();
-        String[][] select = { {"lin_nome",null}, {"descricao_mix",null} };
+        String[][] select = { {"lin_nome",null}, {"descricao_mix",null}, {"ref_grupo_posicao_fab",null} };
         Object[][] where = { {"lin_cdgo","=",com.egen.util.text.FormatNumber.toInteger(lin_cdgo)}, };
         String[] group = null;
         String[] having = null;
@@ -339,14 +340,17 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
           db_object = (Jw_lin_mix) results.elementAt(0);
           lin_nome = (db_object.getLin_nome() != null) ? db_object.getLin_nome() + "":"";
           linha_mix = ((db_object.getDescricao_mix() != null) ? db_object.getDescricao_mix() + "":"");
+          ref_grupo_posicao_fab = (db_object.getRef_grupo_posicao_fab() != null) ? db_object.getRef_grupo_posicao_fab() + "":"";
         } else {
           lin_nome = "";
           linha_mix = "";
+          ref_grupo_posicao_fab = "";
         }
       }
     } catch (Exception e) {
       lin_nome = "";
       linha_mix = "";
+      ref_grupo_posicao_fab = "";
     } finally {
       if (j != null) {
         j.close();
@@ -356,27 +360,30 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
   }
 
   public String[][] getLin_nome_Ajax(SolicitacaoCombinacaoEspecial_iActionForm PARAM) {
-    String[][] list = new String[2][2];
+    String[][] list = new String[3][2];
     com.egen.util.jdbc.JdbcUtil j = null;
     try {
       if (PARAM.getLin_cdgo() != null && PARAM.getLin_cdgo().length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_lin_mix db_object = new Jw_lin_mix();
-        Object[][] where = { {"lin_cdgo","like",PARAM.getLin_cdgo()}, };
+        Object[][] where = { {"lin_cdgo","=",com.egen.util.text.FormatNumber.toInteger(PARAM.getLin_cdgo())}, };
         String[] order = null;
         java.util.Vector results = j.select(db_object, where, order);
         if (results != null && results.size() > 0) {
           db_object = (Jw_lin_mix) results.elementAt(0);
           list[0] = new String[]{"lin_nome", (db_object.getLin_nome() != null) ? db_object.getLin_nome() + "":""};
           list[1] = new String[]{"linha_mix", ((db_object.getDescricao_mix() != null) ? db_object.getDescricao_mix() + "":"")};
+          list[2] = new String[]{"ref_grupo_posicao_fab", (db_object.getRef_grupo_posicao_fab() != null) ? db_object.getRef_grupo_posicao_fab() + "":""};
         } else {
           list[0] = new String[]{"lin_nome", ""};
           list[1] = new String[]{"linha_mix", ""};
+          list[2] = new String[]{"ref_grupo_posicao_fab", ""};
         }
       }
     } catch (Exception e) {
       list[0] = new String[]{"lin_nome", ""};
       list[1] = new String[]{"linha_mix", ""};
+      list[2] = new String[]{"ref_grupo_posicao_fab", ""};
     } finally {
       if (j != null) {
         j.close();
@@ -950,7 +957,7 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_representante_cli_marca db_object = new Jw_representante_cli_marca();
         String[][] select = { {"cli_rzao",null}, {"rep_cdgo",null}, {"rep_rzao",null} };
-        Object[][] where = { {"codigo_marca","=",com.egen.util.text.FormatNumber.toInt(codigo_marca)}, {"cli_cdgo","=",com.egen.util.text.FormatNumber.toInt(cli_cdgo)}, };
+        Object[][] where = { {"codigo_marca","=",com.egen.util.text.FormatNumber.toInt(codigo_marca)}, {"cli_cdgo","=",com.egen.util.text.FormatNumber.toInt(cli_cdgo)}, {"ref_grupo_posicao_fab","=",com.egen.util.text.FormatNumber.toInt(ref_grupo_posicao_fab)}, };
         String[] group = null;
         String[] having = null;
         String[] order = null;
@@ -982,10 +989,11 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
     String[][] list = new String[3][2];
     com.egen.util.jdbc.JdbcUtil j = null;
     try {
+      System.out.println("PARAM.getRef_grupo_posicao_fab(): " + PARAM.getRef_grupo_posicao_fab());
       if (PARAM.getCodigo_marca() != null && PARAM.getCodigo_marca().length() > 0 && PARAM.getCli_cdgo() != null && PARAM.getCli_cdgo().length() > 0) {
         j = new com.egen.util.jdbc.JdbcUtil();
         Jw_representante_cli_marca db_object = new Jw_representante_cli_marca();
-        Object[][] where = { {"codigo_marca","like",PARAM.getCodigo_marca()}, {"cli_cdgo","like",PARAM.getCli_cdgo()}, };
+        Object[][] where = { {"codigo_marca","like",PARAM.getCodigo_marca()}, {"cli_cdgo","like",PARAM.getCli_cdgo()}, {"ref_grupo_posicao_fab","like",PARAM.getRef_grupo_posicao_fab()}, };
         String[] order = null;
         java.util.Vector results = j.select(db_object, where, order);
         if (results != null && results.size() > 0) {
@@ -1545,6 +1553,18 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
     item_desc = PARAM;
   }
   /**
+    * REF_GRUPO_POSICAO_FAB: Método Gets para este campo
+    */
+  public String getRef_grupo_posicao_fab() {
+    return ref_grupo_posicao_fab;
+  }
+  /**
+    * REF_GRUPO_POSICAO_FAB: Método Sets pára este campo.
+    */
+  public void setRef_grupo_posicao_fab(String PARAM) {
+    ref_grupo_posicao_fab = PARAM;
+  }
+  /**
     * Limpar todos os campos.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
@@ -1611,6 +1631,7 @@ public class SolicitacaoCombinacaoEspecial_iActionForm extends org.apache.struts
     pedido = null;
     item = null;
     item_desc = null;
+    ref_grupo_posicao_fab = null;
   }
   /**
     * Validação dos campos, retornando um ActionErrors.
