@@ -8,7 +8,7 @@ import portalbr.dbobj.procedure.*;
 
 /**
  * Creation Date 03/09/2014 15:35:48
- * Last Modify Date 01/03/2023 17:43:45
+ * Last Modify Date 01/03/2023 17:45:00
  */
 
 public class EntradaAtualPedidosActionForm extends org.apache.struts.action.ActionForm
@@ -33,133 +33,133 @@ public class EntradaAtualPedidosActionForm extends org.apache.struts.action.Acti
   public EntradaAtualPedidosActionForm() {
   }
   /**
-    * DIA_ANTERIOR: Método Gets para este campo
+    * DIA_ANTERIOR: Method to get the field value.
     */
   public String getDia_anterior() {
     return dia_anterior;
   }
   /**
-    * DIA_ANTERIOR: Método Sets pára este campo.
+    * DIA_ANTERIOR: Method to set the field value.
     */
   public void setDia_anterior(String PARAM) {
     dia_anterior = PARAM;
   }
   /**
-    * DIA_ATUAL: Método Gets para este campo
+    * DIA_ATUAL: Method to get the field value.
     */
   public String getDia_atual() {
     return dia_atual;
   }
   /**
-    * DIA_ATUAL: Método Sets pára este campo.
+    * DIA_ATUAL: Method to set the field value.
     */
   public void setDia_atual(String PARAM) {
     dia_atual = PARAM;
   }
   /**
-    * MES: Método Gets para este campo
+    * MES: Method to get the field value.
     */
   public String getMes() {
     return mes;
   }
   /**
-    * MES: Método Sets pára este campo.
+    * MES: Method to set the field value.
     */
   public void setMes(String PARAM) {
     mes = PARAM;
   }
   /**
-    * TIPO: Método Gets para este campo
+    * TIPO: Method to get the field value.
     */
   public String getTipo() {
     return tipo;
   }
   /**
-    * TIPO: Método Sets pára este campo.
+    * TIPO: Method to set the field value.
     */
   public void setTipo(String PARAM) {
     tipo = PARAM;
   }
   /**
-    * MARCA_CLIENTE: Método Gets para este campo
+    * MARCA_CLIENTE: Method to get the field value.
     */
   public String getMarca_cliente() {
     return marca_cliente;
   }
   /**
-    * MARCA_CLIENTE: Método Sets pára este campo.
+    * MARCA_CLIENTE: Method to set the field value.
     */
   public void setMarca_cliente(String PARAM) {
     marca_cliente = PARAM;
   }
   /**
-    * MARCA_GRUPO: Método Gets para este campo
+    * MARCA_GRUPO: Method to get the field value.
     */
   public String getMarca_grupo() {
     return marca_grupo;
   }
   /**
-    * MARCA_GRUPO: Método Sets pára este campo.
+    * MARCA_GRUPO: Method to set the field value.
     */
   public void setMarca_grupo(String PARAM) {
     marca_grupo = PARAM;
   }
   /**
-    * SEMANA_ATUAL: Método Gets para este campo
+    * SEMANA_ATUAL: Method to get the field value.
     */
   public String getSemana_atual() {
     return semana_atual;
   }
   /**
-    * SEMANA_ATUAL: Método Sets pára este campo.
+    * SEMANA_ATUAL: Method to set the field value.
     */
   public void setSemana_atual(String PARAM) {
     semana_atual = PARAM;
   }
   /**
-    * MARCA_REGIONAL: Método Gets para este campo
+    * MARCA_REGIONAL: Method to get the field value.
     */
   public String getMarca_regional() {
     return marca_regional;
   }
   /**
-    * MARCA_REGIONAL: Método Sets pára este campo.
+    * MARCA_REGIONAL: Method to set the field value.
     */
   public void setMarca_regional(String PARAM) {
     marca_regional = PARAM;
   }
   /**
-    * MERCADO: Método Gets para este campo
+    * MERCADO: Method to get the field value.
     */
   public String getMercado() {
     return mercado;
   }
   /**
-    * MERCADO: Método Sets pára este campo.
+    * MERCADO: Method to set the field value.
     */
   public void setMercado(String PARAM) {
     mercado = PARAM;
   }
   /**
-    * REPRESENTANTES_VENDAS: Método Gets para este campo
+    * REPRESENTANTES_VENDAS: Method to get the field value.
     */
   public String getRepresentantes_vendas() {
     return representantes_vendas;
   }
   /**
-    * REPRESENTANTES_VENDAS: Método Sets pára este campo.
+    * REPRESENTANTES_VENDAS: Method to set the field value.
     */
   public void setRepresentantes_vendas(String PARAM) {
     representantes_vendas = PARAM;
   }
   /**
-    * ESTILOS: Método Gets para este campo
+    * ESTILOS: Method to get the field value.
     */
   public String getEstilos() {
     return estilos;
   }
   /**
-    * ESTILOS: Método Sets pára este campo.
+    * ESTILOS: Method to set the field value.
     */
   public void setEstilos(String PARAM) {
     estilos = PARAM;
@@ -208,67 +208,67 @@ public class EntradaAtualPedidosActionForm extends org.apache.struts.action.Acti
     return estilosLabelList;
   }
   /**
-    * UNIDADE: Método Gets para este campo
+    * UNIDADE: Method to get the field value.
     */
   public String getUnidade() {
     return unidade;
   }
   /**
-    * UNIDADE: Método Sets pára este campo.
+    * UNIDADE: Method to set the field value.
     */
   public void setUnidade(String PARAM) {
     unidade = PARAM;
   }
   /**
-    * TIPO_PRODUTO: Método Gets para este campo
+    * TIPO_PRODUTO: Method to get the field value.
     */
   public String getTipo_produto() {
     return tipo_produto;
   }
   /**
-    * TIPO_PRODUTO: Método Sets pára este campo.
+    * TIPO_PRODUTO: Method to set the field value.
     */
   public void setTipo_produto(String PARAM) {
     tipo_produto = PARAM;
   }
   /**
-    * REGIONAL_CLIENTE: Método Gets para este campo
+    * REGIONAL_CLIENTE: Method to get the field value.
     */
   public String getRegional_cliente() {
     return regional_cliente;
   }
   /**
-    * REGIONAL_CLIENTE: Método Sets pára este campo.
+    * REGIONAL_CLIENTE: Method to set the field value.
     */
   public void setRegional_cliente(String PARAM) {
     regional_cliente = PARAM;
   }
   /**
-    * MARCA_SELECT: Método Gets para este campo
+    * MARCA_SELECT: Method to get the field value.
     */
   public String getMarca_select() {
     return marca_select;
   }
   /**
-    * MARCA_SELECT: Método Sets pára este campo.
+    * MARCA_SELECT: Method to set the field value.
     */
   public void setMarca_select(String PARAM) {
     marca_select = PARAM;
   }
   /**
-    * REPRESENTANTES_VENDAS_SEGMENTOS: Método Gets para este campo
+    * REPRESENTANTES_VENDAS_SEGMENTOS: Method to get the field value.
     */
   public String getRepresentantes_vendas_segmentos() {
     return representantes_vendas_segmentos;
   }
   /**
-    * REPRESENTANTES_VENDAS_SEGMENTOS: Método Sets pára este campo.
+    * REPRESENTANTES_VENDAS_SEGMENTOS: Method to set the field value.
     */
   public void setRepresentantes_vendas_segmentos(String PARAM) {
     representantes_vendas_segmentos = PARAM;
   }
   /**
-    * Limpar todos os campos.
+    * Reset all fields.
     */
   public void reset(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     dia_anterior = null;
@@ -289,7 +289,7 @@ public class EntradaAtualPedidosActionForm extends org.apache.struts.action.Acti
     representantes_vendas_segmentos = null;
   }
   /**
-    * Validação dos campos, retornando um ActionErrors.
+    * Validate fields and return errors.
     */
   public ActionErrors validate(org.apache.struts.action.ActionMapping mapping, javax.servlet.http.HttpServletRequest request) {
     javax.servlet.http.HttpSession session = request.getSession(true);
